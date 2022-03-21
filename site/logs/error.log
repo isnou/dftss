@@ -1,0 +1,103 @@
+[Mon Mar 21 01:22:56.131615 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571] mod_wsgi (pid=26170): Failed to exec Python script file '/dftss-root/src/dftss/wsgi.py'.
+[Mon Mar 21 01:22:56.131715 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571] mod_wsgi (pid=26170): Exception occurred processing WSGI script '/dftss-root/src/dftss/wsgi.py'.
+[Mon Mar 21 01:22:56.132612 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571] Traceback (most recent call last):
+[Mon Mar 21 01:22:56.132687 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/dftss-root/src/dftss/wsgi.py", line 16, in <module>
+[Mon Mar 21 01:22:56.132694 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     application = get_wsgi_application()
+[Mon Mar 21 01:22:56.132703 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/django-env/lib/python3.8/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+[Mon Mar 21 01:22:56.132707 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     django.setup(set_prefix=False)
+[Mon Mar 21 01:22:56.132715 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/django-env/lib/python3.8/site-packages/django/__init__.py", line 19, in setup
+[Mon Mar 21 01:22:56.132719 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Mon Mar 21 01:22:56.132726 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/django-env/lib/python3.8/site-packages/django/conf/__init__.py", line 87, in __getattr__
+[Mon Mar 21 01:22:56.132731 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     self._setup(name)
+[Mon Mar 21 01:22:56.132738 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/django-env/lib/python3.8/site-packages/django/conf/__init__.py", line 74, in _setup
+[Mon Mar 21 01:22:56.132742 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     self._wrapped = Settings(settings_module)
+[Mon Mar 21 01:22:56.132749 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/django-env/lib/python3.8/site-packages/django/conf/__init__.py", line 183, in __init__
+[Mon Mar 21 01:22:56.132754 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Mon Mar 21 01:22:56.132761 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+[Mon Mar 21 01:22:56.132765 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]     return _bootstrap._gcd_import(name[level:], package, level)
+[Mon Mar 21 01:22:56.132772 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+[Mon Mar 21 01:22:56.132780 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+[Mon Mar 21 01:22:56.132796 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+[Mon Mar 21 01:22:56.133027 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+[Mon Mar 21 01:22:56.133038 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+[Mon Mar 21 01:22:56.133046 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+[Mon Mar 21 01:22:56.133291 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571]   File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+[Mon Mar 21 01:22:56.133312 2022] [wsgi:error] [pid 26170:tid 139704480532224] [remote 105.101.12.169:39571] ModuleNotFoundError: No module named 'dftss'
+[Sun Mar 20 23:24:36.150830 2022] [wsgi:error] [pid 26264:tid 140706144134912] [remote 105.101.12.169:55026] Not Found: /static/admin/css/fonts.css
+[Sun Mar 20 23:31:33.815388 2022] [wsgi:error] [pid 26264:tid 140706253272832] [remote 114.201.228.147:49913] Not Found: /shell
+[Sun Mar 20 23:35:36.452229 2022] [wsgi:error] [pid 26264:tid 140706253272832] [remote 105.101.12.169:55042] Not Found: /static/admin/css/fonts.css
+[Sun Mar 20 23:35:37.560650 2022] [wsgi:error] [pid 26264:tid 140706253272832] [remote 105.101.12.169:55042] Not Found: /static/admin/css/fonts.css
+Exception ignored in: <function Local.__del__ at 0x7ff8b238faf0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+[Sun Mar 20 23:35:51.071911 2022] [wsgi:error] [pid 26368:tid 139756199126784] [remote 105.101.12.169:39793] Not Found: /static/admin/css/fonts.css
+[Sun Mar 20 23:35:57.110196 2022] [wsgi:error] [pid 26368:tid 139756207535872] [remote 105.101.12.169:39799] Not Found: /static/admin/css/base.css
+[Sun Mar 20 23:35:57.119769 2022] [wsgi:error] [pid 26368:tid 139756199126784] [remote 105.101.12.169:55044] Not Found: /static/admin/css/nav_sidebar.css
+[Sun Mar 20 23:35:57.177192 2022] [wsgi:error] [pid 26368:tid 139756316665600] [remote 105.101.12.169:55046] Not Found: /static/admin/css/dashboard.css
+[Sun Mar 20 23:35:57.192502 2022] [wsgi:error] [pid 26368:tid 139756199126784] [remote 105.101.12.169:39801] Not Found: /static/admin/css/responsive.css
+[Sun Mar 20 23:35:57.197642 2022] [wsgi:error] [pid 26368:tid 139756207535872] [remote 105.101.12.169:55048] Not Found: /static/admin/js/nav_sidebar.js
+Exception ignored in: <function Local.__del__ at 0x7f1b8596baf0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+Exception ignored in: <function Local.__del__ at 0x7f1b8596baf0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+[Sun Mar 20 23:40:20.120578 2022] [wsgi:error] [pid 26464:tid 139855388022528] [remote 105.101.12.169:55052] Not Found: /static/admin/css/nav_sidebar.css
+[Sun Mar 20 23:40:20.122219 2022] [wsgi:error] [pid 26464:tid 139855379621632] [remote 105.101.12.169:39893] Not Found: /static/admin/css/base.css
+[Sun Mar 20 23:40:20.180622 2022] [wsgi:error] [pid 26464:tid 139855379621632] [remote 105.101.12.169:39895] Not Found: /static/admin/css/dashboard.css
+[Sun Mar 20 23:40:20.191111 2022] [wsgi:error] [pid 26464:tid 139855371220736] [remote 105.101.12.169:55054] Not Found: /static/admin/js/nav_sidebar.js
+[Sun Mar 20 23:40:20.193014 2022] [wsgi:error] [pid 26464:tid 139855388022528] [remote 105.101.12.169:39897] Not Found: /static/admin/css/responsive.css
+[Sun Mar 20 23:40:22.797518 2022] [wsgi:error] [pid 26464:tid 139855388022528] [remote 105.101.12.169:55054] Not Found: /static/admin/css/base.css
+[Sun Mar 20 23:40:22.839499 2022] [wsgi:error] [pid 26464:tid 139855371220736] [remote 105.101.12.169:39895] Not Found: /static/admin/css/dashboard.css
+[Sun Mar 20 23:40:22.841948 2022] [wsgi:error] [pid 26464:tid 139855354418944] [remote 105.101.12.169:55052] Not Found: /static/admin/css/responsive.css
+[Sun Mar 20 23:40:22.847599 2022] [wsgi:error] [pid 26464:tid 139855379621632] [remote 105.101.12.169:39893] Not Found: /static/admin/js/nav_sidebar.js
+[Sun Mar 20 23:40:22.848597 2022] [wsgi:error] [pid 26464:tid 139855362819840] [remote 105.101.12.169:39897] Not Found: /static/admin/css/nav_sidebar.css
+[Sun Mar 20 23:40:24.129089 2022] [wsgi:error] [pid 26464:tid 139855346018048] [remote 105.101.12.169:55052] Not Found: /static/admin/css/nav_sidebar.css
+[Sun Mar 20 23:40:24.131614 2022] [wsgi:error] [pid 26464:tid 139855379621632] [remote 105.101.12.169:39897] Not Found: /static/admin/css/base.css
+[Sun Mar 20 23:40:24.152893 2022] [wsgi:error] [pid 26464:tid 139855362819840] [remote 105.101.12.169:55054] Not Found: /static/admin/js/nav_sidebar.js
+[Sun Mar 20 23:40:24.161843 2022] [wsgi:error] [pid 26464:tid 139855371220736] [remote 105.101.12.169:39895] Not Found: /static/admin/css/responsive.css
+[Sun Mar 20 23:40:24.162865 2022] [wsgi:error] [pid 26464:tid 139855354418944] [remote 105.101.12.169:39893] Not Found: /static/admin/css/dashboard.css
+Exception ignored in: <function Local.__del__ at 0x7f329ab40af0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+Exception ignored in: <function Local.__del__ at 0x7f329ab40af0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+Exception ignored in: <function Local.__del__ at 0x7f0fc8eccaf0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+Exception ignored in: <function Local.__del__ at 0x7f0fc8eccaf0>
+Traceback (most recent call last):
+  File "/django-env/lib/python3.8/site-packages/asgiref/local.py", line 94, in __del__
+NameError: name 'TypeError' is not defined
+[Mon Mar 21 00:01:30.813361 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 105.101.12.169:40403] Not Found: /favicon.ico
+[Mon Mar 21 03:50:11.428772 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 192.241.216.13:56682] Not Found: /manager/html
+[Mon Mar 21 05:02:34.597212 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 75.83.86.180:34646] Not Found: /phpmyadmin5/index.php
+[Mon Mar 21 05:02:34.798341 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 75.83.86.180:34646] Not Found: /phpmyadmin2/index.php
+[Mon Mar 21 05:02:34.992315 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 75.83.86.180:34646] Not Found: /myadmin/index.php
+[Mon Mar 21 05:02:35.202742 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 75.83.86.180:34646] Not Found: /pma2021/index.php
+[Mon Mar 21 05:02:35.400095 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 75.83.86.180:34646] Not Found: /phpmyadmin2014/index.php
+[Mon Mar 21 05:02:35.592698 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 75.83.86.180:34646] Not Found: /administrator/PMA/index.php
+[Mon Mar 21 05:02:35.782880 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 75.83.86.180:34646] Not Found: /db/db-admin/index.php
+[Mon Mar 21 05:02:35.973056 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 75.83.86.180:34646] Not Found: /_phpMyAdmin/index.php
+[Mon Mar 21 05:02:44.910754 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 138.68.239.207:38142] Not Found: /phpmyadmin5/index.php
+[Mon Mar 21 09:04:38.379996 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 69.162.231.221:41422] Not Found: /.env
+[Mon Mar 21 10:16:06.971179 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 27.255.213.225:42687] Not Found: /HNAP1/
+[Mon Mar 21 12:16:18.041069 2022] [wsgi:error] [pid 26751:tid 140152609425152] [client 27.255.213.225:42687] mod_wsgi (pid=26751): Request data read error when proxying data to daemon process: The timeout specified has expired.
+[Mon Mar 21 11:18:19.229757 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 124.131.106.6:59927] Not Found: /HNAP1/
+[Mon Mar 21 13:18:30.197336 2022] [wsgi:error] [pid 26751:tid 140152601032448] [client 124.131.106.6:59927] mod_wsgi (pid=26751): Request data read error when proxying data to daemon process: Partial results are valid but processing is incomplete.
+[Mon Mar 21 11:39:57.209296 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 61.52.197.249:38727] Not Found: /HNAP1/
+[Mon Mar 21 13:40:08.268623 2022] [wsgi:error] [pid 26750:tid 140152986007296] [client 61.52.197.249:38727] mod_wsgi (pid=26750): Request data read error when proxying data to daemon process: The timeout specified has expired.
+[Mon Mar 21 14:30:42.689231 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 151.235.21.201:33232] Not Found: /shell
+[Mon Mar 21 15:08:28.171817 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 96.88.31.249:56957] Not Found: /favicon.ico
+[Mon Mar 21 15:08:28.470779 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 96.88.31.249:56967] Not Found: /favicon.png
+[Mon Mar 21 15:08:28.778979 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 96.88.31.249:56974] Not Found: /favicon.jpg
+[Mon Mar 21 21:46:17.470330 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 209.97.181.87:62386] Not Found: /000000000000.cfg
+[Mon Mar 21 22:32:12.222724 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 209.97.181.87:63840] Not Found: /000000000000/
+[Mon Mar 21 22:58:40.388527 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 209.97.181.87:62991] Not Found: /polycom/
