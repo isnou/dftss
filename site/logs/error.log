@@ -101,3 +101,4 @@ NameError: name 'TypeError' is not defined
 [Mon Mar 21 21:46:17.470330 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 209.97.181.87:62386] Not Found: /000000000000.cfg
 [Mon Mar 21 22:32:12.222724 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 209.97.181.87:63840] Not Found: /000000000000/
 [Mon Mar 21 22:58:40.388527 2022] [wsgi:error] [pid 26749:tid 140152910472960] [remote 209.97.181.87:62991] Not Found: /polycom/
+[Tue Mar 22 00:24:03.011640 2022] [wsgi:error] [pid 26749:tid 140152860067584] [remote 219.254.157.253:33325] Not Found: /shell
