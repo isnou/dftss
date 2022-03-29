@@ -7,11 +7,12 @@ from django.conf import settings
 from django.http import Http404
 from .models import Project, Service, Partner, Team, Counter, Content
 
-# Create your views here.
-def index(request):
+profile ="eng"
+
+def index(request,profile):
 
     try:
-        content = Content.objects.filter(profile_name='eng')
+        content = Content.objects.filter(profile_name=profile)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
 
