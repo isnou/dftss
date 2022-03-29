@@ -56,7 +56,7 @@ def index(request):
 
     context = {
         'content': content,
-        'projects': project,
+        'project': project,
         'service': service,
         'partner': partner,
         'team': team,
