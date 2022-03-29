@@ -194,3 +194,5 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-outline-success"
     }
 }
+
+SITE_PROFILE = "eng"
