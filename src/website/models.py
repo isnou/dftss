@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-
+@admin.register(Book)
 class Project(models.Model):
     project_name = models.CharField(max_length=50)
     project_description = models.TextField(max_length=200, blank=True)
@@ -13,6 +13,7 @@ class Project(models.Model):
     def __str__(self):
         return self.project_name
 
+@admin.register(Book)
 class Service(models.Model):
     service_title = models.CharField(max_length=50)
     service_description = models.TextField(max_length=200, blank=True)
@@ -24,6 +25,7 @@ class Service(models.Model):
     def __str__(self):
         return self.service_name
 
+@admin.register(Book)
 class Partner(models.Model):
     partner_name = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='partner/', height_field=None, width_field=None, max_length=100)
@@ -34,6 +36,7 @@ class Partner(models.Model):
     def __str__(self):
         return self.partner_name
 
+@admin.register(Book)
 class Team(models.Model):
     member_name = models.CharField(max_length=50)
     member_function = models.TextField(max_length=100, blank=True)
@@ -46,6 +49,7 @@ class Team(models.Model):
     def __str__(self):
         return self.team_name
 
+@admin.register(Book)
 class Counter(models.Model):
     counter_title = models.CharField(max_length=100)
     counter_value = models.PositiveIntegerField(default=0)
@@ -56,6 +60,7 @@ class Counter(models.Model):
     def __str__(self):
         return self.counter_name
 
+@admin.register(Book)
 class Content(models.Model):
     profile_name = models.CharField(max_length=50, blank=True)
 
