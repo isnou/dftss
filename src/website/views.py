@@ -11,7 +11,7 @@ from .models import Project, Service, Partner, Team, Counter, Content
 def index(request):
 
     try:
-        content = Content.objects.filter(profile_name='eng')
+        content = Content.objects.get(pk=2)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
 
