@@ -11,7 +11,7 @@ from .models import Project, Service, Partner, Team, Counter, Content
 def index(request):
 
     try:
-        content = Content.objects.objects.get(pk=1)
+        content = Content.objects.get(pk=1)
     except Content.DoesNotExist:
         raise Http404("Content does not exist")
 
