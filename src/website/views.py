@@ -8,12 +8,12 @@ from django.http import Http404
 from .models import Project, Service, Partner, Team, Counter, Content
 
 
-def index(request, SITE_PROFILE):
+def index(request):
 
     try:
-        content = Content.objects.all().filter(profile_name=SITE_PROFILE)
-    except Project.DoesNotExist:
-        raise Http404("Project does not exist")
+        content = Content.objects.objects.get(pk=1)
+    except Content.DoesNotExist:
+        raise Http404("Content does not exist")
 
     try:
         project = Project.objects.all()
