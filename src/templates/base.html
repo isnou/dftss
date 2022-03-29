@@ -584,19 +584,18 @@
                     <fieldset>
 
                     <div class="form-field">
-                        <input type="text" name="name" class="full-width" id="name" placeholder=""required>{{ content.message_name_placeholder }}
+                        <input type="text" name="name" class="full-width" id="name" placeholder="{{ content.message_name_placeholder }}" required>
 
                     </div>
                     <div class="form-field">
-                        <input type="text" name="email" class="full-width" id="email" placeholder= ""required>{{ content.message_email_placeholder }}
+                        <input type="text" name="email" class="full-width" id="email" placeholder= "{{ content.message_email_placeholder }}" required>
+                    </div>
+                    <div class="form-field">
+                        <input type="text" name="subject" class="full-width" id="subject" placeholder= "{{ content.message_subject_placeholder }}" required>
 
                     </div>
                     <div class="form-field">
-                        <input type="text" name="subject" class="full-width" id="subject" placeholder= ""required>{{ content.message_subject_placeholder }}
-
-                    </div>
-                    <div class="form-field">
-                        <textarea class="full-width" name="message" rows="5" placeholder= "" required>{{ content.message_placeholder }}
+                        <textarea class="full-width" name="message" rows="5" placeholder= "{{ content.message_placeholder }}" required>
                         </textarea>
                     </div>
                     <div class="form-field">
