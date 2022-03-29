@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
     'website',
 ]
 
@@ -151,13 +152,13 @@ EMAIL_USE_TLS = True
 #JAZZMIN_SETTINGS
 JAZZMIN_SETTINGS ={
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": " Admin Panel",
+    "site_title": " DFTSS Dashboard",
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": " Admin Panel",
+    "site_header": " DFTSS Panel",
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": " Admin Panel",
+    "site_brand": " dftss.com Panel",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to DFT Dashboard",
+    "welcome_sign": "Welcome to DFTSS Dashboard",
     # Copyright on the footer
     "copyright": "  dftss.com",
 }
