@@ -22,7 +22,7 @@ class Service(models.Model):
         verbose_name = "service"
 
     def __str__(self):
-        return self.service_name
+        return self.service_title
 
 class Partner(models.Model):
     partner_name = models.CharField(max_length=50)
@@ -44,7 +44,7 @@ class Team(models.Model):
         verbose_name = "team"
 
     def __str__(self):
-        return self.team_name
+        return self.member_name
 
 class Counter(models.Model):
     counter_title = models.CharField(max_length=100)
@@ -54,7 +54,7 @@ class Counter(models.Model):
         verbose_name = "counter"
 
     def __str__(self):
-        return self.counter_name
+        return self.counter_title
 
 class Content(models.Model):
     profile_name = models.CharField(max_length=50, blank=True)
@@ -118,4 +118,4 @@ class Content(models.Model):
         verbose_name = "content"
 
     def __str__(self):
-        return self.content_name
+        return self.profile_name
