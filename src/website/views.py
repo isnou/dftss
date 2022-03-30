@@ -16,17 +16,17 @@ def index(request):
         raise Http404("Content does not exist")
 
     try:
-        project = Project.objects.all()
+        projects = Project.objects.all()
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
 
     try:
-        service = Service.objects.all()
+        services = Service.objects.all()
     except Service.DoesNotExist:
         raise Http404("Service does not exist")
 
     try:
-        partner = Partner.objects.all()
+        partners = Partner.objects.all()
     except Partner.DoesNotExist:
         raise Http404("Partner does not exist")
 
@@ -56,9 +56,9 @@ def index(request):
 
     context = {
         'content': content,
-        'project': project,
-        'service': service,
-        'partner': partner,
+        'projects': projects,
+        'services': services,
+        'partners': partners,
         'team': team,
         'counter': counter
     }
