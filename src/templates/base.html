@@ -209,15 +209,18 @@
             {% for service in services %}
 
             <div class="col-block service-item" data-aos="fade-up">
+
                 <div class="service-icon">
-                    <img src="http://94.176.238.2/media/{{ service.icon }}" width="100" height="80">
+                    <img src="http://94.176.238.2/media/{{ service.icon }}" width="100">
                 </div>
+
                 <div class="service-text">
                     <h3 class="h2">{{ service.service_title }}</h3>
                     <p>
                         {{ service.service_description }}
                     </p>
                 </div>
+
             </div>
 
             {% endfor %}
