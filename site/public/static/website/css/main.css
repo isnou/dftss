@@ -2453,7 +2453,7 @@ html.no-csstransitions .home-content__main {
         font-size: 3rem;
     }
     .services-list .service-text {
-        margin-left: 0;
+        margin-left: 10;
     }
     .services-list .service-icon {
         font-size: 4.5rem;
