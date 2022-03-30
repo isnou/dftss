@@ -205,6 +205,21 @@
         </div> <!-- end section-header -->
 
         <div class="row services-list block-1-2 block-tab-full">
+            {% for service in services %}
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i>src="http://94.176.238.2/media/{{ service.icon }}"</i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">{{ service.service_title }}</h3>
+                    <p>
+                        {{ service.service_description }}
+                    </p>
+                </div>
+            </div>
+
+            {% endfor %}
 
             <div class="col-block service-item" data-aos="fade-up">
                 <div class="service-icon">
