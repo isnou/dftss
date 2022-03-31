@@ -257,7 +257,8 @@
                             <div class="item-folio">
                                 <div class=item-folio__thumb">
                                     <a href="http://94.176.238.2/media/{{ project.image }}" class="thumb-link" data-size="1050x700">
-                                        <img src="http://94.176.238.2/media/{{ project.image }}">
+                                        <img src="http://94.176.238.2/media/{{ project.image }}"
+                                        srcset="http://94.176.238.2/media/{{ project.image }} 1x, http://94.176.238.2/media/@2x{{ project.image }} 2x" alt="">
                                     </a>
                                 </div>
                                 <div class="item-folio__text">
