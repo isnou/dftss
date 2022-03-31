@@ -132,7 +132,7 @@
                 <a href="https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
             </li>
             <li>
-                <a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+                <a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
             </li>
             <li>
                 <a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
@@ -169,22 +169,12 @@
 
         <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
 
+            {% for inc in counter %}
             <div class="col-block stats__col ">
-                <div class="stats__count">4</div>
-                <h5>Awards Received</h5>
+                <div class="stats__count">{{ inc.counter_value }}</div>
+                <h5>{{ inc.counter_title }}</h5>
             </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">1505</div>
-                <h5>Cups of Coffee</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">15</div>
-                <h5>Projects Completed</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">132</div>
-                <h5>Happy Clients</h5>
-            </div>
+            {% endfor %}
 
         </div> <!-- end about-stats -->
 
@@ -297,16 +287,9 @@
         <div class="row clients-outer" data-aos="fade-up">
             <div class="col-full">
                 <div class="clients">
-
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/apple.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/atom.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/blackberry.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/firefox.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/joomla.png'%}"/></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/magento.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/mozilla.png'%}" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="{% static '/website/images/clients/ubuntu.png'%}" /></a>
-
+                    {% for partner in partners %}
+                    <a href="#0" title="" class="clients__slide"><img src="http://94.176.238.2/media/{{ partner.logo }}" /></a>
+                    {% endfor %}
                 </div> <!-- end clients -->
             </div> <!-- end col-full -->
         </div> <!-- end clients-outer -->
@@ -315,95 +298,21 @@
             <div class="col-full">
                 <div class="testimonials">
 
+                    {% for member in team %}
                     <div class="testimonials__slide">
 
-                        <p>Tracker cord of successful startups , 12 years in joint venture environment semi-gov, Business performance enhancement , Solution Architect .</p>
+                        <p>{{ member.function_description }}</p>
 
-                        <img src="{% static '/website/images/avatars/user-01.jpeg' %}" alt="Author image" class="testimonials__avatar">
+                        <img src="http://94.176.238.2/media/{{ member.photo }}" alt="Author image" class="testimonials__avatar">
                         <div class="testimonials__info">
-                            <span class="testimonials__name">Walid Amara</span>
-                            <span class="testimonials__pos">CEO -Biotechnologist</span>
+                            <span class="testimonials__name">{{ member.member_name }}</span>
+                            <span class="testimonials__pos">{{ member.member_function }}</span>
                         </div>
 
                     </div>
-
-                    <div class="testimonials__slide">
-
-                        <p>14+years within the gov and semi-Gov, Expert geospatial technologies , Machine Learning,Deep Learning, NLP,GeoAI .</p>
-
-                        <img src="{% static '/website/images/avatars/user-02.jpg' %}" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Dr. Lala Elhoummaidi </span>
-                            <span class="testimonials__pos">MSc, PHd</span>
-                        </div>
-
-                    </div>
-
-                    <div class="testimonials__slide">
-
-                        <p>8 Years in Semi-GovIT,Infrastructure and client mandate, IT architecture,solution , 7 years Asian market expansion lead</p>
-
-                        <img src="{% static '/website/images/avatars/user-03.png' %}" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Abdulla Alhashmi</span>
-                            <span class="testimonials__pos">ENG, PMP</span>
-                        </div>
-
-                    </div>
+                    {% endfor %}
 
 
-                    <div class="testimonials__slide">
-
-                        <p> 20+ Years in business planning, development,adaptation,and growth solutions.SupplyChainExpert. Circular economy and valuechain  specialist. </p>
-
-                        <img src="{% static '/website/images/avatars/user-03.png' %}" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Rashed Al Mazrouei</span>
-                            <span class="testimonials__pos">ENG, PMP</span>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="testimonials__slide">
-
-                        <p> Master in Robotics and Artificial Vision,
-                            Seasoned developer and programmer,
-                            Deep Tech,
-                            Machine Learning,
-                            Computer Vision,
-                            Drone design and sensors.
-
-                        </p>
-
-                        <img src="{% static '/website/images/avatars/user-03.png' %}" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Islam Nouioua</span>
-                            <span class="testimonials__pos">Head of R&D</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="testimonials__slide">
-
-                        <p>
-                            Master in Embedded Systems ,
-                            Fullstack developer,
-                            Human Machine Interface,
-                            Embedded System Platform (Unix),
-                            Python multi-threaded  and Object Oriented programming.
-
-                        </p>
-
-                        <img src="{% static '/website/images/avatars/user-03.png' %}" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Huda Habita</span>
-                            <span class="testimonials__pos">Head of Big Data Analsis</span>
-                        </div>
-
-                    </div>
 
                 </div><!-- end testimonials -->
 
