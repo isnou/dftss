@@ -256,7 +256,7 @@
                         <div class="masonry__brick" data-aos="fade-up">
                             <div class="item-folio">
                                 <div class=item-folio__thumb">
-                                    <a class="thumb-link" title="Drones" data-size="1050x700">
+                                    <a href=" {% static '/website/images/portfolio/gallery/img6.jpg'%}" class="thumb-link" title="Drones" data-size="1050x700">
                                         <img src="http://94.176.238.2/media/{{ project.image }}">
                                     </a>
                                 </div>
@@ -265,7 +265,9 @@
                                         {{ project.project_name }}
                                     </h3>
                                 </div>
+                                <a href="{% static '/https://www.behance.net/' %}" class="item-folio__project-link" title="Project link">
                                 <i class="icon-link"></i>
+                                </a>
                                 <div class="item-folio__caption">
                                     <p>{{ project.project_description }}</p>
                                 </div>
