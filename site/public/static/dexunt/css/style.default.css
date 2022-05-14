@@ -2625,7 +2625,7 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 190%;
+  width: 100%;
 }
 
 .input-group > .form-control,
@@ -10881,7 +10881,8 @@ button:focus, button:active {
   .navbar-brand {
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 50%;
+    right: 50%;
     transform: translate(-50%, -50%);
   }
 }
