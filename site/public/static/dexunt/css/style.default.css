@@ -7717,6 +7717,7 @@ fieldset:disabled .btn {
 
 .ms-auto {
   padding-left: 0rem !important;
+  padding-right: 0rem !important;
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
 }
