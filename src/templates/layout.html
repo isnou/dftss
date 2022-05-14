@@ -23,9 +23,8 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{% static '/dexunt/css/style.default.css' %}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" type="text/css" href="{% static '/dexunt/search/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static '/dexunt/css/custom.css' %}">
 
+    <link rel="stylesheet" href="{% static '/dexunt/css/custom.css' %}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{% static '/dexunt/img/favicon.png' %}">
   </head>
@@ -53,25 +52,13 @@
             </div>
           </nav>
 
+
           <!--  Search bar -->
-          <form id="searchForm" method="post">
-            <fieldset>
-              <input id="s" type="text">
-              <input type="submit" value="Submit" id="submitButton">
-              <div id="searchInContainer">
-                <input type="radio" name="check" value="site" id="searchSite" checked="">
-                <label for="searchSite" id="siteNameLabel">Search tutorialzine.com</label>
-                <input type="radio" name="check" value="web" id="searchWeb">
-                <label for="searchWeb">Search The Web</label>
-              </div>
-              <ul class="icons">
-                <li class="web active" title="Web Search" data-searchtype="web">Web</li>
-                <li class="images" title="Image Search" data-searchtype="images">Images</li>
-                <li class="news" title="News Search" data-searchtype="news">News</li>
-                <li class="videos" title="Video Search" data-searchtype="video">Videos</li>
-                <span class="arrow" style="left: 0px; margin-left: 3.5px;"></span></ul>
-            </fieldset>
-          </form>
+              <form class="search-form">
+                <input type="text" value="" placeholder="Search" class="search-input">
+
+                <div class="search-option"> </div>
+              </form>
 
 
         </div>
@@ -408,7 +395,6 @@
       <script src="{% static '/dexunt/vendor/swiper/swiper-bundle.min.js' %}"></script>
       <script src="{% static '/dexunt/vendor/choices.js/public/assets/scripts/choices.min.js' %}"></script>
       <script src="{% static '/dexunt/js/front.js' %}"></script>
-      <script src="{% static '/dexunt/search/js/script.js' %}"></script>
       <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite -
