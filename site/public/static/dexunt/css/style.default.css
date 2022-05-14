@@ -4143,6 +4143,7 @@ fieldset:disabled .btn {
 .navbar-brand {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
+  margin-right: 1rem;
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
@@ -7660,10 +7661,7 @@ fieldset:disabled .btn {
 }
 
 .me-auto {
-  padding-left: 0rem !important;
-  margin-right: 0rem !important;
-  padding-top: 0rem !important;
-  padding-bottom: 0rem !important;
+  margin-right: auto !important;
 }
 
 .mb-0 {
@@ -7719,10 +7717,7 @@ fieldset:disabled .btn {
 }
 
 .ms-auto {
-  padding-left: 0rem !important;
-  padding-right: 0rem !important;
-  padding-top: 0rem !important;
-  padding-bottom: 0rem !important;
+  margin-left: auto !important;
 }
 
 .p-0 {
@@ -10887,8 +10882,7 @@ button:focus, button:active {
   .navbar-brand {
     position: absolute;
     top: 50%;
-    left: 70%;
-    right: -35%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 }
