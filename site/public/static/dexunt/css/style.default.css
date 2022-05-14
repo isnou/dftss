@@ -7716,7 +7716,18 @@ fieldset:disabled .btn {
 }
 
 .ms-auto {
-  margin-left: auto !important;
+  margin-left: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.ns-auto {
+  margin-left: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.os-auto {
+  margin-left: 0% !important;
+  margin-bottom: 0% !important;
 }
 
 .p-0 {
