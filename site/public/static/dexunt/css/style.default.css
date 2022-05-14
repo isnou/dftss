@@ -7661,7 +7661,7 @@ fieldset:disabled .btn {
 
 .me-auto {
   padding-left: 0rem !important;
-  padding-right: 0rem !important;
+  margin-right: 0rem !important;
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
 }
