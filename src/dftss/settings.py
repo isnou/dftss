@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'website',
+    'dexunt',
 ]
 
 MIDDLEWARE = [
