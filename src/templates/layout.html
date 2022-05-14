@@ -25,6 +25,7 @@
     <!-- Custom stylesheet - for your changes-->
 
     <link rel="stylesheet" href="{% static '/dexunt/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static '/dexunt/css/main.search.bar.scss' %}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{% static '/dexunt/img/favicon.png' %}">
   </head>
@@ -37,21 +38,15 @@
 
           <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
             <a class="navbar-brand" href="index.html">
+
               <!--  Search bar -->
               <fieldset class="field-container">
                 <input type="text" placeholder="Search..." class="field" />
                 <div class="icons-container">
-                  <div class="icon-search">
-
-                  </div>
+                  <div class="icon-search"></div>
                   <div class="icon-close">
-
-                    <div class="x-up">
-                    </div>
-
-                    <div class="x-down">
-                    </div>
-
+                    <div class="x-up"></div>
+                    <div class="x-down"></div>
                   </div>
                 </div>
               </fieldset>
