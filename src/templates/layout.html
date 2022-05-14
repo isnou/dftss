@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Boutique | Ecommerce bootstrap template</title>
+    <title>{% block title %} Boutique {% endblock %}| Ecommerce bootstrap template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -29,6 +29,7 @@
     <link rel="shortcut icon" href="{% static '/dexunt/img/favicon.png' %}">
   </head>
   <body>
+  {% block body %}
     <div class="page-holder">
       <!-- navbar-->
       <header class="header bg-white">
@@ -379,7 +380,7 @@
                 <p class="small text-muted mb-0">Dexunt &copy; 2021 All rights reserved.</p>
               </div>
               <div class="col-md-6 text-center text-md-end">
-                <p class="small text-muted mb-0">Dexunt management<a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>
+                <p class="small text-muted mb-0">logistic solutions <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Dexunt</a></p>
                 <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
               </div>
             </div>
