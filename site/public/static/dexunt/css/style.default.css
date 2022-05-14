@@ -2625,7 +2625,7 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
+  width: 190%;
 }
 
 .input-group > .form-control,
@@ -4143,10 +4143,8 @@ fieldset:disabled .btn {
 .navbar-brand {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  padding-right: 0.3125rem;
-  padding-left: 0.3125rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 14rem;
+  margin-left: -11rem;
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
