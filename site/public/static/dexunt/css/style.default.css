@@ -2014,8 +2014,8 @@ progress {
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
 
-  padding-right: calc(3rem + 1px);
-  padding-left: calc(3rem + 1px);
+  padding-right: calc(3rem + 100px);
+  padding-left: calc(3rem + 100px);
 
   margin-bottom: 0;
   font-size: inherit;
