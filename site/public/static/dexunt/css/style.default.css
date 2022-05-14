@@ -7660,7 +7660,10 @@ fieldset:disabled .btn {
 }
 
 .me-auto {
-  margin-right: auto !important;
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
 }
 
 .mb-0 {
