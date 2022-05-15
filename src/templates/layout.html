@@ -34,44 +34,15 @@
     <link rel="shortcut icon" href="{% static '/dexunt/img/favicon.png' %}">
   </head>
   <body>
-  {% block body %}
-    <div class="page-holder">
-      <!-- navbar-->
-      <header class="header bg-white">
-        <div class="container px-lg-3">
-
-
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
-            <!-- logo-->
-            <a class="navbar-brand" href="index.html">
-              <span class="fw-bold text-uppercase text-dark">Dexunt</span>
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <div class="navbar-collapse collapse show" id="navbarSupportedContent" style="">
-              <ul class="navbar-nav me-auto">
-                <!-- searchbar-->
-                <form action="#">
-                  <div class="input-group">
-                    <input class="form-control form-control-lg" type="email" placeholder="Product name ,Category ,Brant" aria-describedby="button-addon2">
-                    <button class="btn btn-dark" id="button-addon2" type="submit">Search</button>
-                  </div>
-                </form>
-              </ul>
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
-                <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
-                <li class="nav-item"><a class="nav-link" href="#!"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
-              </ul>
-            </div>
-          </nav>
 
 
 
 
 
-          <nav class="navbar navbar-default navbar-inverse" role="navigation">
+
+
+
+  <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -158,6 +129,41 @@
 
 
 
+
+
+
+  {% block body %}
+    <div class="page-holder">
+      <!-- navbar-->
+      <header class="header bg-white">
+        <div class="container px-lg-3">
+
+
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+            <!-- logo-->
+            <a class="navbar-brand" href="index.html">
+              <span class="fw-bold text-uppercase text-dark">Dexunt</span>
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="navbar-collapse collapse show" id="navbarSupportedContent" style="">
+              <ul class="navbar-nav me-auto">
+                <!-- searchbar-->
+                <form action="#">
+                  <div class="input-group">
+                    <input class="form-control form-control-lg" type="email" placeholder="Product name ,Category ,Brant" aria-describedby="button-addon2">
+                    <button class="btn btn-dark" id="button-addon2" type="submit">Search</button>
+                  </div>
+                </form>
+              </ul>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
+                <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
+                <li class="nav-item"><a class="nav-link" href="#!"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+              </ul>
+            </div>
+          </nav>
 
 
         </div>
