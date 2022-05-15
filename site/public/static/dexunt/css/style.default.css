@@ -4153,6 +4153,7 @@ fieldset:disabled .btn {
   display: flex;
   flex-direction: column;
   padding-left: 0;
+  margin-bottom: 0;
   list-style: none;
 }
 
@@ -7661,8 +7662,6 @@ fieldset:disabled .btn {
 
 .me-auto {
   margin-right: auto !important;
-  margin-top: 1 !important;
-  margin-bottom: 1 !important;
 }
 
 .mb-0 {
@@ -7719,8 +7718,6 @@ fieldset:disabled .btn {
 
 .ms-auto {
   margin-left: auto !important;
-  margin-top: 1 !important;
-  margin-bottom: 1 !important;
 }
 
 .p-0 {
