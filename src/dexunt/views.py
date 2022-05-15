@@ -2,5 +2,5 @@ from django.shortcuts import render, redirect
 
 
 def home(request):
-    return render(request, "dexunt/base.html")
+    return render(request, "dexunt/home.html")
 
