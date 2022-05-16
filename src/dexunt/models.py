@@ -62,7 +62,7 @@ class Slide(models.Model):
     choice = models.CharField(max_length=50, choices=CHOICES, blank=True)
 
     def __str__(self):
-        return self.small_text
+        return self.choice
 
 
 class Banner(models.Model):
@@ -79,4 +79,4 @@ class Banner(models.Model):
     choice = models.CharField(max_length=50, choices=CHOICES, blank=True)
 
     def __str__(self):
-        return self.small_text
+        return self.choice
