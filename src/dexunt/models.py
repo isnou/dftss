@@ -4,10 +4,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ProductImage(models.Model):
+    name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='dexunt/images/')
 
     def __str__(self):
-        return self.image
+        return self.name
 
 
 class Category(models.Model):
