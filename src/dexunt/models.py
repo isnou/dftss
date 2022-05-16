@@ -33,9 +33,9 @@ class Product(models.Model):
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
-    catch_line = models.CharField(max_length=200, blank=True)
+    catch_line = models.CharField(max_length=200, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    discount_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
+    discount_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     rate = models.IntegerField(
         default=0,
         validators=[
@@ -58,7 +58,7 @@ class Slide(models.Model):
     small_text = models.CharField(max_length=50, blank=True)
     big_text = models.CharField(max_length=50, blank=True)
     button = models.CharField(max_length=50, blank=True)
-    link = models.URLField(blank=True)
+    link = models.URLField(blank=True, null=True)
     choice = models.CharField(max_length=50, choices=CHOICES, blank=True)
 
     def __str__(self):
