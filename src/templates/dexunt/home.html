@@ -5,10 +5,11 @@
 {% block title-info %} Algerian Logistic And Online Shopping Platform {% endblock %}
 
 {% block slider %}
+{% for product in products %}
 <section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image">
+				<div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
 					<img src="http://94.176.238.2/media/{{ product.slider_image }}">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
@@ -87,7 +88,7 @@
 
 
 
-				{% for product in products %}
+
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
@@ -112,10 +113,11 @@
 						</a>
 					</div>
 				</div>
-				{% endfor %}
+
 
 
 			</div>
 		</div>
 </div>
+{% endfor %}
 {% endblock %}
