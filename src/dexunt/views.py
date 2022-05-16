@@ -5,9 +5,9 @@ from django.http import Http404
 
 def home(request):
     try:
-        products = Product.objects.all()
-    except Product.DoesNotExist:
-        raise Http404("Product does not exist")
+        items = Item.objects.all()
+    except Item.DoesNotExist:
+        raise Http404("Item does not exist")
 
     try:
         slides = Slide.objects.all()
@@ -20,7 +20,7 @@ def home(request):
         raise Http404("Banner does not exist")
 
     context = {
-        'products': products,
+        'items': items,
         'banners': banners,
         'slides': slides,
     }

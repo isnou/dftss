@@ -25,9 +25,10 @@ class Tag(models.Model):
         return self.name
 
 
-class Product(models.Model):
+class Item(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=300, unique=True)
+    image = models.ImageField(upload_to='dexunt/slides/')
     images = models.ManyToManyField(ProductImage, blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
