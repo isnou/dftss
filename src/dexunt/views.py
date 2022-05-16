@@ -15,6 +15,7 @@ def home(request):
 
     context = {
         'products': products,
+        'products.product_banner_image': products.product_banner_image,
         'categories': categories,
     }
     return render(request, "dexunt/home.html", context)
