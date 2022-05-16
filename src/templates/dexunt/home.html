@@ -6,22 +6,20 @@
 
 
 {% block slider %}
-{% for slide in slides %}
+
 <section class="section-slide">
 		<div class="wrap-slick1">
+			{% for slide in slides %}
 			<div class="slick1">
-
 				<div class="item-slick1" style="background-image: url(http://94.176.238.2/media/{{ slide.image }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 
 							{% if slide.choice == 'FIRST' %}
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-							{% endif %}
-							{% if slide.choice == 'SECOND' %}
+							{% elif slide.choice == 'SECOND' %}
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-							{% endif %}
-							{% if slide.choice == 'THIRD' %}
+							{% elif slide.choice == 'THIRD' %}
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 							{% endif %}
 								<span class="ltext-101 cl2 respon2">
@@ -31,11 +29,9 @@
 
 							{% if slide.choice == 'FIRST' %}
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-							{% endif %}
-							{% if slide.choice == 'SECOND' %}
+							{% elif slide.choice == 'SECOND' %}
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-							{% endif %}
-							{% if slide.choice == 'THIRD' %}
+							{% elif slide.choice == 'THIRD' %}
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
 							{% endif %}
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
@@ -50,12 +46,11 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
+			{% endfor %}
         </div>
 </section>
-{% endfor %}
+
 {% endblock %}
 
 {% block banner %}
