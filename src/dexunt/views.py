@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Slide, Banner
+from .models import Item, Slide, Banner
 from django.http import Http404
 
 
