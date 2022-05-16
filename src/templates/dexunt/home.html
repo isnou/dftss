@@ -5,8 +5,8 @@
 {% block title-info %} Algerian Logistic And Online Shopping Platform {% endblock %}
 
 
-{% for product in products %}
 {% block slider %}
+{% for product in products %}
 <section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
@@ -79,9 +79,11 @@
 			</div>
         </div>
 </section>
+{% endfor %}
 {% endblock %}
 
 {% block banner %}
+{% for product in products %}
 <div class="sec-banner bg0 p-t-80 p-b-50">
 		<div class="container">
 			<div class="row">
@@ -120,5 +122,5 @@
 			</div>
 		</div>
 </div>
-{% endblock %}
 {% endfor %}
+{% endblock %}
