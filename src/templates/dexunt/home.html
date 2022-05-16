@@ -6,11 +6,13 @@
 
 
 {% block slider %}
-{% for product in products %}
+{% for slide in slides %}
 <section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(http://94.176.238.2/media/{{ product.slider_image }});">
+
+				{% if slide.choice == 'FIRST' %}
+				<div class="item-slick1" style="background-image: url(http://94.176.238.2/media/{{ slide.image }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -32,7 +34,8 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
+				{% elif slide.choice == 'SECOND' %}
+				<div class="item-slick1" style="background-image: url(http://94.176.238.2/media/{{ slide.image }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -54,7 +57,8 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
+				{% elif slide.choice == 'THIRD' %}
+				<div class="item-slick1" style="background-image: url(http://94.176.238.2/media/{{ slide.image }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
@@ -75,6 +79,8 @@
 						</div>
 					</div>
 				</div>
+				{% endif %}
+
 			</div>
         </div>
 </section>
