@@ -4,35 +4,21 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ProductImage(models.Model):
-    link = models.ImageField(upload_to='dexunt/picture/image/')
+    image = models.ImageField(upload_to='dexunt/images/')
 
     def __str__(self):
-        return self.link.url
-
-
-class ProductBannerImage(models.Model):
-    link = models.ImageField(upload_to='dexunt/banner-picture/image/')
-
-    def __str__(self):
-        return self.link.url
-
-
-class ProductSliderImage(models.Model):
-    link = models.ImageField(upload_to='dexunt/slider-picture/image/')
-
-    def __str__(self):
-        return self.link.url
+        return self.image
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.name
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.name
@@ -40,10 +26,10 @@ class Tag(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    sku = models.CharField(max_length=300)
-    product_image = models.ManyToManyField(ProductImage, blank=True, related_name="product_img")
-    product_banner_image = models.ManyToManyField(ProductBannerImage, blank=True, related_name="product_banner_img")
-    product_slider_image = models.ManyToManyField(ProductSliderImage, blank=True, related_name="product_slider_img")
+    sku = models.CharField(max_length=300, unique=True)
+    main_image = models.ImageField(upload_to='dexunt/main/image/')
+    slider_image = models.ImageField(upload_to='dexunt/slider/image/')
+    images = models.ManyToManyField(ProductImage, blank=True)
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag',on_delete=models.CASCADE)
     description = models.TextField(max_length=800)
