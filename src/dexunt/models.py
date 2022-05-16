@@ -27,8 +27,8 @@ class Tag(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=300, unique=True)
-    main_image = models.ImageField(upload_to='dexunt/main/image/', blank=True)
-    slider_image = models.ImageField(upload_to='dexunt/slider/image/', blank=True)
+    main_image = models.ImageField(upload_to='dexunt/main/image/')
+    slider_image = models.ImageField(upload_to='dexunt/slider/image/')
     images = models.ManyToManyField(ProductImage, blank=True)
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag',on_delete=models.CASCADE)
