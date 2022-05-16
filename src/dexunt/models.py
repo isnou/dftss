@@ -49,7 +49,7 @@ class Product(models.Model):
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
     catch_line = models.CharField(max_length=200, blank=True)
-    price = models.DecimalField(max_digits=8)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
     rate = models.IntegerField(
         default=0,
         validators=[
