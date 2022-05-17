@@ -301,7 +301,7 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="http://94.176.238.2/media/{{ item.image }}" alt="IMG-PRODUCT">
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 {% with sku=item.sku %}">
 								Quick View
 							</a>
 						</div>animsition-loading-1
@@ -347,6 +347,7 @@
 		</span>
 	</div>
 
+	{% endwith %}
 	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		{% block quick_view %} {% endblock %}
