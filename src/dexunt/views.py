@@ -38,3 +38,16 @@ def home(request):
     }
     return render(request, "dexunt/home.html", context)
 
+
+def detail(request):
+    try:
+        items = Item.objects.all()
+    except Item.DoesNotExist:
+        raise Http404("Item does not exist")
+
+
+    context = {
+        'items': items,
+    }
+    return render(request, "dexunt/detail.html", context)
+
