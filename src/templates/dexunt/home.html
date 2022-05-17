@@ -1,6 +1,6 @@
 {% extends "dexunt/base.html" %}
 {% load static %}
-{% with sku="" %}
+{% with sku="A0324JGTR6OO" %}
 
 {% block title %} Dexunt {% endblock %}
 
@@ -108,7 +108,6 @@
 
 {% block item %}
 {% for item in items %}
-{% set sku=item.sku %}
 	<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 		<!-- Block2 -->
 		<div class="block2">
