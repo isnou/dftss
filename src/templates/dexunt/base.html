@@ -39,7 +39,6 @@
 </head>
 <body class="animsition">
 
-	
 	<!-- Header -->
 	<header>
 		{% include "dexunt/includes/header.html" %}
@@ -48,13 +47,24 @@
 	<!-- Side cart -->
 	{% include "dexunt/includes/side-cart.html" %}
 
-
+<!-- Home -->
 	<!-- Slider -->
 	{% block slider %} {% endblock %}
 	<!-- Banner -->
 	{% block banner %} {% endblock %}
 	<!-- Product -->
 	{% block product %} {% endblock %}
+<!--  -->
+
+<!-- Detail -->
+	<!-- Breadcrumb -->
+	{% block breadcrumb %} {% endblock %}
+	<!-- Product Detail -->
+	{% block product-detail %} {% endblock %}
+	<!-- Related Products -->
+	{% block related-products %} {% endblock %}
+<!--  -->
+
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		{% include "dexunt/includes/footer.html" %}
