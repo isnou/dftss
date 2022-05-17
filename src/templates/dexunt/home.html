@@ -1,6 +1,6 @@
 {% extends "dexunt/base.html" %}
 {% load static %}
-{% with sku %}
+{% with sku="A0324JGTR6OO" %}
 
 {% block title %} Dexunt {% endblock %}
 
@@ -90,7 +90,6 @@
 {% endblock %}
 
 {% block quick_view %}
-
 <div class="overlay-modal1 js-hide-modal1"></div>
 
 		<div class="container">
@@ -144,16 +143,15 @@
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-								{{ sku }}
 								{{ item.name }}
 							</h4>
 
 							<span class="mtext-106 cl2">
-								${{ item.price }}
+								${{ item.price }}X
 							</span>
 
 							<p class="stext-102 cl3 p-t-23">
-								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+								{{ item.description }}  XNulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
 
 							<!--  -->
