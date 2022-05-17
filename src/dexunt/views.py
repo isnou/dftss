@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner
+from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
 
 
@@ -19,10 +19,22 @@ def home(request):
     except Tag.DoesNotExist:
         raise Http404("Banner does not exist")
 
+    try:
+        categories = Category.objects.all()
+    except Category.DoesNotExist:
+        raise Http404("Category does not exist")
+
+    try:
+        tags = Tag.objects.all()
+    except Tag.DoesNotExist:
+        raise Http404("Tag does not exist")
+
     context = {
         'items': items,
         'banners': banners,
         'slides': slides,
+        'categories': categories,
+        'tags': tags,
     }
     return render(request, "dexunt/home.html", context)
 
