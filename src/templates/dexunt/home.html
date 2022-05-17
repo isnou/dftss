@@ -44,16 +44,17 @@
 								<a href="{% url 'home' %}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									{{ slide.button }}
 								</a>
-
-								<form method='get' action='.'>
-    <input type="submit" value="add" name="add"/>
-</form>
-<h1>{{ p }}</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 				{% endfor %}
+
+								<form method='get' action='.'>
+									<input type="submit" value="add" name="add"/>
+								</form>
+								<h1>{{ p }}</h1>
+								
 
 			</div>
         </div>
