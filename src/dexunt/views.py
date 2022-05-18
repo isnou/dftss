@@ -57,10 +57,6 @@ def detail(request, key_id):
 
     tags = item.tag.all()
 
-    try:
-        related_items = Item.objects.filter(tag=tags)
-    except Item.DoesNotExist:
-        raise Http404("Item does not exist")
 
     context = {
         'item': item,
@@ -69,6 +65,6 @@ def detail(request, key_id):
         'clothing_sizes': clothing_sizes,
         'options': options,
         'colors': colors,
-        'related_items': related_items,
+        'tags': tags,
     }
     return render(request, "dexunt/detail.html", context)
