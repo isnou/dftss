@@ -152,10 +152,11 @@
 				</h3>
 			</div>
 			<!-- Slide2 -->
-			{% for item in items %}
 			<div class="wrap-slick2">
 				<div class="slick2">
+
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+						{% for item in items %}
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
@@ -185,10 +186,11 @@
 								</div>
 							</div>
 						</div>
+						{% endfor %}
 					</div>
+
 				</div>
 			</div>
-			{% endfor %}
 		</div>
 	</section>
 {% endblock %}
