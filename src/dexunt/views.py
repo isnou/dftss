@@ -57,7 +57,7 @@ def detail(request, key_id):
 
     tags = item.tag.all()
 
-    related_items = item.objects.filter(tag=tags)
+    related_items = item.objects.get(tag=tags)
 
     context = {
         'item': item,
