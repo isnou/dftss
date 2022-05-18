@@ -55,10 +55,10 @@ def detail(request, key_id):
     options = item.option.all()
     colors = item.color.all()
 
-    category = item.category.get(id=key_id)
+    tags = item.tag.all()
 
     try:
-        related_items = Item.objects.filter(category=category)
+        related_items = Item.objects.filter(tag=tags)
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
