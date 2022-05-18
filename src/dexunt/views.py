@@ -9,6 +9,7 @@ def home(request):
         items = Item.objects.all()[0:2]
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
+    total_items = Item.objects.count()
 
     try:
         slides = Slide.objects.all()
@@ -32,6 +33,7 @@ def home(request):
 
     context = {
         'items': items,
+        'total_items': total_items,
         'banners': banners,
         'slides': slides,
         'categories': categories,
