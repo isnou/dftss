@@ -32,7 +32,7 @@ def home(request):
 
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(items_list, 10)
+    paginator = Paginator(items_list, 4)
     try:
         items = paginator.page(page)
     except PageNotAnInteger:
