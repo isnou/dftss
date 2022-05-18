@@ -49,8 +49,6 @@ class Option(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=300, unique=True)
-    size_shoe = models.ForeignKey('Shoe', on_delete=models.CASCADE, blank=True, null=True)
-    size_clothing = models.ForeignKey('Clothing', on_delete=models.CASCADE, blank=True, null=True)
     option = models.ForeignKey('Option', on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
     images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True, null=True)
