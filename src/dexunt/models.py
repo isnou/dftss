@@ -26,39 +26,14 @@ class Tag(models.Model):
 
 
 class Shoe(models.Model):
-    SIZE = (
-        ('EU 33', 'EU 33'),
-        ('EU 34', 'EU 34'),
-        ('EU 35', 'EU 35'),
-        ('EU 36', 'EU 36'),
-        ('EU 37', 'EU 37'),
-        ('EU 38', 'EU 38'),
-        ('EU 39', 'EU 39'),
-        ('EU 40', 'EU 40'),
-        ('EU 41', 'EU 41'),
-        ('EU 42', 'EU 42'),
-        ('EU 43', 'EU 43'),
-        ('EU 44', 'EU 44'),
-        ('EU 45', 'EU 45'),
-        ('EU 46', 'EU 46'),
-    )
-    size = models.CharField(max_length=50, choices=SIZE, blank=True)
+    size = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.size
 
 
 class Clothing(models.Model):
-    SIZE = (
-        ('XXS', 'XXS'),
-        ('XS', 'XS'),
-        ('S', 'S'),
-        ('M', 'M'),
-        ('L', 'L'),
-        ('XL', 'XL'),
-        ('XXL', 'XXL'),
-    )
-    size = models.CharField(max_length=50, choices=SIZE, blank=True)
+    size = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.size
