@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
+from django.http import JsonResponse
 
 
 def home(request):
     try:
-        items = Item.objects.all()
+        items = Item.objects.all()[0:2]
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
