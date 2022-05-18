@@ -62,7 +62,7 @@ class Item(models.Model):
     images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
-    option = models.ForeignKey('Option', on_delete=models.CASCADE)
+    option = models.ForeignKey('Option', on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
     catch_line = models.CharField(max_length=200, null=True)
