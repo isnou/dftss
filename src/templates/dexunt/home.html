@@ -333,8 +333,8 @@
 				</div>
 			</div>
 
-			{% for item in items %}
 			<div class="row isotope-grid">
+				{% for item in items %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
 					<div class="block2">
@@ -362,21 +362,16 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			{% endfor %}
 
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div>
-		</div>
-	</section>
-{% endblock %}
 
-{% block quick_view %}
-<div class="overlay-modal1 js-hide-modal1"></div>
+
+
+
+
+
+
+
+				<div class="overlay-modal1 js-hide-modal1"></div>
 <div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
@@ -531,4 +526,31 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+				{% endfor %}
+			</div>
+
+			<!-- Load more -->
+			<div class="flex-c-m flex-w w-full p-t-45">
+				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Load More
+				</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block quick_view %}
+
 {% endblock %}
