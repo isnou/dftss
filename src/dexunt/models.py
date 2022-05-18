@@ -59,7 +59,7 @@ class Item(models.Model):
     shoe_size = models.CharField(max_length=50, choices=SHOE, blank=True, null=True)
     clothing_size = models.CharField(max_length=50, choices=CLOTHING, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
-    images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True)
+    images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
     option = models.ForeignKey('Option', on_delete=models.CASCADE, blank=True, null=True)
