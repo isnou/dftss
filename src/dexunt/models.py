@@ -39,6 +39,13 @@ class Clothing(models.Model):
         return self.size
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Option(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
@@ -51,6 +58,7 @@ class Item(models.Model):
     sku = models.CharField(max_length=300, unique=True)
     shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE, blank=True, null=True)
     clothing_size = models.ForeignKey('Clothing', on_delete=models.CASCADE, blank=True, null=True)
+    color = models.ForeignKey('Color', on_delete=models.CASCADE, blank=True, null=True)
     option = models.ForeignKey('Option', on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
     images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True, null=True)
