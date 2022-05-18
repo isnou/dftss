@@ -25,15 +25,10 @@ class Tag(models.Model):
         return self.name
 
 
-class Option(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Item(models.Model):
-    SHOE = (
+class Shoe(models.Model):
+    SIZE = (
+        ('EU 33', 'EU 33'),
+        ('EU 34', 'EU 34'),
         ('EU 35', 'EU 35'),
         ('EU 36', 'EU 36'),
         ('EU 37', 'EU 37'),
@@ -44,8 +39,17 @@ class Item(models.Model):
         ('EU 42', 'EU 42'),
         ('EU 43', 'EU 43'),
         ('EU 44', 'EU 44'),
+        ('EU 45', 'EU 45'),
+        ('EU 46', 'EU 46'),
     )
-    CLOTHING = (
+    size = models.CharField(max_length=50, choices=SIZE, blank=True)
+
+    def __str__(self):
+        return self.size
+
+
+class Clothing(models.Model):
+    SIZE = (
         ('XXS', 'XXS'),
         ('XS', 'XS'),
         ('S', 'S'),
@@ -54,10 +58,24 @@ class Item(models.Model):
         ('XL', 'XL'),
         ('XXL', 'XXL'),
     )
+    size = models.CharField(max_length=50, choices=SIZE, blank=True)
+
+    def __str__(self):
+        return self.size
+
+
+class Option(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Item(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=300, unique=True)
-    shoe_size = models.CharField(max_length=50, choices=SHOE, blank=True, null=True)
-    clothing_size = models.CharField(max_length=50, choices=CLOTHING, blank=True, null=True)
+    shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE, blank=True, null=True)
+    clothing_size = models.ForeignKey('Clothing', on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
     images = models.OneToOneField(ItemImage, on_delete=models.CASCADE, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
