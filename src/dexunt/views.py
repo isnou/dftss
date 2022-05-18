@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def home(request):
     try:
-        items = Item.objects.all()
+        items_list = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
@@ -28,6 +29,16 @@ def home(request):
         tags = Tag.objects.all()
     except Tag.DoesNotExist:
         raise Http404("Tag does not exist")
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(items_list, 10)
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
 
     context = {
         'items': items,
@@ -56,10 +67,7 @@ def detail(request, key_id):
     colors = item.color.all()
 
     tags = item.tag.all()
-    related_item = Item.objects.filter(tag=tags)
-    ids = related_item.values_list('pk', flat=True)
-    for ri_id in ids:
-        related_items = Item.objects.get(id=ri_id)
+    related_items = Item.objects.filter(tag=tags)
 
     context = {
         'item': item,
