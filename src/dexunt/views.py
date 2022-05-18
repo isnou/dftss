@@ -67,7 +67,8 @@ def detail(request, key_id):
     colors = item.color.all()
 
     tags = item.tag.all()
-    related_items = Item.objects.filter(tag=tags)
+    for tag in tags:
+        related_items = Item.objects.filter(tag=tag)
 
     context = {
         'item': item,
