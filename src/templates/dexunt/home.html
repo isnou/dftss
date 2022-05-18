@@ -101,14 +101,12 @@
 					Sponsored Products
 				</h3>
 			</div>
-
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
-
-				{% for item in items %}
 				<div class="slick2">
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
+						{% for item in items %}
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="http://94.176.238.2/media/{{ item.image }}" alt="IMG-PRODUCT">
@@ -141,12 +139,8 @@
 								</div>
 							</div>
 						</div>
+						{% endfor %}
 					</div>
-					{% endfor %}
-
-
-
-
 				</div>
 			</div>
 		</div>
@@ -164,11 +158,10 @@
 
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
-
-				{% for item in items %}
 				<div class="slick2">
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
+						{% for item in items %}
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="http://94.176.238.2/media/{{ item.image }}" alt="IMG-PRODUCT">
@@ -201,12 +194,8 @@
 								</div>
 							</div>
 						</div>
+						{% endfor %}
 					</div>
-					{% endfor %}
-
-
-
-
 				</div>
 			</div>
 		</div>
