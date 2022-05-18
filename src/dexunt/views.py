@@ -57,6 +57,8 @@ def detail(request, key_id):
 
     tags = item.tag.all()
 
+    for tag in tags:
+        related_items = Item.objects.filter(tag=tag)
 
     context = {
         'item': item,
@@ -65,6 +67,6 @@ def detail(request, key_id):
         'clothing_sizes': clothing_sizes,
         'options': options,
         'colors': colors,
-        'tags': tags,
+        'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
