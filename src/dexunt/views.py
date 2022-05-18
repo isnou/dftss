@@ -55,7 +55,7 @@ def detail(request, key_id):
     options = item.option.all()
     colors = item.color.all()
 
-    category = item.category.all()
+    category = item.category.get(id=key_id)
 
     try:
         related_items = Item.objects.filter(category=category)
