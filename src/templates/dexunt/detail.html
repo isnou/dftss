@@ -1,7 +1,7 @@
 {% extends "dexunt/base.html" %}
 {% load static %}
 
-{% block title %} detail {% endblock %}
+{% block title %} Detail {% endblock %}
 
 {% block title-info %} Algerian Logistic And Online Shopping Platform {% endblock %}
 
@@ -20,13 +20,9 @@
 			</a>
 
 			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Men
+				Detail
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
-
-			<span class="stext-109 cl4">
-				Lightweight Jacket
-			</span>
 		</div>
 	</div>
 {% endblock %}
@@ -87,7 +83,7 @@
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							{{ item.description }}
 						</p>
 
 						<!--  -->
