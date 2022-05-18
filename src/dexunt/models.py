@@ -66,7 +66,7 @@ class Item(models.Model):
     tag = models.ManyToManyField(Tag, blank=True, null=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
-    catch_line = models.CharField(max_length=200, null=True)
+    catch_line = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     discount_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     rate = models.IntegerField(
