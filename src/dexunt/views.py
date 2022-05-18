@@ -46,12 +46,12 @@ def detail(request, key_id):
         raise Http404("Item does not exist")
 
     try:
-        album = item.images.all()
+        albums = item.images.all()
     except Item.DoesNotExist:
         raise Http404("Empty album")
 
     context = {
         'item': item,
-        'album': album,
+        'albums': albums,
     }
     return render(request, "dexunt/detail.html", context)
