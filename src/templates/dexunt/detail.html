@@ -94,10 +94,14 @@
 									</div>
 								</div>
 							</div>
+							{% else %}
+							NONE
 							{% endif %}
+							{% else %}
+							NONE
 							{% endif %}
 
-							{% if colors is not null %}
+							{% if colors is not none %}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									Color
@@ -115,6 +119,8 @@
 									</div>
 								</div>
 							</div>
+							{% else %}
+							NONE
 							{% endif %}
 
 							{% if options is not none %}
@@ -135,6 +141,8 @@
 									</div>
 								</div>
 							</div>
+							{% else %}
+							NONE
 							{% endif %}
 
 							<div class="flex-w flex-r-m p-b-10">
