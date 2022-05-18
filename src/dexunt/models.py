@@ -61,7 +61,7 @@ class Item(models.Model):
     color = models.ManyToManyField(Color, blank=True, null=True)
     option = models.ManyToManyField(Option, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
-    images = models.ManyToManyField(ItemImage, on_delete=models.CASCADE, blank=True, null=True)
+    images = models.ManyToManyField(ItemImage, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tag = models.ForeignKey('Tag', on_delete=models.CASCADE)
     description = models.TextField(max_length=800)
