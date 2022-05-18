@@ -56,10 +56,10 @@ def detail(request, key_id):
     colors = item.color.all()
 
     tags = item.tag.all()
-
-    related_items = Item.objects.get(id=key_id)
-    for tag in tags:
-        related_items = related_items + Item.objects.filter(tag=tag)
+    related_item = Item.objects.filter(tag=tags)
+    ids = related_item.values_list('pk', flat=True)
+    for ri_id in ids:
+        related_items = Item.objects.get(id=ri_id)
 
     context = {
         'item': item,
