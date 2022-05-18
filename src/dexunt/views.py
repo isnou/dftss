@@ -33,7 +33,6 @@ def home(request):
 
     context = {
         'items': items,
-        'total_items': total_items,
         'banners': banners,
         'slides': slides,
         'categories': categories,
@@ -72,15 +71,3 @@ def detail(request, key_id):
         'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
-
-
-def load_more(request):
-    offset = request.GET.get('offset')
-    offset_int = int(offset)
-    limit = 2
-    # post_obj = Post.objects.all()[offset_int:offset_int+limit]
-    post_obj = list(Item.objects.values()[offset_int:offset_int + limit])
-    data = {
-        'posts': post_obj
-    }
-    return JsonResponse(data=data)
