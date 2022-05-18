@@ -41,11 +41,11 @@ def home(request):
 
 def detail(request, key_id):
     try:
-        items = Item.objects.get(id=key_id)
+        item = Item.objects.get(id=key_id)
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
     context = {
-        'items': items,
+        'item': item,
     }
     return render(request, "dexunt/detail.html", context)
