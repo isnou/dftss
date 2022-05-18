@@ -55,10 +55,9 @@ def detail(request, key_id):
     options = item.option.all()
     colors = item.color.all()
 
-    tags = item.tag.all()tags = item.tag.all()
+    tags = item.tag.all()
     for tag in tags:
         related_items = Item.objects.filter(tag=tag)
-
 
     context = {
         'item': item,
