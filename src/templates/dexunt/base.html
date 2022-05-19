@@ -230,6 +230,7 @@
                     spinner.classList.add('not-visible')
                     data.map(post => {
                         console.log(post.name);
+                        content_container.innerHTML += `{% url "index" %}`
                     })
                     if (_current_item == total) {
                         alert.classList.remove('not-visible');
