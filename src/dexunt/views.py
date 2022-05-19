@@ -83,7 +83,7 @@ def index(request):
 
 def load_more(request):
     loaded_item = request.GET.get('loaded_item')
-    loaded_item_int = int(loaded_item+4)
+    loaded_item_int = int(loaded_item)+4
     limit = 4
     post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
     data = {'posts': post_obj}
