@@ -76,7 +76,7 @@ def detail(request, key_id):
 def index(request):
     post_obj = Item.objects.all()[0:5]
     total_obj = Item.objects.count()
-    return render(request, 'index.html', context={'posts': post_obj, 'total_obj': total_obj})
+    return render(request, 'dexunt/index.html', context={'posts': post_obj, 'total_obj': total_obj})
 
 
 def load_more(request):
