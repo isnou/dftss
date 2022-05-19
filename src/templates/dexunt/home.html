@@ -129,16 +129,17 @@
 									<a href="{% url 'detail' item.id %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									{{ item.name }}
 									</a>
-
-									<span class="stext-105 cl3">
-										{{ item.price }} DA
-									</span>
+									
 									{% if item.old_price %}
 									<discount-price>
 										{{ item.old_price }} DA
 									</discount-price>
-
 									{% endif %}
+
+									<span class="stext-105 cl3">
+										{{ item.price }} DA
+									</span>
+
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">
