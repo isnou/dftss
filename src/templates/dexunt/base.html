@@ -205,8 +205,8 @@
 <!--===============================================================================================-->
 {{total_obj|json_script:"json-total"}}
     <script>
-        // var _current_item = $('.single_content').length
-        // console.log(_current_item);
+        var _current_item = $('.single_content').length
+        console.log(_current_item);
         const loadBtn = document.getElementById('btn');
         const spinner = document.getElementById('spinner');
         const total = JSON.parse(document.getElementById('json-total').textContent);
