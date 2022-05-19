@@ -73,8 +73,16 @@ def detail(request, key_id):
     return render(request, "dexunt/detail.html", context)
 
 
-def load(request):
-    data = [{'name': 'Peter', 'email': 'peter@example.org'},
-            {'name': 'Julia', 'email': 'julia@example.org'}]
+def index(request):
+    post_obj = Item.objects.all()[0:3]
+    total_obj = Item.objects.count()
+    return render(request, 'dexunt/index.html', context={'posts': post_obj, 'total_obj': total_obj})
 
-    return JsonResponse(data, safe=False)
+
+def load_more(request):
+    loaded_item = request.GET.get('loaded_item')
+    loaded_item_int = int(offset)
+    limit = 2
+    post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
+    data = {'posts': post_obj}
+    return JsonResponse(data=data)
