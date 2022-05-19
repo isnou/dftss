@@ -70,7 +70,6 @@
                     const data = response.posts
                     spinner.classList.add('not-visible')
                     data.map(post => {
-                        console.log(post.name);
                         content_container.innerHTML += `<div class="single_content border border-success mt-2 pl-2">
                                                             <h3>${post.name}</h3>
                                                             <p>${post.sku}</p>
