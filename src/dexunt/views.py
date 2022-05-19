@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
 from django.http import JsonResponse
+from django.views.generic import View, TemplateView
 
 
 def home(request):
@@ -9,7 +10,7 @@ def home(request):
         items = Item.objects.all()[0:2]
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
-    total_items = Item.objects.count()
+    # total_items = Item.objects.count()
 
     try:
         slides = Slide.objects.all()
