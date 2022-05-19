@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 def home(request):
     try:
-        items = Item.objects.all()[0:4]
+        items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
     total_items = Item.objects.count()
