@@ -102,4 +102,4 @@ def store(request, number):
         'shop': shop,
         'items': items,
     }
-    return render(request, "dexunt/detail.html", context)
+    return render(request, "dexunt/product.html", context)
