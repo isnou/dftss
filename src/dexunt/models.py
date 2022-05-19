@@ -121,3 +121,11 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.choice
+
+
+class Shop(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    product = models.ManyToManyField(Item)
+
+    def __str__(self):
+        return self.name
