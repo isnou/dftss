@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
 from django.http import JsonResponse
+from django.views.generic import View, TemplateView
 
 
 def home(request):
@@ -73,16 +74,16 @@ def detail(request, key_id):
     return render(request, "dexunt/detail.html", context)
 
 
-def index(request):
-    post_obj = Item.objects.all()[0:2]
-    total_obj = Item.objects.count()
-    return render(request, 'dexunt/index.html', context={'posts': post_obj, 'total_obj': total_obj})
+def MainView(TemplateView):
+    return render(request, 'dexunt/index.html')
 
 
-def load_more(request):
-    loaded_item = request.GET.get('loaded_item')
-    loaded_item_int = int(2)
-    limit = 4
-    post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
-    data = {'posts': post_obj}
-    return JsonResponse(data=data)
+def PostJsonListView(View):
+    def get(self, *args, **kwargs):
+        print(kwargs)
+        upper = kwargs.get('num_posts')
+        lower = upper - 3
+        posts = list(Item.objects.values()[lower:upper])
+        posts_size = len(Item.objects.all())
+        max_size = True if upper >= posts_size else False
+        return JsonResponse({'data': posts, 'max': max_size}, safe=False)
