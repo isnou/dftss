@@ -87,7 +87,7 @@ class Item(models.Model):
 
     @staticmethod
     def get_products_by_id(ids):
-        return Item.objects.filter(id__in=ids)
+        return Item.objects.filter(id=ids)
 
     @staticmethod
     def get_all_products():
