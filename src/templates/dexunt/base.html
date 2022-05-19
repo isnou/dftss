@@ -230,7 +230,9 @@
                     spinner.classList.add('not-visible')
                     data.map(post => {
                         console.log(post.name);
-                        content_container.innerHTML += `{% url "index" %}`
+                        content_container.innerHTML += `<div class="single_content border border-success mt-2 pl-2">
+                                                            
+                                                        </div>`
                     })
                     if (_current_item == total) {
                         alert.classList.remove('not-visible');
