@@ -33,12 +33,10 @@ def home(request):
 
     context = {
         'items': items,
-        'posts': items,
         'banners': banners,
         'slides': slides,
         'categories': categories,
         'tags': tags,
-        'total_obj': total_items,
     }
     return render(request, "dexunt/home.html", context)
 
@@ -73,18 +71,3 @@ def detail(request, key_id):
         'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
-
-
-def index(request):
-    post_obj = Item.objects.all()[0:4]
-    total_obj = Item.objects.count()
-    return render(request, 'dexunt/index.html', context={'posts': post_obj, 'total_obj': total_obj})
-
-
-def load_more(request):
-    loaded_item = request.GET.get('loaded_item')
-    loaded_item_int = int(loaded_item)
-    limit = 4
-    post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
-    data = {'posts': post_obj}
-    return JsonResponse(data=data)

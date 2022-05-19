@@ -36,18 +36,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'dexunt/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'dexunt/css/main.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-<!--===============================================================================================-->
 </head>
 <style>
     .not-visible {
@@ -203,82 +191,6 @@
 <!--===============================================================================================-->
 	<script src="{% static 'dexunt/js/main.js' %}"></script>
 <!--===============================================================================================-->
-{{total_obj|json_script:"json-total"}}
-    <script>
-        // var _current_item = $('.single_content').length
-        // console.log(_current_item);
-        const loadBtn = document.getElementById('btn');
-        const spinner = document.getElementById('spinner');
-        const total = JSON.parse(document.getElementById('json-total').textContent);
-        const alert = document.getElementById('alert');
-
-        function loadmorePost() {
-            var _current_item = $('.single_content').length
-            const content_container = document.getElementById("content");
-            $.ajax({
-                url: '{% url "load" %}',
-                type: 'GET',
-                data: {
-                    'loaded_item': _current_item
-                },
-                beforeSend: function () {
-                    loadBtn.classList.add('not-visible');
-                    spinner.classList.remove('not-visible');
-                },
-                success: function (response) {
-                    const data = response.posts
-                    spinner.classList.add('not-visible')
-                    data.map(post => {
-                        console.log(post.name);
-                        content_container.innerHTML += `<div class="single_content">
-                                                            ${post.name}
-
-
-                                                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${post.category}">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="http://94.176.238.2/media/${post.image}" alt="IMG-PRODUCT">
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
-								Details
-							</a>
-						</div>
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="#" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									${post.name}
-								</a>
-								<span class="stext-105 cl3">
-									$ ${post.price}
-								</span>
-							</div>
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-                                                        </div>`
-                    })
-                    if (_current_item == total) {
-                        alert.classList.remove('not-visible');
-                    } else {
-                        loadBtn.classList.remove('not-visible');
-                    }
-                },
-                error: function (err) {
-                    console.log(err);
-                },
-            });
-        }
-        loadBtn.addEventListener('click', () => {
-            loadmorePost()
-        });
-    </script>
 
 </body>
 </html>
