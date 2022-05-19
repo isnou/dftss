@@ -5,5 +5,4 @@ from . import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('<int:key_id>/detail/', views.detail, name="detail"),
-    path('posts-json/<int:num_posts>/', views.PostJsonListView, name='posts-json-view'),
 ]
