@@ -77,7 +77,7 @@ def detail(request, key_id):
 class PostJsonListView(View):
     def get(self, *args, **kwargs):
         print(kwargs)
-        upper = 4
+        upper = kwargs.get('num_posts')
         lower = upper - 3
         posts = list(Item.objects.values()[lower:upper])
         posts_size = len(Item.objects.all())
