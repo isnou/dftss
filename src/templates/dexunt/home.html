@@ -430,7 +430,7 @@
 
 			</div>
 
-			<div class="row isotope-grid">
+			<div class="row isotope-grid" id="posts-box">
 				{% for item in items %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
@@ -462,9 +462,14 @@
 				{% endfor %}
 			</div>
 
+			<!-- Load spinner -->
+			<div id="spinner-box" class="not-visible">
+				<div class="spinner-border text-primary" role="status"></div>
+			</div>
+
 			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+			<div class="flex-c-m flex-w w-full p-t-45" id="loading-box">
+				<a class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" id="load-btn">
 					Load More
 				</a>
 			</div>
