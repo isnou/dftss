@@ -231,9 +231,13 @@
                     data.map(post => {
                         content_container.innerHTML += `<div class="single_content border border-success mt-2 pl-2">
                                                             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${post.category}">
-                                                                   <img src="http://94.176.238.2/media/${post.image}" alt="IMG-PRODUCT">
-                                                                   <h3>${post.name}</h3>
-                                                                   <p>${post.sku}</p>
+                                                                   <div class="block2">
+                                                                         <div class="block2-pic hov-img0">
+                                                                              <img src="http://94.176.238.2/media/${post.image}" alt="IMG-PRODUCT">
+                                                                              <h3>${post.name}</h3>
+                                                                              <p>${post.sku}</p>
+                                                                         </div>
+                                                                   </div>
                                                             </div>
                                                         </div>`
                     })
