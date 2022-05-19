@@ -205,8 +205,8 @@
 <!--===============================================================================================-->
 {{total_obj|json_script:"json-total"}}
     <script>
-        var _current_item = $('.single_content').length
-        console.log(_current_item);
+        // var _current_item = $('.single_content').length
+        // console.log(_current_item);
         const loadBtn = document.getElementById('btn');
         const spinner = document.getElementById('spinner');
         const total = JSON.parse(document.getElementById('json-total').textContent);
@@ -229,7 +229,6 @@
                     const data = response.posts
                     spinner.classList.add('not-visible')
                     data.map(post => {
-                        console.log(post.name);
                         content_container.innerHTML += `{% for post in post %}
                                                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ post.category }}">
                                                             <div class="block2">
