@@ -85,28 +85,6 @@ class Item(models.Model):
         ]
     )
 
-    @staticmethod
-    def get_products_by_id(ids):
-        return Item.objects.filter(id=ids)
-
-    @staticmethod
-    def get_all_products():
-        return Item.objects.all()
-
-    @staticmethod
-    def get_all_products_by_category(category):
-        if category:
-            return Item.objects.filter(category=category)
-        else:
-            return Item.get_all_products()
-
-    @staticmethod
-    def get_all_products_by_tag(tag):
-        if tag:
-            return Item.objects.filter(tag=tag)
-        else:
-            return Item.get_all_products()
-
     def __str__(self):
         return self.name
 

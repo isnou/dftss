@@ -8,7 +8,7 @@ def home(request):
         items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
-    #total_items = Item.objects.count()
+    # total_items = Item.objects.count()
 
     try:
         slides = Slide.objects.all()
@@ -42,7 +42,7 @@ def home(request):
 
 def detail(request, key_id):
     try:
-        item = Item.get_products_by_id(key_id)
+        item = Item.objects.get(id=key_id)
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
@@ -57,7 +57,8 @@ def detail(request, key_id):
     colors = item.color.all()
 
     tags = item.tag.all()
-    related_items = Item.get_all_products_by_tag(tags)
+    for tag in tags:
+        related_items = Item.objects.filter(tag=tag)
 
     context = {
         'item': item,
