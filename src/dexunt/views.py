@@ -5,7 +5,7 @@ from django.http import Http404
 
 def home(request):
     try:
-        items = Item.objects.all()[0:2]
+        items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
     #total_items = Item.objects.count()
