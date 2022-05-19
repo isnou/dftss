@@ -75,7 +75,8 @@ def detail(request, key_id):
 
 
 def MainView(TemplateView):
-    return render(request, 'dexunt/index.html')
+    template_name = 'dexunt/index.html'
+
 
 
 def PostJsonListView(View):
