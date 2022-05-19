@@ -7,7 +7,7 @@ from django.views.generic import View, TemplateView
 
 def home(request):
     try:
-        items = Item.objects.all()[0:2]
+        items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
     # total_items = Item.objects.count()
@@ -77,7 +77,7 @@ def detail(request, key_id):
 class PostJsonListView(View):
     def get(self, *args, **kwargs):
         print(kwargs)
-        upper = kwargs.get('num_posts')
+        upper = 4
         lower = upper - 3
         posts = list(Item.objects.values()[lower:upper])
         posts_size = len(Item.objects.all())
