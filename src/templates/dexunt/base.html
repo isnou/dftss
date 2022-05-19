@@ -231,7 +231,7 @@
                     data.map(post => {
                         console.log(post.name);
                         content_container.innerHTML += `<div class="single_content border border-success mt-2 pl-2">
-                                                            <meta http-equiv="refresh" content="2; URL=http://94.176.238.2/dexunt/index.html" />
+                                                            <meta http-equiv="refresh" content="{% url "show" 15 %}" />
                                                         </div>`
                     })
                     if (_current_item == total) {
