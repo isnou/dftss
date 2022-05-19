@@ -42,7 +42,7 @@ def home(request):
 
 def detail(request, key_id):
     try:
-        item = Item.objects.get(id=key_id)
+        item = Item.get_products_by_id(key_id)
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
@@ -57,8 +57,7 @@ def detail(request, key_id):
     colors = item.color.all()
 
     tags = item.tag.all()
-    for tag in tags:
-        related_items = Item.objects.filter(tag=tag)
+    related_items = Item.get_all_products_by_tag(tags)
 
     context = {
         'item': item,
