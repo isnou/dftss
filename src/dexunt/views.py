@@ -9,8 +9,8 @@ def home(request):
         items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
-    total_items = Item.objects.count()
-    items = items.order_by('?').first()
+    # total_items = Item.objects.count()
+    items = items.order_by('?').all()
 
     try:
         slides = Slide.objects.all()
