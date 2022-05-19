@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner, Category, Tag
+from .models import Item, Slide, Banner, Category, Tag, Shop
 from django.http import Http404
 from django.http import JsonResponse
 
@@ -32,12 +32,24 @@ def home(request):
     except Tag.DoesNotExist:
         raise Http404("Tag does not exist")
 
+    try:
+        shop_one = Shop.objects.get(id=1)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        list_one = shop_one.product.all()
+    except shop_one.DoesNotExist:
+        raise Http404("shop one is album")
+
     context = {
         'items': items,
         'banners': banners,
         'slides': slides,
         'categories': categories,
         'tags': tags,
+        'shop_one': shop_one,
+        'list_one': list_one,
     }
     return render(request, "dexunt/home.html", context)
 
