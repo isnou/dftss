@@ -14,12 +14,20 @@ class ItemImage(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
+    @staticmethod
+    def get_all_categories():
+        return Category.objects.all()
+
     def __str__(self):
         return self.name
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
+
+    @staticmethod
+    def get_all_tags():
+        return Tag.objects.all()
 
     def __str__(self):
         return self.name
@@ -76,6 +84,28 @@ class Item(models.Model):
             MinValueValidator(0)
         ]
     )
+
+    @staticmethod
+    def get_products_by_id(ids):
+        return Item.objects.filter(id__in=ids)
+
+    @staticmethod
+    def get_all_products():
+        return Item.objects.all()
+
+    @staticmethod
+    def get_all_products_by_category(category):
+        if category:
+            return Item.objects.filter(category=category)
+        else:
+            return Item.get_all_products()
+
+    @staticmethod
+    def get_all_products_by_tag(tag):
+        if tag:
+            return Item.objects.filter(tag=tag)
+        else:
+            return Item.get_all_products()
 
     def __str__(self):
         return self.name
