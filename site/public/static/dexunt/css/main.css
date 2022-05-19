@@ -2243,6 +2243,11 @@ input.num-product::-webkit-inner-spin-button {
   line-height: 1.666667;
 }
 
+.stext-118 {
+  text-decoration: line-through;
+  color:#75757a;
+}
+
 
 /*---------------------------------------------*/
 .stext-301 {
