@@ -40,7 +40,7 @@ def home(request):
     try:
         list_one = shop_one.product.all()
     except shop_one.DoesNotExist:
-        raise Http404("shop one is album")
+        raise Http404("shop one is empty")
 
     context = {
         'items': items,
@@ -82,5 +82,24 @@ def detail(request, key_id):
         'options': options,
         'colors': colors,
         'related_items': related_items,
+    }
+    return render(request, "dexunt/detail.html", context)
+
+
+def store(request, number):
+
+    try:
+        shop = Shop.objects.get(id=number)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        items = shop.product.all()
+    except shop.DoesNotExist:
+        raise Http404("shop one is empty")
+
+    context = {
+        'shop': shop,
+        'items': items,
     }
     return render(request, "dexunt/detail.html", context)
