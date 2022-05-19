@@ -88,3 +88,11 @@ def load_more(request):
     post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
     data = {'posts': post_obj}
     return JsonResponse(data=data)
+
+
+def show(request, key_id):
+
+    context = {
+        'key': key_id,
+    }
+    return render(request, "dexunt/show.html", context)
