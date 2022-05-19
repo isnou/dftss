@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
 from django.http import JsonResponse
-from django.views.generic import View, TemplateView
+from django.views.generic.base import View, TemplateView
 
 
 def home(request):
@@ -76,7 +76,6 @@ def detail(request, key_id):
 
 def MainView(TemplateView):
     template_name = 'dexunt/index.html'
-
 
 
 def PostJsonListView(View):
