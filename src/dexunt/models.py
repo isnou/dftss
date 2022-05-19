@@ -13,10 +13,7 @@ class ItemImage(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
-
-    @staticmethod
-    def get_all_categories():
-        return Category.objects.all()
+    slug = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.name
@@ -24,10 +21,7 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-
-    @staticmethod
-    def get_all_tags():
-        return Tag.objects.all()
+    slug = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.name
