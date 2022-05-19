@@ -6,10 +6,10 @@ from django.http import JsonResponse
 
 def home(request):
     try:
-        items = Item.objects.all()
+        items = Item.objects.all()[0:4]
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
-    # total_items = Item.objects.count()
+    total_items = Item.objects.count()
 
     try:
         slides = Slide.objects.all()
@@ -37,6 +37,7 @@ def home(request):
         'slides': slides,
         'categories': categories,
         'tags': tags,
+        'total_items': total_items,
     }
     return render(request, "dexunt/home.html", context)
 
@@ -83,6 +84,6 @@ def load_more(request):
     loaded_item = request.GET.get('loaded_item')
     loaded_item_int = int(loaded_item)
     limit = 4
-    post_obj = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
-    data = {'posts': post_obj}
+    items = list(Item.objects.values()[loaded_item_int:loaded_item_int + limit])
+    data = {'items': items}
     return JsonResponse(data=data)

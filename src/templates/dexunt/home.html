@@ -430,7 +430,7 @@
 
 			</div>
 
-			<div class="row isotope-grid">
+			<div class="row isotope-grid" id="content">
 				{% for item in items %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
@@ -464,9 +464,15 @@
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
+				<div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<div class="load-more__btn mt-3" id="btn">
+					<button type="button" class="btn btn-success">Load More Post</button>
+				</div>
+				<div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>
+					No more post to load!!
+				</div>
 			</div>
 		</div>
 	</section>
