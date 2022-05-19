@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, Tag
 from django.http import Http404
+from django.http import JsonResponse
 
 
 def home(request):
@@ -70,3 +71,10 @@ def detail(request, key_id):
         'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
+
+
+def load(request):
+    data = [{'name': 'Peter', 'email': 'peter@example.org'},
+            {'name': 'Julia', 'email': 'julia@example.org'}]
+
+    return JsonResponse(data, safe=False)
