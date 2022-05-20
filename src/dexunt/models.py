@@ -14,6 +14,7 @@ class ItemImage(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True)
 
     def __str__(self):
         return self.slug
@@ -22,6 +23,16 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True)
+
+    def __str__(self):
+        return self.slug
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.CharField(max_length=200, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True)
 
     def __str__(self):
         return self.slug
@@ -66,6 +77,7 @@ class Item(models.Model):
     images = models.ManyToManyField(ItemImage, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
     sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, null=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, null=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
     catch_line = models.CharField(max_length=200, blank=True, null=True)
