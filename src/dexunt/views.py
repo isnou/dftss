@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
 from django.http import Http404
 from django.http import JsonResponse
+from django.db.models import Q
 
 
 def home(request):
@@ -81,8 +82,8 @@ def detail(request, key_id):
     category = item.category
     sub_category = item.sub_category
 
-    related_items = Item.objects.all().filter(category=category) - item
-    related_sub_items = Item.objects.all().filter(sub_category=sub_category)
+    related_items = Item.objects.all().filter(category=category).exclude(id=key_id)
+    related_sub_items = Item.objects.all().filter(sub_category=sub_category).exclude(id=key_id)
 
     context = {
         'item': item,
