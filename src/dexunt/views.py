@@ -82,7 +82,6 @@ def detail(request, key_id):
 
 
 def store(request, number):
-
     try:
         shop = Shop.objects.get(id=number)
     except Shop.DoesNotExist:
@@ -93,14 +92,8 @@ def store(request, number):
     except shop.DoesNotExist:
         raise Http404("shop one is empty")
 
-    try:
-        categories = items.category.all()
-    except shop.DoesNotExist:
-        raise Http404("no categories")
-
     context = {
         'shop': shop,
         'items': items,
-        'categories': categories,
     }
     return render(request, "dexunt/product.html", context)
