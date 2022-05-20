@@ -245,13 +245,13 @@
 
 			<div class="row isotope-grid">
 				{% for item in items %}
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="http://94.176.238.2/media/{{ item.image }}" alt="IMG-PRODUCT">
 
-							<a href="{% url 'detail' item.id %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{% url 'detail' item.id %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Details
 							</a>
 						</div>
@@ -260,7 +260,7 @@
 
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="{% url 'detail' item.id %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									{{ item.name }}
+									{{ item.name|capfirst }}
 								</a>
 								{% if item.old_price %}
 								<discount-price>
