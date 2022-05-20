@@ -78,18 +78,9 @@ def detail(request, key_id):
     except Item.DoesNotExist:
         raise Http404("Empty album")
 
-    shoe_sizes = item.shoe_size.all()
-    clothing_sizes = item.clothing_size.all()
-    options = item.option.all()
-    colors = item.color.all()
-
     context = {
         'item': item,
         'albums': albums,
-        'shoe_sizes': shoe_sizes,
-        'clothing_sizes': clothing_sizes,
-        'options': options,
-        'colors': colors,
     }
     return render(request, "dexunt/detail.html", context)
 
