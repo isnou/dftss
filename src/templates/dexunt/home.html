@@ -132,12 +132,12 @@
 
 									{% if item.old_price %}
 									<discount-price>
-										{{ item.old_price }} DA
+										{{ item.old_price|floatformat:"2g" }} DA
 									</discount-price>
 									{% endif %}
 
 									<span class="stext-105 cl3">
-										{{ item.price }} DA
+										{{ item.price|floatformat:"2g" }} DA
 									</span>
 
 								</div>
