@@ -21,10 +21,12 @@
 						All Products
 					</button>
 					{% for item in items %}
-					{% with category=item.category %}
+					{% with categories=item.category %}
+					{% for category in categories|unique %}
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
 						{{ category.slug }}
 					</button>
+					{% endfor %}
 					{% endwith %}
 					{% endfor %}
 				</div>
