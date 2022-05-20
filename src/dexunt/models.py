@@ -133,12 +133,12 @@ class Banner(models.Model):
 class Shop(models.Model):
     name = models.CharField(max_length=200, unique=True)
     product = models.ManyToManyField(Item)
-    category = models.ManyToManyField(Category, blank=True)
-    sub_category = models.ManyToManyField(SubCategory, blank=True)
-    shoe_size = models.ManyToManyField(Shoe, blank=True)
-    clothing_size = models.ManyToManyField(Clothing, blank=True)
-    color = models.ManyToManyField(Color, blank=True)
-    option = models.ManyToManyField(Option, blank=True)
+    category = models.ManyToManyField(Category, blank=True, unique=True)
+    sub_category = models.ManyToManyField(SubCategory, blank=True, unique=True)
+    shoe_size = models.ManyToManyField(Shoe, blank=True, unique=True)
+    clothing_size = models.ManyToManyField(Clothing, blank=True, unique=True)
+    color = models.ManyToManyField(Color, blank=True, unique=True)
+    option = models.ManyToManyField(Option, blank=True, unique=True)
 
     def __str__(self):
         return self.name
