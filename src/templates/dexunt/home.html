@@ -165,7 +165,7 @@
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ shop_one.name }}</h2>
+					<h2 class="#">{{ shop_two.name }}</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -178,7 +178,7 @@
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-					{% for item in list_one %}
+					{% for item in list_two %}
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
 						<div class="block2">
@@ -228,23 +228,31 @@
 {% block products-list-three %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
-			<div class="p-b-45">
-				<h3 class="ltext-106 cl5 txt-center">
-					Flash Products
-				</h3>
+
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<h2 class="#">{{ shop_three.name }}</h2>
+				</div>
+
+				<div class="flex-w flex-c-m m-tb-10">
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' shop_one.id %}">SEE MORE</a>
+					</button>
+				</div>
 			</div>
+
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-					{% for item in items %}
+					{% for item in list_three %}
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="http://94.176.238.2/media/{{ item.image }}" alt="IMG-PRODUCT">
 
-								<a href="{% url 'detail' item.id %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-									Get Now
+								<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" >
+									Quick Show
 								</a>
 							</div>
 
@@ -254,9 +262,16 @@
 									{{ item.name }}
 									</a>
 
+									{% if item.old_price %}
+									<discount-price>
+										{{ item.old_price }} DA
+									</discount-price>
+									{% endif %}
+
 									<span class="stext-105 cl3">
-										${{ item.price }}
+										{{ item.price }} DA
 									</span>
+
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">

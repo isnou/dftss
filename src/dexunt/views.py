@@ -42,6 +42,26 @@ def home(request):
     except shop_one.DoesNotExist:
         raise Http404("shop one is empty")
 
+    try:
+        shop_two = Shop.objects.get(id=2)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        list_two = shop_one.product.all()
+    except shop_one.DoesNotExist:
+        raise Http404("shop two is empty")
+
+    try:
+        shop_three = Shop.objects.get(id=2)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        list_three = shop_one.product.all()
+    except shop_one.DoesNotExist:
+        raise Http404("shop three is empty")
+
     context = {
         'items': items,
         'banners': banners,
@@ -50,6 +70,10 @@ def home(request):
         'sub_categories': sub_categories,
         'shop_one': shop_one,
         'list_one': list_one,
+        'shop_two': shop_two,
+        'list_two': list_two,
+        'shop_three': shop_three,
+        'list_three': list_three,
     }
     return render(request, "dexunt/home.html", context)
 
