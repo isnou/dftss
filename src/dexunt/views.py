@@ -115,6 +115,9 @@ def store(request, number):
         items = shop.product.all()
     except shop.DoesNotExist:
         raise Http404("shop one is empty")
+    total_items = items.objects.count()
+    shown_items = shop.product.all()[0:4]
+    hidden_items = shop.product.all()[4:total_items]
 
     categories = shop.category.all()
 
@@ -122,5 +125,7 @@ def store(request, number):
         'shop': shop,
         'items': items,
         'categories': categories,
+        'shown_items': shown_items,
+        'hidden_items': hidden_items,
     }
     return render(request, "dexunt/product.html", context)
