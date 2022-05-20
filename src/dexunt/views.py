@@ -91,9 +91,8 @@ def store(request, number):
         items = shop.product.all()
     except shop.DoesNotExist:
         raise Http404("shop one is empty")
-    categories = Category
-    for item in items:
-        categories = item.category
+
+    categories = items.category.all()
 
     context = {
         'shop': shop,
