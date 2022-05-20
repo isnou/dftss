@@ -24,7 +24,7 @@
 
 					   {% for item in items %}
 					     {% if item.category not in categories %}
-					         {% do categories.append(item.category) %}
+					         {% categories=item.category %}
 					     {% endif %}
 					   {% endfor %}
 
