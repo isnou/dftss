@@ -92,8 +92,8 @@
 </div>
 {% endblock %}
 
-<!-- products-list-one -->
-{% block products-list-one %}
+<!-- flash-sales -->
+{% block flash-sales %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
@@ -158,19 +158,19 @@
 	</section>
 {% endblock %}
 
-<!-- products-list-one -->
-{% block products-list-two %}
+<!-- best-selling-products -->
+{% block best-selling-products %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ shop_two.name }}</h2>
+					<h2 class="#">Best Selling Products</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_two.id %}">SEE MORE</a>
+						<a href="{% url 'store' shop_two.id %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -224,14 +224,14 @@
 	</section>
 {% endblock %}
 
-<!-- products-list-three -->
-{% block products-list-three %}
+<!-- latest-products -->
+{% block latest-products %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ shop_three.name }}</h2>
+					<h2 class="#">Latest Products</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
