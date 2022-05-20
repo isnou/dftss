@@ -79,13 +79,16 @@ def detail(request, key_id):
         raise Http404("Empty album")
 
     category = item.category
+    sub_category = item.sub_category
 
     related_items = Item.objects.all().filter(category=category)
+    related_sub_items = Item.objects.all().filter(category=sub_category)
 
     context = {
         'item': item,
         'albums': albums,
         'related_items': related_items,
+        'related_sub_items': related_sub_items,
     }
     return render(request, "dexunt/detail.html", context)
 
