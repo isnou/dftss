@@ -83,7 +83,6 @@ def detail(request, key_id):
     sub_category = item.sub_category
 
     related_items = Item.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=key_id)
-    related_items = related_items.objects.all().order_by('-sell_rate')
 
     context = {
         'item': item,
