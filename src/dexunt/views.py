@@ -4,13 +4,13 @@ from django.http import Http404
 from django.http import JsonResponse
 
 
+
 def home(request):
     try:
         items = Item.objects.all()
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
     # total_items = Item.objects.count()
-    items = items.order_by('?').all()
 
     try:
         slides = Slide.objects.all()
@@ -38,9 +38,10 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        flash_list = flash_shop.product.all()
+        flash_list = flash_shop.product.all()[:12]
     except flash_shop.DoesNotExist:
         raise Http404("shop one is empty")
+    flash_list = flash_list.order_by('?').all()
 
     try:
         season_collection_shop = Shop.objects.get(id=3)
@@ -48,14 +49,14 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        season_collection_list = season_collection_shop.product.all()
+        season_collection_list = season_collection_shop.product.all()[:12]
     except season_collection_shop.DoesNotExist:
         raise Http404("shop three is empty")
     season_collection_list = season_collection_list.order_by('?').all()
 
-    latest_items = Item.objects.all().order_by('-id')[:15]
-    best_selling_items = Item.objects.all().order_by('-sell_rate')[:15]
-    best_rated_items = Item.objects.all().order_by('-rate')[:15]
+    latest_items = Item.objects.all().order_by('-id')[:12]
+    best_selling_items = Item.objects.all().order_by('-sell_rate')[:12]
+    best_rated_items = Item.objects.all().order_by('-rate')[:12]
 
     context = {
         'items': items,
