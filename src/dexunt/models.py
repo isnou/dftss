@@ -121,8 +121,8 @@ class Banner(models.Model):
 class Shop(models.Model):
     name = models.CharField(max_length=200, unique=True)
     product = models.ManyToManyField(Item)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
-    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, null=True)
+    category = models.ManyToManyField(Category, blank=True, null=True)
+    sub_category = models.ManyToManyField(SubCategory, blank=True, null=True)
     shoe_size = models.ManyToManyField(Shoe, blank=True, null=True)
     clothing_size = models.ManyToManyField(Clothing, blank=True, null=True)
     color = models.ManyToManyField(Color, blank=True, null=True)
