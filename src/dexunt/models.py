@@ -13,7 +13,7 @@ class ItemImage(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.CharField(max_length=200, blank=True)
+    slug = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.CharField(max_length=200, blank=True)
+    slug = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
@@ -31,7 +31,7 @@ class SubCategory(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.CharField(max_length=200, blank=True)
+    slug = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
@@ -76,13 +76,13 @@ class Item(models.Model):
     image = models.ImageField(upload_to='dexunt/slides/')
     images = models.ManyToManyField(ItemImage, blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True)
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True)
+    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, null=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
-    catch_line = models.CharField(max_length=200, blank=True)
+    catch_line = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
+    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     sell_rate = models.IntegerField(default=0)
     rate = models.IntegerField(
         default=5,
