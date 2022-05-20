@@ -5,7 +5,7 @@ from .models import Item, ItemImage, Category, SubCategory, Slide, Banner, Optio
 class ItemAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = (
-        'uid', 'name', 'sku', 'category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
+        'id', 'name', 'sku', 'category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
     list_filter = ('category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
 
 
