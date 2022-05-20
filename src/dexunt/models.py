@@ -19,7 +19,7 @@ class Category(models.Model):
         return self.name
 
 
-class Tag(models.Model):
+class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
 
@@ -64,13 +64,14 @@ class Item(models.Model):
     option = models.ManyToManyField(Option, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/slides/')
     images = models.ManyToManyField(ItemImage, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    tag = models.ManyToManyField(Tag, blank=True, null=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
+    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, null=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
     catch_line = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    sell_rate = models.IntegerField(default=0)
     rate = models.IntegerField(
         default=5,
         validators=[
