@@ -82,14 +82,12 @@ def detail(request, key_id):
     category = item.category
     sub_category = item.sub_category
 
-    related_items = Item.objects.all().filter(category=category).exclude(id=key_id)
-    related_sub_items = Item.objects.all().filter(sub_category=sub_category).exclude(id=key_id)
+    related_items = Item.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=key_id)
 
     context = {
         'item': item,
         'albums': albums,
         'related_items': related_items,
-        'related_sub_items': related_sub_items,
     }
     return render(request, "dexunt/detail.html", context)
 
