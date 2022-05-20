@@ -124,13 +124,16 @@ def best_selling_store(request):
     except Item.DoesNotExist:
         raise Http404("No items")
 
-    categories = items.category.all()
+    categories = []
+    for item in items:
+        categories += item.category
+
     name = 'best selling store'
 
     context = {
         'items': items,
         'categories': categories,
-        'name': name,
+        'shop.name': name,
     }
     return render(request, "dexunt/product.html", context)
 
