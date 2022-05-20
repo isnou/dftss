@@ -62,6 +62,8 @@ def home(request):
     except shop_one.DoesNotExist:
         raise Http404("shop three is empty")
 
+    latest_items = Item.objects.filter(testfield=5).latest('id')
+
     context = {
         'items': items,
         'banners': banners,
@@ -74,6 +76,7 @@ def home(request):
         'list_two': list_two,
         'shop_three': shop_three,
         'list_three': list_three,
+        'latest_items': latest_items,
     }
     return render(request, "dexunt/home.html", context)
 
