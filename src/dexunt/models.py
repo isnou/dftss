@@ -16,7 +16,7 @@ class Category(models.Model):
     slug = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.slug
 
 
 class SubCategory(models.Model):
@@ -24,7 +24,7 @@ class SubCategory(models.Model):
     slug = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.slug
 
 
 class Shoe(models.Model):
