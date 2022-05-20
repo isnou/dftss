@@ -62,7 +62,7 @@ def home(request):
     except shop_one.DoesNotExist:
         raise Http404("shop three is empty")
 
-    latest_items = Item.objects.all().order_by('-id')[:5]
+    latest_items = Item.objects.all().order_by('-id')[:10]
 
     context = {
         'items': items,
