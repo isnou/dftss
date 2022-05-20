@@ -162,3 +162,18 @@ def latest_products(request):
         'categories': categories,
     }
     return render(request, "dexunt/product.html", context)
+
+
+def shopping_cart(request):
+    try:
+        items = Item.objects.all().order_by('-id')
+    except Item.DoesNotExist:
+        raise Http404("No items")
+
+    categories = Category.objects.all()
+
+    context = {
+        'items': items,
+        'categories': categories,
+    }
+    return render(request, "dexunt/product.html", context)
