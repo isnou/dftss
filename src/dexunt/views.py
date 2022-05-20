@@ -109,7 +109,7 @@ def store(request, number):
     # shown_items = shop.product.all()[0:4]
     # hidden_items = shop.product.all()[4:total_items]
 
-    categories = items.category.all()
+    categories = shop.category.all()
 
     context = {
         'shop': shop,
