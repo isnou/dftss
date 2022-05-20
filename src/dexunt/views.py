@@ -5,7 +5,6 @@ from django.http import JsonResponse
 
 
 def home(request):
-
     try:
         slides = Slide.objects.all()
     except Slide.DoesNotExist:
@@ -121,26 +120,17 @@ def store(request, number):
 
 def best_selling_store(request):
     try:
-        shop = Shop.objects.get(id=number)
-    except Shop.DoesNotExist:
-        raise Http404("Shop does not exist")
+        items = Item.objects.all().order_by('-sell_rate')[:12]
+    except Item.DoesNotExist:
+        raise Http404("No items")
 
-    try:
-        items = shop.product.all()
-    except shop.DoesNotExist:
-        raise Http404("shop one is empty")
-    total_items = items.count()
-    shown_items = shop.product.all()[0:4]
-    hidden_items = shop.product.all()[4:total_items]
-
-    categories = shop.category.all()
+    categories = items.category.all()
+    name = 'best selling store'
 
     context = {
-        'shop': shop,
         'items': items,
         'categories': categories,
-        'shown_items': shown_items,
-        'hidden_items': hidden_items,
+        'name': name,
     }
     return render(request, "dexunt/product.html", context)
 
