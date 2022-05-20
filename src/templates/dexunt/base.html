@@ -44,6 +44,10 @@
 	text-decoration: line-through;
 	color:#75757a;
 	}
+
+	#hidden-element {
+	display: none;
+	}
 	</style>
 </head>
 <body class="animsition">
@@ -205,6 +209,12 @@
 <!--===============================================================================================-->
 	<script src="{% static 'dexunt/js/main.js' %}"></script>
 <!--===============================================================================================-->
+    <script>
+    function ShowElement() {
+        var x = document.getElementById("hidden-element");
+        x.style.display = "block";
+        }
+    </script>
 
 </body>
 </html>
