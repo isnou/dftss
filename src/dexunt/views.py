@@ -63,6 +63,7 @@ def home(request):
         raise Http404("shop three is empty")
 
     latest_items = Item.objects.all().order_by('-id')[:15]
+    best_selling_items = Item.objects.all().order_by('-sell_rate')[:15]
 
     context = {
         'items': items,
@@ -77,6 +78,7 @@ def home(request):
         'shop_three': shop_three,
         'list_three': list_three,
         'latest_items': latest_items,
+        'best_selling_items': best_selling_items,
     }
     return render(request, "dexunt/home.html", context)
 
