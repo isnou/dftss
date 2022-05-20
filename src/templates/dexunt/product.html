@@ -20,13 +20,21 @@
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
-					{% for item in items %}
-					{% with categories=item.category|unique %}
+					{% with categories=[] %}
+
+					   {% for item in items %}
+					     {% if item.category not in categories %}
+					         {% do categories.append(item.category) %}
+					     {% endif %}
+					   {% endfor %}
+
+
+					{% for category in categories %}
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
 						{{ category.slug }}
 					</button>
-					{% endwith %}
 					{% endfor %}
+					{% endwith %}
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
