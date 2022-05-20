@@ -38,7 +38,7 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        flash_list = flash_shop.product.all()[:12]
+        flash_list = flash_shop.product.all()
     except flash_shop.DoesNotExist:
         raise Http404("shop one is empty")
     flash_list = flash_list.order_by('?').all()
@@ -49,7 +49,7 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        season_collection_list = season_collection_shop.product.all()[:12]
+        season_collection_list = season_collection_shop.product.all()
     except season_collection_shop.DoesNotExist:
         raise Http404("shop three is empty")
     season_collection_list = season_collection_list.order_by('?').all()
