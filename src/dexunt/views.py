@@ -33,37 +33,28 @@ def home(request):
         raise Http404("SubCategory does not exist")
 
     try:
-        shop_one = Shop.objects.get(id=1)
+        flash_shop = Shop.objects.get(id=1)
     except Shop.DoesNotExist:
         raise Http404("Shop does not exist")
 
     try:
-        list_one = shop_one.product.all()
-    except shop_one.DoesNotExist:
+        flash_list = flash_shop.product.all()
+    except flash_shop.DoesNotExist:
         raise Http404("shop one is empty")
 
     try:
-        shop_two = Shop.objects.get(id=2)
+        season_collection_shop = Shop.objects.get(id=3)
     except Shop.DoesNotExist:
         raise Http404("Shop does not exist")
 
     try:
-        list_two = shop_two.product.all()
-    except shop_one.DoesNotExist:
-        raise Http404("shop two is empty")
-
-    try:
-        shop_three = Shop.objects.get(id=3)
-    except Shop.DoesNotExist:
-        raise Http404("Shop does not exist")
-
-    try:
-        list_three = shop_three.product.all()
-    except shop_one.DoesNotExist:
+        season_collection_list = season_collection_shop.product.all()
+    except season_collection_shop.DoesNotExist:
         raise Http404("shop three is empty")
 
     latest_items = Item.objects.all().order_by('-id')[:15]
     best_selling_items = Item.objects.all().order_by('-sell_rate')[:15]
+    best_rated_items = Item.objects.all().order_by('-rate')[:15]
 
     context = {
         'items': items,
@@ -71,14 +62,13 @@ def home(request):
         'slides': slides,
         'categories': categories,
         'sub_categories': sub_categories,
-        'shop_one': shop_one,
-        'list_one': list_one,
-        'shop_two': shop_two,
-        'list_two': list_two,
-        'shop_three': shop_three,
-        'list_three': list_three,
+        'flash_shop': flash_shop,
+        'flash_list': flash_list,
+        'season_collection_shop': season_collection_shop,
+        'season_collection_list': season_collection_list,
         'latest_items': latest_items,
         'best_selling_items': best_selling_items,
+        'best_rated_items': best_rated_items,
     }
     return render(request, "dexunt/home.html", context)
 
