@@ -104,7 +104,7 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_one.id %}">SEE MORE</a>
+						<a href="{% url 'store' shop_one.id %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -236,7 +236,7 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_three.id %}">SEE MORE</a>
+						<a href="{% url 'store' shop_three.id %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -290,19 +290,19 @@
 	</section>
 {% endblock %}
 
-<!-- products-list-four -->
-{% block products-list-four %}
+<!-- season-collection-products -->
+{% block season-collection-products %}
     <section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 
 			<div class="p-b-45">
 				<h3 class="ltext-106 cl5 txt-center">
-					Product Overview
+					{{ shop_three.name }}
 				</h3>
 			</div>
 
 			<div class="row isotope-grid">
-				{% for item in items %}
+				{% for item in list_three %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
 					<div class="block2">
