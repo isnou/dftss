@@ -125,10 +125,13 @@ def best_selling_store(request):
     except Item.DoesNotExist:
         raise Http404("No items")
 
-    categories = Category.objects.none()
 
+    id_list = []
     for item in items:
-        categories.slug.append(item.category.slug)
+        id_list.append(item.category.id)
+    for ids in id_list:
+        categories = Category.objects.get(id=ids)
+
 
     context = {
         'items': items,
