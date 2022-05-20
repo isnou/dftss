@@ -53,7 +53,7 @@ def home(request):
         raise Http404("shop two is empty")
 
     try:
-        shop_three = Shop.objects.get(id=2)
+        shop_three = Shop.objects.get(id=3)
     except Shop.DoesNotExist:
         raise Http404("Shop does not exist")
 
