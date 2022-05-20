@@ -14,7 +14,7 @@ class ItemImage(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True)
 
     def __str__(self):
         return self.slug
@@ -23,7 +23,7 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True)
 
     def __str__(self):
         return self.slug
@@ -32,7 +32,7 @@ class SubCategory(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True)
 
     def __str__(self):
         return self.slug
@@ -68,21 +68,21 @@ class Option(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=200)
-    sku = models.CharField(max_length=300, unique=True)
-    shoe_size = models.ManyToManyField(Shoe, blank=True, null=True)
-    clothing_size = models.ManyToManyField(Clothing, blank=True, null=True)
-    color = models.ManyToManyField(Color, blank=True, null=True)
-    option = models.ManyToManyField(Option, blank=True, null=True)
+    sku = models.CharField(max_length=200, unique=True)
+    shoe_size = models.ManyToManyField(Shoe, blank=True)
+    clothing_size = models.ManyToManyField(Clothing, blank=True)
+    color = models.ManyToManyField(Color, blank=True)
+    option = models.ManyToManyField(Option, blank=True)
     image = models.ImageField(upload_to='dexunt/slides/')
-    images = models.ManyToManyField(ItemImage, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
-    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, null=True)
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True, null=True)
+    images = models.ManyToManyField(ItemImage, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    sub_category = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True)
     description = models.TextField(max_length=800)
     specification = models.TextField(max_length=800)
-    catch_line = models.CharField(max_length=200, blank=True, null=True)
+    catch_line = models.CharField(max_length=200, blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     sell_rate = models.IntegerField(default=0)
     rate = models.IntegerField(
         default=5,
