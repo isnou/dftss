@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ItemImage(models.Model):
-    album_name = models.CharField(max_length=200, blank=True)
+    album_name = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/')
 
     def __str__(self):
