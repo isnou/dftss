@@ -82,7 +82,7 @@ def detail(request, key_id):
     sub_category = item.sub_category
 
     related_items = Item.objects.all().filter(category=category)
-    related_sub_items = Item.objects.all().filter(category=sub_category)
+    related_sub_items = Item.objects.all().filter(sub_category=sub_category)
 
     context = {
         'item': item,
