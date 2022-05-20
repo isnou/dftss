@@ -121,7 +121,7 @@ def store(request, number):
 
 def best_selling_store(request):
     try:
-        items = Item.objects.all().order_by('-sell_rate')[:12]
+        items = Item.objects.all().order_by('-sell_rate')
     except Item.DoesNotExist:
         raise Http404("No items")
 
@@ -136,7 +136,7 @@ def best_selling_store(request):
 
 def best_rating_store(request):
     try:
-        items = Item.objects.all().order_by('-rate')[:12]
+        items = Item.objects.all().order_by('-rate')
     except Item.DoesNotExist:
         raise Http404("No items")
 
@@ -151,7 +151,7 @@ def best_rating_store(request):
 
 def latest_products(request):
     try:
-        items = Item.objects.all().order_by('-id')[:12]
+        items = Item.objects.all().order_by('-id')
     except Item.DoesNotExist:
         raise Http404("No items")
 
