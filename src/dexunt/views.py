@@ -82,7 +82,7 @@ def detail(request, key_id):
 
 
 def store(request, number):
-    global categories
+
     try:
         shop = Shop.objects.get(id=number)
     except Shop.DoesNotExist:
@@ -93,8 +93,10 @@ def store(request, number):
     except shop.DoesNotExist:
         raise Http404("shop one is empty")
 
-    for item in items:
-        categories = item.category
+    try:
+        categories = items.category.all()
+    except shop.DoesNotExist:
+        raise Http404("no categories")
 
     context = {
         'shop': shop,
