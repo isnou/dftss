@@ -8,6 +8,12 @@ class ItemAdmin(admin.ModelAdmin):
         'id', 'name', 'sku', 'category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
     list_filter = ('category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
 
+class ShopAdmin(admin.ModelAdmin):
+    search_fields = []
+    list_display = (
+        'id', 'name')
+    list_filter = ('category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand')
+
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(ItemImage)
@@ -19,5 +25,7 @@ admin.site.register(Option)
 admin.site.register(Shoe)
 admin.site.register(Clothing)
 admin.site.register(Color)
-admin.site.register(Shop)
+admin.site.register(Shop, ShopAdmin)
 admin.site.register(Brand)
+
+# , 'product', 'category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand'
