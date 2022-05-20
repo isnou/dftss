@@ -14,7 +14,7 @@ class ItemImage(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
         return self.slug
@@ -23,7 +23,7 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
         return self.slug
@@ -32,7 +32,7 @@ class SubCategory(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', blank=True)
+    image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
     def __str__(self):
         return self.slug
@@ -102,7 +102,7 @@ class Slide(models.Model):
         ('SECOND', 'SECOND'),
         ('THIRD', 'THIRD'),
     )
-    image = models.ImageField(upload_to='dexunt/slides/')
+    image = models.ImageField(upload_to='dexunt/slides/', null=True)
     small_text = models.CharField(max_length=50, blank=True)
     big_text = models.CharField(max_length=50, blank=True)
     button = models.CharField(max_length=50, blank=True)
@@ -119,7 +119,7 @@ class Banner(models.Model):
         ('SECOND', 'SECOND'),
         ('THIRD', 'THIRD'),
     )
-    image = models.ImageField(upload_to='dexunt/banners/')
+    image = models.ImageField(upload_to='dexunt/banners/', null=True)
     small_text = models.CharField(max_length=50, blank=True)
     big_text = models.CharField(max_length=50, blank=True)
     button = models.CharField(max_length=50, blank=True)
