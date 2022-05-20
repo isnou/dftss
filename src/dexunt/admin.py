@@ -1,7 +1,15 @@
 from django.contrib import admin
 from .models import Item, ItemImage, Category, SubCategory, Slide, Banner, Option, Shoe, Clothing, Color, Shop, Brand
 
-admin.site.register(Item)
+
+class ItemAdmin(admin.ModelAdmin):
+    search_fields = []
+    list_display = (
+        'uis', 'name', 'sku', 'category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
+    filter_horizontal = ('category', 'sub_category', 'brand', 'price', 'old_price', 'sell_rate', 'rate')
+
+
+admin.site.register(Item, ItemAdmin)
 admin.site.register(ItemImage)
 admin.site.register(Category)
 admin.site.register(SubCategory)
