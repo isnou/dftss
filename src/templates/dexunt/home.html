@@ -104,7 +104,7 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_one.id %}">see more</a>
+						<a href="{% url 'store' flash_shop.id %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -170,7 +170,7 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_two.id %}">see more</a>
+						<a href="{% url 'best_selling_store' %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -236,7 +236,7 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="{% url 'store' shop_three.id %}">see more</a>
+						<a href="{% url 'latest_products' %}">see more</a>
 					</button>
 				</div>
 			</div>
@@ -296,9 +296,9 @@
 		<div class="container">
 
 			<div class="p-b-45">
-				<h3 class="ltext-106 cl5 txt-center">
+				<h2 class="ltext-106 cl5 txt-center">
 					{{ season_collection_shop.name }}
-				</h3>
+				</h2>
 			</div>
 
 			<div class="row isotope-grid">
