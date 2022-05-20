@@ -126,7 +126,7 @@ def store(request, number):
     return render(request, "dexunt/product.html", context)
 
 
-def flash_store(request, number):
+def best_selling_store(request, number):
     try:
         shop = Shop.objects.get(id=number)
     except Shop.DoesNotExist:
@@ -150,4 +150,55 @@ def flash_store(request, number):
         'hidden_items': hidden_items,
     }
     return render(request, "dexunt/product.html", context)
-best_selling_store
+
+
+def best_rating_store(request, number):
+    try:
+        shop = Shop.objects.get(id=number)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        items = shop.product.all()
+    except shop.DoesNotExist:
+        raise Http404("shop one is empty")
+    total_items = items.count()
+    shown_items = shop.product.all()[0:4]
+    hidden_items = shop.product.all()[4:total_items]
+
+    categories = shop.category.all()
+
+    context = {
+        'shop': shop,
+        'items': items,
+        'categories': categories,
+        'shown_items': shown_items,
+        'hidden_items': hidden_items,
+    }
+    return render(request, "dexunt/product.html", context)
+
+
+def latest_products(request, number):
+    try:
+        shop = Shop.objects.get(id=number)
+    except Shop.DoesNotExist:
+        raise Http404("Shop does not exist")
+
+    try:
+        items = shop.product.all()
+    except shop.DoesNotExist:
+        raise Http404("shop one is empty")
+    total_items = items.count()
+    shown_items = shop.product.all()[0:4]
+    hidden_items = shop.product.all()[4:total_items]
+
+    categories = shop.category.all()
+
+    context = {
+        'shop': shop,
+        'items': items,
+        'categories': categories,
+        'shown_items': shown_items,
+        'hidden_items': hidden_items,
+    }
+    return render(request, "dexunt/product.html", context)
