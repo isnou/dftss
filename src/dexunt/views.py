@@ -125,14 +125,10 @@ def best_selling_store(request):
     except Item.DoesNotExist:
         raise Http404("No items")
 
-    best_selling_store_refresh(2)
+    categories = Shop.objects.none()
 
-    try:
-        shop = Shop.objects.get(2)
-    except Shop.DoesNotExist:
-        raise Http404("Shop does not exist")
-
-    categories = shop.category.all()
+    for item in items:
+        categories = item.category.all()
 
     context = {
         'items': items,
@@ -191,24 +187,3 @@ def latest_products(request):
         'hidden_items': hidden_items,
     }
     return render(request, "dexunt/product.html", context)
-
-
-def best_selling_store_refresh(num):
-    try:
-        shop = Shop.objects.get(id=num)
-    except Shop.DoesNotExist:
-        raise Http404("Shop does not exist")
-
-    try:
-        items = Item.objects.all().order_by('-sell_rate')
-    except Item.DoesNotExist:
-        raise Http404("No items")
-
-    for item in items:
-        shop.product = item.objects.get('name')
-        shop.category = item.category
-        shop.sub_category = item.sub_category
-        shop.shoe_size = item.shoe_size
-        shop.clothing_size = item.clothing_size
-        shop.color = item.color
-        shop.option = item.option
