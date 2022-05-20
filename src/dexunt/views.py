@@ -78,9 +78,14 @@ def detail(request, key_id):
     except Item.DoesNotExist:
         raise Http404("Empty album")
 
+    category = item.category
+
+    related_items = Item.objects.all().filter(category=category)
+
     context = {
         'item': item,
         'albums': albums,
+        'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
 
