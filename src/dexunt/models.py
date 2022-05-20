@@ -14,7 +14,7 @@ class ItemImage(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
 
     def __str__(self):
         return self.slug
@@ -23,7 +23,7 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
 
     def __str__(self):
         return self.slug
@@ -32,7 +32,7 @@ class SubCategory(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='dexunt/images/', null=True)
+    image = models.ImageField(upload_to='dexunt/images/', null=True, blank=True)
 
     def __str__(self):
         return self.slug
