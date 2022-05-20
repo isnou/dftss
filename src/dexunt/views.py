@@ -51,6 +51,7 @@ def home(request):
         season_collection_list = season_collection_shop.product.all()
     except season_collection_shop.DoesNotExist:
         raise Http404("shop three is empty")
+    season_collection_list = season_collection_list.order_by('?').all()
 
     latest_items = Item.objects.all().order_by('-id')[:15]
     best_selling_items = Item.objects.all().order_by('-sell_rate')[:15]
