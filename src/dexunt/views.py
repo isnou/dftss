@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner, Category, Tag, Shop
+from .models import Item, Slide, Banner, Category, SubCategory, Shop
 from django.http import Http404
 from django.http import JsonResponse
 
@@ -19,7 +19,7 @@ def home(request):
 
     try:
         banners = Banner.objects.all()
-    except Tag.DoesNotExist:
+    except Banner.DoesNotExist:
         raise Http404("Banner does not exist")
 
     try:
@@ -28,9 +28,9 @@ def home(request):
         raise Http404("Category does not exist")
 
     try:
-        tags = Tag.objects.all()
-    except Tag.DoesNotExist:
-        raise Http404("Tag does not exist")
+        sub_categories = SubCategory.objects.all()
+    except SubCategory.DoesNotExist:
+        raise Http404("SubCategory does not exist")
 
     try:
         shop_one = Shop.objects.get(id=1)
@@ -47,7 +47,7 @@ def home(request):
         'banners': banners,
         'slides': slides,
         'categories': categories,
-        'tags': tags,
+        'sub_categories': sub_categories,
         'shop_one': shop_one,
         'list_one': list_one,
     }
@@ -70,10 +70,6 @@ def detail(request, key_id):
     options = item.option.all()
     colors = item.color.all()
 
-    tags = item.tag.all()
-    for tag in tags:
-        related_items = Item.objects.filter(tag=tag)
-
     context = {
         'item': item,
         'albums': albums,
@@ -81,13 +77,11 @@ def detail(request, key_id):
         'clothing_sizes': clothing_sizes,
         'options': options,
         'colors': colors,
-        'related_items': related_items,
     }
     return render(request, "dexunt/detail.html", context)
 
 
 def store(request, number):
-
     try:
         shop = Shop.objects.get(id=number)
     except Shop.DoesNotExist:
