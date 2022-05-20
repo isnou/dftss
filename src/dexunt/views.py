@@ -200,12 +200,12 @@ def best_selling_store_refresh(num):
         raise Http404("Shop does not exist")
 
     try:
-        items = Item.objects.all().order_by('-sell_rate')[:12]
+        items = Item.objects.all().order_by('-sell_rate')
     except Item.DoesNotExist:
         raise Http404("No items")
 
     for item in items:
-        shop.product = item.name
+        shop.product = item.objects.get('name')
         shop.category = item.category
         shop.sub_category = item.sub_category
         shop.shoe_size = item.shoe_size
