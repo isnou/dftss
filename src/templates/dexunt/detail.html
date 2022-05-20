@@ -58,16 +58,16 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							{{ item.name }}
+							{{ item.name|capfirst }}
 						</h4>
-
-						<span class="mtext-106 cl2">
-							${{ item.price }}
+						{% if item.old_price %}
+						<discount-price>
+							{{ item.old_price }} DA
+						</discount-price>
+						{% endif %}
+						<span class="stext-105 cl3">
+							{{ item.price }} DA
 						</span>
-
-						<p class="stext-102 cl3 p-t-23">
-							{{ item.catch_line }}
-						</p>
 
 						<!--  -->
 						<div class="p-t-33">
