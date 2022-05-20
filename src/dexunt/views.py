@@ -128,7 +128,7 @@ def best_selling_store(request):
     categories = Shop.objects.none()
 
     for item in items:
-        categories = item.category.all()
+        categories = item.category
 
     context = {
         'items': items,
