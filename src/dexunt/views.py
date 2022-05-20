@@ -115,7 +115,7 @@ def store(request, number):
         items = shop.product.all()
     except shop.DoesNotExist:
         raise Http404("shop one is empty")
-    total_items = items.objects.count()
+    total_items = items.count()
     shown_items = shop.product.all()[0:4]
     hidden_items = shop.product.all()[4:total_items]
 
