@@ -243,7 +243,7 @@
 				</div>
 			</div>
 
-			<div class="row isotope-grid">
+			<div class="row isotope-grid" id="refresh-element">
 
 				{% for item in shown_items %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
@@ -287,7 +287,7 @@
 
 
 				{% for item in hidden_items %}
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}" id="hidden-element">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
