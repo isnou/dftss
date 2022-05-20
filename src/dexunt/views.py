@@ -48,7 +48,7 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        list_two = shop_one.product.all()
+        list_two = shop_two.product.all()
     except shop_one.DoesNotExist:
         raise Http404("shop two is empty")
 
@@ -58,7 +58,7 @@ def home(request):
         raise Http404("Shop does not exist")
 
     try:
-        list_three = shop_one.product.all()
+        list_three = shop_three.product.all()
     except shop_one.DoesNotExist:
         raise Http404("shop three is empty")
 
