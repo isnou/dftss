@@ -41,7 +41,7 @@ def home(request):
         flash_list = flash_shop.product.all()
     except flash_shop.DoesNotExist:
         raise Http404("shop one is empty")
-    flash_list = flash_list.order_by('?').all()
+    flash_list = flash_list.order_by('?').all()[:12]
 
     try:
         season_collection_shop = Shop.objects.get(id=3)
@@ -52,14 +52,13 @@ def home(request):
         season_collection_list = season_collection_shop.product.all()
     except season_collection_shop.DoesNotExist:
         raise Http404("shop three is empty")
-    season_collection_list = season_collection_list.order_by('?').all()
+    season_collection_list = season_collection_list.order_by('?').all()[:12]
 
     latest_items = Item.objects.all().order_by('-id')[:12]
     best_selling_items = Item.objects.all().order_by('-sell_rate')[:12]
     best_rated_items = Item.objects.all().order_by('-rate')[:12]
 
     context = {
-        'items': items,
         'banners': banners,
         'slides': slides,
         'categories': categories,
