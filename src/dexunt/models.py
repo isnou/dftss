@@ -146,11 +146,11 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
-    product = models.ForeignKey('Item', on_delete=models.CASCADE)
-    color = models.ForeignKey('Color', on_delete=models.CASCADE)
-    option = models.ForeignKey('Option', on_delete=models.CASCADE)
-    shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE)
-    clothing_size = models.ForeignKey('Clothing', on_delete=models.CASCADE)
+    product = models.ForeignKey('Item', on_delete=models.CASCADE, null=True, blank=True)
+    color = models.ForeignKey('Color', on_delete=models.CASCADE, null=True, blank=True)
+    option = models.ForeignKey('Option', on_delete=models.CASCADE, null=True, blank=True)
+    shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE, null=True, blank=True)
+    clothing_size = models.ForeignKey('Clothing', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.product
