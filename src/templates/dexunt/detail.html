@@ -80,10 +80,10 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="size">
+										<select class="js-select2" id="size">
 											<option>Choose a size</option>
 											{% for shoe in shoe_sizes %}
-											<option value= {{shoe.size}}> {{shoe.size}} </option>
+											<option> {{shoe.size}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -100,10 +100,10 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="size">
+										<select class="js-select2" id="size">
 											<option>Choose a size</option>
 											{% for clothing in clothing_sizes %}
-											<option value= {{clothing.size}}> {{clothing.size}} </option>
+											<option> {{clothing.size}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
