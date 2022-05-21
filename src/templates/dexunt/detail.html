@@ -124,7 +124,7 @@
 										<select class="js-select2">
 											<option>Choose a color</option>
 											{% for color in colors %}
-											<option name="color" value='{{color.name}}'> {{color.name}} </option>
+											<input name="color" value='{{color.name}}'> {{color.name}} </input>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -145,7 +145,7 @@
 										<select class="js-select2">
 											<option>Choose an option</option>
 											{% for option in options %}
-											<option name="option" value='{{option.name}}'> {{option.name}} </option>
+											<input name="option" value='{{option.name}}'> {{option.name}} </input>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
