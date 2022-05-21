@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
+from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand, PreOrder
 from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm
@@ -189,8 +189,10 @@ def latest_products(request):
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
     if form.is_valid():
-        size = form.cleaned_data.get('color')
-        return size
+        color = form.cleaned_data.get('color')
+        option = form.cleaned_data.get('option')
+        return color, option
+
 
     try:
         items = Item.objects.all().order_by('-id')
@@ -202,7 +204,7 @@ def shopping_cart(request, key_id):
     context = {
         'items': items,
         'categories': categories,
-        'size': size,
-        'form': form,
+        'color': color,
+        'option': option,
     }
     return render(request, "dexunt/shoping-cart.html", context)
