@@ -187,6 +187,10 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
+    size = request.POST['size']
+    color = request.POST['color']
+    option = request.POST['option']
+
     try:
         items = Item.objects.all().order_by('-id')
     except Item.DoesNotExist:
@@ -197,5 +201,8 @@ def shopping_cart(request, key_id):
     context = {
         'items': items,
         'categories': categories,
+        'size': size,
+        'color': color,
+        'option': option,
     }
     return render(request, "dexunt/shoping-cart.html", context)
