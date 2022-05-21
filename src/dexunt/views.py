@@ -204,10 +204,3 @@ def shopping_cart(request, key_id):
         'size': size,
     }
     return render(request, "dexunt/shoping-cart.html", context)
-
-
-def contact(request):
-    form = ContactUsForm()  # ajout d’un nouveau formulaire ici
-    return render(request,
-                  'dexunt/cont.html',
-                  {'form': form})  # passe ce formulaire au gabarit
