@@ -157,5 +157,8 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def get_products(self):
+        return "\n".join([p.product for p in self.product.all()])
+
     def __str__(self):
         return self.name
