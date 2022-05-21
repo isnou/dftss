@@ -193,6 +193,7 @@ def shopping_cart(request, key_id):
         return size
     else:
         size = "not"
+    size = form.cleaned_data.get('color')
 
     try:
         items = Item.objects.all().order_by('-id')
