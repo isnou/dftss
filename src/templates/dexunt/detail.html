@@ -72,8 +72,9 @@
 
 						<!--  -->
 						<div class="p-t-33">
-						<form method="post">
+						<form name="PreOrderForm" id="PreOrderForm" method="post">
 							{% csrf_token %}
+						<fieldset>
 
 							{% if shoe_sizes %}
 							<div class="flex-w flex-r-m p-b-10">
@@ -126,7 +127,7 @@
 										<select class="js-select2">
 											<option>Choose a color</option>
 											{% for color in colors %}
-											<option value="{{color.name}}" id="color"> {{color.name}} </option>
+											<option value="form working" id="color" name="color"> {{color.name}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -166,6 +167,7 @@
 									</div>
 								</div>
 							</div>
+						</fieldset>
 						</form>
 
 						</div>

@@ -200,7 +200,7 @@ def shopping_cart(request, key_id):
         # if a GET (or any other method) we'll create a blank form
     else:
         form = PreOrderForm()
-        size='0'
+        size = 'no color'
 
 
     try:
