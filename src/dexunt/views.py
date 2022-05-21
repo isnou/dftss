@@ -191,6 +191,7 @@ def shopping_cart(request, key_id):
         form = PreOrderForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
+            size = form.cleaned_data.get('color')
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
@@ -199,6 +200,7 @@ def shopping_cart(request, key_id):
         # if a GET (or any other method) we'll create a blank form
     else:
         form = PreOrderForm()
+        size='0'
 
 
     try:
@@ -207,7 +209,6 @@ def shopping_cart(request, key_id):
         raise Http404("No items")
 
     categories = Category.objects.all()
-    size = form.cleaned_data.get('color')
 
     context = {
         'items': items,
