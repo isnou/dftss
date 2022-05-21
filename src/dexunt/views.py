@@ -188,11 +188,11 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
+    color = ''
+    option = ''
     if form.is_valid():
         color = form.cleaned_data.get('color')
         option = form.cleaned_data.get('option')
-        return color, option
-
 
     try:
         items = Item.objects.all().order_by('-id')
