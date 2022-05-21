@@ -140,13 +140,15 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
+
 										<select class="js-select2" name="option">
-											<option>Choose an option</option>
+											<option disabled>Choose an option</option>
 											{% for option in options %}
-											<option value= {{option.name}}> {{option.name}} </option>
+											<option value={{option.name}}> {{option.name}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
+
 									</div>
 								</div>
 							</div>
