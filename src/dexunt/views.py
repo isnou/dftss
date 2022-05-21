@@ -191,12 +191,7 @@ def latest_products(request):
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
 
-    if form.is_valid():
-        form.color = form.cleaned_data.get('color')
-        form.option = form.cleaned_data.get('option')
-
     context = {
-        'color': form.color,
-        'option': form.option,
+        'form': form,
     }
     return render(request, "dexunt/shoping-cart.html", context)
