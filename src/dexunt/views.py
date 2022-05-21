@@ -103,6 +103,7 @@ def detail(request, key_id):
     sub_category = item.sub_category
 
     related_items = Item.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=key_id)
+    pre_order_form = PreOrderForm()
 
     context = {
         'item': item,
@@ -112,6 +113,7 @@ def detail(request, key_id):
         'clothing_sizes': clothing_sizes,
         'colors': colors,
         'options': options,
+        'pre_order_form': pre_order_form,
     }
     return render(request, "dexunt/detail.html", context)
 
@@ -192,7 +194,6 @@ def shopping_cart(request, key_id):
     if form.is_valid():
         color = form.cleaned_data.get('color')
         option = form.cleaned_data.get('option')
-        form.save()
 
     context = {
         'color': form.color,

@@ -171,7 +171,7 @@
 						</form>
 
 						</div>
-							<form id="PreOrderForm" method="post" action="{% url 'shopping_cart' item.id %}">
+							<form id="pre_order_form" method="post" action="{% url 'shopping_cart' item.id %}">
 								{% csrf_token %}
 								<table class="table">
 									<tr>
