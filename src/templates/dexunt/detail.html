@@ -81,12 +81,12 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="size">
-											<option>Choose a size</option>
+											<option disabled>choose a size</option>
 											{% for shoe in shoe_sizes %}
 											<option value= {{shoe.size}}> {{shoe.size}} </option>
 											{% endfor %}
 										</select>
-										<div class="dropDownSelect2"></div>
+										<input type="submit" value="Select">
 									</div>
 								</div>
 							</div>
@@ -101,12 +101,12 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="size">
-											<option>Choose a size</option>
+											<option disabled>choose a size</option>
 											{% for clothing in clothing_sizes %}
 											<option value= {{clothing.size}}> {{clothing.size}} </option>
 											{% endfor %}
 										</select>
-										<div class="dropDownSelect2"></div>
+										<input type="submit" value="Select">
 									</div>
 								</div>
 							</div>
@@ -121,12 +121,12 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="color">
-											<option>Choose a color</option>
+											<option disabled>choose a color</option>
 											{% for color in colors %}
 											<option value= {{color.name}}> {{color.name}} </option>
 											{% endfor %}
 										</select>
-										<div class="dropDownSelect2"></div>
+										<input type="submit" value="Select">
 									</div>
 								</div>
 							</div>
@@ -142,7 +142,7 @@
 									<div class="rs1-select2 bor8 bg0">
 
 										<select class="js-select2" name="option">
-											<option disabled>Choose an option</option>
+											<option disabled>choose an option</option>
 											{% for option in options %}
 											<option value={{option.name}}> {{option.name}} </option>
 											{% endfor %}
