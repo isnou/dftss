@@ -16,7 +16,7 @@ class ShopAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    search_fields = [('name', 'phone', 'email', 'product', 'quantity', 'color', 'option', 'size', 'created_at', 'updated_at')]
+    search_fields = []
     list_display = ('name', 'phone', 'email', 'product', 'quantity', 'color', 'option', 'size', 'created_at', 'updated_at')
     list_filter = ('name', 'phone', 'email', 'product', 'quantity', 'color', 'option', 'size', 'created_at', 'updated_at')
 
