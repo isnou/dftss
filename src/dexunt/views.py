@@ -162,7 +162,7 @@ def latest_products(request):
     return render(request, "dexunt/product.html", context)
 
 
-def shopping_cart(request):
+def shopping_cart(request, key_id):
     try:
         items = Item.objects.all().order_by('-id')
     except Item.DoesNotExist:
@@ -174,4 +174,4 @@ def shopping_cart(request):
         'items': items,
         'categories': categories,
     }
-    return render(request, "dexunt/product.html", context)
+    return render(request, "dexunt/shoping-cart.html", context)
