@@ -3,7 +3,7 @@ from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
 from django.http import Http404
 from django.http import JsonResponse
 from django.db.models import Q
-from .forms import NameForm
+from listings.forms import ContactUsForm
 
 
 def home(request):
@@ -188,11 +188,26 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
-    if request.method == 'POST':
-        form = NameForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
-        else:
-            form = NameForm()
+    data = request.GET
+    size = data.get("option")
 
-        return render(request, 'name.html', {'form': form})
+    try:
+        items = Item.objects.all().order_by('-id')
+    except Item.DoesNotExist:
+        raise Http404("No items")
+
+    categories = Category.objects.all()
+
+    context = {
+        'items': items,
+        'categories': categories,
+        'size': size,
+    }
+    return render(request, "dexunt/shoping-cart.html", context)
+
+
+def contact(request):
+  form = ContactUsForm()  # ajout d’un nouveau formulaire ici
+  return render(request,
+          'dexunt/cont.html',
+          {'form': form})  # passe ce formulaire au gabarit
