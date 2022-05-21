@@ -145,17 +145,11 @@ class Shop(models.Model):
         return self.name
 
 
-class Order(models.Model):
-    name = models.CharField(max_length=200, blank=True)
-    phone = PhoneNumberField(blank=True)
-    email = models.EmailField(max_length=200, blank=True)
+class PreOrder(models.Model):
     product = models.ManyToManyField(Item)
-    quantity = models.DecimalField(max_digits=8, decimal_places=2)
     color = models.CharField(max_length=200, blank=True)
     option = models.CharField(max_length=200, blank=True)
     size = models.CharField(max_length=200, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def get_products(self):
         return "\n".join([p.product for p in self.product.all()])
