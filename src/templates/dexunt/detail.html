@@ -125,9 +125,10 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2">
+											{% form.color='color' %}
 											<option>Choose a color</option>
 											{% for color in colors %}
-											<option for="{{ form.color }}"> {{color.name}} </option>
+											<option> {{color.name}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
