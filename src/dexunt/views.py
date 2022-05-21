@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
 from django.http import Http404
-from django.http import JsonResponse
 from django.db.models import Q
-from .forms import ContactUsForm
 
 
 def home(request):
