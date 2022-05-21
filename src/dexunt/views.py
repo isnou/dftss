@@ -207,11 +207,12 @@ def shopping_cart(request, key_id):
         raise Http404("No items")
 
     categories = Category.objects.all()
+    size = form.cleaned_data.get('color')
 
     context = {
         'items': items,
         'categories': categories,
-        'size': form.color,
+        'size': size,
         'form': form,
     }
     return render(request, "dexunt/shoping-cart.html", context)
