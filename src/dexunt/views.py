@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
 from django.http import Http404
 from django.db.models import Q
-
+from .forms import PreOrderForm
 
 def home(request):
     try:
@@ -186,7 +186,20 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
-    size = key_id
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NameForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
+
+        # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+
 
     try:
         items = Item.objects.all().order_by('-id')
@@ -199,5 +212,6 @@ def shopping_cart(request, key_id):
         'items': items,
         'categories': categories,
         'size': size,
+        'form': form,
     }
     return render(request, "dexunt/shoping-cart.html", context)

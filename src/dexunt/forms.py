@@ -2,4 +2,7 @@ from django import forms
 
 
 class PreOrderForm(forms.Form):
-    your_name = forms.CharField(label='Your name', max_length=100)
+    color = forms.CharField()
+    option = forms.CharField()
+    shoe_size = forms.CharField()
+    clothing_size = forms.CharField()
