@@ -187,8 +187,8 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
 
-    size = request.GET.get('clothing_size')
-    
+    size = request.GET.getlist('clothing_size')
+
 
     try:
         items = Item.objects.all().order_by('-id')
