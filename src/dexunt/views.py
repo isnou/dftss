@@ -187,7 +187,7 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
-    size = 'size' in request.GET
+    size = 'time' in request.GET
 
 
     try:
