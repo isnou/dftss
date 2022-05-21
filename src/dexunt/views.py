@@ -187,9 +187,9 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
-    size = request.POST['size']
-    color = request.POST['color']
-    option = request.POST['option']
+    size = request.POST.get("size")
+    color = request.POST.get("color")
+    option = request.POST.get("option")
 
     try:
         items = Item.objects.all().order_by('-id')
