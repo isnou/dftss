@@ -187,6 +187,7 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
+
     size = request.GET.get("size")
     color = request.GET.get("color")
     option = request.GET.get("option")
