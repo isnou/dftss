@@ -188,22 +188,10 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
-    color = ''
-    option = ''
-    if form.is_valid():
-        color = form.cleaned_data.get('color')
-        option = form.cleaned_data.get('option')
-
-    try:
-        items = Item.objects.all().order_by('-id')
-    except Item.DoesNotExist:
-        raise Http404("No items")
-
-    categories = Category.objects.all()
+    color = form.color
+    option = form.option
 
     context = {
-        'items': items,
-        'categories': categories,
         'color': color,
         'option': option,
     }
