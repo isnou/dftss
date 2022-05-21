@@ -76,7 +76,27 @@ def detail(request, key_id):
 
     try:
         albums = item.images.all()
-    except Item.DoesNotExist:
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        shoe_sizes = item.shoe_size.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        clothing_sizes = item.clothing_size.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        colors = item.color.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        options = item.option.all()
+    except item.DoesNotExist:
         raise Http404("Empty album")
 
     category = item.category
@@ -88,6 +108,10 @@ def detail(request, key_id):
         'item': item,
         'albums': albums,
         'related_items': related_items,
+        'shoe_sizes': shoe_sizes,
+        'clothing_sizes': clothing_sizes,
+        'colors': colors,
+        'options': options,
     }
     return render(request, "dexunt/detail.html", context)
 
