@@ -185,7 +185,7 @@ def latest_products(request):
     return render(request, "dexunt/product.html", context)
 
 
-def shopping_cart(request, key_id, option, color, size):
+def shopping_cart(request, key_id):
     size = key_id
 
     try:
