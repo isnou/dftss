@@ -191,9 +191,6 @@ def shopping_cart(request, key_id):
     if form.is_valid():
         size = form.cleaned_data.get('color')
         return size
-    else:
-        size = "not"
-    size = form.cleaned_data.get('color')
 
     try:
         items = Item.objects.all().order_by('-id')
