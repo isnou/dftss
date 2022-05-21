@@ -185,10 +185,8 @@ def latest_products(request):
     return render(request, "dexunt/product.html", context)
 
 
-def shopping_cart(request, key_id):
-
-    size = request.GET.get('clothing_size')
-
+def shopping_cart(request, key_id, option, color, size):
+    size = key_id
 
     try:
         items = Item.objects.all().order_by('-id')
