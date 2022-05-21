@@ -201,7 +201,5 @@ def shopping_cart(request, key_id):
         'items': items,
         'categories': categories,
         'size': size,
-        'color': color,
-        'option': option,
     }
     return render(request, "dexunt/shoping-cart.html", context)
