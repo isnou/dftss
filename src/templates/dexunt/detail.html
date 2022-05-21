@@ -73,8 +73,8 @@
 						<!--  -->
 						<div class="p-t-33">
 
-							<form action="{% url 'shopping_cart' item.id %}" method="post">
-								{% csrf_token %}
+							<form action="{% url 'shopping_cart' item.id %}" method="post">{% csrf_token %}
+
 							{% if shoe_sizes %}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
