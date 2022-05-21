@@ -90,7 +90,7 @@
 												<select class="js-select2" id="shoe_size" name="shoe_size">
 													<option>Choose a size</option>
 													{% for shoe in shoe_sizes %}
-													<option value="{{ form.shoe_size }}"> {{shoe.size}} </option>
+													<option value="{{ shoe.size }}"> {{ shoe.size }} </option>
 													{% endfor %}
 												</select>
 												<div class="dropDownSelect2"></div>
@@ -99,12 +99,6 @@
 									</div>
 									{% endif %}
 
-
-
-									<tr>
-										<td><label for="color">Color</label></td>
-										<td><input id="color" name="color" type="text" class="form-control"></td>
-									</tr>
 									<tr>
 										<td><label for="option">Option</label></td>
 										<td><input id="option" name="option" type="text" class="form-control"></td>
