@@ -3,7 +3,7 @@ from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand
 from django.http import Http404
 from django.http import JsonResponse
 from django.db.models import Q
-from listings.forms import ContactUsForm
+from .forms import ContactUsForm
 
 
 def home(request):
@@ -207,7 +207,7 @@ def shopping_cart(request, key_id):
 
 
 def contact(request):
-  form = ContactUsForm()  # ajout d’un nouveau formulaire ici
-  return render(request,
-          'dexunt/cont.html',
-          {'form': form})  # passe ce formulaire au gabarit
+    form = ContactUsForm()  # ajout d’un nouveau formulaire ici
+    return render(request,
+                  'dexunt/cont.html',
+                  {'form': form})  # passe ce formulaire au gabarit
