@@ -188,7 +188,11 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
-    size = form.cleaned_data.get('color')
+    if form.is_valid():
+        size = form.cleaned_data.get('color')
+        return size
+    else:
+        size = "not"
 
     try:
         items = Item.objects.all().order_by('-id')
