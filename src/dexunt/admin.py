@@ -17,7 +17,7 @@ class ShopAdmin(admin.ModelAdmin):
 
 class PreOrderAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('get_products', 'color', 'option', 'size')
+    list_display = ('product', 'color', 'option', 'size')
 
 
 

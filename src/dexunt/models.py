@@ -146,13 +146,10 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
-    product = models.ManyToManyField(Item)
-    color = models.CharField(max_length=200, blank=True)
-    option = models.CharField(max_length=200, blank=True)
-    size = models.CharField(max_length=200, blank=True)
-
-    def get_products(self):
-        return "\n".join([p.product for p in self.product.all()])
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    color = models.ForeignKey('Color', on_delete=models.CASCADE)
+    option = models.ForeignKey('Option', on_delete=models.CASCADE)
+    size = models.ForeignKey('Size', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.product

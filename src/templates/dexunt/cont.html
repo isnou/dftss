@@ -19,3 +19,19 @@
     size = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+
+
+                            class PreOrder(models.Model):
+    product = models.ManyToManyField(Item)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
+    color = models.ManyToManyField(Color, blank=True)
+    option = models.CharField(max_length=200, blank=True)
+    size = models.CharField(max_length=200, blank=True)
+
+    def get_products(self):
+        return "\n".join([p.product for p in self.product.all()])
+
+    def __str__(self):
+        return self.name
