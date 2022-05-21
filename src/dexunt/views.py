@@ -187,11 +187,11 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
     if request.method == 'POST':
+        size = form.cleaned_data.get('color')
         # create a form instance and populate it with data from the request:
         form = PreOrderForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            size = form.cleaned_data.get('color')
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
