@@ -62,11 +62,11 @@
 							{{ item.name|capfirst }}
 						</h4>
 						{% if item.old_price %}
-						<discount-price class="js-price-detail">
+						<discount-price>
 							{{ item.old_price|floatformat:"2g" }} DA
 						</discount-price>
 						{% endif %}
-						<span class="stext-105 cl3">
+						<span class="stext-105 cl3 js-price-detail" >
 							{{ item.price|floatformat:"2g" }} DA
 						</span>
 
