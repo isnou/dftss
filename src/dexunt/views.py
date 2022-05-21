@@ -4,6 +4,7 @@ from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm
 
+
 def home(request):
     try:
         slides = Slide.objects.all()
@@ -186,22 +187,8 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = PreOrderForm(request.POST)
-        size = form.cleaned_data.get('color')
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-        # if a GET (or any other method) we'll create a blank form
-    else:
-        form = PreOrderForm()
-        size = 'no color'
-
+    form = PreOrderForm(request.POST or None)
+    size = form.cleaned_data.get('color')
 
     try:
         items = Item.objects.all().order_by('-id')
