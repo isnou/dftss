@@ -49,8 +49,9 @@
 							<table class="table-shopping-cart">
 
 
-								<form oninput="x.value=parseInt(mul.value)*parseInt(price-value.value)">
-									<input type="hidden" id="price-value" name="price-value" value="{{ item.price }} ">
+								<form oninput="total-price.value=parseInt(mul.value)*parseInt(price-value.value)">
+									<input type="hidden" id="price-value" name="price-value" value="{{ item.price }}">
+									{{ item.price }}
 
 								<tr class="table_head">
 									<th class="column-1">Product</th>
@@ -90,14 +91,9 @@
 									</td>
 
 									<td class="column-5">
-
-										 <output name="x" for="a b"></output>
-
-
-
-
-
-
+										<output name="total-price" for="a b">
+											 DA
+										 </output>
 									</td>
 
 
