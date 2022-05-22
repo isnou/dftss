@@ -147,10 +147,10 @@ class Shop(models.Model):
 
 class PreOrder(models.Model):
     product = models.ManyToManyField(Item)
-    color = models.CharField(max_length=200, unique=True)
-    option = models.CharField(max_length=200, unique=True)
-    shoe_size = models.CharField(max_length=200, unique=True)
-    clothing_size = models.CharField(max_length=200, unique=True)
+    color = models.CharField(max_length=200, blank=True, null=True)
+    option = models.CharField(max_length=200, blank=True, null=True)
+    shoe_size = models.CharField(max_length=200, blank=True, null=True)
+    clothing_size = models.CharField(max_length=200, blank=True, null=True)
 
     def get_products(self):
         return "\n".join([p.product for p in self.product.all()])
