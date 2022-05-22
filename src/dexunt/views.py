@@ -233,11 +233,11 @@ def one_order_checkout(request, shopping_cart_id):
         coupon = request.POST.get('coupon', False)
 
     order = Order(product_name=item.product_name,
-                  quantity=quantity,
                   shoe_size=item.shoe_size,
                   clothing_size=item.clothing_size,
                   color=item.color,
                   option=item.option,
+                  quantity=quantity,
 
                   client_name=client_name,
                   client_phone=client_phone,
@@ -250,4 +250,4 @@ def one_order_checkout(request, shopping_cart_id):
     order.save()
     context = {
     }
-    return render(request, "dexunt/shoping-cart.html", context)
+    return render(request, "dexunt/home.html", context)
