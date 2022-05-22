@@ -229,7 +229,7 @@ def one_order_checkout(request, shopping_cart_id):
     except ShoppingCart.DoesNotExist:
         raise Http404("Item does not exist")
 
-    # form = OrderForm(request.POST or None)
+    form = OrderForm(request.POST or None)
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
