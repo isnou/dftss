@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Item, ItemImage, Category, SubCategory, Slide, Banner, Option, Shoe, Clothing, Color, Shop, Brand
+from .models import Item, ItemImage, Category, SubCategory, \
+    Slide, Banner, Option, Shoe, Clothing, Color, Shop, Brand, ShoppingCart
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -26,6 +27,7 @@ admin.site.register(Clothing)
 admin.site.register(Color)
 admin.site.register(Shop, ShopAdmin)
 admin.site.register(Brand)
+admin.site.register(ShoppingCart)
 
 # , 'product', 'category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand'
 

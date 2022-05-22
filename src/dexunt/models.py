@@ -163,11 +163,10 @@ class Shop(models.Model):
 class ShoppingCart(models.Model):
     product_id = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
-    shoe_size = models.ManyToManyField(Shoe, blank=True)
-    clothing_size = models.ManyToManyField(Clothing, blank=True)
-    color = models.ManyToManyField(Color, blank=True)
-    option = models.ManyToManyField(Option, blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    shoe_size = models.CharField(max_length=50, blank=True)
+    clothing_size = models.CharField(max_length=50, blank=True)
+    color = models.CharField(max_length=50, blank=True)
+    option = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.name
