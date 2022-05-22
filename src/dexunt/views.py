@@ -194,7 +194,6 @@ def shopping_cart(request, key_id):
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
-    form = PreOrderForm(request.POST or None)
 
     if request.method == 'POST':
         color = request.POST.get('color', False)
@@ -216,7 +215,6 @@ def shopping_cart(request, key_id):
     shop_cart.save()
 
     context = {
-        'form': form,
         'item': item,
         'shop_cart': shop_cart,
     }
