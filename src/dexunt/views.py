@@ -207,25 +207,25 @@ def shopping_cart(request, key_id):
         shoe_size = "none"
         clothing_size = "none"
 
-    shopping_cart = ShoppingCart(product_name=item.name,
+    shop_cart = ShoppingCart(product_name=item.name,
                                  shoe_size=shoe_size,
                                  clothing_size=clothing_size,
                                  color=color,
                                  option=option,
                                  )
-    shopping_cart.save()
+    shop_cart.save()
 
     context = {
         'form': form,
         'item': item,
-        'shopping_cart': shopping_cart,
+        'shop_cart': shop_cart,
     }
     return render(request, "dexunt/shoping-cart.html", context)
 
 
 def one_order_checkout(request, shopping_cart_id):
     try:
-        item = ShoppingCart.objects.get(id=shopping_cart_id)
+        shop_cart = ShoppingCart.objects.get(id=shopping_cart_id)
     except ShoppingCart.DoesNotExist:
         raise Http404("Item does not exist")
 
@@ -247,11 +247,11 @@ def one_order_checkout(request, shopping_cart_id):
         town = "none"
         coupon = "none"
 
-    order = Order(product_name=item.product_name,
-                  shoe_size=item.shoe_size,
-                  clothing_size=item.clothing_size,
-                  color=item.color,
-                  option=item.option,
+    order = Order(product_name=shop_cart.product_name,
+                  shoe_size=shop_cart.shoe_size,
+                  clothing_size=shop_cart.clothing_size,
+                  color=shop_cart.color,
+                  option=shop_cart.option,
                   quantity=quantity,
 
                   client_name=client_name,
@@ -266,4 +266,4 @@ def one_order_checkout(request, shopping_cart_id):
 
     context = {
     }
-    return render(request, "dexunt/home.html", context)
+    return render(request, "dexunt/shoping-cart.html", context)
