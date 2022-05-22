@@ -212,5 +212,7 @@ def shopping_cart(request, key_id):
     pre_order.save()
     context = {
         'form': form,
+        'item': item,
+        'pre_order': pre_order,
     }
     return render(request, "dexunt/shoping-cart.html", context)
