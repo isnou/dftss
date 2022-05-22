@@ -211,13 +211,14 @@ def shopping_cart(request, key_id):
     context = {
         'form': form,
         'item': item,
+        'shopping_cart': shopping_cart,
     }
     return render(request, "dexunt/shoping-cart.html", context)
 
 
-def one_order_checkout(request, product_id):
+def one_order_checkout(request, shopping_cart_id):
     try:
-        item = ShoppingCart.objects.get(id=product_id)
+        item = ShoppingCart.objects.get(id=shopping_cart_id)
     except ShoppingCart.DoesNotExist:
         raise Http404("Item does not exist")
 
@@ -225,7 +226,7 @@ def one_order_checkout(request, product_id):
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
-        quantity = request.POST.get('quantity', False)
+        quantity = request.POST.get('num-product2', False)
         delivery = request.POST.get('delivery', False)
         city = request.POST.get('city', False)
         town = request.POST.get('town', False)
