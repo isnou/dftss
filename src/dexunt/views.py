@@ -208,7 +208,6 @@ def shopping_cart(request, key_id):
                          option=option,
                          shoe_size=shoe_size,
                          clothing_size=clothing_size)
-
     pre_order.save()
     context = {
         'form': form,
