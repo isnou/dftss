@@ -132,6 +132,15 @@
 			});
 		})
 	</script>
+
+	<script>
+		$(".js-select3").each(function(){
+			$(this).select3({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect3')
+			});
+		})
+	</script>
 <!--===============================================================================================-->
 	<script src="{% static 'dexunt/vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'dexunt/vendor/daterangepicker/daterangepicker.js' %}"></script>
