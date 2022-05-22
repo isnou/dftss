@@ -194,7 +194,6 @@ def shopping_cart(request, key_id):
     except Item.DoesNotExist:
         raise Http404("Item does not exist")
 
-
     if request.method == 'POST':
         color = request.POST.get('color', False)
         option = request.POST.get('option', False)
@@ -214,9 +213,12 @@ def shopping_cart(request, key_id):
                              )
     shop_cart.save()
 
+    one_order_form = OrderForm()
+
     context = {
         'item': item,
         'shop_cart': shop_cart,
+        'one_order_form': one_order_form,
     }
     return render(request, "dexunt/shoping-cart.html", context)
 
@@ -227,7 +229,7 @@ def one_order_checkout(request, shopping_cart_id):
     except ShoppingCart.DoesNotExist:
         raise Http404("Item does not exist")
 
-    form = OrderForm(request.POST or None)
+    # form = OrderForm(request.POST or None)
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
