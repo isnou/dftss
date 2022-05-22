@@ -216,7 +216,7 @@
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
-        var numPrice = {{ item.price }};
+        var numPrice = document.getElementById("price").value;
         document.getElementById("total").innerHTML = numPrice;
         if(numProduct > 0) $(this).next().val(numProduct - 1);
     });
