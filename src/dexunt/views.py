@@ -196,10 +196,10 @@ def shopping_cart(request, key_id):
 
     form = PreOrderForm(request.POST or None)
     if request.method == 'POST':
-        color = request.POST['color']
-        option = request.POST['option']
-        shoe_size = request.POST['shoe_size']
-        clothing_size = request.POST['clothing_size']
+        color = request.POST.get('color', False)
+        option = request.POST.get('option', False)
+        shoe_size = request.POST.get('shoe_size', False)
+        clothing_size = request.get('clothing_size', False)
 
     pre_order = PreOrder(product=item, color=color, option=option, shoe_size=shoe_size,
                          clothing_size=clothing_size)
