@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Item, ItemImage, Category, SubCategory, Slide, Banner, Option, Shoe, Clothing, Color, Shop, Brand, \
-    PreOrder
+from .models import Item, ItemImage, Category, SubCategory, Slide, Banner, Option, Shoe, Clothing, Color, Shop, Brand
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -13,8 +12,6 @@ class ShopAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('id', 'name')
     list_filter = ('category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand')
-
-
 
 
 admin.site.register(Item, ItemAdmin)
