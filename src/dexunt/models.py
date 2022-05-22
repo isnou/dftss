@@ -152,8 +152,8 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
-    product_name = models.CharField(max_length=200)
-    product_sku = models.CharField(max_length=200)
+    product_name = models.CharField(max_length=200, blank=True, null=True)
+    product_sku = models.CharField(max_length=200, blank=True, null=True)
     product_id = models.DecimalField(max_digits=90, decimal_places=0, blank=True, null=True)
     color = models.CharField(max_length=200, blank=True, null=True)
     option = models.CharField(max_length=200, blank=True, null=True)
