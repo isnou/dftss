@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner, Category, SubCategory, Shop, Brand, PreOrder
+from .models import Item, Slide, Banner, Category, SubCategory, Shop
 from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm
@@ -201,17 +201,8 @@ def shopping_cart(request, key_id):
         shoe_size = request.POST.get('shoe_size', False)
         clothing_size = request.POST.get('clothing_size', False)
 
-    pre_order = PreOrder(product_name=item.name,
-                         product_sku=item.sku,
-                         product_id=item.id,
-                         color=color,
-                         option=option,
-                         shoe_size=shoe_size,
-                         clothing_size=clothing_size)
-    pre_order.save()
     context = {
         'form': form,
         'item': item,
-        'pre_order': pre_order,
     }
     return render(request, "dexunt/shoping-cart.html", context)

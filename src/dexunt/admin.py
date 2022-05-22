@@ -15,10 +15,6 @@ class ShopAdmin(admin.ModelAdmin):
     list_filter = ('category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand')
 
 
-class PreOrderAdmin(admin.ModelAdmin):
-    search_fields = []
-    list_display = ('product_name', 'product_sku', 'color', 'option', 'shoe_size', 'clothing_size')
-
 
 
 admin.site.register(Item, ItemAdmin)
@@ -33,7 +29,6 @@ admin.site.register(Clothing)
 admin.site.register(Color)
 admin.site.register(Shop, ShopAdmin)
 admin.site.register(Brand)
-admin.site.register(PreOrder, PreOrderAdmin)
 
 # , 'product', 'category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand'
 

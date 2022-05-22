@@ -150,18 +150,3 @@ class Shop(models.Model):
     def __str__(self):
         return self.name
 
-
-class PreOrder(models.Model):
-    product_name = models.CharField(max_length=200, blank=True, null=True)
-    product_sku = models.CharField(max_length=200, blank=True, null=True)
-    product_id = models.DecimalField(max_digits=50, decimal_places=0, blank=True, null=True)
-    color = models.CharField(max_length=200, blank=True, null=True)
-    option = models.CharField(max_length=200, blank=True, null=True)
-    shoe_size = models.CharField(max_length=200, blank=True, null=True)
-    clothing_size = models.CharField(max_length=200, blank=True, null=True)
-
-    def get_products(self):
-        return "\n".join([p.product for p in self.product.all()])
-
-    def __str__(self):
-        return self.product_name
