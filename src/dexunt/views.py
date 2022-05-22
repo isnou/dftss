@@ -189,8 +189,13 @@ def latest_products(request):
 
 
 def shopping_cart(request, key_id):
+    try:
+        item = Item.objects.get(id=key_id)
+    except Item.DoesNotExist:
+        raise Http404("Item does not exist")
+
     form = PreOrderForm(request.POST or None)
-    pre_order = PreOrder()
+    pre_order = PreOrder(product=item, color=form.color, option=form.option, shoe_size=form.shoe_size, clothing_size=form.clothing_size)
 
     context = {
         'form': form,
