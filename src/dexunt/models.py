@@ -16,6 +16,9 @@ class Category(models.Model):
     slug = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
     def __str__(self):
         return self.slug
 
@@ -24,6 +27,9 @@ class SubCategory(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='dexunt/images/', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "SubCategories"
 
     def __str__(self):
         return self.slug
@@ -146,7 +152,7 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
-    product = models.ManyToManyField(Item)
+    product_id = models.DecimalField(max_digits=6, min_value=0)
     color = models.CharField(max_length=200, blank=True, null=True)
     option = models.CharField(max_length=200, blank=True, null=True)
     shoe_size = models.CharField(max_length=200, blank=True, null=True)

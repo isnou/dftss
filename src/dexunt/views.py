@@ -201,7 +201,7 @@ def shopping_cart(request, key_id):
         shoe_size = request.POST.get('shoe_size', False)
         clothing_size = request.POST.get('clothing_size', False)
 
-    pre_order = PreOrder(product=item, color=color, option=option, shoe_size=shoe_size,
+    pre_order = PreOrder(product_id=item.id, color=color, option=option, shoe_size=shoe_size,
                          clothing_size=clothing_size)
 
     context = {
