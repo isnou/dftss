@@ -152,6 +152,8 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
+    product_name = models.CharField(max_length=200)
+    product_sku = models.CharField(max_length=200)
     product_id = models.DecimalField(max_digits=6, min_value=0)
     color = models.CharField(max_length=200, blank=True, null=True)
     option = models.CharField(max_length=200, blank=True, null=True)
@@ -162,4 +164,4 @@ class PreOrder(models.Model):
         return "\n".join([p.product for p in self.product.all()])
 
     def __str__(self):
-        return self.product
+        return self.product_name
