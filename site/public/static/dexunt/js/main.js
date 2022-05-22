@@ -225,7 +225,6 @@
         var numProduct = Number($(this).prev().val());
         var numPrice = document.getElementById("price").value;
         document.getElementById("total").innerHTML = numPrice*numProduct;
-        document.getElementById("total").innerHTML = numTotal;
         $(this).prev().val(numProduct + 1);
     });
 
