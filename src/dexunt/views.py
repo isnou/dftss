@@ -195,7 +195,14 @@ def shopping_cart(request, key_id):
         raise Http404("Item does not exist")
 
     form = PreOrderForm(request.POST or None)
-    pre_order = PreOrder(product=item, color=form.color, option=form.option, shoe_size=form.shoe_size, clothing_size=form.clothing_size)
+    if request.method == 'POST':
+        color = request.POST['color']
+        option = request.POST['option']
+        shoe_size = request.POST['shoe_size']
+        clothing_size = request.POST['clothing_size']
+
+    pre_order = PreOrder(product=item, color=color, option=option, shoe_size=shoe_size,
+                         clothing_size=clothing_size)
 
     context = {
         'form': form,
