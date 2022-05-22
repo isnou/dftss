@@ -217,8 +217,7 @@
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
         var numPrice = document.getElementById("price");
-        var numTotal = numPrice * numProduct;
-        document.getElementById("total").innerHTML = numPrice;
+        document.getElementById("total").innerHTML = numProduct;
         if(numProduct > 0) $(this).next().val(numProduct - 1);
     });
 
