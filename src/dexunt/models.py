@@ -152,5 +152,8 @@ class PreOrder(models.Model):
     shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE, null=True, blank=True)
     clothing_size = models.ForeignKey('Clothing', on_delete=models.CASCADE, null=True, blank=True)
 
+    def get_products(self):
+        return "\n".join([p.product for p in self.product.all()])
+
     def __str__(self):
         return self.product
