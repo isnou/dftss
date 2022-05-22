@@ -208,11 +208,11 @@ def shopping_cart(request, key_id):
         clothing_size = "none"
 
     shop_cart = ShoppingCart(product_name=item.name,
-                                 shoe_size=shoe_size,
-                                 clothing_size=clothing_size,
-                                 color=color,
-                                 option=option,
-                                 )
+                             shoe_size=shoe_size,
+                             clothing_size=clothing_size,
+                             color=color,
+                             option=option,
+                             )
     shop_cart.save()
 
     context = {
@@ -261,9 +261,8 @@ def one_order_checkout(request, shopping_cart_id):
                   town=town,
                   coupon=coupon,
                   )
-
     order.save()
 
     context = {
     }
-    return render(request, "dexunt/shoping-cart.html", context)
+    return render(request, "dexunt/", context)
