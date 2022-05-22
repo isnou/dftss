@@ -199,7 +199,7 @@ def shopping_cart(request, key_id):
         color = request.POST.get('color', False)
         option = request.POST.get('option', False)
         shoe_size = request.POST.get('shoe_size', False)
-        clothing_size = request.get('clothing_size', False)
+        clothing_size = request.POST.get('clothing_size', False)
 
     pre_order = PreOrder(product=item, color=color, option=option, shoe_size=shoe_size,
                          clothing_size=clothing_size)
