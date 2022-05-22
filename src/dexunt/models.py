@@ -161,7 +161,7 @@ class Shop(models.Model):
 
 
 class ShoppingCart(models.Model):
-    product_id = models.DecimalField(max_digits=8, decimal_places=2)
+    product_name = models.CharField(max_length=50, blank=True)
     quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
     shoe_size = models.CharField(max_length=50, blank=True)
     clothing_size = models.CharField(max_length=50, blank=True)
@@ -169,4 +169,23 @@ class ShoppingCart(models.Model):
     option = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.product_name
+
+
+class Order(models.Model):
+    product_name = models.CharField(max_length=50, blank=True)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
+    shoe_size = models.CharField(max_length=50, blank=True)
+    clothing_size = models.CharField(max_length=50, blank=True)
+    color = models.CharField(max_length=50, blank=True)
+    option = models.CharField(max_length=50, blank=True)
+
+    client_name = models.CharField(max_length=50, blank=True)
+    client_phone = PhoneNumberField(null=False, blank=False, unique=True)
+    delivery = models.CharField(max_length=50, blank=True)
+    city = models.CharField(max_length=50, blank=True)
+    town = models.CharField(max_length=50, blank=True)
+    coupon = models.CharField(max_length=50, blank=True)
+
+    def __str__(self):
+        return self.client_phone

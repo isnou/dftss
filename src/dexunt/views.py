@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Item, Slide, Banner, Category, SubCategory, Shop
+from .models import Item, Slide, Banner, Category, SubCategory, Shop, Order, ShoppingCart
 from django.http import Http404
 from django.db.models import Q
-from .forms import PreOrderForm
+from .forms import PreOrderForm, OrderForm
 
 
 def home(request):
@@ -66,56 +66,6 @@ def home(request):
         'best_rated_items': best_rated_items,
     }
     return render(request, "dexunt/home.html", context)
-
-
-def detail(request, key_id):
-    try:
-        item = Item.objects.get(id=key_id)
-    except Item.DoesNotExist:
-        raise Http404("Item does not exist")
-
-    try:
-        albums = item.images.all()
-    except item.DoesNotExist:
-        raise Http404("Empty album")
-
-    try:
-        shoe_sizes = item.shoe_size.all()
-    except item.DoesNotExist:
-        raise Http404("Empty album")
-
-    try:
-        clothing_sizes = item.clothing_size.all()
-    except item.DoesNotExist:
-        raise Http404("Empty album")
-
-    try:
-        colors = item.color.all()
-    except item.DoesNotExist:
-        raise Http404("Empty album")
-
-    try:
-        options = item.option.all()
-    except item.DoesNotExist:
-        raise Http404("Empty album")
-
-    category = item.category
-    sub_category = item.sub_category
-
-    related_items = Item.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=key_id)
-    pre_order_form = PreOrderForm()
-
-    context = {
-        'item': item,
-        'albums': albums,
-        'related_items': related_items,
-        'shoe_sizes': shoe_sizes,
-        'clothing_sizes': clothing_sizes,
-        'colors': colors,
-        'options': options,
-        'pre_order_form': pre_order_form,
-    }
-    return render(request, "dexunt/detail.html", context)
 
 
 def store(request, number):
@@ -188,6 +138,56 @@ def latest_products(request):
     return render(request, "dexunt/product.html", context)
 
 
+def detail(request, key_id):
+    try:
+        item = Item.objects.get(id=key_id)
+    except Item.DoesNotExist:
+        raise Http404("Item does not exist")
+
+    try:
+        albums = item.images.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        shoe_sizes = item.shoe_size.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        clothing_sizes = item.clothing_size.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        colors = item.color.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        options = item.option.all()
+    except item.DoesNotExist:
+        raise Http404("Empty album")
+
+    category = item.category
+    sub_category = item.sub_category
+
+    related_items = Item.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=key_id)
+    pre_order_form = PreOrderForm()
+
+    context = {
+        'item': item,
+        'albums': albums,
+        'related_items': related_items,
+        'shoe_sizes': shoe_sizes,
+        'clothing_sizes': clothing_sizes,
+        'colors': colors,
+        'options': options,
+        'pre_order_form': pre_order_form,
+    }
+    return render(request, "dexunt/detail.html", context)
+
+
 def shopping_cart(request, key_id):
     try:
         item = Item.objects.get(id=key_id)
@@ -201,8 +201,52 @@ def shopping_cart(request, key_id):
         shoe_size = request.POST.get('shoe_size', False)
         clothing_size = request.POST.get('clothing_size', False)
 
+    shopping_cart = ShoppingCart(product_name=item.name,
+                                 shoe_size=shoe_size,
+                                 clothing_size=clothing_size,
+                                 color=color,
+                                 option=option,
+                                 )
+    shopping_cart.save()
     context = {
         'form': form,
         'item': item,
+    }
+    return render(request, "dexunt/shoping-cart.html", context)
+
+
+def one_order_checkout(request, product_id):
+    try:
+        item = ShoppingCart.objects.get(id=product_id)
+    except ShoppingCart.DoesNotExist:
+        raise Http404("Item does not exist")
+
+    # form = OrderForm(request.POST or None)
+    if request.method == 'POST':
+        client_name = request.POST.get('client_name', False)
+        client_phone = request.POST.get('client_phone', False)
+        quantity = request.POST.get('quantity', False)
+        delivery = request.POST.get('delivery', False)
+        city = request.POST.get('city', False)
+        town = request.POST.get('town', False)
+        coupon = request.POST.get('coupon', False)
+
+    order = Order(product_name=item.product_name,
+                  quantity=quantity,
+                  shoe_size=item.shoe_size,
+                  clothing_size=item.clothing_size,
+                  color=item.color,
+                  option=item.option,
+
+                  client_name=client_name,
+                  client_phone=client_phone,
+                  delivery=delivery,
+                  city=city,
+                  town=town,
+                  coupon=coupon,
+                  )
+
+    order.save()
+    context = {
     }
     return render(request, "dexunt/shoping-cart.html", context)
