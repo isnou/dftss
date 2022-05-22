@@ -146,7 +146,7 @@ class Shop(models.Model):
 
 
 class PreOrder(models.Model):
-    product = models.ForeignKey('Item', on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ManyToManyField(Item)
     color = models.ForeignKey('Color', on_delete=models.CASCADE, null=True, blank=True)
     option = models.ForeignKey('Option', on_delete=models.CASCADE, null=True, blank=True)
     shoe_size = models.ForeignKey('Shoe', on_delete=models.CASCADE, null=True, blank=True)

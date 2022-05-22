@@ -190,6 +190,7 @@ def latest_products(request):
 
 def shopping_cart(request, key_id):
     form = PreOrderForm(request.POST or None)
+    pre_order = PreOrder()
 
     context = {
         'form': form,
