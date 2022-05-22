@@ -38,7 +38,7 @@
 {% endblock %}
 
 	{% block shopping-cart %}
-	<input type="hidden" id="mul" name="mul" value="{{ item.price }}">
+	<input type="hidden" id="price" name="price" value="{{ item.price }}">
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
@@ -84,7 +84,7 @@
 										</div>
 									</td>
 									<td class="column-5">
-										<output id="total" name="total"></output>
+										<p id="total"></p>
 									</td>
 								</tr>
 
