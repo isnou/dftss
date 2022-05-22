@@ -195,11 +195,17 @@ def shopping_cart(request, key_id):
         raise Http404("Item does not exist")
 
     form = PreOrderForm(request.POST or None)
+
     if request.method == 'POST':
         color = request.POST.get('color', False)
         option = request.POST.get('option', False)
         shoe_size = request.POST.get('shoe_size', False)
         clothing_size = request.POST.get('clothing_size', False)
+    else:
+        color = "none"
+        option = "none"
+        shoe_size = "none"
+        clothing_size = "none"
 
     shopping_cart = ShoppingCart(product_name=item.name,
                                  shoe_size=shoe_size,
@@ -208,6 +214,7 @@ def shopping_cart(request, key_id):
                                  option=option,
                                  )
     shopping_cart.save()
+
     context = {
         'form': form,
         'item': item,
@@ -231,6 +238,14 @@ def one_order_checkout(request, shopping_cart_id):
         city = request.POST.get('city', False)
         town = request.POST.get('town', False)
         coupon = request.POST.get('coupon', False)
+    else:
+        quantity = "none"
+        client_name = "none"
+        client_phone = "none"
+        delivery = "none"
+        city = "none"
+        town = "none"
+        coupon = "none"
 
     order = Order(product_name=item.product_name,
                   shoe_size=item.shoe_size,
@@ -248,6 +263,7 @@ def one_order_checkout(request, shopping_cart_id):
                   )
 
     order.save()
+
     context = {
     }
     return render(request, "dexunt/home.html", context)
