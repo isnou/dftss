@@ -72,4 +72,29 @@ def home(request):
         'best_selling_collection': best_selling_collection,
         'best_rated_collection': best_rated_collection,
     }
-    return render(request, "dexunt_store/home.html", context)
+    return render(request, "dexunt-store/home.html", context)
+
+
+def store_detail(request, collection):
+    try:
+        collection_store = ShowCase.objects.get(collection=collection)
+    except ShowCase.DoesNotExist:
+        raise Http404("flash collection store does not exist")
+
+    if collection == 'FLASH' or collection == 'SEASON':
+        product_collection = collection_store.product.all()
+        product_collection = product_collection.order_by('?').all()[:8]
+    elif collection == 'LATEST':
+        product_collection = Product.objects.all().order_by('-id')
+    elif collection == 'SELL':
+        product_collection = Product.objects.all().order_by('-sell_rate')
+    elif collection == 'RATE':
+        product_collection = Product.objects.all().order_by('-rate')
+    else:
+        product_collection = 'none'
+
+    context = {
+        'collection_store': collection_store,
+        'product_collection': product_collection,
+    }
+    return render(request, "dexunt-store/detail.html", context)
