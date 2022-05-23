@@ -153,10 +153,10 @@ class ShowCase(models.Model):
     brand = models.ManyToManyField(Brand, blank=True)
     choice = models.CharField(max_length=50, choices=CHOICES)
 
-    def get_products(self):
+    def get_product(self):
         return "\n".join([p.products for p in self.product.all()])
 
-    def get_categories(self):
+    def get_category(self):
         return "\n".join([p.products for p in self.categories.all()])
 
     def get_shoe_size(self):
