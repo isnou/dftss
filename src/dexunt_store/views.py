@@ -22,41 +22,39 @@ def home(request):
         raise Http404("SubCategory does not exist")
 
     try:
-        flash_shop = ShowCase.objects.get(id=1)
+        flash_collection_store = ShowCase.objects.get(id=1)
     except ShowCase.DoesNotExist:
-        raise Http404("Shop does not exist")
+        raise Http404("flash collection store does not exist")
 
     try:
-        flash_list = flash_shop.product.all()
-    except flash_shop.DoesNotExist:
-        raise Http404("shop one is empty")
-    flash_list = flash_list.order_by('?').all()[:12]
+        flash_collection_store = flash_collection_store.product.all()
+    except flash_collection_store.DoesNotExist:
+        raise Http404("flash collection store is empty")
+    flash_collection_store = flash_collection_store.order_by('?').all()[:12]
 
     try:
-        season_collection_shop = ShowCase.objects.get(id=3)
+        season_collection_store = ShowCase.objects.get(id=2)
     except ShowCase.DoesNotExist:
-        raise Http404("Shop does not exist")
+        raise Http404("season collection store does not exist")
 
     try:
-        season_collection_list = season_collection_shop.product.all()
-    except season_collection_shop.DoesNotExist:
-        raise Http404("shop three is empty")
-    season_collection_list = season_collection_list.order_by('?').all()[:12]
+        season_collection_store = season_collection_store.product.all()
+    except season_collection_store.DoesNotExist:
+        raise Http404("season collection store is empty")
+    season_collection_store = season_collection_store.order_by('?').all()[:12]
 
-    latest_items = Product.objects.all().order_by('-id')[:12]
-    best_selling_items = Product.objects.all().order_by('-sell_rate')[:12]
-    best_rated_items = Product.objects.all().order_by('-rate')[:12]
+    latest_collection_store = Product.objects.all().order_by('-id')[:12]
+    best_selling_collection_store = Product.objects.all().order_by('-sell_rate')[:12]
+    best_rated_collection_store = Product.objects.all().order_by('-rate')[:12]
 
     context = {
         'content': content,
         'categories': categories,
         'sub_categories': sub_categories,
-        'flash_shop': flash_shop,
-        'flash_list': flash_list,
-        'season_collection_shop': season_collection_shop,
-        'season_collection_list': season_collection_list,
-        'latest_items': latest_items,
-        'best_selling_items': best_selling_items,
-        'best_rated_items': best_rated_items,
+        'flash_collection_store': flash_collection_store,
+        'season_collection_store': season_collection_store,
+        'latest_collection_store': latest_collection_store,
+        'best_selling_collection_store': best_selling_collection_store,
+        'best_rated_collection_store': best_rated_collection_store,
     }
     return render(request, "dexunt_store/home.html", context)
