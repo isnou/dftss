@@ -36,8 +36,8 @@ class ContentAdmin(admin.ModelAdmin):
 
 class ShowCaseAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'product', 'category', 'sub_category',
-        'shoe_size', 'clothing_size', 'color', 'option', 'brand', 'choice')
+        'name', 'get_product', 'get_category', 'get_sub_category',
+        'get_shoe_size', 'get_clothing_size', 'get_color', 'get_option', 'get_brand', 'choice')
 
 
 admin.site.register(Product, ProductAdmin)
