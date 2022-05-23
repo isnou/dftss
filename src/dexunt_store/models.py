@@ -99,7 +99,6 @@ class Product(models.Model):
     catch_line = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
-    delivery_comment = models.CharField(max_length=200, blank=True, null=True)
     sell_rate = models.IntegerField(default=0)
     rate = models.IntegerField(
         default=5,
