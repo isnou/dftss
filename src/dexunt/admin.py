@@ -15,6 +15,13 @@ class ShopAdmin(admin.ModelAdmin):
     list_filter = ('category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand')
 
 
+class OrderAdmin(admin.ModelAdmin):
+    search_fields = []
+    list_display = ('client_name', 'client_phone', 'product_name', 'quantity', 'coupon', 'delivery', 'shoe_size',
+                    'clothing_size', 'color', 'option', 'city', 'town', 'client_raw_phone')
+    list_filter = ('client_name', 'client_phone', 'product_name', 'city', 'town')
+
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(ItemImage)
 admin.site.register(Category)
@@ -34,3 +41,6 @@ admin.site.register(Order)
 
 
 #  'name', 'phone', 'email', 'product', 'quantity', 'color', 'option', 'size', 'created_at', 'updated_at'
+
+
+
