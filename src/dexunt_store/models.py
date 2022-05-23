@@ -158,7 +158,7 @@ class ShowCase(models.Model):
     option = models.ManyToManyField(Option, blank=True)
     brand = models.ManyToManyField(Brand, blank=True)
     choice = models.CharField(max_length=50, choices=CHOICES)
-    collection = models.CharField(max_length=50, choices=COLLECT, unique=True, null=True)
+    collection = models.CharField(max_length=50, choices=COLLECT, unique=True)
 
     def get_product(self):
         return "\n".join([p.name for p in self.product.all()])
