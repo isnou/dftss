@@ -12,11 +12,6 @@ def home(request):
         raise Http404("Slide does not exist")
 
     try:
-        banners = Banner.objects.all()
-    except Banner.DoesNotExist:
-        raise Http404("Banner does not exist")
-
-    try:
         categories = Category.objects.all()
     except Category.DoesNotExist:
         raise Http404("Category does not exist")

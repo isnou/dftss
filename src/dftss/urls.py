@@ -20,8 +20,5 @@ urlpatterns = [
     path('', include('website.urls')),
     path('dexunt/', include('dexunt.urls')),
     path('admin/', admin.site.urls),
-    path('dexunt_main/', include('dexunt_main.urls')),
     path('dexunt_store/', include('dexunt_store.urls')),
-    path('dexunt_sell/', include('dexunt_sell.urls')),
-    path('dexunt_account/', include('dexunt_account.urls')),
 ]
