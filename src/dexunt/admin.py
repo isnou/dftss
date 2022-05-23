@@ -35,7 +35,7 @@ admin.site.register(Color)
 admin.site.register(Shop, ShopAdmin)
 admin.site.register(Brand)
 admin.site.register(ShoppingCart)
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)
 
 # , 'product', 'category', 'sub_category', 'shoe_size', 'clothing_size', 'color', 'option', 'brand'
 
