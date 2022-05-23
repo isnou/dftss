@@ -264,5 +264,6 @@ def one_order_checkout(request, shopping_cart_id):
     order.save()
 
     context = {
+        'order': order,
     }
-    return render(request, "dexunt/", context)
+    return render(request, "dexunt/blog", context)
