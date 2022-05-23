@@ -247,7 +247,7 @@ def one_order_checkout(request, shopping_cart_id):
         town = "none"
         coupon = "none"
 
-    order = Order(prodt_name=shop_cart.product_name,
+    order = Order(product_name=shop_cart.product_name,
                   shoe_size=shop_cart.shoe_size,
                   clothing_size=shop_cart.clothing_size,
                   color=shop_cart.color,
@@ -266,4 +266,4 @@ def one_order_checkout(request, shopping_cart_id):
     context = {
         'order': order,
     }
-    return render(request, "dexunt/blog", context)
+    return render(request, "dexunt/blog.html", context)
