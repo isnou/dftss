@@ -44,7 +44,7 @@
 		<div class="container">
 			<div class="row">
 
-				<form action="{% url 'home' %}" name="one_order_form" id="one_order_form" method="post">
+				<form action="{% url 'one_order_checkout' shop_cart.id %}" name="one_order_form" id="one_order_form" method="post">
 							{% csrf_token %}
 
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
@@ -89,7 +89,7 @@
 									</div>
 
 									<div class="bor8 bg0 m-b-22">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" placeholder="Your Phone"   name="client_phone" id="client_phone">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="tel" placeholder="Your Phone"   name="client_phone" id="client_phone">
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">

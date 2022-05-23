@@ -86,7 +86,7 @@
 										<select class="js-select2" name="shoe_size" id="shoe_size">
 											<option>Choose a size</option>
 											{% for shoe in shoe_sizes %}
-											<option value="{{ shoe.size }}"> {{ shoe.size }} </option>
+											<option> {{ shoe.size }} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -106,7 +106,7 @@
 										<select class="js-select2" name="clothing_size" id="clothing_size">
 											<option>Choose a size</option>
 											{% for clothing in clothing_sizes %}
-											<option value="{{ clothing_size }}"> {{clothing.size}} </option>
+											<option> {{clothing.size}} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -128,7 +128,7 @@
 										<select class="js-select2" name="color" id="color">
 											<option>Choose a color</option>
 											{% for color in colors %}
-											<option value="{{ color.name }}"> {{ color.name }} </option>
+											<option> {{ color.name }} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -149,7 +149,7 @@
 										<select class="js-select2" name="option" id="option">
 											<option>Choose an option</option>
 											{% for option in options %}
-											<option value="{{ option.name }}"> {{ option.name }} </option>
+											<option> {{ option.name }} </option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
