@@ -24,7 +24,7 @@ def home(request):
         flash_collection = flash_collection_store.product.all()
     except flash_collection_store.DoesNotExist:
         raise Http404("flash collection store is empty")
-    flash_collection = flash_collection.order_by('?').all()[:12]
+    flash_collection = flash_collection.order_by('?').all()[:8]
 
     try:
         season_collection_store = ShowCase.objects.get(collection='SEASON')
@@ -54,7 +54,7 @@ def home(request):
 
     latest_collection = Product.objects.all().order_by('-id')[:8]
     best_selling_collection = Product.objects.all().order_by('-sell_rate')[:12]
-    best_rated_collection = Product.objects.all().order_by('-rate')
+    best_rated_collection = Product.objects.all().order_by('-rate')[:12]
 
     context = {
         'slides': slides,
