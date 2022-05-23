@@ -16,7 +16,7 @@ def home(request):
         raise Http404("No Banners")
 
     try:
-        flash_collection_store = ShowCase.objects.get(collection=FLASH)
+        flash_collection_store = ShowCase.objects.get(collection='FLASH')
     except ShowCase.DoesNotExist:
         raise Http404("flash collection store does not exist")
 
