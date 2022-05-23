@@ -142,7 +142,7 @@ class ShowCase(models.Model):
         ('BANNER', 'BANNER'),
     )
     name = models.CharField(max_length=200, unique=True)
-    product = models.ManyToManyField(Product)
+    product = models.ManyToManyField(Product, blank=True)
     category = models.ManyToManyField(Category, blank=True)
     sub_category = models.ManyToManyField(SubCategory, blank=True)
     shoe_size = models.ManyToManyField(Shoe, blank=True)
