@@ -262,4 +262,4 @@ def one_order_checkout(request, shopping_cart_id):
     context = {
         'order': order,
     }
-    return render(request, "dexunt/blog.html", context)
+    return render(request, "dexunt/check-out.html", context)

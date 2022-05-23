@@ -13,7 +13,7 @@ class OrderForm(forms.Form):
     product_name = forms.CharField()
     quantity = forms.IntegerField()
     client_name = forms.CharField()
-    client_phone = forms.CharField()
+    client_phone = PhoneNumberField()
     delivery = forms.CharField()
     city = forms.CharField()
     town = forms.CharField()
