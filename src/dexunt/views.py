@@ -254,24 +254,10 @@ def one_order_checkout(request, shopping_cart_id):
     city = "none"
     town = "none"
     coupon = "none"
-    
-    order = Order(product_name=shop_cart.product_name,
-                  shoe_size=shop_cart.shoe_size,
-                  clothing_size=shop_cart.clothing_size,
-                  color=shop_cart.color,
-                  option=shop_cart.option,
-                  quantity=quantity,
 
-                  client_name=client_name,
-                  client_phone=client_phone,
-                  delivery=delivery,
-                  city=city,
-                  town=town,
-                  coupon=coupon,
-                  )
-    order.save()
+
 
     context = {
-        'order': order,
+        'coupon': coupon,
     }
     return render(request, "dexunt/blog.html", context)
