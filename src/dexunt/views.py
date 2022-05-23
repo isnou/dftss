@@ -225,25 +225,15 @@ def one_order_checkout(request, shopping_cart_id):
     except ShoppingCart.DoesNotExist:
         raise Http404("Item does not exist")
 
-    # form = OrderForm(request.POST or None)
-    if request.method == 'POST':
-        client_name = request.POST.get('client_name', False)
-        client_phone = request.POST.get('client_phone', False)
-        quantity = request.POST.get('num-product2', False)
-        delivery = request.POST.get('delivery', False)
-        city = request.POST.get('city', False)
-        town = request.POST.get('town', False)
-        coupon = request.POST.get('coupon', False)
-    else:
-        quantity = "none"
-        client_name = "none"
-        client_phone = "none"
-        delivery = "none"
-        city = "none"
-        town = "none"
-        coupon = "none"
+    order = Order(product_name=shop_cart.product_name,
+                  shoe_size=shop_cart.shoe_size,
+                  clothing_size=shop_cart.clothing_size,
+                  color=shop_cart.color,
+                  option=shop_cart.option,
+                  )
+    order.save()
 
     context = {
-        'coupon': coupon,
+        'order': order,
     }
     return render(request, "dexunt/blog.html", context)
