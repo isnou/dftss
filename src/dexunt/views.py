@@ -247,7 +247,7 @@ def one_order_checkout(request, shopping_cart_id):
         town = "none"
         coupon = "none"
 
-    order = Order(product_name=shop_cart.product_name,
+    order = Order(prodt_name=shop_cart.product_name,
                   shoe_size=shop_cart.shoe_size,
                   clothing_size=shop_cart.clothing_size,
                   color=shop_cart.color,
