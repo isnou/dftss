@@ -142,11 +142,13 @@ class ShowCase(models.Model):
         ('BANNER', 'BANNER'),
     )
     COLLECT = (
+        ('SELL', 'SELL'),
+        ('RATE', 'RATE'),
         ('FLASH', 'FLASH'),
         ('SEASON', 'SEASON'),
         ('LATEST', 'LATEST'),
-        ('SELL', 'SELL'),
-        ('RATE', 'RATE'),
+        ('CATEGORY', 'CATEGORY'),
+        ('CREATION', 'CREATION'),
     )
     name = models.CharField(max_length=200, unique=True)
     product = models.ManyToManyField(Product, blank=True)
