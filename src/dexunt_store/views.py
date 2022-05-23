@@ -7,19 +7,13 @@ from .forms import PreOrderForm, OrderForm
 
 def home(request):
     try:
-        content = Content.objects.all()
+        slides = Content.objects.all()[0:3]
     except Content.DoesNotExist:
-        raise Http404("No Content")
-
+        raise Http404("No Slides")
     try:
-        categories = Category.objects.all()
-    except Category.DoesNotExist:
-        raise Http404("Category does not exist")
-
-    try:
-        sub_categories = SubCategory.objects.all()
-    except SubCategory.DoesNotExist:
-        raise Http404("SubCategory does not exist")
+        banners = Content.objects.all()[3:6]
+    except Content.DoesNotExist:
+        raise Http404("No Banners")
 
     try:
         flash_collection_store = ShowCase.objects.get(id=1)
@@ -43,18 +37,37 @@ def home(request):
         raise Http404("season collection store is empty")
     season_collection_store = season_collection_store.order_by('?').all()[:12]
 
+    try:
+        latest_collection_store = ShowCase.objects.get(id=3)
+    except ShowCase.DoesNotExist:
+        raise Http404("latest collection store does not exist")
+
+    try:
+        best_selling_collection_store = ShowCase.objects.get(id=4)
+    except ShowCase.DoesNotExist:
+        raise Http404("best selling collection store does not exist")
+
+    try:
+        best_rated_collection_store = ShowCase.objects.get(id=5)
+    except ShowCase.DoesNotExist:
+        raise Http404("best rated collection store does not exist")
+
     latest_collection = Product.objects.all().order_by('-id')[:12]
     best_selling_collection = Product.objects.all().order_by('-sell_rate')[:12]
     best_rated_collection = Product.objects.all().order_by('-rate')[:12]
 
     context = {
-        'content': content,
-        'categories': categories,
-        'sub_categories': sub_categories,
+        'slides': slides,
+        'banners': banners,
+
         'flash_collection_store': flash_collection_store,
         'season_collection_store': season_collection_store,
-        'latest_collection_store': latest_collection,
-        'best_selling_collection_store': best_selling_collection,
-        'best_rated_collection_store': best_rated_collection,
+        'latest_collection_store': latest_collection_store,
+        'best_selling_collection_store': best_selling_collection_store,
+        'best_rated_collection_store': best_rated_collection_store,
+
+        'latest_collection': latest_collection,
+        'best_selling_collection': best_selling_collection,
+        'best_rated_collection': best_rated_collection,
     }
     return render(request, "dexunt_store/home.html", context)
