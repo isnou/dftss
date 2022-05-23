@@ -157,7 +157,10 @@ class ShowCase(models.Model):
         return "\n".join([p.products for p in self.product.all()])
 
     def get_category(self):
-        return "\n".join([p.products for p in self.categories.all()])
+        return "\n".join([p.products for p in self.category.all()])
+
+    def get_sub_category(self):
+        return "\n".join([p.products for p in self.sub_category.all()])
 
     def get_shoe_size(self):
         return "\n".join([p.products for p in self.shoe_size.all()])
