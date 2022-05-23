@@ -153,28 +153,28 @@ class ShowCase(models.Model):
     choice = models.CharField(max_length=50, choices=CHOICES)
 
     def get_product(self):
-        return "\n".join([p.product for p in self.product.all()])
+        return "\n".join([p.name for p in self.product.all()])
 
     def get_category(self):
-        return "\n".join([p.product for p in self.category.all()])
+        return "\n".join([p.slug for p in self.category.all()])
 
     def get_sub_category(self):
-        return "\n".join([p.product for p in self.sub_category.all()])
+        return "\n".join([p.slug for p in self.sub_category.all()])
 
     def get_shoe_size(self):
-        return "\n".join([p.product for p in self.shoe_size.all()])
+        return "\n".join([p.size for p in self.shoe_size.all()])
 
     def get_clothing_size(self):
-        return "\n".join([p.product for p in self.clothing_size.all()])
+        return "\n".join([p.size for p in self.clothing_size.all()])
 
     def get_color(self):
-        return "\n".join([p.product for p in self.color.all()])
+        return "\n".join([p.name for p in self.color.all()])
 
     def get_option(self):
-        return "\n".join([p.product for p in self.option.all()])
+        return "\n".join([p.name for p in self.option.all()])
 
     def get_brand(self):
-        return "\n".join([p.product for p in self.brand.all()])
+        return "\n".join([p.slug for p in self.brand.all()])
 
     def __str__(self):
         return self.name
