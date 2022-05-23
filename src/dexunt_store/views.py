@@ -43,9 +43,9 @@ def home(request):
         raise Http404("season collection store is empty")
     season_collection_store = season_collection_store.order_by('?').all()[:12]
 
-    latest_collection_store = Product.objects.all().order_by('-id')[:12]
-    best_selling_collection_store = Product.objects.all().order_by('-sell_rate')[:12]
-    best_rated_collection_store = Product.objects.all().order_by('-rate')[:12]
+    latest_collection = Product.objects.all().order_by('-id')[:12]
+    best_selling_collection = Product.objects.all().order_by('-sell_rate')[:12]
+    best_rated_collection = Product.objects.all().order_by('-rate')[:12]
 
     context = {
         'content': content,
@@ -53,8 +53,8 @@ def home(request):
         'sub_categories': sub_categories,
         'flash_collection_store': flash_collection_store,
         'season_collection_store': season_collection_store,
-        'latest_collection_store': latest_collection_store,
-        'best_selling_collection_store': best_selling_collection_store,
-        'best_rated_collection_store': best_rated_collection_store,
+        'latest_collection_store': latest_collection,
+        'best_selling_collection_store': best_selling_collection,
+        'best_rated_collection_store': best_rated_collection,
     }
     return render(request, "dexunt_store/home.html", context)

@@ -141,6 +141,13 @@ class ShowCase(models.Model):
         ('SLIDE', 'SLIDE'),
         ('BANNER', 'BANNER'),
     )
+    COLLECT = (
+        ('FLASH', 'FLASH'),
+        ('SEASON', 'SEASON'),
+        ('LATEST', 'LATEST'),
+        ('SELL', 'SELL'),
+        ('RATE', 'RATE'),
+    )
     name = models.CharField(max_length=200, unique=True)
     product = models.ManyToManyField(Product, blank=True)
     category = models.ManyToManyField(Category, blank=True)
@@ -151,6 +158,7 @@ class ShowCase(models.Model):
     option = models.ManyToManyField(Option, blank=True)
     brand = models.ManyToManyField(Brand, blank=True)
     choice = models.CharField(max_length=50, choices=CHOICES)
+    collection = models.CharField(max_length=50, choices=COLLECT, unique=True)
 
     def get_product(self):
         return "\n".join([p.name for p in self.product.all()])
