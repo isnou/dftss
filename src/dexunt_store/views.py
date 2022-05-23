@@ -72,7 +72,7 @@ def home(request):
         'best_selling_collection': best_selling_collection,
         'best_rated_collection': best_rated_collection,
     }
-    return render(request, "dexunt-store/home.html", context)
+    return render(request, "dexunt_store/home.html", context)
 
 
 def store_detail(request, collection):
@@ -97,4 +97,4 @@ def store_detail(request, collection):
         'collection_store': collection_store,
         'product_collection': product_collection,
     }
-    return render(request, "dexunt-store/detail.html", context)
+    return render(request, "dexunt_store/detail.html", context)
