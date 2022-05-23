@@ -75,20 +75,20 @@ def home(request):
     return render(request, "dexunt_store/home.html", context)
 
 
-def store_detail(request, collection):
+def store_detail(request, key):
     try:
-        collection_store = ShowCase.objects.get(collection=collection)
+        collection_store = ShowCase.objects.get(id=key)
     except ShowCase.DoesNotExist:
         raise Http404("flash collection store does not exist")
 
-    if collection == 'FLASH' or collection == 'SEASON':
+    if key == 1 or key == 2:
         product_collection = collection_store.product.all()
         product_collection = product_collection.order_by('?').all()[:8]
-    elif collection == 'LATEST':
+    elif key == 3:
         product_collection = Product.objects.all().order_by('-id')
-    elif collection == 'SELL':
+    elif key == 4:
         product_collection = Product.objects.all().order_by('-sell_rate')
-    elif collection == 'RATE':
+    elif key == 5:
         product_collection = Product.objects.all().order_by('-rate')
     else:
         product_collection = 'none'
