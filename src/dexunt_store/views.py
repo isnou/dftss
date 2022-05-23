@@ -9,7 +9,7 @@ def home(request):
     try:
         content = Content.objects.all()
     except Content.DoesNotExist:
-        raise Http404("Slide does not exist")
+        raise Http404("No Content")
 
     try:
         categories = Category.objects.all()
