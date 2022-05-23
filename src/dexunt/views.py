@@ -3,6 +3,7 @@ from .models import Item, Slide, Banner, Category, SubCategory, Shop, Order, Sho
 from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm, OrderForm
+from django.template import RequestContext
 
 
 def home(request):
@@ -241,7 +242,7 @@ def one_order_checkout(request, shopping_cart_id):
     else:
         quantity = "none"
         client_name = "none"
-        client_phone = "none"
+        client_phone = 0
         delivery = "none"
         city = "none"
         town = "none"
