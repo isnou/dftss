@@ -181,7 +181,7 @@ class Order(models.Model):
     option = models.CharField(max_length=50, blank=True)
 
     client_name = models.CharField(max_length=50, blank=True)
-    client_phone = PhoneNumberField(null=False, blank=False, unique=True)
+    client_phone = models.CharField(max_length=50, blank=True)
     delivery = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50, blank=True)
     town = models.CharField(max_length=50, blank=True)
