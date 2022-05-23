@@ -27,7 +27,7 @@ def home(request):
     flash_collection = flash_collection.order_by('?').all()[:12]
 
     try:
-        season_collection_store = ShowCase.objects.get(id=2)
+        season_collection_store = ShowCase.objects.get(collection='SEASON')
     except ShowCase.DoesNotExist:
         raise Http404("season collection store does not exist")
 
@@ -38,17 +38,17 @@ def home(request):
     season_collection = season_collection.order_by('?').all()[:12]
 
     try:
-        latest_collection_store = ShowCase.objects.get(id=3)
+        latest_collection_store = ShowCase.objects.get(collection='LATEST')
     except ShowCase.DoesNotExist:
         raise Http404("latest collection store does not exist")
 
     try:
-        best_selling_collection_store = ShowCase.objects.get(id=4)
+        best_selling_collection_store = ShowCase.objects.get(collection='SELL')
     except ShowCase.DoesNotExist:
         raise Http404("best selling collection store does not exist")
 
     try:
-        best_rated_collection_store = ShowCase.objects.get(id=5)
+        best_rated_collection_store = ShowCase.objects.get(collection='RATE')
     except ShowCase.DoesNotExist:
         raise Http404("best rated collection store does not exist")
 
