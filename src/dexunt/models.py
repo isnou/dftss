@@ -188,4 +188,4 @@ class Order(models.Model):
     coupon = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return self.client_phone
+        return self.client_name
