@@ -42,10 +42,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'website',
     'dexunt',
-    'dexunt_main',
     'dexunt_store',
-    'dexunt_sell',
-    'dexunt_account',
 ]
 
 MIDDLEWARE = [
