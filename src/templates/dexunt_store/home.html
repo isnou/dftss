@@ -210,15 +210,15 @@
 {% endif %}
 {% endblock %}
 
-<!-- best-selling-products -->
-{% block best-selling-products %}
-{% if best_selling_collection_store.choice == 'SLIDE' %}
+<!-- season-collection-products -->
+{% block season-collection-products %}
+{% if season_collection_store.choice == 'SLIDE' %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ best_selling_collection_store.name }}</h2>
+					<h2 class="#">{{ season_collection_store.name }}</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -233,7 +233,7 @@
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-					{% for product in best_selling_collection %}
+					{% for product in season_collection %}
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
 						<div class="block2">
@@ -277,18 +277,18 @@
 			</div>
 		</div>
 	</section>
-{% elif best_selling_collection_store.choice == 'BANNER' %}
+{% elif season_collection_store.choice == 'BANNER' %}
     <section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 
 			<div class="p-b-45">
 				<h2 class="ltext-106 cl5 txt-center">
-					{{ best_selling_collection_store.name }}
+					{{ season_collection_store.name }}
 				</h2>
 			</div>
 
 			<div class="row isotope-grid">
-				{% for product in best_selling_collection %}
+				{% for product in season_collection %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
 					<div class="block2">
@@ -446,15 +446,15 @@
 {% endif %}
 {% endblock %}
 
-<!-- season-collection-products -->
-{% block season-collection-products %}
-{% if season_collection_store.choice == 'SLIDE' %}
+<!-- best-selling-products -->
+{% block best-selling-products %}
+{% if best_selling_collection_store.choice == 'SLIDE' %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ season_collection_store.name }}</h2>
+					<h2 class="#">{{ best_selling_collection_store.name }}</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -469,7 +469,7 @@
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-					{% for product in season_collection %}
+					{% for product in best_selling_collection %}
 					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
 						<div class="block2">
@@ -513,18 +513,18 @@
 			</div>
 		</div>
 	</section>
-{% elif season_collection_store.choice == 'BANNER' %}
+{% elif best_selling_collection_store.choice == 'BANNER' %}
     <section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 
 			<div class="p-b-45">
 				<h2 class="ltext-106 cl5 txt-center">
-					{{ season_collection_store.name }}
+					{{ best_selling_collection_store.name }}
 				</h2>
 			</div>
 
 			<div class="row isotope-grid">
-				{% for product in season_collection %}
+				{% for product in best_selling_collection %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ item.category }}">
 					<!-- Block2 -->
 					<div class="block2">
@@ -680,18 +680,6 @@
 		</div>
 	</section>
 {% endif %}
-{% endblock %}
-
-<!-- products-list-six -->
-{% block products-list-six %}
-{% endblock %}
-
-<!-- products-list-seven -->
-{% block products-list-seven %}
-{% endblock %}
-
-<!-- products-list-eight -->
-{% block products-list-eight %}
 {% endblock %}
 
 {% block quick_view %}
