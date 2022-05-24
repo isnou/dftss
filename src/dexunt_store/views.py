@@ -138,7 +138,7 @@ def product_detail(request, product_id):
     sub_category = product.sub_category
     tag = product.tag
 
-    related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)).exclude(id=product_id)
+    related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category)).exclude(id=product_id)
 
     context = {
         'product': product,
