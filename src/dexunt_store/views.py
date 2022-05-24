@@ -100,7 +100,7 @@ def store_detail(request, collection):
         'product_collection': product_collection,
         'categories': categories,
     }
-    return render(request, "dexunt_store/product.html", context)
+    return render(request, "dexunt_store/store-detail.html", context)
 
 
 def product_detail(request, product_id):
@@ -150,4 +150,4 @@ def product_detail(request, product_id):
         'colors': colors,
         'options': options,
     }
-    return render(request, "dexunt_store/detail.html", context)
+    return render(request, "dexunt_store/product-detail.html", context)
