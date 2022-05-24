@@ -41,20 +41,19 @@ def home(request):
         latest_collection_store = ShowCase.objects.get(collection='LATEST')
     except ShowCase.DoesNotExist:
         raise Http404("latest collection store does not exist")
+    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:8]
 
     try:
         best_selling_collection_store = ShowCase.objects.get(collection='SELL')
     except ShowCase.DoesNotExist:
         raise Http404("best selling collection store does not exist")
+    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:12]
 
     try:
         best_rated_collection_store = ShowCase.objects.get(collection='RATE')
     except ShowCase.DoesNotExist:
         raise Http404("best rated collection store does not exist")
-
-    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False')[:8]
-    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False')[:12]
-    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False')[:12]
+    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:12]
 
     context = {
         'slides': slides,
@@ -138,7 +137,7 @@ def product_detail(request, product_id):
     sub_category = product.sub_category
     tag = product.tag
 
-    related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)).\
+    related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)). \
         exclude(id=product_id).exclude(publish='False')
 
     context = {
