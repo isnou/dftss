@@ -16,7 +16,7 @@ class OrderAdmin(admin.ModelAdmin):
         'delivery_destination', 'payment_method')
 
 
-class DeliveryAdmin(admin.ModelAdmin):
+class ShippingAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('company_name', 'price')
     list_filter = ()
@@ -24,18 +24,18 @@ class DeliveryAdmin(admin.ModelAdmin):
 
 class DestinationAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('name', 'sub_destination', 'delivery_price')
+    list_display = ('name', 'get_shipping', 'get_sub_destination')
     list_filter = ()
 
 
 class SubDestinationAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('name')
+    list_display = 'name'
     list_filter = ()
 
 
 admin.site.register(Order, OrderAdmin)
-admin.site.register(Delivery, DeliveryAdmin)
+admin.site.register(Shipping, ShippingAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(SubDestination, SubDestinationAdmin)
 

@@ -9,9 +9,14 @@ class SubDestination(models.Model):
         return self.name
 
 
-class Delivery(models.Model):
-    company_name = models.CharField(max_length=200, unique=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+class Shipping(models.Model):
+    TYPES = (
+        ('FREE', 'FREE'),
+        ('STANDARD', 'STANDARD'),
+        ('EXPRESS', 'EXPRESS'),
+    )
+    company_name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
 
     class Meta:
         verbose_name_plural = "Delivery"
@@ -23,12 +28,12 @@ class Delivery(models.Model):
 class Destination(models.Model):
     name = models.CharField(max_length=200, unique=True)
     sub_destination = models.ManyToManyField(SubDestination, blank=True)
-    delivery_price = models.ManyToManyField(Delivery, blank=True)
+    shipping = models.ManyToManyField(Shipping, blank=True)
 
-    def get_delivery_prices(self):
-        return "\n".join([p.delivery_prices for p in self.delivery_price.all()])
+    def get_shipping(self):
+        return "\n".join([p.shipping for p in self.shipping.all()])
 
-    def get_sub_destinations(self):
+    def get_sub_destination(self):
         return "\n".join([p.sub_destination for p in self.sub_destination.all()])
 
     def __str__(self):
@@ -65,8 +70,8 @@ class Order(models.Model):
     product_clothing_size = models.CharField(max_length=200, default='UNDEFINED')
     product_price = models.DecimalField(max_digits=8, decimal_places=2)
 
-    delivery_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    delivery_destination = models.ForeignKey('Destination', on_delete=models.CASCADE, blank=True, null=True)
+    shipping_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
+    shipping_destination = models.ForeignKey('Destination', on_delete=models.CASCADE, blank=True, null=True)
 
     payment_method = models.CharField(max_length=50, choices=PAYMENT, blank=True, null=True)
 
