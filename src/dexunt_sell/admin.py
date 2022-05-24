@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, Delivery, Destination, SubDestination
+from .models import Order, Shipping, Destination, SubDestination
 
 
 class OrderAdmin(admin.ModelAdmin):
