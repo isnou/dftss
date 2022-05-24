@@ -97,4 +97,4 @@ def store_detail(request, collection):
         'collection_store': collection_store,
         'product_collection': product_collection,
     }
-    return render(request, "dexunt_store/detail.html", context)
+    return render(request, "dexunt_store/product.html", context)
