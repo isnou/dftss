@@ -101,3 +101,52 @@ def store_detail(request, collection):
         'categories': categories,
     }
     return render(request, "dexunt_store/product.html", context)
+
+
+def product_detail(request, product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    try:
+        album = product.images.all()
+    except product.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        shoe_sizes = product.shoe_size.all()
+    except product.DoesNotExist:
+        raise Http404("No sizes")
+
+    try:
+        clothing_sizes = product.clothing_size.all()
+    except product.DoesNotExist:
+        raise Http404("No sizes")
+
+    try:
+        colors = product.color.all()
+    except product.DoesNotExist:
+        raise Http404("No colors")
+
+    try:
+        options = product.option.all()
+    except product.DoesNotExist:
+        raise Http404("No options")
+
+    category = product.category
+    sub_category = product.sub_category
+    tag = product.tag
+
+    related_items = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)).exclude(id=product_id)
+
+    context = {
+        'product': product,
+        'album': album,
+        'related_items': related_items,
+        'shoe_sizes': shoe_sizes,
+        'clothing_sizes': clothing_sizes,
+        'colors': colors,
+        'options': options,
+    }
+    return render(request, "dexunt_store/detail.html", context)

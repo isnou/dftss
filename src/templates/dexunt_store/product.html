@@ -1,19 +1,19 @@
 {% extends "dexunt_store/base.html" %}
 {% load static %}
 
-{% block title %} {{ shop.name }} {% endblock %}
+{% block title %} {{ collection_store.name }} {% endblock %}
 
 {% block title-info %} Algerian Logistic And Online Shopping Platform {% endblock %}
 
 {% block header %}
 <header class="header-v4">
-	{% include "dexunt/includes/header.html" %}
+	{% include "dexunt_store/includes/header.html" %}
 </header>
 {% endblock %}
 
 
 <!-- Store Detail -->
-	<!-- Product Detail -->
+	<!-- Store Detail -->
 	{% block store-detail %}
     <div class="bg0 m-t-23 p-b-140">
 		<div class="container">
