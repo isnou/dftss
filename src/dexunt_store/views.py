@@ -143,7 +143,7 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'album': album,
-        'related_products ': related_products ,
+        'related_products ': related_products,
         'shoe_sizes': shoe_sizes,
         'clothing_sizes': clothing_sizes,
         'colors': colors,
