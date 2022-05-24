@@ -84,11 +84,11 @@ def store_detail(request, collection):
         product_collection = Product.objects.all().filter(collection=collection)
         product_collection = product_collection.order_by('?').all()[:8]
     elif collection == 'LATEST':
-        product_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False')
+        product_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
     elif collection == 'SELL':
-        product_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False')
+        product_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
     elif collection == 'RATE':
-        product_collection = Product.objects.all().order_by('-rate').exclude(publish='False')
+        product_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
     else:
         product_collection = 'none'
 
