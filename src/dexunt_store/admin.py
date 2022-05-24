@@ -4,9 +4,11 @@ from .models import Product, Album, Category, SubCategory, Tag, Brand, Shoe, Clo
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'sku', 'category', 'sub_category',
-                    'brand', 'price', 'old_price', 'sell_rate', 'rate')
+                    'brand', 'price', 'old_price', 'sell_rate', 'rate',
+                    'publish_rate', 'collection', 'publish')
     list_filter = ('category', 'sub_category', 'brand', 'price',
-                   'old_price', 'sell_rate', 'rate')
+                   'publish_rate', 'sell_rate', 'rate', 'collection',
+                   'publish')
 
 
 class AlbumAdmin(admin.ModelAdmin):
