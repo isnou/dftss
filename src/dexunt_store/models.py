@@ -164,7 +164,6 @@ class ShowCase(models.Model):
         ('FOOD', 'FOOD'),
     )
     name = models.CharField(max_length=200, unique=True)
-    product = models.ManyToManyField(Product, blank=True)
     category = models.ManyToManyField(Category, blank=True)
     sub_category = models.ManyToManyField(SubCategory, blank=True)
     shoe_size = models.ManyToManyField(Shoe, blank=True)
@@ -174,9 +173,6 @@ class ShowCase(models.Model):
     brand = models.ManyToManyField(Brand, blank=True)
     choice = models.CharField(max_length=50, choices=CHOICES)
     collection = models.CharField(max_length=50, choices=COLLECT, unique=True, null=True)
-
-    def get_product(self):
-        return "\n".join([p.name for p in self.product.all()])
 
     def get_category(self):
         return "\n".join([p.slug for p in self.category.all()])

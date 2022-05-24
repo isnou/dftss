@@ -52,9 +52,9 @@ def home(request):
     except ShowCase.DoesNotExist:
         raise Http404("best rated collection store does not exist")
 
-    latest_collection = Product.objects.all().order_by('-publish_rate')[:8]
-    best_selling_collection = Product.objects.all().order_by('-sell_rate')[:12]
-    best_rated_collection = Product.objects.all().order_by('-rate')[:12]
+    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False')[:8]
+    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False')[:12]
+    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False')[:12]
 
     context = {
         'slides': slides,
