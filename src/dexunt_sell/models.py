@@ -64,7 +64,7 @@ class Order(models.Model):
 
     payment_method = models.CharField(max_length=50, choices=PAYMENT, blank=True)
 
-    cart_ref = models.CharField(max_length=200, unique=True)
+    cart_ref = models.CharField(max_length=200, unique=True, null=True)
 
     def __str__(self):
         return self.client_name
