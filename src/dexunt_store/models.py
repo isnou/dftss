@@ -116,7 +116,7 @@ class Product(models.Model):
             MinValueValidator(0)
         ]
     )
-    collection = models.CharField(max_length=50, choices=COLLECT, null=True)
+    collection = models.CharField(max_length=50, choices=COLLECT, blank=True, null=True)
     publish = models.BooleanField(default=True)
 
     def __str__(self):
