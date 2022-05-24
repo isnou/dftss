@@ -85,11 +85,11 @@ def store_detail(request, collection):
         product_collection = Product.objects.all().filter(collection=collection)
         product_collection = product_collection.order_by('?').all()[:8]
     elif collection == 'LATEST':
-        product_collection = Product.objects.all().order_by('-publish_rate')
+        product_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False')
     elif collection == 'SELL':
-        product_collection = Product.objects.all().order_by('-sell_rate')
+        product_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False')
     elif collection == 'RATE':
-        product_collection = Product.objects.all().order_by('-rate')
+        product_collection = Product.objects.all().order_by('-rate').exclude(publish='False')
     else:
         product_collection = 'none'
 
@@ -139,7 +139,7 @@ def product_detail(request, product_id):
     tag = product.tag
 
     related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)).\
-        exclude(id=product_id)
+        exclude(id=product_id).exclude(publish='False')
 
     context = {
         'product': product,
