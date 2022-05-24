@@ -32,7 +32,7 @@ def home(request):
         raise Http404("season collection store does not exist")
 
     try:
-        season_collection = season_collection_store.product.all()
+        season_collection = Product.objects.all().filter(collection='SEASON')
     except season_collection_store.DoesNotExist:
         raise Http404("season collection store is empty")
     season_collection = season_collection.order_by('?').all()[:12]
@@ -52,7 +52,7 @@ def home(request):
     except ShowCase.DoesNotExist:
         raise Http404("best rated collection store does not exist")
 
-    latest_collection = Product.objects.all().order_by('-id')[:8]
+    latest_collection = Product.objects.all().order_by('-publish_rate')[:8]
     best_selling_collection = Product.objects.all().order_by('-sell_rate')[:12]
     best_rated_collection = Product.objects.all().order_by('-rate')[:12]
 
@@ -82,10 +82,10 @@ def store_detail(request, collection):
         raise Http404("flash collection store does not exist")
 
     if collection == 'FLASH' or collection == 'SEASON':
-        product_collection = collection_store.product.all()
+        product_collection = Product.objects.all().filter(collection=collection)
         product_collection = product_collection.order_by('?').all()[:8]
     elif collection == 'LATEST':
-        product_collection = Product.objects.all().order_by('-id')
+        product_collection = Product.objects.all().order_by('-publish_rate')
     elif collection == 'SELL':
         product_collection = Product.objects.all().order_by('-sell_rate')
     elif collection == 'RATE':
