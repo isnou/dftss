@@ -93,8 +93,11 @@ def store_detail(request, collection):
     else:
         product_collection = 'none'
 
+    categories = collection_store.category.all()
+
     context = {
         'collection_store': collection_store,
         'product_collection': product_collection,
+        'categories': categories,
     }
     return render(request, "dexunt_store/product.html", context)
