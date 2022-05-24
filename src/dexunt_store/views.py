@@ -71,7 +71,7 @@ def home(request):
         'best_selling_collection': best_selling_collection,
         'best_rated_collection': best_rated_collection,
     }
-    return render(request, "dexunt_store/home.html", context)
+    return render(request, "dexunt-store/home.html", context)
 
 
 def store_detail(request, collection):
@@ -99,7 +99,7 @@ def store_detail(request, collection):
         'product_collection': product_collection,
         'categories': categories,
     }
-    return render(request, "dexunt_store/store-detail.html", context)
+    return render(request, "dexunt-store/store-detail.html", context)
 
 
 def product_detail(request, product_id):
@@ -149,4 +149,4 @@ def product_detail(request, product_id):
         'colors': colors,
         'options': options,
     }
-    return render(request, "dexunt_store/product-detail.html", context)
+    return render(request, "dexunt-store/product-detail.html", context)
