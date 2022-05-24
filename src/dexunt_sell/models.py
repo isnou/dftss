@@ -25,6 +25,12 @@ class Destination(models.Model):
     sub_destination = models.ManyToManyField(SubDestination, blank=True)
     delivery_price = models.ManyToManyField(Delivery, blank=True)
 
+    def get_delivery_prices(self):
+        return "\n".join([p.delivery_prices for p in self.delivery_price.all()])
+
+    def get_sub_destinations(self):
+        return "\n".join([p.sub_destination for p in self.sub_destination.all()])
+
     def __str__(self):
         return self.name
 
