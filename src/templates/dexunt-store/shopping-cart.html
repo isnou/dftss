@@ -1,4 +1,4 @@
-{% extends "dexunt/base.html" %}
+{% extends "dexunt-store/base.html" %}
 {% load static %}
 
 {% block title %} Shopping Cart {% endblock %}
@@ -13,7 +13,7 @@
 
 	{% block header %}
 	<header class="header-v4">
-		{% include "dexunt/includes/header.html" %}
+		{% include "dexunt-store/includes/header.html" %}
 	</header>
 	{% endblock %}
 
@@ -38,9 +38,9 @@
 {% endblock %}
 
 	{% block shopping-cart %}
-	<input type="hidden" id="price" name="price" value="{{ item.price }}">
+	<input type="hidden" id="price" name="price" value="{{ product.price }}">
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="{% url 'one_order_checkout' shop_cart.id %}" name="one_order_form" id="one_order_form" method="post">
+	<form class="bg0 p-t-75 p-b-85" action="#" name="order_form" id="order_form" method="post">
 		{% csrf_token %}
 
 		<div class="container">

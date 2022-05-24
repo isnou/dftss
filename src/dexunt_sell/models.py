@@ -31,6 +31,7 @@ class Delivery(models.Model):
 
 class Order(models.Model):
     STATE = (
+        ('REQUEST', 'REQUEST'),
         ('UNCONFIRMED', 'UNCONFIRMED'),
         ('CONFIRMED', 'CONFIRMED'),
         ('CANCELLED', 'CANCELLED'),
@@ -45,20 +46,25 @@ class Order(models.Model):
     )
     order_ref = models.CharField(max_length=200, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    order_state = models.CharField(max_length=50, choices=STATE)
-    grouped_order = models.BooleanField(default=False)
+    order_state = models.CharField(max_length=50, choices=STATE, blank=True)
 
     client_name = models.CharField(max_length=200, blank=True)
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
 
     product_sku = models.CharField(max_length=200)
+    product_color = models.CharField(max_length=200, default='UNDEFINED')
+    product_option = models.CharField(max_length=200, default='UNDEFINED')
+    product_shoe_size = models.CharField(max_length=200, default='UNDEFINED')
+    product_clothing_size = models.CharField(max_length=200, default='UNDEFINED')
     product_price = models.DecimalField(max_digits=8, decimal_places=2)
 
-    delivery_price = models.DecimalField(max_digits=8, decimal_places=2)
+    delivery_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     delivery_destination = models.ForeignKey('Destination', on_delete=models.CASCADE, blank=True)
 
-    payment_method = models.CharField(max_length=50, choices=PAYMENT)
+    payment_method = models.CharField(max_length=50, choices=PAYMENT, blank=True)
+
+    cart_ref = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.client_name

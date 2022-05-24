@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Content, Category, SubCategory, ShowCase, Product
+from .models import Content, ShowCase, Product
+from dexunt_sell.models import Order
 from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm, OrderForm
@@ -41,19 +42,22 @@ def home(request):
         latest_collection_store = ShowCase.objects.get(collection='LATEST')
     except ShowCase.DoesNotExist:
         raise Http404("latest collection store does not exist")
-    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:8]
+    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(
+        collection='SEASON').exclude(collection='FLASH')[:8]
 
     try:
         best_selling_collection_store = ShowCase.objects.get(collection='SELL')
     except ShowCase.DoesNotExist:
         raise Http404("best selling collection store does not exist")
-    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:12]
+    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(
+        collection='SEASON').exclude(collection='FLASH')[:12]
 
     try:
         best_rated_collection_store = ShowCase.objects.get(collection='RATE')
     except ShowCase.DoesNotExist:
         raise Http404("best rated collection store does not exist")
-    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')[:12]
+    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
+        collection='SEASON').exclude(collection='FLASH')[:12]
 
     context = {
         'slides': slides,
@@ -84,11 +88,14 @@ def store_detail(request, collection):
         product_collection = Product.objects.all().filter(collection=collection)
         product_collection = product_collection.order_by('?').all()[:8]
     elif collection == 'LATEST':
-        product_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
+        product_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH')
     elif collection == 'SELL':
-        product_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
+        product_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH')
     elif collection == 'RATE':
-        product_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(collection='SEASON').exclude(collection='FLASH')
+        product_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH')
     else:
         product_collection = 'none'
 
@@ -150,3 +157,40 @@ def product_detail(request, product_id):
         'options': options,
     }
     return render(request, "dexunt-store/product-detail.html", context)
+
+
+def check_out(request, product_sku):
+    try:
+        product = Product.objects.get(sku=product_sku)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    if request.method == 'POST':
+        color = request.POST.get('color', False)
+        option = request.POST.get('option', False)
+        shoe_size = request.POST.get('shoe_size', False)
+        clothing_size = request.POST.get('clothing_size', False)
+    else:
+        color = "none"
+        option = "none"
+        shoe_size = "none"
+        clothing_size = "none"
+
+    order = Order(order_ref='TEST',
+                  order_state = 'REQUEST',
+                  client_name = 'NOT-YET',
+                  product_sku = product.sku,
+                  product_color = color,
+                  product_option = option,
+                  product_shoe_size = shoe_size,
+                  product_clothing_size = clothing_size,
+                  product_price = 0,
+                  delivery_price = 0,
+                  cart_ref ='TEST',
+                  )
+    order.save()
+
+    context = {
+        'product': product,
+    }
+    return render(request, "dexunt-store/shopping-cart.html", context)
