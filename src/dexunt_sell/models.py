@@ -9,24 +9,24 @@ class SubDestination(models.Model):
         return self.name
 
 
-class Destination(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    sub_destination = models.ManyToManyField(SubDestination, blank=True)
-    delivery_price = models.DecimalField(max_digits=8, decimal_places=2)
-
-    def __str__(self):
-        return self.name
-
-
 class Delivery(models.Model):
     company_name = models.CharField(max_length=200, unique=True)
-    prices = models.ManyToManyField(Destination, blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
 
     class Meta:
         verbose_name_plural = "Delivery"
 
     def __str__(self):
         return self.company_name
+
+
+class Destination(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    sub_destination = models.ManyToManyField(SubDestination, blank=True)
+    delivery_price = models.ManyToManyField(Delivery, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
