@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'website',
     'dexunt',
     'dexunt_store',
+    'dexunt_sell',
 ]
 
 MIDDLEWARE = [
