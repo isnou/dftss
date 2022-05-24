@@ -21,7 +21,7 @@ def home(request):
         raise Http404("flash collection store does not exist")
 
     try:
-        flash_collection = flash_collection_store.product.all()
+        flash_collection = Product.objects.all().filter(collection='FLASH')
     except flash_collection_store.DoesNotExist:
         raise Http404("flash collection store is empty")
     flash_collection = flash_collection.order_by('?').all()[:8]
