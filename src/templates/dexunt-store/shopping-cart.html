@@ -82,15 +82,15 @@
 									</span>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" placeholder="Your Name" name="client_name" id="client_name">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" placeholder="Your Name" name="client_name" id="client_name" required>
 									</div>
 
 									<div class="bor8 bg0 m-b-22">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="tel" placeholder="Your Phone" name="client_phone" id="client_phone">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="tel" placeholder="Your Phone" name="client_phone" id="client_phone" required>
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="destination" id="destination">
+										<select class="js-select2" name="destination" id="destination" required>
 											<option>Select a destination...</option>
 											{% for destination in destinations %}
 											<option>{{ destination.name }}</option>
@@ -100,7 +100,7 @@
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2"  name="shipping" id="shipping">
+										<select class="js-select2"  name="shipping" id="shipping" required>
 											<option>Select a shipping...</option>
 											{% for shipping in shipping %}
 											<option>{{ shipping }}</option>

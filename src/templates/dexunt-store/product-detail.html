@@ -83,7 +83,7 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="shoe_size" id="shoe_size">
+										<select class="js-select2" name="shoe_size" id="shoe_size" required>
 											<option>Choose a size</option>
 											{% for shoe in shoe_sizes %}
 											<option> {{ shoe.size }} </option>
@@ -103,7 +103,7 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="clothing_size" id="clothing_size">
+										<select class="js-select2" name="clothing_size" id="clothing_size" required>
 											<option>Choose a size</option>
 											{% for clothing in clothing_sizes %}
 											<option> {{clothing.size}} </option>
@@ -125,7 +125,7 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="color" id="color">
+										<select class="js-select2" name="color" id="color" required>
 											<option>Choose a color</option>
 											{% for color in colors %}
 											<option> {{ color.name }} </option>
@@ -146,7 +146,7 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 
-										<select class="js-select2" name="option" id="option">
+										<select class="js-select2" name="option" id="option" required>
 											<option>Choose an option</option>
 											{% for option in options %}
 											<option> {{ option.name }} </option>
