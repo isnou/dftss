@@ -169,6 +169,7 @@ def product_detail(request, product_id):
 
 def check_out(request, product_sku):
     payments = ('CASH-ON-DELIVERY', 'PING')
+    shipping = ('standard', 'express')
 
     order_ref = serial_number_generator(8)
     cart_ref = serial_number_generator(8)

@@ -32,6 +32,8 @@ class Order(models.Model):
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
 
+    coupon = models.CharField(max_length=200, default='COUPON')
+
     product_sku = models.CharField(max_length=200)
     product_color = models.CharField(max_length=200, default='UNDEFINED')
     product_option = models.CharField(max_length=200, default='UNDEFINED')
