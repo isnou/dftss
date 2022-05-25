@@ -185,7 +185,7 @@ def check_out(request, product_sku):
                   product_shoe_size = shoe_size,
                   product_clothing_size = clothing_size,
                   product_price = 0,
-                  delivery_price = 0,
+                  shipping_price = 0,
                   cart_ref ='TEST',
                   )
     order.save()
