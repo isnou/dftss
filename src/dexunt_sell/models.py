@@ -16,7 +16,7 @@ class Shipping(models.Model):
         ('EXPRESS', 'EXPRESS'),
     )
     choice = models.CharField(max_length=200, choices=TYPE, blank=True, null=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Delivery"
@@ -28,7 +28,7 @@ class Shipping(models.Model):
 class Destination(models.Model):
     name = models.CharField(max_length=200, unique=True)
     sub_destination = models.ManyToManyField(SubDestination, blank=True)
-    shipping = models.ManyToManyField(Shipping, blank=True)
+    shipping = models.ForeignKey('Shipping', on_delete=models.CASCADE, blank=True, null=True)
 
     def get_shipping(self):
         return "\n".join([p.choice for p in self.shipping.all()])
