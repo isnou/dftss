@@ -167,7 +167,7 @@ def product_detail(request, product_id):
     return render(request, "dexunt-store/product-detail.html", context)
 
 
-def check_out(request, product_sku):
+def shopping_cart(request, product_sku):
     payments = ('CASH-ON-DELIVERY', 'PING')
     shipping = ('standard', 'express')
 
