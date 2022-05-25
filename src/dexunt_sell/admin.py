@@ -18,7 +18,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 class ShippingAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('company_name', 'price')
+    list_display = ('choice', 'price')
     list_filter = ()
 
 
