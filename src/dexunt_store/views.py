@@ -217,11 +217,8 @@ def shopping_cart(request, product_sku):
 
 
 def check_out(request, order_ref):
-    try:
-        order = Order.objects.get(order_ref=order_ref)
-    except Order.DoesNotExist:
-        raise Http404("Product does not exist")
-
+    order = Order.objects.get(order_ref=order_ref)
+    
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
