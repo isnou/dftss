@@ -242,7 +242,6 @@ def check_out(request, order_ref):
     order = Order(client_name=client_name,
                   client_phone=client_phone,
                   shipping_destination=destination,
-                  shipping=shipping,
                   quantity=quantity,
                   coupon=coupon,
                   )
