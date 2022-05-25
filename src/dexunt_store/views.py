@@ -3,7 +3,15 @@ from .models import Content, ShowCase, Product
 from dexunt_sell.models import Order, Destination
 from django.http import Http404
 from django.db.models import Q
+import random
+import string
 from .forms import PreOrderForm, OrderForm
+
+
+def serial_number_generator(length):
+    letters_and_digits = string.ascii_letters + string.digits
+    result_str = ''.join((random.choice(letters_and_digits) for i in range(length)))
+    return result_str
 
 
 def home(request):
@@ -160,6 +168,22 @@ def product_detail(request, product_id):
 
 
 def check_out(request, product_sku):
+    states = (
+        ('REQUEST', 'REQUEST'),
+        ('UNCONFIRMED', 'UNCONFIRMED'),
+        ('CONFIRMED', 'CONFIRMED'),
+        ('CANCELLED', 'CANCELLED'),
+        ('DELIVERY', 'DELIVERY'),
+        ('UNPAID', 'UNPAID'),
+        ('PAYED', 'PAYED'),
+        ('REJECTED', 'REJECTED'),
+    )
+    payments = (
+        ('CASH-ON-DELIVERY', 'CASH-ON-DELIVERY'),
+        ('PING', 'PING'),
+    )
+    order_ref = serial_number_generator(12)
+    cart_ref = serial_number_generator(12)
 
     try:
         product = Product.objects.get(sku=product_sku)
@@ -182,17 +206,13 @@ def check_out(request, product_sku):
         shoe_size = "none"
         clothing_size = "none"
 
-    order = Order(order_ref='TEST',
-                  order_state='REQUEST',
-                  client_name='NOT-YET',
+    order = Order(order_ref=order_ref,
                   product_sku=product.sku,
                   product_color=color,
                   product_option=option,
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
-                  product_price=0,
-                  shipping_price=0,
-                  cart_ref='TEST',
+                  cart_ref=cart_ref,
                   )
     order.save()
 
@@ -200,5 +220,7 @@ def check_out(request, product_sku):
         'product': product,
         'order': order,
         'destinations': destinations,
+        'states': states,
+        'payments': payments,
     }
     return render(request, "dexunt-store/shopping-cart.html", context)

@@ -18,17 +18,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 class DestinationAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('name', 'get_sub_destination', 'standard_shipping', 'express_shipping')
-    list_filter = ()
-
-
-class SubDestinationAdmin(admin.ModelAdmin):
-    search_fields = []
-    list_display = ['name']
+    list_display = ('name', 'standard_shipping', 'express_shipping')
     list_filter = ()
 
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Destination, DestinationAdmin)
-admin.site.register(SubDestination, SubDestinationAdmin)
-
