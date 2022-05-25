@@ -26,7 +26,7 @@ class Order(models.Model):
 
     order_ref = models.CharField(max_length=200, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    order_state = models.CharField(max_length=50, choices=STATE, blank=True)
+    order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
 
     client_name = models.CharField(max_length=200, default='NOT-YET')
     client_phone = PhoneNumberField(blank=True)
