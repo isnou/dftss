@@ -10,12 +10,12 @@ class SubDestination(models.Model):
 
 
 class Shipping(models.Model):
-    TYPES = (
+    TYPE = (
         ('FREE', 'FREE'),
         ('STANDARD', 'STANDARD'),
         ('EXPRESS', 'EXPRESS'),
     )
-    company_name = models.CharField(max_length=200)
+    choice = models.CharField(max_length=200, choices=TYPE)
     price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
 
     class Meta:
