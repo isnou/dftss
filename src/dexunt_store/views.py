@@ -217,7 +217,6 @@ def shopping_cart(request, product_sku):
 
 
 def check_out(request, order_ref):
-
     try:
         order = Order.objects.get(order_ref=order_ref)
     except Order.DoesNotExist:
@@ -231,8 +230,6 @@ def check_out(request, order_ref):
         destination = request.POST.get('destination', False)
         shipping = request.POST.get('shipping', False)
         coupon = request.POST.get('coupon', False)
-
-
     else:
         client_name = "none"
         client_phone = "none"
@@ -241,6 +238,16 @@ def check_out(request, order_ref):
         destination = "none"
         shipping = "none"
         coupon = "none"
+
+    order = Order(client_name=client_name,
+                  client_phone=client_phone,
+                  quantity=quantity,
+                  product_price=product_price,
+                  destination=destination,
+                  shipping=shipping,
+                  coupon=coupon,
+                  )
+    order.save()
 
     context = {
     }
