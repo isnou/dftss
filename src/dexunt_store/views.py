@@ -217,8 +217,8 @@ def shopping_cart(request, product_sku):
 
 
 def check_out(request, order_ref):
-    order = Order.objects.get(order_ref=order_ref)
-    
+
+
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
@@ -236,12 +236,12 @@ def check_out(request, order_ref):
         shipping = "none"
         coupon = "none"
 
-    order = Order(client_name=client_name,
-                  client_phone=client_phone,
-                  shipping_destination=destination,
-                  quantity=quantity,
-                  coupon=coupon,
-                  )
+    order = Order.objects.get(order_ref=order_ref)
+    order.client_name=client_name
+    order.client_phone=client_phone
+    order.shipping_destination=destination
+    order.quantity=quantity
+    order.coupon=coupon
     order.save()
 
     context = {
