@@ -93,17 +93,17 @@
 										<select class="js-select2" name="destination" id="destination">
 											<option>Select a destination...</option>
 											{% for destination in destinations %}
-											<option required>{{ destination.name }}</option>
+											<option>{{ destination.name }}</option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2"  name="shipping" id="shipping" required>
+										<select class="js-select2"  name="shipping" id="shipping">
 											<option>Select a shipping...</option>
 											{% for shipping in shipping %}
-											<option required>{{ shipping }}</option>
+											<option>{{ shipping }}</option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
