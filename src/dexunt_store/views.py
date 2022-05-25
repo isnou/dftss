@@ -202,7 +202,6 @@ def shopping_cart(request, product_sku):
                   product_option=option,
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
-                  product_price=product.price,
                   cart_ref=cart_ref,
                   )
     order.save()
@@ -217,34 +216,32 @@ def shopping_cart(request, product_sku):
     return render(request, "dexunt-store/shopping-cart.html", context)
 
 
-def order(request, order_ref):
+def check_out(request, order_ref):
+
+    try:
+        order = Order.objects.get(order_ref=order_ref)
+    except Order.DoesNotExist:
+        raise Http404("Product does not exist")
 
     if request.method == 'POST':
-        color = request.POST.get('color', False)
-        option = request.POST.get('option', False)
-        shoe_size = request.POST.get('shoe_size', False)
-        clothing_size = request.POST.get('clothing_size', False)
-    else:
-        color = "none"
-        option = "none"
-        shoe_size = "none"
-        clothing_size = "none"
+        client_name = request.POST.get('client_name', False)
+        client_phone = request.POST.get('client_phone', False)
+        quantity = request.POST.get('num-product2', False)
+        product_price = request.POST.get('total', False)
+        destination = request.POST.get('destination', False)
+        shipping = request.POST.get('shipping', False)
+        coupon = request.POST.get('coupon', False)
 
-    order = Order(order_ref=order_ref,
-                  product_sku=product.sku,
-                  product_color=color,
-                  product_option=option,
-                  product_shoe_size=shoe_size,
-                  product_clothing_size=clothing_size,
-                  cart_ref=cart_ref,
-                  )
-    order.save()
+
+    else:
+        client_name = "none"
+        client_phone = "none"
+        quantity = "none"
+        product_price = "none"
+        destination = "none"
+        shipping = "none"
+        coupon = "none"
 
     context = {
-        'product': product,
-        'order': order,
-        'destinations': destinations,
-        'payments': payments,
-        'shipping': shipping,
     }
-    return render(request, "dexunt-store/shopping-cart.html", context)
+    return render(request, "dexunt-store/home.html", context)

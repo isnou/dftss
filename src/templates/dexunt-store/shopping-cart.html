@@ -40,7 +40,7 @@
 {% block shopping-cart %}
 	<input type="hidden" id="price" name="price" value="{{ product.price }}">
 	<!-- Shopping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="#" name="order_form" id="order_form" method="post">
+	<form class="bg0 p-t-75 p-b-85" action="{% url 'check-out' order.order_ref %}" name="order_form" id="order_form" method="post">
 		{% csrf_token %}
 
 		<div class="container">
@@ -94,7 +94,7 @@
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="city" id="destination">
+										<select class="js-select2" name="destination" id="destination">
 											<option>Select a destination...</option>
 											{% for destination in destinations %}
 											<option>{{ destination.name }}</option>
