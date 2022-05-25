@@ -40,9 +40,10 @@ class Order(models.Model):
     product_shoe_size = models.CharField(max_length=200, default='UNDEFINED')
     product_clothing_size = models.CharField(max_length=200, default='UNDEFINED')
     product_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
 
     shipping_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    shipping_destination = models.ForeignKey('Destination', on_delete=models.CASCADE, blank=True, null=True)
+    shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
 
     payment_method = models.CharField(max_length=50, default='CASH-ON-DELIVERY')
     cart_ref = models.CharField(max_length=200, unique=True, null=True)
