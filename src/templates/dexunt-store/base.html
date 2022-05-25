@@ -189,20 +189,10 @@
 		/*---------------------------------------------*/
 
 		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().parent().find('.js-name-detail').html();
-			var namePrice = $(this).parent().parent().parent().parent().parent().find('.js-price-detail').html();
+			var nameProduct = $(this).parent().parent().parent().parent().find('.product-name').html();
+			var namePrice = $(this).parent().parent().parent().parent().find('.total').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.js-checkout-menu').each(function(){
-			var nameProduct = document.getElementById("product-name");
-			var namePrice =  document.getElementById("price");
-			$(this).on('click', function(){
-				swal(nameProduct, "checkout !", "success");
 			});
 		});
 
