@@ -203,6 +203,7 @@ def shopping_cart(request, product_sku):
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
                   cart_ref=cart_ref,
+                  product_price=product.price,
                   )
     order.save()
 
@@ -217,26 +218,41 @@ def shopping_cart(request, product_sku):
 
 
 def check_out(request, order_ref):
-
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
         quantity = request.POST.get('num-product2', False)
         destination = request.POST.get('destination', False)
+        shipping = request.POST.get('shipping', False)
         coupon = request.POST.get('coupon', False)
     else:
         client_name = "none"
         client_phone = "none"
         quantity = "none"
         destination = "none"
+        shipping = "none"
         coupon = "none"
 
+
+    if shipping == 'express':
+        destination_price = Destination.objects.get(name=destination).express_shipping
+    elif shipping == 'standard':
+        destination_price = Destination.objects.get(name=destination).standard_shipping
+    else:
+        destination_price =0
+
+
+
+
+
+
     order = Order.objects.get(order_ref=order_ref)
-    order.client_name=client_name
-    order.client_phone=client_phone
-    order.shipping_destination=destination
-    order.quantity=quantity
-    order.coupon=coupon
+    order.client_name = client_name
+    order.client_phone = client_phone
+    order.shipping_destination = destination
+    order.quantity = quantity
+    order.coupon = coupon
+    order.shipping_price = destination_price
     order.save()
 
     context = {
