@@ -243,6 +243,7 @@ def check_out(request, order_ref):
                   client_phone=client_phone,
                   shipping_destination=destination,
                   shipping=shipping,
+                  quantity=quantity,
                   coupon=coupon,
                   )
     order.save()
