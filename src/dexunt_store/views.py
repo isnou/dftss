@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Content, ShowCase, Product
-from dexunt_sell.models import Order
+from dexunt_sell.models import Order, Destination
 from django.http import Http404
 from django.db.models import Q
 from .forms import PreOrderForm, OrderForm
@@ -160,10 +160,16 @@ def product_detail(request, product_id):
 
 
 def check_out(request, product_sku):
+
     try:
         product = Product.objects.get(sku=product_sku)
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
+
+    try:
+        destinations = Destination.objects.all()
+    except Destination.DoesNotExist:
+        raise Http404("No destinations")
 
     if request.method == 'POST':
         color = request.POST.get('color', False)
@@ -192,5 +198,7 @@ def check_out(request, product_sku):
 
     context = {
         'product': product,
+        'order': order,
+        'destinations': destinations,
     }
     return render(request, "dexunt-store/shopping-cart.html", context)
