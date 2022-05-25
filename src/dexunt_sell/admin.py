@@ -7,7 +7,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client', 'product_name',
         'product_color', 'product_option', 'product_shoe_size', 'product_clothing_size', 'product_price',
-        'shipping_price',
+        'shipping_price', 'quantity',
         'shipping_destination', 'payment_method')
     list_filter = (
         'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client', 'product_name',
