@@ -10,12 +10,10 @@ class PreOrderForm(forms.Form):
 
 
 class OrderForm(forms.Form):
-    product_name = forms.CharField()
     quantity = forms.IntegerField()
     client_name = forms.CharField()
     client_phone = PhoneNumberField()
     delivery = forms.CharField()
-    city = forms.CharField()
-    town = forms.CharField()
+    destination = forms.CharField()
     coupon = forms.CharField()
 

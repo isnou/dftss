@@ -12,7 +12,6 @@ class Destination(models.Model):
 
 
 class Order(models.Model):
-
     STATE = (
         ('REQUEST', 'REQUEST'),
         ('UNCONFIRMED', 'UNCONFIRMED'),
@@ -35,6 +34,7 @@ class Order(models.Model):
     coupon = models.CharField(max_length=200, default='COUPON')
 
     product_sku = models.CharField(max_length=200)
+    product_name = models.CharField(max_length=200, default='UNDEFINED')
     product_color = models.CharField(max_length=200, default='UNDEFINED')
     product_option = models.CharField(max_length=200, default='UNDEFINED')
     product_shoe_size = models.CharField(max_length=200, default='UNDEFINED')

@@ -197,6 +197,41 @@ def check_out(request, product_sku):
 
     order = Order(order_ref=order_ref,
                   product_sku=product.sku,
+                  product_name=product.name,
+                  product_color=color,
+                  product_option=option,
+                  product_shoe_size=shoe_size,
+                  product_clothing_size=clothing_size,
+                  product_price=product.price,
+                  cart_ref=cart_ref,
+                  )
+    order.save()
+
+    context = {
+        'product': product,
+        'order': order,
+        'destinations': destinations,
+        'payments': payments,
+        'shipping': shipping,
+    }
+    return render(request, "dexunt-store/shopping-cart.html", context)
+
+
+def order(request, order_ref):
+
+    if request.method == 'POST':
+        color = request.POST.get('color', False)
+        option = request.POST.get('option', False)
+        shoe_size = request.POST.get('shoe_size', False)
+        clothing_size = request.POST.get('clothing_size', False)
+    else:
+        color = "none"
+        option = "none"
+        shoe_size = "none"
+        clothing_size = "none"
+
+    order = Order(order_ref=order_ref,
+                  product_sku=product.sku,
                   product_color=color,
                   product_option=option,
                   product_shoe_size=shoe_size,
