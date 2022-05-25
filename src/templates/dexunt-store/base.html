@@ -189,8 +189,8 @@
 		/*---------------------------------------------*/
 
 		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.product-name').html();
-			var namePrice = $(this).parent().parent().parent().parent().find('.total').html();
+			var nameProduct = $(this).parent().parent().parent().parent().parent().parent().find('.product-name').html();
+			var namePrice = $(this).parent().parent().parent().parent().parent().parent().find('.total').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
 			});
