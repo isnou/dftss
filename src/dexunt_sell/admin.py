@@ -30,7 +30,7 @@ class DestinationAdmin(admin.ModelAdmin):
 
 class SubDestinationAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = 'name'
+    list_display = ['name']
     list_filter = ()
 
 
