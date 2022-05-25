@@ -240,5 +240,6 @@ def check_out(request, order_ref):
     order.save()
 
     context = {
+        'order': order,
     }
     return render(request, "dexunt-store/check-out.html", context)
