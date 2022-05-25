@@ -15,7 +15,7 @@ class Shipping(models.Model):
         ('STANDARD', 'STANDARD'),
         ('EXPRESS', 'EXPRESS'),
     )
-    choice = models.CharField(max_length=200, choices=TYPE)
+    choice = models.CharField(max_length=200, choices=TYPE, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
 
     class Meta:
