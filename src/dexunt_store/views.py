@@ -218,22 +218,17 @@ def shopping_cart(request, product_sku):
 
 def check_out(request, order_ref):
 
-
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
         quantity = request.POST.get('num-product2', False)
-        product_price = request.POST.get('total', False)
         destination = request.POST.get('destination', False)
-        shipping = request.POST.get('shipping', False)
         coupon = request.POST.get('coupon', False)
     else:
         client_name = "none"
         client_phone = "none"
         quantity = "none"
-        product_price = "none"
         destination = "none"
-        shipping = "none"
         coupon = "none"
 
     order = Order.objects.get(order_ref=order_ref)
@@ -246,4 +241,4 @@ def check_out(request, order_ref):
 
     context = {
     }
-    return render(request, "dexunt-store/home.html", context)
+    return render(request, "dexunt-store/check-out.html", context)
