@@ -210,5 +210,6 @@ def check_out(request, product_sku):
         'order': order,
         'destinations': destinations,
         'payments': payments,
+        'shipping': shipping,
     }
     return render(request, "dexunt-store/shopping-cart.html", context)
