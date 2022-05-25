@@ -208,7 +208,7 @@ def shopping_cart(request, product_sku):
 
     context = {
         'product': product,
-        'order': order,
+        'order_ref': order_ref,
         'destinations': destinations,
         'payments': payments,
         'shipping': shipping,
