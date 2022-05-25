@@ -31,10 +31,10 @@ class Destination(models.Model):
     shipping = models.ManyToManyField(Shipping, blank=True)
 
     def get_shipping(self):
-        return "\n".join([p.shipping for p in self.shipping.all()])
+        return "\n".join([p.choice for p in self.shipping.all()])
 
     def get_sub_destination(self):
-        return "\n".join([p.sub_destination for p in self.sub_destination.all()])
+        return "\n".join([p.name for p in self.sub_destination.all()])
 
     def __str__(self):
         return self.name
