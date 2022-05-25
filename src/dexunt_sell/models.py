@@ -12,9 +12,21 @@ class Destination(models.Model):
 
 
 class Order(models.Model):
+
+    STATE = (
+        ('REQUEST', 'REQUEST'),
+        ('UNCONFIRMED', 'UNCONFIRMED'),
+        ('CONFIRMED', 'CONFIRMED'),
+        ('CANCELLED', 'CANCELLED'),
+        ('DELIVERY', 'DELIVERY'),
+        ('UNPAID', 'UNPAID'),
+        ('PAYED', 'PAYED'),
+        ('REJECTED', 'REJECTED'),
+    )
+
     order_ref = models.CharField(max_length=200, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    order_state = models.CharField(max_length=50, default='REQUEST')
+    order_state = models.CharField(max_length=50, choices=STATE, blank=True)
 
     client_name = models.CharField(max_length=200, default='NOT-YET')
     client_phone = PhoneNumberField(blank=True)

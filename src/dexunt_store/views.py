@@ -168,22 +168,10 @@ def product_detail(request, product_id):
 
 
 def check_out(request, product_sku):
-    states = (
-        ('REQUEST', 'REQUEST'),
-        ('UNCONFIRMED', 'UNCONFIRMED'),
-        ('CONFIRMED', 'CONFIRMED'),
-        ('CANCELLED', 'CANCELLED'),
-        ('DELIVERY', 'DELIVERY'),
-        ('UNPAID', 'UNPAID'),
-        ('PAYED', 'PAYED'),
-        ('REJECTED', 'REJECTED'),
-    )
-    payments = (
-        ('CASH-ON-DELIVERY', 'CASH-ON-DELIVERY'),
-        ('PING', 'PING'),
-    )
-    order_ref = serial_number_generator(12)
-    cart_ref = serial_number_generator(12)
+    payments = ('CASH-ON-DELIVERY', 'PING')
+
+    order_ref = serial_number_generator(8)
+    cart_ref = serial_number_generator(8)
 
     try:
         product = Product.objects.get(sku=product_sku)
@@ -220,7 +208,6 @@ def check_out(request, product_sku):
         'product': product,
         'order': order,
         'destinations': destinations,
-        'states': states,
         'payments': payments,
     }
     return render(request, "dexunt-store/shopping-cart.html", context)
