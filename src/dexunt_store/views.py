@@ -176,7 +176,7 @@ def check_out(request, product_sku):
         shoe_size = "none"
         clothing_size = "none"
 
-    order = Order(order_ref='TEST',
+    order = Order(order_ref='TEST2',
                   order_state = 'REQUEST',
                   client_name = 'NOT-YET',
                   product_sku = product.sku,
@@ -186,7 +186,7 @@ def check_out(request, product_sku):
                   product_clothing_size = clothing_size,
                   product_price = 0,
                   shipping_price = 0,
-                  cart_ref ='TEST',
+                  cart_ref ='TEST2',
                   )
     order.save()
 
