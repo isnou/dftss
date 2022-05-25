@@ -24,7 +24,7 @@ class ShippingAdmin(admin.ModelAdmin):
 
 class DestinationAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('name', 'get_shipping', 'get_sub_destination')
+    list_display = ('name', 'shipping', 'get_sub_destination')
     list_filter = ()
 
 

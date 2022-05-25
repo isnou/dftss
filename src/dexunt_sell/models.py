@@ -30,9 +30,6 @@ class Destination(models.Model):
     sub_destination = models.ManyToManyField(SubDestination, blank=True)
     shipping = models.ForeignKey('Shipping', on_delete=models.CASCADE, blank=True, null=True)
 
-    def get_shipping(self):
-        return "\n".join([p.choice for p in self.shipping.all()])
-
     def get_sub_destination(self):
         return "\n".join([p.name for p in self.sub_destination.all()])
 
