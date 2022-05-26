@@ -82,5 +82,5 @@ class GroupOrder(models.Model):
         return "\n".join([p.order_ref for p in self.order.all()])
 
     def __str__(self):
-        return self.client_name
+        return self.group_order_ref
 
