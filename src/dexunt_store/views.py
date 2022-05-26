@@ -236,7 +236,7 @@ def check_out(request, order_ref):
     elif shipping == 'standard':
         destination_price = Destination.objects.get(name=destination).standard_shipping
     else:
-        destination_price =0
+        destination_price = 0
 
     order = Order.objects.get(order_ref=order_ref)
     order.client_name = client_name
