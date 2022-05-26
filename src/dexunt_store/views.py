@@ -171,8 +171,6 @@ def shopping_cart(request, product_sku):
     payments = ('CASH-ON-DELIVERY', 'PING')
     shipping = ('standard', 'express')
 
-    order_ref = serial_number_generator(8)
-
     try:
         product = Product.objects.get(sku=product_sku)
     except Product.DoesNotExist:
@@ -194,6 +192,9 @@ def shopping_cart(request, product_sku):
         shoe_size = "none"
         clothing_size = "none"
 
+    order_ref = serial_number_generator(8)
+    group_order_ref = serial_number_generator(8)
+
     order = Order(order_ref=order_ref,
                   product_sku=product.sku,
                   product_name=product.name,
@@ -208,6 +209,7 @@ def shopping_cart(request, product_sku):
     context = {
         'product': product,
         'order_ref': order_ref,
+        'group_order_ref': group_order_ref,
         'destinations': destinations,
         'payments': payments,
         'shipping': shipping,
@@ -215,7 +217,7 @@ def shopping_cart(request, product_sku):
     return render(request, "dexunt-store/shopping-cart.html", context)
 
 
-def new_order_home(request, order_ref):
+def new_order_home(request, order_ref, group_order_ref):
     try:
         slides = Content.objects.all()[0:3]
     except Content.DoesNotExist:
@@ -267,8 +269,6 @@ def new_order_home(request, order_ref):
         raise Http404("best rated collection store does not exist")
     best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
         collection='SEASON').exclude(collection='FLASH')[:12]
-
-    group_order_ref = serial_number_generator(8)
 
     order = Order.objects.get(order_ref=order_ref)
 
