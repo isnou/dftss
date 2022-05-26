@@ -68,7 +68,6 @@ def home(request):
         collection='SEASON').exclude(collection='FLASH')[:12]
 
     context = {
-        'group': False,
         'orders_quantity': 0,
         'slides': slides,
         'banners': banners,
@@ -284,7 +283,6 @@ def new_order_home(request, order_ref, group_order_ref):
     orders_quantity = group_order.order.all().count()
 
     context = {
-        'group': True,
         'orders_quantity': orders_quantity,
         'orders': orders,
         'slides': slides,
