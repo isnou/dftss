@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Content, ShowCase, Product
-from dexunt_sell.models import Order, Destination
+from dexunt_sell.models import Order, Destination, GroupOrder
 from django.http import Http404
 from django.db.models import Q
 import random
@@ -267,6 +267,13 @@ def new_order_home(request, order_ref):
         raise Http404("best rated collection store does not exist")
     best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
         collection='SEASON').exclude(collection='FLASH')[:12]
+
+    order = Order.objects.get(order_ref=order_ref)
+
+    group_order = GroupOrder(group_order_ref=order_ref,
+                             order=order,
+                             )
+    group_order.save()
 
     context = {
         'slides': slides,
