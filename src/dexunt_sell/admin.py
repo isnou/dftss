@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, Destination, Coupon
+from .models import Order, Destination, Coupon, GroupOrder
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -11,6 +11,12 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = (
         'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client',
         'product_name', 'shipping_destination')
+
+
+class GroupOrderAdmin(admin.ModelAdmin):
+    search_fields = []
+    list_display = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders')
+    list_filter = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders')
 
 
 class DestinationAdmin(admin.ModelAdmin):
@@ -27,3 +33,5 @@ class CouponAdmin(admin.ModelAdmin):
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Coupon, CouponAdmin)
+
+
