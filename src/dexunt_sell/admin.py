@@ -16,7 +16,7 @@ class OrderAdmin(admin.ModelAdmin):
 class GroupOrderAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders')
-    list_filter = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders')
+    list_filter = ('group_order_ref', 'group_order_date', 'group_order_state')
 
 
 class DestinationAdmin(admin.ModelAdmin):
