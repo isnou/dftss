@@ -249,7 +249,7 @@
 
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
-					{{if orders_quantity}}
+					{{if orders_quantity > 0}}
 					{{ for order in orders }}
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
