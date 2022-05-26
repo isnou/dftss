@@ -198,12 +198,12 @@ def shopping_cart(request, product_sku):
     order = Order(order_ref=order_ref,
                   product_sku=product.sku,
                   product_name=product.name,
+                  product_price=product.price,
                   product_color=color,
                   product_option=option,
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
                   cart_ref=cart_ref,
-                  product_price=product.price,
                   )
     order.save()
 
@@ -247,6 +247,7 @@ def check_out(request, order_ref):
     order.quantity = quantity
     order.coupon = coupon
     order.shipping_price = destination_price
+    order.order_state = 'UNCONFIRMED'
     order.save()
 
     context = {
