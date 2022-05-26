@@ -59,3 +59,28 @@ class Order(models.Model):
 
     def __str__(self):
         return self.client_name
+
+
+class GroupOrder(models.Model):
+    STATE = (
+        ('REQUEST', 'REQUEST'),
+        ('UNCONFIRMED', 'UNCONFIRMED'),
+        ('CONFIRMED', 'CONFIRMED'),
+        ('CANCELLED', 'CANCELLED'),
+        ('DELIVERY', 'DELIVERY'),
+        ('UNPAID', 'UNPAID'),
+        ('PAYED', 'PAYED'),
+        ('REJECTED', 'REJECTED'),
+    )
+
+    group_order_ref = models.CharField(max_length=200, unique=True)
+    group_order_date = models.DateTimeField(auto_now_add=True)
+    group_order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
+    order = models.ManyToManyField(Order, blank=True)
+
+    def get_orders(self):
+        return "\n".join([p.order_ref for p in self.order.all()])
+
+    def __str__(self):
+        return self.client_name
+
