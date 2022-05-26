@@ -11,6 +11,14 @@ class Destination(models.Model):
         return self.name
 
 
+class Coupon(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    value = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Order(models.Model):
     STATE = (
         ('REQUEST', 'REQUEST'),
@@ -30,8 +38,6 @@ class Order(models.Model):
     client_name = models.CharField(max_length=200, default='NOT-YET')
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
-
-    coupon = models.CharField(max_length=200, default='COUPON')
 
     product_sku = models.CharField(max_length=200)
     product_name = models.CharField(max_length=200, default='UNDEFINED')
