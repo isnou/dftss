@@ -172,7 +172,6 @@ def shopping_cart(request, product_sku):
     shipping = ('standard', 'express')
 
     order_ref = serial_number_generator(8)
-    cart_ref = serial_number_generator(8)
 
     try:
         product = Product.objects.get(sku=product_sku)
@@ -203,7 +202,6 @@ def shopping_cart(request, product_sku):
                   product_option=option,
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
-                  cart_ref=cart_ref,
                   )
     order.save()
 

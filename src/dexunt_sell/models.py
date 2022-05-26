@@ -56,7 +56,6 @@ class Order(models.Model):
     shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
 
     payment_method = models.CharField(max_length=50, default='CASH-ON-DELIVERY')
-    cart_ref = models.CharField(max_length=200, unique=True, null=True)
 
     def __str__(self):
         return self.client_name

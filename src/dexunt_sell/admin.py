@@ -5,12 +5,12 @@ from .models import Order, Destination, Coupon
 class OrderAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = (
-        'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client', 'product_name',
+        'order_date', 'order_ref', 'order_state', 'client_name', 'client_phone', 'registered_client', 'product_name',
         'product_color', 'product_option', 'product_shoe_size', 'product_clothing_size', 'quantity', 'product_price',
-        'shipping_price', 'coupon_value', 'shipping_destination', 'payment_method')
+        'shipping_price', 'coupon_value', 'shipping_destination')
     list_filter = (
-        'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client', 'product_name',
-        'shipping_destination')
+        'order_ref', 'order_date', 'order_state', 'client_name', 'client_phone', 'registered_client',
+        'product_name', 'shipping_destination')
 
 
 class DestinationAdmin(admin.ModelAdmin):
