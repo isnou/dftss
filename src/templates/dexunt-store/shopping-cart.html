@@ -83,7 +83,7 @@
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="destination" id="destination">
+										<select class="js-select2" name="destination" id="destination" required>
 											<option value="">Select a destination...</option>
 											{% for destination in destinations %}
 											<option>{{ destination.name }}</option>
@@ -93,7 +93,7 @@
 									</div>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2"  name="shipping" id="shipping">
+										<select class="js-select2"  name="shipping" id="shipping" required>
 											<option value="">Select a shipping...</option>
 											{% for shipping in shipping %}
 											<option>{{ shipping }}</option>
