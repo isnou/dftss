@@ -33,5 +33,6 @@ class CouponAdmin(admin.ModelAdmin):
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Coupon, CouponAdmin)
+admin.site.register(GroupOrder, GroupOrderAdmin)
 
 
