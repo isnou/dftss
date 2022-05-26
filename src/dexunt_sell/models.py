@@ -76,7 +76,7 @@ class GroupOrder(models.Model):
     group_order_ref = models.CharField(max_length=200, unique=True)
     group_order_date = models.DateTimeField(auto_now_add=True)
     group_order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
-    order = models.ManyToManyField(Order, blank=True)
+    order = models.ManyToManyField(Order, blank=True, null=True)
 
     def get_orders(self):
         return "\n".join([p.order_ref for p in self.order.all()])
