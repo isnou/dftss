@@ -268,10 +268,11 @@ def new_order_home(request, order_ref):
     best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
         collection='SEASON').exclude(collection='FLASH')[:12]
 
+    group_order_ref = serial_number_generator(8)
+
     order = Order.objects.get(order_ref=order_ref)
 
-    group_order = GroupOrder(group_order_ref=order_ref,
-                             order=order,
+    group_order = GroupOrder(group_order_ref=group_order_ref,
                              )
     group_order.save()
 
