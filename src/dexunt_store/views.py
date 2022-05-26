@@ -277,10 +277,10 @@ def new_order_home(request, order_ref, group_order_ref):
     group_order.order.add(Order.objects.get(order_ref=order_ref))
 
     try:
-        orders = group_order.order.objects.all()
+        orders = group_order.order.all()
     except group_order.DoesNotExist:
         raise Http404("No orders")
-    orders_quantity = group_order.order.objects.all().count()
+    orders_quantity = group_order.order.all().count()
 
     context = {
         'orders_quantity': orders_quantity,
