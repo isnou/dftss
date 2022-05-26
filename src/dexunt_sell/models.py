@@ -12,11 +12,12 @@ class Destination(models.Model):
 
 
 class Coupon(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    code = models.CharField(max_length=200, unique=True)
     value = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    used = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return self.code
 
 
 class Order(models.Model):
@@ -38,6 +39,9 @@ class Order(models.Model):
     client_name = models.CharField(max_length=200, default='NOT-YET')
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
+
+    coupon_value = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    coupon_code = models.CharField(max_length=200, default='UNDEFINED')
 
     product_sku = models.CharField(max_length=200)
     product_name = models.CharField(max_length=200, default='UNDEFINED')
