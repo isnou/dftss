@@ -68,6 +68,7 @@ def home(request):
         collection='SEASON').exclude(collection='FLASH')[:12]
 
     context = {
+        'orders_quantity': 0,
         'slides': slides,
         'banners': banners,
 
@@ -272,10 +273,18 @@ def new_order_home(request, order_ref, group_order_ref):
 
     group_order = GroupOrder(group_order_ref=group_order_ref
                              )
-    group_order.save()
     group_order.order.add(Order.objects.get(order_ref=order_ref))
+    group_order.save()
+
+    try:
+        orders = group_order.order.objects.all()
+    except group_order.DoesNotExist:
+        raise Http404("No orders")
+    orders_quantity = group_order.order.objects.all().count()
 
     context = {
+        'orders_quantity': orders_quantity,
+        'orders': orders,
         'slides': slides,
         'banners': banners,
 
