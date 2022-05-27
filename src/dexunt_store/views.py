@@ -15,7 +15,7 @@ def serial_number_generator(length):
 
 
 def initial(request):
-    return redirect('home', order_ref=00000000, group_order_ref=00000000)
+    return redirect('home', order_ref='00000000', group_order_ref='00000000')
 
 
 def store_detail(request, collection):
