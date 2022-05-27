@@ -374,13 +374,13 @@
 										{{ order.product_name }}
 									</td>
 									<td class="column-3" >
-										{{ order.product_price }}
+										{{ order.product_price|floatformat:"2g" }}
 									</td>
 									<td class="column-4">
 										{{ order.quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:order.quantity }}</p>
+										<p id="total" >{{ order.product_price|mul:order.quantity|floatformat:"2g" }}</p>
 									</td>
 								</tr>
 								{% endfor %}
@@ -397,13 +397,13 @@
 										{{ order.product_name }}
 									</td>
 									<td class="column-3" >
-										{{ order.product_price }}
+										{{ order.product_price|floatformat:"2g" }} DA
 									</td>
 									<td class="column-4">
 										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:order.quantity }}</p>
+										<p id="total" >{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
 									</td>
 								</tr>
 								{% endif %}
