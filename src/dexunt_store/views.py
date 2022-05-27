@@ -14,7 +14,7 @@ def serial_number_generator(length):
     return result_str
 
 
-def initial():
+def initial(request):
     return redirect('home', order_ref='home', group_order_ref='page')
 
 
