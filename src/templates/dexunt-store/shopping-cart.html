@@ -375,7 +375,7 @@
 										{{ order.product_price }}
 									</td>
 									<td class="column-4">
-										{{ order.quantity * order.product_price}}
+										{{ widthratio order.quantity 1 order.product_price}}
 									</td>
 									<td class="column-5">
 										<p id="total" >{{ order.product_price }}</p>
@@ -398,7 +398,7 @@
 										{{ order.product_price }}
 									</td>
 									<td class="column-4">
-										{{ order.quantity * order.product_price}}
+										{{ widthratio order.quantity 1 order.product_price}}
 									</td>
 									<td class="column-5">
 										<p id="total" >{{ order.product_price }}</p>
