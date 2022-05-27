@@ -353,7 +353,7 @@
 
 						<!--  -->
 						<div class="p-t-33">
-						<form action="{% url 'shopping-cart' product.sku %}" name="pre_order_form" id="pre_order_form" method="post">
+						<form action="{% url 'shopping-cart' product.sku group_order_ref %}" name="pre_order_form" id="pre_order_form" method="post">
 							{% csrf_token %}
 
 							{% if shoe_sizes %}

@@ -216,7 +216,7 @@ def product_detail(request, product_id, group_order_ref):
     return render(request, "dexunt-store/product-detail.html", context)
 
 
-def shopping_cart(request, product_sku):
+def shopping_cart(request, product_sku, group_order_ref):
     payments = ('CASH-ON-DELIVERY', 'PING')
     shipping = ('standard', 'express')
 
