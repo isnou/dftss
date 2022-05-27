@@ -380,7 +380,7 @@
 										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:quantity }}</p>
+										<p id="total" >{{ order.product_price|mul:order.quantity }}</p>
 									</td>
 								</tr>
 								{% endfor %}
@@ -403,7 +403,7 @@
 										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:quantity }}</p>
+										<p id="total" >{{ order.product_price|mul:order.quantity }}</p>
 									</td>
 								</tr>
 								{% endif %}
