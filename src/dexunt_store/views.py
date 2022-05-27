@@ -15,7 +15,7 @@ def serial_number_generator(length):
 
 
 def initial(request):
-    return redirect('home', order_ref='00000000', group_order_ref='00000000')
+    return redirect('home', order_ref=0, group_order_ref=0)
 
 
 def store_detail(request, collection):
@@ -242,16 +242,18 @@ def home(request, order_ref, group_order_ref):
     best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
         collection='SEASON').exclude(collection='FLASH')[:12]
 
-    group_order = GroupOrder(group_order_ref=group_order_ref
-                             )
-    group_order.save()
-    group_order.order.add(Order.objects.get(order_ref=order_ref))
-
-    try:
-        orders = group_order.order.all()
-    except group_order.DoesNotExist:
-        raise Http404("No orders")
-    orders_quantity = group_order.order.all().count()
+    if group_order_ref == 0 and order_ref == 0:
+        orders_quantity = 0
+        orders = 0
+    else:
+        group_order = GroupOrder(group_order_ref=group_order_ref)
+        group_order.save()
+        group_order.order.add(Order.objects.get(order_ref=order_ref))
+        try:
+            orders = group_order.order.all()
+        except group_order.DoesNotExist:
+            raise Http404("No orders")
+        orders_quantity = group_order.order.all().count()
 
     context = {
         'orders_quantity': orders_quantity,
