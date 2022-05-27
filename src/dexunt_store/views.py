@@ -151,7 +151,7 @@ def store_detail(request, collection, group_order_ref):
     return render(request, "dexunt-store/store-detail.html", context)
 
 
-def product_detail(request, product_id):
+def product_detail(request, product_id, group_order_ref):
     try:
         product = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
@@ -189,7 +189,20 @@ def product_detail(request, product_id):
     related_products = Product.objects.all().filter(Q(category=category) | Q(sub_category=sub_category) | Q(tag=tag)). \
         exclude(id=product_id).exclude(publish='False')
 
+    if group_order_ref == 'page':
+        orders_quantity = 0
+        orders = 0
+    else:
+        group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+        try:
+            orders = group_order.order.all()
+        except group_order.DoesNotExist:
+            raise Http404("No orders")
+        orders_quantity = group_order.order.all().count()
+
     context = {
+        'orders': orders,
+        'orders_quantity': orders_quantity,
         'product': product,
         'album': album,
         'related_products': related_products,
