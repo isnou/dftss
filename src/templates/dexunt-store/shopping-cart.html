@@ -456,14 +456,14 @@
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="http://94.176.238.2/media/{{ orders.product_image }}" alt="IMG">
+											<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2" id="product-name">
-										{{ orders.product_name }}
+										{{ product.name }}
 									</td>
 									<td class="column-3" >
-										{{ orders.product_price }}
+										{{ product.price }}
 									</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -477,7 +477,7 @@
 										</div>
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ orders.product_price }}</p>
+										<p id="total" >{{ product.price }}</p>
 									</td>
 								</tr>
 								{% endif %}
