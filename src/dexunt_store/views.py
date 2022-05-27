@@ -142,6 +142,7 @@ def store_detail(request, collection, group_order_ref):
         orders_quantity = group_order.order.all().count()
 
     context = {
+        'group_order_ref': group_order_ref,
         'orders': orders,
         'orders_quantity': orders_quantity,
         'collection_store': collection_store,
@@ -201,6 +202,7 @@ def product_detail(request, product_id, group_order_ref):
         orders_quantity = group_order.order.all().count()
 
     context = {
+        'group_order_ref': group_order_ref,
         'orders': orders,
         'orders_quantity': orders_quantity,
         'product': product,
