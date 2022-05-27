@@ -15,7 +15,7 @@ def serial_number_generator(length):
 
 
 def initial(request):
-    return redirect('home', order_ref=0, group_order_ref=0)
+    return redirect('home', order_ref='init', group_order_ref='init')
 
 
 def store_detail(request, collection):
@@ -242,7 +242,7 @@ def home(request, order_ref, group_order_ref):
     best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
         collection='SEASON').exclude(collection='FLASH')[:12]
 
-    if group_order_ref == 0 and order_ref == 0:
+    if group_order_ref == 'init' and order_ref == 'init':
         orders_quantity = 0
         orders = 0
     else:
