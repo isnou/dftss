@@ -14,77 +14,8 @@ def serial_number_generator(length):
     return result_str
 
 
-def home(request):
-    try:
-        slides = Content.objects.all()[0:3]
-    except Content.DoesNotExist:
-        raise Http404("No Slides")
-    try:
-        banners = Content.objects.all()[3:6]
-    except Content.DoesNotExist:
-        raise Http404("No Banners")
-
-    try:
-        flash_collection_store = ShowCase.objects.get(collection='FLASH')
-    except ShowCase.DoesNotExist:
-        raise Http404("flash collection store does not exist")
-
-    try:
-        flash_collection = Product.objects.all().filter(collection='FLASH')
-    except flash_collection_store.DoesNotExist:
-        raise Http404("flash collection store is empty")
-    flash_collection = flash_collection.order_by('?').all()[:8]
-
-    try:
-        season_collection_store = ShowCase.objects.get(collection='SEASON')
-    except ShowCase.DoesNotExist:
-        raise Http404("season collection store does not exist")
-
-    try:
-        season_collection = Product.objects.all().filter(collection='SEASON')
-    except season_collection_store.DoesNotExist:
-        raise Http404("season collection store is empty")
-    season_collection = season_collection.order_by('?').all()[:12]
-
-    try:
-        latest_collection_store = ShowCase.objects.get(collection='LATEST')
-    except ShowCase.DoesNotExist:
-        raise Http404("latest collection store does not exist")
-    latest_collection = Product.objects.all().order_by('-publish_rate').exclude(publish='False').exclude(
-        collection='SEASON').exclude(collection='FLASH')[:8]
-
-    try:
-        best_selling_collection_store = ShowCase.objects.get(collection='SELL')
-    except ShowCase.DoesNotExist:
-        raise Http404("best selling collection store does not exist")
-    best_selling_collection = Product.objects.all().order_by('-sell_rate').exclude(publish='False').exclude(
-        collection='SEASON').exclude(collection='FLASH')[:12]
-
-    try:
-        best_rated_collection_store = ShowCase.objects.get(collection='RATE')
-    except ShowCase.DoesNotExist:
-        raise Http404("best rated collection store does not exist")
-    best_rated_collection = Product.objects.all().order_by('-rate').exclude(publish='False').exclude(
-        collection='SEASON').exclude(collection='FLASH')[:12]
-
-    context = {
-        'orders_quantity': 0,
-        'slides': slides,
-        'banners': banners,
-
-        'flash_collection_store': flash_collection_store,
-        'season_collection_store': season_collection_store,
-        'latest_collection_store': latest_collection_store,
-        'best_selling_collection_store': best_selling_collection_store,
-        'best_rated_collection_store': best_rated_collection_store,
-
-        'flash_collection': flash_collection,
-        'season_collection': season_collection,
-        'latest_collection': latest_collection,
-        'best_selling_collection': best_selling_collection,
-        'best_rated_collection': best_rated_collection,
-    }
-    return render(request, "dexunt-store/home.html", context)
+def initial(request):
+    return redirect('home', order_ref=00000000, group_order_ref=00000000)
 
 
 def store_detail(request, collection):
@@ -219,7 +150,46 @@ def shopping_cart(request, product_sku):
     return render(request, "dexunt-store/shopping-cart.html", context)
 
 
-def new_order_home(request, order_ref, group_order_ref):
+def check_out(request, order_ref):
+    if request.method == 'POST':
+        client_name = request.POST.get('client_name', False)
+        client_phone = request.POST.get('client_phone', False)
+        quantity = request.POST.get('num-product2', False)
+        destination = request.POST.get('destination', False)
+        shipping = request.POST.get('shipping', False)
+        coupon = request.POST.get('coupon', False)
+    else:
+        client_name = "none"
+        client_phone = "none"
+        quantity = "none"
+        destination = "none"
+        shipping = "none"
+        coupon = "none"
+
+    if shipping == 'express':
+        destination_price = Destination.objects.get(name=destination).express_shipping
+    elif shipping == 'standard':
+        destination_price = Destination.objects.get(name=destination).standard_shipping
+    else:
+        destination_price = 0
+
+    order = Order.objects.get(order_ref=order_ref)
+    order.client_name = client_name
+    order.client_phone = client_phone
+    order.shipping_destination = destination
+    order.quantity = quantity
+    order.coupon = coupon
+    order.shipping_price = destination_price
+    order.order_state = 'UNCONFIRMED'
+    order.save()
+
+    context = {
+        'order': order,
+    }
+    return render(request, "dexunt-store/check-out.html", context)
+
+
+def home(request, order_ref, group_order_ref):
     try:
         slides = Content.objects.all()[0:3]
     except Content.DoesNotExist:
@@ -303,42 +273,3 @@ def new_order_home(request, order_ref, group_order_ref):
         'best_rated_collection': best_rated_collection,
     }
     return render(request, "dexunt-store/home.html", context)
-
-
-def check_out(request, order_ref):
-    if request.method == 'POST':
-        client_name = request.POST.get('client_name', False)
-        client_phone = request.POST.get('client_phone', False)
-        quantity = request.POST.get('num-product2', False)
-        destination = request.POST.get('destination', False)
-        shipping = request.POST.get('shipping', False)
-        coupon = request.POST.get('coupon', False)
-    else:
-        client_name = "none"
-        client_phone = "none"
-        quantity = "none"
-        destination = "none"
-        shipping = "none"
-        coupon = "none"
-
-    if shipping == 'express':
-        destination_price = Destination.objects.get(name=destination).express_shipping
-    elif shipping == 'standard':
-        destination_price = Destination.objects.get(name=destination).standard_shipping
-    else:
-        destination_price = 0
-
-    order = Order.objects.get(order_ref=order_ref)
-    order.client_name = client_name
-    order.client_phone = client_phone
-    order.shipping_destination = destination
-    order.quantity = quantity
-    order.coupon = coupon
-    order.shipping_price = destination_price
-    order.order_state = 'UNCONFIRMED'
-    order.save()
-
-    context = {
-        'order': order,
-    }
-    return render(request, "dexunt-store/check-out.html", context)
