@@ -315,7 +315,6 @@
 	<input type="hidden" id="price" name="price" value="{{ product.price }}">
 	<!-- Shopping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="{% url 'check-out' order_ref %}" name="order_form" id="order_form" method="post">
-		<form class="bg0 p-t-75 p-b-85" action="{% url 'check-out' order_ref %}" name="order_form" id="order_form" method="post">
 		{% csrf_token %}
 
 		<div class="container">
@@ -468,6 +467,5 @@
 
 			</div>
 		</div>
-		</form>
 	</form>
 {% endblock %}
