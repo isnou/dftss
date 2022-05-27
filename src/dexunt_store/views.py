@@ -200,6 +200,7 @@ def shopping_cart(request, product_sku):
                   product_sku=product.sku,
                   product_name=product.name,
                   product_price=product.price,
+                  product_image=product.image,
                   product_color=color,
                   product_option=option,
                   product_shoe_size=shoe_size,
