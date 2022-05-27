@@ -107,7 +107,7 @@ def home(request, order_ref, group_order_ref):
     return render(request, "dexunt-store/home.html", context)
 
 
-def store_detail(request, collection):
+def store_detail(request, group_order_ref, collection):
     try:
         collection_store = ShowCase.objects.get(collection=collection)
     except ShowCase.DoesNotExist:
@@ -130,7 +130,22 @@ def store_detail(request, collection):
 
     categories = collection_store.category.all()
 
+    if group_order_ref == 'page':
+        orders_quantity = 0
+        orders = 0
+    else:
+        group_order = GroupOrder(group_order_ref=group_order_ref)
+        group_order.save()
+        group_order.order.add(Order.objects.get(order_ref=order_ref))
+        try:
+            orders = group_order.order.all()
+        except group_order.DoesNotExist:
+            raise Http404("No orders")
+        orders_quantity = group_order.order.all().count()
+
     context = {
+        'orders': orders,
+        'orders_quantity': orders_quantity,
         'collection_store': collection_store,
         'product_collection': product_collection,
         'categories': categories,
