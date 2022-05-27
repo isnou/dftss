@@ -276,6 +276,7 @@ def shopping_cart(request, product_sku, group_order_ref):
     order.save()
 
     context = {
+        'order': order,
         'orders_quantity': orders_quantity,
         'orders': orders,
         'product': product,
