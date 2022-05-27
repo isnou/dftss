@@ -85,6 +85,7 @@ def home(request, order_ref, group_order_ref):
         orders_quantity = group_order.order.all().count()
 
     context = {
+        'group_order_ref': group_order_ref,
         'orders_quantity': orders_quantity,
         'orders': orders,
 
