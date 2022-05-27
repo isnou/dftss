@@ -241,11 +241,13 @@ def shopping_cart(request, product_sku, group_order_ref):
     if request.method == 'POST':
         color = request.POST.get('color', False)
         option = request.POST.get('option', False)
+        quantity = request.POST.get('num-product2', False)
         shoe_size = request.POST.get('shoe_size', False)
         clothing_size = request.POST.get('clothing_size', False)
     else:
         color = "none"
         option = "none"
+        quantity = "none"
         shoe_size = "none"
         clothing_size = "none"
 
@@ -270,6 +272,7 @@ def shopping_cart(request, product_sku, group_order_ref):
                   product_image=product.image,
                   product_color=color,
                   product_option=option,
+                  quantity=quantity,
                   product_shoe_size=shoe_size,
                   product_clothing_size=clothing_size,
                   )
@@ -293,14 +296,12 @@ def check_out(request, order_ref):
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
-        quantity = request.POST.get('num-product2', False)
         destination = request.POST.get('destination', False)
         shipping = request.POST.get('shipping', False)
         coupon = request.POST.get('coupon', False)
     else:
         client_name = "none"
         client_phone = "none"
-        quantity = "none"
         destination = "none"
         shipping = "none"
         coupon = "none"
@@ -316,7 +317,6 @@ def check_out(request, order_ref):
     order.client_name = client_name
     order.client_phone = client_phone
     order.shipping_destination = destination
-    order.quantity = quantity
     order.coupon = coupon
     order.shipping_price = destination_price
     order.order_state = 'UNCONFIRMED'

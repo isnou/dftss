@@ -3,6 +3,7 @@ from phonenumber_field.formfields import PhoneNumberField
 
 
 class PreOrderForm(forms.Form):
+    quantity = forms.IntegerField()
     color = forms.CharField()
     option = forms.CharField()
     shoe_size = forms.CharField()
@@ -10,7 +11,6 @@ class PreOrderForm(forms.Form):
 
 
 class OrderForm(forms.Form):
-    quantity = forms.IntegerField()
     client_name = forms.CharField()
     client_phone = PhoneNumberField()
     delivery = forms.CharField()
