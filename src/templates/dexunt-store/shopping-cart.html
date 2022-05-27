@@ -420,7 +420,7 @@
 									<th class="column-4">Quantity</th>
 									<th class="column-5">Total</th>
 								</tr>
-
+								{% if orders_quantity > 1 %}
 								{% for order in orders %}
 								<tr class="table_row">
 									<td class="column-1">
@@ -450,6 +450,37 @@
 									</td>
 								</tr>
 								{% endfor %}
+								{% endif %}
+
+								{% if orders_quantity == 1 %}
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="http://94.176.238.2/media/{{ orders.product_image }}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2" id="product-name">
+										{{ orders.product_name }}
+									</td>
+									<td class="column-3" >
+										{{ orders.product_price }}
+									</td>
+									<td class="column-4">
+										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+									</td>
+									<td class="column-5">
+										<p id="total" >{{ orders.product_price }}</p>
+									</td>
+								</tr>
+								{% endif %}
 
 							</table>
 						</div>
