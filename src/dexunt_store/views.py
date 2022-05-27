@@ -275,7 +275,7 @@ def new_order_home(request, order_ref, group_order_ref):
     group_order = GroupOrder(group_order_ref=group_order_ref
                              )
     group_order.save()
-    group_order.order.create(Order.objects.get(order_ref=order_ref))
+    group_order.order.add(Order.objects.get(order_ref=order_ref))
 
     try:
         orders = group_order.order.all()
