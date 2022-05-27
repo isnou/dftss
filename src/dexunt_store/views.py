@@ -134,9 +134,7 @@ def store_detail(request, collection, group_order_ref):
         orders_quantity = 0
         orders = 0
     else:
-        group_order = GroupOrder(group_order_ref=group_order_ref)
-        group_order.save()
-        group_order.order.add(Order.objects.get(order_ref=order_ref))
+        group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
         try:
             orders = group_order.order.all()
         except group_order.DoesNotExist:
