@@ -380,13 +380,10 @@
 										{{ order.quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
+										<p>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
 									</td>
 								</tr>
-								{% endfor %}
-								{% endif %}
-
-								{% if orders_quantity == 0 %}
+								{% elif orders_quantity == 0 %}
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
@@ -403,7 +400,7 @@
 										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
+										<p>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
 									</td>
 								</tr>
 								{% endif %}
