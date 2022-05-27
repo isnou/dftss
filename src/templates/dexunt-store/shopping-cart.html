@@ -315,6 +315,7 @@
 	<input type="hidden" id="price" name="price" value="{{ product.price }}">
 	<!-- Shopping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="{% url 'check-out' order_ref %}" name="order_form" id="order_form" method="post">
+		<form class="bg0 p-t-75 p-b-85" href="{% url 'home' order_ref group_order_ref %}" name="add_form" id="add_form" method="post">
 		{% csrf_token %}
 
 		<div class="container">
@@ -457,7 +458,7 @@
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 							</div>
 
-							<a href="{% url 'home' order_ref group_order_ref %}" type="submit"  class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+							<a type="submit"  class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
 								Add other products to cart
 							</a>
 						</div>
@@ -467,5 +468,6 @@
 
 			</div>
 		</div>
+		</form>
 	</form>
 {% endblock %}
