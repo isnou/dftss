@@ -421,17 +421,18 @@
 									<th class="column-5">Total</th>
 								</tr>
 
+								{% for order in orders %}
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
+											<img src="http://94.176.238.2/media/{{ order.product_image }}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2" id="product-name">
-										{{ product.name }}
+										{{ order.product_name }}
 									</td>
 									<td class="column-3" >
-										{{ product.price }}
+										{{ order.product_price }}
 									</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -445,9 +446,10 @@
 										</div>
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ product.price }}</p>
+										<p id="total" >{{ order.product_price }}</p>
 									</td>
 								</tr>
+								{% endfor %}
 
 							</table>
 						</div>
