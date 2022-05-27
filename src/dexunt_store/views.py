@@ -243,12 +243,8 @@ def shopping_cart(request, product_sku, group_order_ref):
 
     if group_order_ref == 'page':
         group_order_ref = serial_number_generator(8)
-        group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
-        try:
-            orders = group_order.order.all()
-        except group_order.DoesNotExist:
-            raise Http404("No orders")
-        orders_quantity = group_order.order.all().count()
+        orders_quantity = 0
+        orders = 0
     else:
         group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
         try:
@@ -272,11 +268,11 @@ def shopping_cart(request, product_sku, group_order_ref):
     order.save()
 
     context = {
-        'group_order_ref': group_order_ref,
-        'orders': orders,
         'orders_quantity': orders_quantity,
+        'orders':orders,
         'product': product,
         'order_ref': order_ref,
+        'group_order_ref': group_order_ref,
         'destinations': destinations,
         'payments': payments,
         'shipping': shipping,
