@@ -362,7 +362,7 @@
 									<th class="column-4">Quantity</th>
 									<th class="column-5">Total</th>
 								</tr>
-								{% if orders_quantity != 0 %}
+
 								{% for order in orders %}
 								<tr class="table_row">
 									<td class="column-1">
@@ -384,28 +384,7 @@
 									</td>
 								</tr>
 								{% endfor %}
-								{% else %}
-								<tr class="table_row">
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="http://94.176.238.2/media/{{ order.product_image }}" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2" id="product-name">
-										{{ order.product_name }}
-									</td>
-									<td class="column-3" >
-										{{ order.product_price|floatformat:"2g" }} DA
-									</td>
-									<td class="column-4">
-										{{ quantity }}
-									</td>
-									<td class="column-5">
-										<p>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
-									</td>
-								</tr>
-								{% endif %}
-
+								
 							</table>
 						</div>
 
