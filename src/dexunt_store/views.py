@@ -285,6 +285,7 @@ def new_order_home(request, order_ref, group_order_ref):
     context = {
         'orders_quantity': orders_quantity,
         'orders': orders,
+
         'slides': slides,
         'banners': banners,
 
