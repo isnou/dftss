@@ -151,7 +151,7 @@ def store_detail(request, collection, group_order_ref):
     return render(request, "dexunt-store/store-detail.html", context)
 
 
-def product_detail(request, product_id, group_order_ref):
+def product_detail(request, group_order_ref, product_id):
     try:
         product = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
