@@ -1,5 +1,7 @@
 {% extends "dexunt-store/base.html" %}
 {% load static %}
+{% load mathfilters %}
+
 
 {% block title %} Shopping Cart {% endblock %}
 
@@ -375,10 +377,10 @@
 										{{ order.product_price }}
 									</td>
 									<td class="column-4">
-										{{ widthratio order.quantity 1 order.product_price}}
+										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price }}</p>
+										<p id="total" >{{ order.product_price|mul:quantity }}</p>
 									</td>
 								</tr>
 								{% endfor %}
@@ -398,10 +400,10 @@
 										{{ order.product_price }}
 									</td>
 									<td class="column-4">
-										{{ widthratio order.quantity 1 order.product_price}}
+										{{ quantity }}
 									</td>
 									<td class="column-5">
-										<p id="total" >{{ order.product_price }}</p>
+										<p id="total" >{{ order.product_price|mul:quantity }}</p>
 									</td>
 								</tr>
 								{% endif %}
