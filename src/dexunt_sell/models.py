@@ -45,7 +45,7 @@ class Order(models.Model):
 
     product_sku = models.CharField(max_length=200)
     product_name = models.CharField(max_length=200, default='UNDEFINED')
-    product_image = models.ImageField(upload_to='dexunt-sotre/products', blank=True, nullable=True)
+    product_image = models.ImageField(upload_to='dexunt-sotre/products', blank=True)
     product_color = models.CharField(max_length=200, default='UNDEFINED')
     product_option = models.CharField(max_length=200, default='UNDEFINED')
     product_shoe_size = models.CharField(max_length=200, default='UNDEFINED')
