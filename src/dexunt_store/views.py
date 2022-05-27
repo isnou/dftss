@@ -107,7 +107,7 @@ def home(request, order_ref, group_order_ref):
     return render(request, "dexunt-store/home.html", context)
 
 
-def store_detail(request, group_order_ref, collection):
+def store_detail(request, collection, group_order_ref):
     try:
         collection_store = ShowCase.objects.get(collection=collection)
     except ShowCase.DoesNotExist:
