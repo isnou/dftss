@@ -216,16 +216,16 @@
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
-        var numPrice = document.getElementById('price');
+        var numPrice = document.getElementById('price').val();
         if(numProduct > 0) $(this).next().val(numProduct - 1);
-        document.getElementById("total").innerHTML = numPrice + 1;
+        document.getElementById("total").innerHTML = numPrice * numProduct;
     });
 
     $('.btn-num-product-up').on('click', function(){
         var numProduct = Number($(this).prev().val());
-        var numPrice = document.getElementById('price');
+        var numPrice = document.getElementById('price').val();
         $(this).prev().val(numProduct + 1);
-        document.getElementById("total").innerHTML = numPrice + 1;
+        document.getElementById("total").innerHTML = numPrice * numProduct;
     });
 
     /*==================================================================
