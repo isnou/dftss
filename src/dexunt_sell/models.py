@@ -45,13 +45,8 @@ class Order(models.Model):
     product_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
 
-    shipping_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
-
-    payment_method = models.CharField(max_length=50, default='CASH-ON-DELIVERY')
-
     def __str__(self):
-        return self.client_name
+        return self.product_name
 
 
 class GroupOrder(models.Model):
@@ -81,6 +76,9 @@ class GroupOrder(models.Model):
     total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
+    shipping_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+
+    payment_method = models.CharField(max_length=50, default='CASH-ON-DELIVERY')
 
     def get_orders(self):
         return "\n".join([p.order_ref for p in self.order.all()])

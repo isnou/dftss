@@ -5,15 +5,14 @@ from .models import Order, Destination, Coupon, GroupOrder
 class OrderAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('order_ref', 'order_state', 'product_name', 'product_color', 'product_option', 'product_shoe_size',
-                    'product_clothing_size', 'quantity', 'product_price', 'shipping_price', 'shipping_destination',
-                    'product_image')
-    list_filter = ('order_ref', 'order_state', 'product_name', 'shipping_destination')
+                    'product_clothing_size', 'quantity', 'product_price','product_image')
+    list_filter = ('order_ref', 'order_state', 'product_name')
 
 
 class GroupOrderAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders', 'client_name',
-                    'client_phone', 'registered_client', 'coupon_value', 'coupon_code', 'total_price',
+                    'client_phone', 'registered_client', 'coupon_value', 'coupon_code', 'total_price', 'shipping_price',
                     'shipping_destination')
     list_filter = ('group_order_ref', 'group_order_date', 'group_order_state')
 
