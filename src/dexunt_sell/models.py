@@ -33,15 +33,7 @@ class Order(models.Model):
     )
 
     order_ref = models.CharField(max_length=200, unique=True)
-    order_date = models.DateTimeField(auto_now_add=True)
     order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
-
-    client_name = models.CharField(max_length=200, default='NOT-YET')
-    client_phone = PhoneNumberField(blank=True)
-    registered_client = models.BooleanField(default=False)
-
-    coupon_value = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    coupon_code = models.CharField(max_length=200, default='UNDEFINED')
 
     product_sku = models.CharField(max_length=200)
     product_name = models.CharField(max_length=200, default='UNDEFINED')
