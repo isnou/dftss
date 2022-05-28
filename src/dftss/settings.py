@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'website',
-    'dexunt',
     'dexunt_store',
     'dexunt_sell',
 ]
