@@ -15,7 +15,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 class GroupOrderAdmin(admin.ModelAdmin):
     search_fields = []
-    list_display = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders')
+    list_display = ('group_order_ref', 'group_order_date', 'group_order_state', 'get_orders', 'client_name',
+                    'client_phone', 'registered_client', 'coupon_value', 'coupon_code', 'total_price',
+                    'shipping_destination')
     list_filter = ('group_order_ref', 'group_order_date', 'group_order_state')
 
 
@@ -34,5 +36,3 @@ admin.site.register(Order, OrderAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Coupon, CouponAdmin)
 admin.site.register(GroupOrder, GroupOrderAdmin)
-
-
