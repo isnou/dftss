@@ -1,0 +1,47 @@
+
+							<form action="/your-name/" method="post">
+								<label for="your_name">Your name: </label>
+								<input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+								<input type="submit" value="OK">
+							</form>
+
+
+
+
+
+    name = models.CharField(max_length=200, blank=True)
+    phone = PhoneNumberField(blank=True)
+    email = models.EmailField(max_length=200, blank=True)
+    product = models.ManyToManyField(Item)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2)
+    color = models.CharField(max_length=200, blank=True)
+    option = models.CharField(max_length=200, blank=True)
+    size = models.CharField(max_length=200, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+
+
+                            class PreOrder(models.Model):
+    product = models.ManyToManyField(Item)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
+    color = models.ManyToManyField(Color, blank=True)
+    option = models.CharField(max_length=200, blank=True)
+    size = models.CharField(max_length=200, blank=True)
+
+    def get_products(self):
+        return "\n".join([p.product for p in self.product.all()])
+
+    def __str__(self):
+        return self.name
+
+
+                            pre_order = PreOrder(product_name=item.name,
+                         product_sku=item.sku,
+                         product_id=item.id,
+                         color=color,
+                         option=option,
+                         shoe_size=shoe_size,
+                         clothing_size=clothing_size)
+    pre_order.save()
