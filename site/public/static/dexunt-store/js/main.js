@@ -216,12 +216,16 @@
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
+        var Price = document.getElementById('total_price');
         if(numProduct > 0) $(this).next().val(numProduct - 1);
+        document.getElementById("total").innerHTML = numProduct * Price;
     });
 
     $('.btn-num-product-up').on('click', function(){
         var numProduct = Number($(this).prev().val());
+        var Price = document.getElementById('price');
         $(this).prev().val(numProduct + 1);
+        document.getElementById("total").innerHTML = numProduct * Price;
     });
 
     /*==================================================================
