@@ -217,8 +217,8 @@
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
         var numPrice = document.getElementById("price").value;
+        if(numProduct > 1) document.getElementById("total").innerHTML = numPrice*(numProduct - 1);
         if(numProduct > 1) $(this).next().val(numProduct - 1);
-        document.getElementById("total").innerHTML = numPrice*(numProduct - 1);
     });
 
     $('.btn-num-product-up').on('click', function(){
