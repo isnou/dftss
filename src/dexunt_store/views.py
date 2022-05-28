@@ -352,7 +352,7 @@ def check_out(request, group_order_ref):
     group_order.coupon_value = coupon_value
     group_order.total_price = total_price
     group_order.save()
-    GroupOrder.objects.filter(group_order_ref=group_order_ref).update(order_state='UNCONFIRMED')
+    GroupOrder.objects.filter(group_order_ref=group_order_ref).update(group_order_state='UNCONFIRMED')
 
     context = {
         'group_order': group_order,
