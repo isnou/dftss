@@ -79,6 +79,17 @@ class GroupOrder(models.Model):
     group_order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
     order = models.ManyToManyField(Order, blank=True)
 
+    client_name = models.CharField(max_length=200, default='NOT-YET')
+    client_phone = PhoneNumberField(blank=True)
+    registered_client = models.BooleanField(default=False)
+
+    coupon_value = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    coupon_code = models.CharField(max_length=200, default='UNDEFINED')
+
+    total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+
+    shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
+
     def get_orders(self):
         return "\n".join([p.order_ref for p in self.order.all()])
 
