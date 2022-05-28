@@ -326,7 +326,7 @@ def check_out(request, group_order_ref):
         if not coupon.used:
             coupon_code = coupon.code
             coupon_value = coupon.value
-            Coupon.objects.get(code=coupon).update(used=True)
+            coupon.update(used=True)
         else:
             coupon_code = 'USED'
             coupon_value = 0
@@ -352,7 +352,7 @@ def check_out(request, group_order_ref):
     group_order.coupon_value = coupon_value
     group_order.total_price = total_price
     group_order.save()
-    GroupOrder.objects.get(group_order_ref=group_order_ref).update(order_state='UNCONFIRMED')
+    GroupOrder.objects.filter(group_order_ref=group_order_ref).update(order_state='UNCONFIRMED')
 
     context = {
         'group_order': group_order,
