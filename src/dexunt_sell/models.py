@@ -21,20 +21,7 @@ class Coupon(models.Model):
 
 
 class Order(models.Model):
-    STATE = (
-        ('REQUEST', 'REQUEST'),
-        ('UNCONFIRMED', 'UNCONFIRMED'),
-        ('CONFIRMED', 'CONFIRMED'),
-        ('CANCELLED', 'CANCELLED'),
-        ('DELIVERY', 'DELIVERY'),
-        ('UNPAID', 'UNPAID'),
-        ('PAYED', 'PAYED'),
-        ('REJECTED', 'REJECTED'),
-    )
-
     order_ref = models.CharField(max_length=200, unique=True)
-    order_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
-
     product_sku = models.CharField(max_length=200)
     product_name = models.CharField(max_length=200, default='UNDEFINED')
     product_image = models.ImageField(upload_to='dexunt-sotre/products', blank=True)
