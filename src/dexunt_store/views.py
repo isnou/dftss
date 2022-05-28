@@ -326,7 +326,7 @@ def check_out(request, group_order_ref):
         if not coupon.used:
             coupon_code = coupon.code
             coupon_value = coupon.value
-            coupon.update(used=True)
+            Coupon.objects.filter(code=coupon).update(used=True)
         else:
             coupon_code = 'USED'
             coupon_value = 0
