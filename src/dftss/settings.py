@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'mathfilters',
     'website',
     'dexunt_store',
     'dexunt_sell',
