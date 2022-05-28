@@ -326,7 +326,7 @@ def check_out(request, group_order_ref):
         if not coupon.used:
             coupon_code = coupon.code
             coupon_value = coupon.value
-            coupon.used = True
+            Coupon.objects.get(code=coupon).update(used=True)
         else:
             coupon_code = 'USED'
             coupon_value = 0
@@ -341,7 +341,7 @@ def check_out(request, group_order_ref):
         raise Http404("No orders")
     total_price = 0
     for order in orders:
-        total_price = total_price+order.product_price
+        total_price = total_price + order.product_price
 
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     group_order.client_name = client_name
@@ -351,8 +351,8 @@ def check_out(request, group_order_ref):
     group_order.coupon_code = coupon_code
     group_order.coupon_value = coupon_value
     group_order.total_price = total_price
-    group_order.order_state = 'UNCONFIRMED'
     group_order.save()
+    GroupOrder.objects.get(group_order_ref=group_order_ref).update(order_state='UNCONFIRMED')
 
     context = {
         'group_order': group_order,
