@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Content, ShowCase, Product
-from dexunt_sell.models import Order, Destination, GroupOrder
+from dexunt_sell.models import Order, Destination, GroupOrder, Coupon
 from django.http import Http404
 from django.db.models import Q
 import random
@@ -294,7 +294,7 @@ def shopping_cart(request, product_sku, group_order_ref):
     return render(request, "dexunt-store/shopping-cart.html", context)
 
 
-def check_out(request, order_ref):
+def check_out(request, group_order_ref):
     if request.method == 'POST':
         client_name = request.POST.get('client_name', False)
         client_phone = request.POST.get('client_phone', False)
@@ -315,16 +315,40 @@ def check_out(request, order_ref):
     else:
         destination_price = 0
 
-    order = Order.objects.get(order_ref=order_ref)
-    order.client_name = client_name
-    order.client_phone = client_phone
-    order.shipping_destination = destination
-    order.coupon = coupon
-    order.shipping_price = destination_price
-    order.order_state = 'UNCONFIRMED'
-    order.save()
+    if Coupon.objects.filter(code=coupon).exists():
+        coupon = Coupon.objects.get(code=coupon)
+        if not coupon.used:
+            coupon_code = coupon.code
+            coupon_value = coupon.value
+            coupon.used = True
+        else:
+            coupon_code = 'USED'
+            coupon_value = 0
+    else:
+        coupon_code = 'NOT-EXIST'
+        coupon_value = 0
+
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    try:
+        orders = group_order.order.all()
+    except group_order.DoesNotExist:
+        raise Http404("No orders")
+    total_price = 0
+    for order in orders:
+        total_price = total_price+order.product_price
+
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    group_order.client_name = client_name
+    group_order.client_phone = client_phone
+    group_order.shipping_destination = destination
+    group_order.shipping_price = destination_price
+    group_order.coupon_code = coupon_code
+    group_order.coupon_value = coupon_value
+    group_order.total_price = total_price
+    group_order.order_state = 'UNCONFIRMED'
+    group_order.save()
 
     context = {
-        'order': order,
+        'group_order': group_order,
     }
     return render(request, "dexunt-store/check-out.html", context)
