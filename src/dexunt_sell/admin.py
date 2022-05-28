@@ -6,7 +6,7 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = []
     list_display = ('order_ref', 'product_name', 'product_color', 'product_option', 'product_shoe_size',
                     'product_clothing_size', 'quantity', 'product_price', 'product_image')
-    list_filter = ('order_ref', 'order_state', 'product_name')
+    list_filter = ('order_ref', 'product_name')
 
 
 class GroupOrderAdmin(admin.ModelAdmin):
