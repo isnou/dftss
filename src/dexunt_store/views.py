@@ -268,7 +268,7 @@ def shopping_cart(request, product_sku, group_order_ref):
 
     if group_order_ref == 'page':
         group_order_ref = serial_number_generator(8)
-        group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+        group_order = GroupOrder(group_order_ref=group_order_ref)
         group_order.save()
         group_order.order.add(Order.objects.get(order_ref=order_ref))
         try:
