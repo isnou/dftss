@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from .models import Order, Destination, Coupon
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def manager_home(request):
@@ -11,11 +13,21 @@ def manager_home(request):
 
 
 def orders(request):
-    orders_quantity = 0
+    orders_list = Order.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(orders_list, 4)
+    try:
+        orders_object = paginator.page(page)
+    except PageNotAnInteger:
+        orders_object = paginator.page(1)
+    except EmptyPage:
+        orders_object = paginator.page(paginator.num_pages)
 
     context = {
-        'orders_quantity': orders_quantity,
+        'orders_object': orders_object,
     }
+
     return render(request, "dexunt-sell/orders.html", context)
 
 

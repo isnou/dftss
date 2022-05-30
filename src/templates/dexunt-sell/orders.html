@@ -123,13 +123,6 @@
           </li>
 
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'orders-details' %}">
-              <i class="menu-icon mdi mdi-shopping"></i>
-              <span class="menu-title">Orders Details</span>
-            </a>
-          </li>
-
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#store-manager" aria-expanded="false" aria-controls="store-manager">
@@ -197,47 +190,36 @@
                   </p>
                   <div class="table-responsive">
                     <table class="table table-hover">
+
+
                       <thead>
                         <tr>
-                          <th>User</th>
-                          <th>Product</th>
-                          <th>Sale</th>
+                          <th>Name</th>
+                          <th>Phone Number</th>
+                          <th>Order Date</th>
+                          <th>Shipping Destination</th>
                           <th>Status</th>
                         </tr>
                       </thead>
+
+
                       <tbody>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>Photoshop</td>
-                          <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
-                          <td><label class="badge badge-danger">Pending</label></td>
-                        </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>Flash</td>
-                          <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>Premier</td>
-                          <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>After effects</td>
-                          <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
+                      {% for order orders_object %}
+                      <tr>
+                        <td>{{order.client_name}}</td>
+                        <td>{{order.client_phone}}</td>
+                        <td>{{order.group_order_date}}</td>
+                        <td>{{order.shipping_destination}}</td>
+                        <td>{{order.group_order_state}}</td>
+                      </tr>
+                      {% endfor %}
+
                       </tbody>
+
+
                     </table>
+
+
                   </div>
                 </div>
               </div>
@@ -246,3 +228,55 @@
         </div>
         {% endblock %}
       <!--  -->
+
+group_order_ref
+group_order_date
+group_order_state
+order
+client_name
+client_phone
+registered_client
+coupon_value
+coupon_code
+total_price
+shipping_destination
+shipping_price
+payment_method
+
+
+<tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+
+
+
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
+                          <td><label class="badge badge-success">Completed</label></td>
+                        </tr>
+
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
