@@ -40,6 +40,7 @@ def orders_details(request, group_order_ref):
         raise Http404("No orders")
 
     context = {
+        'group_order': group_order,
         'orders': orders,
     }
     return render(request, "dexunt-sell/orders-details.html", context)
