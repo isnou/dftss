@@ -227,7 +227,7 @@
                       {% if orders_object.number == i %}
                       <li class="page-item activate"><span><span class="page-link">{{ i }}</span></span></li>
                       {% else %}
-                      <li class="page-item"><a href="?page={{ i }}">{{ i }}</a></li>
+                      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
                       {% endif %}
                       {% endfor %}
                       {% if orders_object.has_next %}
