@@ -341,7 +341,7 @@ def check_out(request, group_order_ref):
         raise Http404("No orders")
     total_price = 0
     for order in orders:
-        total_price = total_price + order.product_price
+        total_price = total_price + (order.product_price * order.quantity)
 
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     group_order.client_name = client_name
