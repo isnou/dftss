@@ -392,7 +392,7 @@
             </div>
             <div class="text-xs font-weight-bold text-uppercase mb-1"></div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
-              {{ group_order.total_price|sub:group_order.coupon_value|group_order.shipping_price:|floatformat:"2g" }} DA
+              {{ group_order.total_price|sub:group_order.coupon_value|add:group_order.shipping_price:|floatformat:"2g" }} DA
             </div>
             <div class="mt-2 mb-0 text-muted text-xs">
 
