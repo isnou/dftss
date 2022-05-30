@@ -191,7 +191,6 @@
                   <div class="table-responsive">
                     <table class="table table-hover">
 
-
                       <thead>
                         <tr>
                           <th>Name</th>
@@ -201,7 +200,6 @@
                           <th>Status</th>
                         </tr>
                       </thead>
-
 
                       <tbody>
                       {% for order in orders_object %}
@@ -215,9 +213,30 @@
                       {% endfor %}
 
                       </tbody>
-
-
                     </table>
+
+
+                    {% if orders_object.has_other_pages %}
+                    <ul class="pagination">
+                      {% if orders_object.has_previous %}
+                      <li><a href="?page={{ orders_object.previous_page_number }}">&laquo;</a></li>
+                      {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                      {% endif %}
+                      {% for i in orders_object.paginator.page_range %}
+                      {% if orders_object.number == i %}
+                      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                      {% endfor %}
+                      {% if orders_object.has_next %}
+                      <li><a href="?page={{ orders_object.next_page_number }}">&raquo;</a></li>
+                      {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                      {% endif %}
+                    </ul>
+                    {% endif %}
 
 
                   </div>
