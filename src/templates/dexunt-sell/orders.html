@@ -316,6 +316,7 @@
             <th>Order Date</th>
             <th>Shipping Destination</th>
             <th>Status</th>
+            <th>-</th>
           </tr>
 
           </thead>
@@ -329,6 +330,7 @@
             <td>{{order.group_order_date}}</td>
             <td>{{order.shipping_destination}}</td>
             <td>{{order.group_order_state}}</td>
+            <td><a href="{% url 'orders-details' {{order.group_order_ref}} %}"></a>E</td>
           </tr>
           {% endfor %}
 

@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from .models import GroupOrder, Destination, Coupon
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -31,10 +32,14 @@ def orders_list(request):
     return render(request, "dexunt-sell/orders.html", context)
 
 
-def orders_details(request):
-    orders_quantity = 0
+def orders_details(request, group_order_ref):
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    try:
+        orders = group_order.order.all()
+    except group_order.DoesNotExist:
+        raise Http404("No orders")
 
     context = {
-        'orders_quantity': orders_quantity,
+        'orders': orders,
     }
     return render(request, "dexunt-sell/orders-details.html", context)
