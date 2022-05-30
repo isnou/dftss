@@ -12,20 +12,20 @@ def manager_home(request):
     return render(request, "dexunt-sell/manager-dashboard.html", context)
 
 
-def orders(request):
-    orders_list = GroupOrder.objects.all()
+def orders_list(request):
+    orders = GroupOrder.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(orders_list, 10)
+    paginator = Paginator(orders, 10)
     try:
-        orders_object = paginator.page(page)
+        orders = paginator.page(page)
     except PageNotAnInteger:
-        orders_object = paginator.page(1)
+        orders = paginator.page(1)
     except EmptyPage:
-        orders_object = paginator.page(paginator.num_pages)
+        orders = paginator.page(paginator.num_pages)
 
     context = {
-        'orders_object': orders_object,
+        'orders': orders,
     }
 
     return render(request, "dexunt-sell/orders.html", context)
