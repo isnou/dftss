@@ -225,7 +225,7 @@
                       {% endif %}
                       {% for i in orders_object.paginator.page_range %}
                       {% if orders_object.number == i %}
-                      <li class="page-item"><span>{{ i }} <span class="page-link">(current)</span></span></li>
+                      <li class="page-item"><span>{{ i }} <span class="page-link">{{ i }}</span></span></li>
                       {% else %}
                       <li><a href="?page={{ i }}">{{ i }}</a></li>
                       {% endif %}
@@ -240,7 +240,7 @@
                     </div>
 
 
-      
+
 
 
 
