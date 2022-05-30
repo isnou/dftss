@@ -28755,7 +28755,7 @@ div.tagsinput span.tag a {
 
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {
-  .inde.html {
+  .index.html {
     position: fixed;
     max-height: calc(100vh - 60px);
     top: 60px;
