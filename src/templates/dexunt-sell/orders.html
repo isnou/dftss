@@ -221,11 +221,11 @@
                       {% if orders_object.has_previous %}
                       <li class="page-item"><a class="page-link" href="?page={{ orders_object.previous_page_number }}">&laquo;</a></li>
                       {% else %}
-                      <li class="page-item disabled"><span>&laquo;</span></li>
+                      <li class="page-item"><span>&laquo;</span></li>
                       {% endif %}
                       {% for i in orders_object.paginator.page_range %}
                       {% if orders_object.number == i %}
-                      <li class="page-item activate"><span>{{ i }} <span class="page-link">{{ i }}</span></span></li>
+                      <li class="page-item activate"><span><span class="page-link">{{ i }}</span></span></li>
                       {% else %}
                       <li class="page-item"><a href="?page={{ i }}">{{ i }}</a></li>
                       {% endif %}
@@ -233,7 +233,7 @@
                       {% if orders_object.has_next %}
                       <li class="page-item"><a class="page-link" href="?page={{ orders_object.next_page_number }}">&raquo;</a></li>
                       {% else %}
-                      <li class="page-item disabled"><span>&raquo;</span></li>
+                      <li class="page-item"><span>&raquo;</span></li>
                       {% endif %}
                     </ul>
                     {% endif %}
