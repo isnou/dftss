@@ -16,7 +16,7 @@ def orders(request):
     orders_list = GroupOrder.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(orders_list, 4)
+    paginator = Paginator(orders_list, 10)
     try:
         orders_object = paginator.page(page)
     except PageNotAnInteger:
