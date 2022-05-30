@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Order, Destination, Coupon
+from .models import GroupOrder, Destination, Coupon
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -13,7 +13,7 @@ def manager_home(request):
 
 
 def orders(request):
-    orders_list = Order.objects.all()
+    orders_list = GroupOrder.objects.all()
     page = request.GET.get('page', 1)
 
     paginator = Paginator(orders_list, 4)
