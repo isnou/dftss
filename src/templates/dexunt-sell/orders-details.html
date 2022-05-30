@@ -428,8 +428,8 @@
             <th>Option</th>
             <th>Shoe Size</th>
             <th>Clothing Size</th>
-            <th>Quantity</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th>Sub Total</th>
           </tr>
 
@@ -444,10 +444,10 @@
             <td>{{order.product_option}}</td>
             <td>{{order.product_shoe_size}}</td>
             <td>{{order.product_clothing_size}}</td>
-            <td>{{order.quantity}}</td>
             <td>{{order.product_price|floatformat:"2g"}} DA</td>
+            <td>{{order.quantity}}</td>
             <td>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</td>
-            
+
           </tr>
           {% endfor %}
 
