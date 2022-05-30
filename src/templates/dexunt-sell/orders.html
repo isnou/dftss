@@ -220,10 +220,11 @@
                   </div>
                 </div>
               </div>
+          </div>
 
 
-            <div class="col-lg-12 grid-margin stretch-card">
-          <nav aria-label="Page navigation example">
+          <div class="paginator">
+            <nav aria-label="Page navigation example">
                     {% if orders_object.has_other_pages %}
                     <ul class="pagination">
                       {% if orders_object.has_previous %}
@@ -245,16 +246,14 @@
                       {% endif %}
                     </ul>
                     {% endif %}
-          </nav>
-</div>
+            </nav>
+          </div>
 
 
 
 
 
             </div>
-          </div>
-        </div>
         {% endblock %}
       <!--  -->
 
