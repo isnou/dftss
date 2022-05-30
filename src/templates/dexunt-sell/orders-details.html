@@ -386,11 +386,11 @@
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-uppercase mb-1"></div>
+            <div class="text-xs font-weight-bold text-uppercase mb-1">* shipping included</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
               Total Price:
             </div>
-            <div class="text-xs font-weight-bold text-uppercase mb-1"></div>
+            <div class="text-xs font-weight-bold text-uppercase mb-1">* coupons included</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
               {{ group_order.total_price|sub:group_order.coupon_value|add:group_order.shipping_price|floatformat:"2g" }} DA
             </div>
