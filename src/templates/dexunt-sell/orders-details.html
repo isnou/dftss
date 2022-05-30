@@ -310,7 +310,11 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{ group_order.client_name }}</div>
 
               <div class="text-xs font-weight-bold text-uppercase mb-1">Phone Number</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800" href="tel:{{ group_order.client_phone }}">{{ group_order.client_phone }}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                <a href="tel:{{ group_order.client_phone }}">
+                  {{ group_order.client_phone }}
+                </a>
+              </div>
 
 
               <div class="mt-2 mb-0 text-muted text-xs">
