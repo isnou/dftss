@@ -311,24 +311,26 @@
           <thead class="thead-light">
 
           <tr>
-            <th>Order ID</th>
-            <th>Customer</th>
-            <th>Item</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Order Date</th>
+            <th>Shipping Destination</th>
             <th>Status</th>
-            <th>Action</th>
           </tr>
 
           </thead>
 
           <tbody>
 
+          {% for order in orders_object %}
           <tr>
-            <td><a href="#">RA0449</a></td>
-            <td>Udin Wayang</td>
-            <td>Nasi Padang</td>
-            <td><span class="badge badge-success">Delivered</span></td>
-            <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+            <td><a href="#">RA0449</a>{{order.client_name}}</td>
+            <td>{{order.client_phone}}</td>
+            <td>{{order.group_order_date}}</td>
+            <td>{{order.shipping_destination}}</td>
+            <td>{{order.group_order_state}}</td>
           </tr>
+          {% endfor %}
 
 
           </tbody>
