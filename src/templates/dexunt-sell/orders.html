@@ -267,7 +267,7 @@
         <ul class="nav">
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url manager-home %}">
+            <a class="nav-link" href="{% url 'manager-home' %}">
               <i class="menu-icon mdi mdi-view-dashboard"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -275,7 +275,7 @@
 
 
           <li class="nav-item active">
-            <a class="nav-link" href="{% url orders %}">
+            <a class="nav-link" href="{% url 'orders' %}">
               <i class="menu-icon mdi mdi-cart"></i>
               <span class="menu-title">Orders</span>
             </a>
@@ -283,7 +283,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url orders-details %}">
+            <a class="nav-link" href="{% url 'orders-details' %}">
               <i class="menu-icon mdi mdi-shopping"></i>
               <span class="menu-title">Orders Details</span>
             </a>
