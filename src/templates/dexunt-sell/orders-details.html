@@ -184,27 +184,61 @@
 
       <!-- content -->
         {% block content %}
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Advanced Table</p>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="table-responsive">
-                        <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example" class="display expandable-table dataTable no-footer" style="width:100%" role="grid">
-                          <thead>
-                            <tr role="row"><th class="select-checkbox sorting_disabled" rowspan="1" colspan="1" aria-label="Quote#" style="width: 58.7578px;">Quote#</th><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending" style="width: 64.7422px;">Product</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Business type: activate to sort column ascending" style="width: 109.961px;">Business type</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Policy holder: activate to sort column ascending" style="width: 103.812px;">Policy holder</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Premium: activate to sort column ascending" style="width: 73.0703px;">Premium</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 54.5625px;">Status</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Updated at: activate to sort column ascending" style="width: 90.0312px;">Updated at</th><th class="details-control sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 3.0625px;"></th></tr>
-                          </thead>
-                      <tbody><tr class="odd"><td valign="top" colspan="8" class="dataTables_empty">Loading...</td></tr></tbody></table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div><div class="col-sm-12 col-md-7"></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                  <h4 class="card-title">Hoverable Table</h4>
+                  <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Product</th>
+                          <th>Sale</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
+                          <td><label class="badge badge-success">Completed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
-
               </div>
             </div>
+          </div>
         {% endblock %}
       <!--  -->
