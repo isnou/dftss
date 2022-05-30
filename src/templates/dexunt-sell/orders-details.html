@@ -353,6 +353,32 @@
   </div>
 
 
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-uppercase mb-1">Promo Code</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ group_order.coupon_code }}
+            </div>
+            <div class="text-xs font-weight-bold text-uppercase mb-1">Promo Value</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ group_order.coupon_value|floatformat:"2g" }} DA
+            </div>
+            <div class="mt-2 mb-0 text-muted text-xs">
+
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-ticket fa-2x text-info"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 
