@@ -324,8 +324,8 @@
 
           {% for order in orders %}
           <tr>
-            <td><a href="#">RA0449</a>{{order.client_name}}</td>
-            <td>{{order.client_phone}}</td>
+            <td>{{order.client_name}}</td>
+            <td><a href="tel:{{order.client_phone}}">{{order.client_phone}}</a></td>
             <td>{{order.group_order_date}}</td>
             <td>{{order.shipping_destination}}</td>
             <td>{{order.group_order_state}}</td>
