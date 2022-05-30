@@ -9,7 +9,7 @@ def manager_home(request):
     context = {
         'orders_quantity': orders_quantity,
     }
-    return render(request, "dexunt-sell/manager-dashboard.html", context)
+    return render(request, "dexunt-sell/dev-base.html", context)
 
 
 def orders(request):
