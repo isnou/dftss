@@ -43,6 +43,7 @@ class GroupOrder(models.Model):
         ('CANCELLED', 'CANCELLED'),
         ('DELIVERY', 'DELIVERY'),
         ('REJECTED', 'REJECTED'),
+        ('REMOVED', 'REMOVED'),
         ('REQUEST', 'REQUEST'),
         ('UNPAID', 'UNPAID'),
         ('PAYED', 'PAYED'),

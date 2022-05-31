@@ -64,3 +64,9 @@ def delete_order(group_order_ref, order_ref):
     order.delete()
     return redirect('orders-details', group_order_ref=group_order_ref)
 
+
+def delete_orders(group_order_ref):
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    group_order.group_order_state = 'REMOVED'
+    group_order.save()
+    return redirect('orders-list')
