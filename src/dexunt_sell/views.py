@@ -41,7 +41,7 @@ def orders_details(request, group_order_ref):
 
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(orders, 10)
+    paginator = Paginator(orders, 4)
     try:
         orders = paginator.page(page)
     except PageNotAnInteger:
