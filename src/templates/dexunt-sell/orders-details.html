@@ -488,13 +488,6 @@
             {% endif %}
           </nav>
         </div>
-
-        <a class="text-s font-weight-bold text-gray-800">Total Price :</a>
-        <a class="h5 font-weight-bold text-gray-800">
-          {{ group_order.total_price|floatformat:"2g" }} DA
-        </a>
-
-
       </div>
     </div>
 
@@ -505,6 +498,11 @@
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Proceed To Check Out</h6>
+
+        <h6 class="text-s font-weight-bold text-gray-800">Total Price :</h6>
+        <h4 class="h5 font-weight-bold text-gray-800">
+          {{ group_order.total_price|floatformat:"2g" }} DA
+        </h4>
       </div>
       <div class="card-body">
         <form>
