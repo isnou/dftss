@@ -60,6 +60,7 @@ def delete_order(request, group_order_ref, order_ref):
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     order = group_order.order.get(order_ref=order_ref)
     group_order.total_price = group_order.total_price - (order.product_price * order.quantity)
+    group_order.save()
     order.delete()
     return redirect('orders-details', group_order_ref=group_order_ref)
 
