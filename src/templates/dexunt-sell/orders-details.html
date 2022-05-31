@@ -433,6 +433,7 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Sub Total</th>
+            <th></th>
           </tr>
           </thead>
 
@@ -447,10 +448,16 @@
             <td>{{order.product_price|floatformat:"2g"}} DA</td>
             <td><a class="ml-2">{{order.quantity}}</a></td>
             <td>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</td>
+            <td>
+              <a href="{% url 'orders-details' order.group_order_ref %}">
+                <i class="fas fa-trash"></i>
+              </a>
+            </td>
           </tr>
           {% endfor %}
           </tbody>
           <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
