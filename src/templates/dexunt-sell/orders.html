@@ -336,10 +336,8 @@
             <td><a href="{% url 'orders-details' order.group_order_ref %}">
               <i class="fas fa-eye"></i></a>
             </td>
-            <td>
-              <a href="{% url 'delete-orders' order.group_order_ref %}">
-                <i class="fas fa-trash"></i>
-              </a>
+            <td><a href="{% url 'delete-orders' order.group_order_ref %}">
+                <i class="fas fa-trash"></i></a>
             </td>
           </tr>
           {% endfor %}
