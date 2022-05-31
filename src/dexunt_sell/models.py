@@ -58,6 +58,7 @@ class GroupOrder(models.Model):
     client_name = models.CharField(max_length=200, default='NOT-YET')
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
+    request = models.BooleanField(default=False)
 
     coupon_value = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     coupon_code = models.CharField(max_length=200, default='UNDEFINED')
