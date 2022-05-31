@@ -56,7 +56,7 @@ def orders_details(request, group_order_ref):
     return render(request, "dexunt-sell/orders-details.html", context)
 
 
-def delete_order(request, group_order_ref, order_ref):
+def delete_order(group_order_ref, order_ref):
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     order = group_order.order.get(order_ref=order_ref)
     group_order.total_price = group_order.total_price - (order.product_price * order.quantity)
