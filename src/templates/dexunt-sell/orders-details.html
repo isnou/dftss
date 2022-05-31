@@ -412,26 +412,12 @@
   <a class="col-xl-3 col-md-6 mb-4 ">
     <div class="text-xs font-weight-bold mb-1">Cart Total Price</div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">
-      {{ group_order.total_price|floatformat:"2g" }} DA    +
-    </div>
-  </a>
-
-  <a class="col-xl-3 col-md-6 mb-4 ">
-    <div class="text-xs font-weight-bold mb-1">Shipping Price</div>
-    <div class="h5 mb-0 font-weight-bold text-gray-800">
-      {{ group_order.shipping_price|floatformat:"2g" }} DA
-    </div>
-  </a>
-
-  <a class="col-xl-3 col-md-6 mb-4 ">
-    <div class="text-xs font-weight-bold mb-1">Coupon Value</div>
-    <div class="h5 mb-0 font-weight-bold text-gray-800">
-      {{ group_order.coupon_value|floatformat:"2g" }} DA
+      {{ group_order.total_price|floatformat:"2g" }} DA    +   Shipping Price  -  Coupon Value  =
     </div>
   </a>
 
   <a class="col-xl-3 col-md-6 ">
-    <div class="text-xs font-weight-bold mb-1">Coupon Value</div>
+    <div class="text-xs font-weight-bold mb-1">Total Price</div>
     <div class="h5 mb-0 font-weight-bold text-gray-800">
       {{ group_order.total_price|sub:group_order.coupon_value|add:group_order.shipping_price|floatformat:"2g" }} DA
     </div>
