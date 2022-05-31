@@ -54,3 +54,28 @@ def orders_details(request, group_order_ref):
         'orders': orders,
     }
     return render(request, "dexunt-sell/orders-details.html", context)
+
+
+def delete_order(request, group_order_ref, order_ref):
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    group_order.order.get(order_ref=order_ref).delete()
+    try:
+        orders = group_order.order.all()
+    except group_order.DoesNotExist:
+        raise Http404("No orders")
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(orders, 10)
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+
+    context = {
+        'group_order': group_order,
+        'orders': orders,
+    }
+    return render(request, "dexunt-sell/orders-details.html", context)
