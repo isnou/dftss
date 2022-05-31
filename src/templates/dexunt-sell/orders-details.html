@@ -449,7 +449,7 @@
             <td><a class="ml-2">{{order.quantity}}</a></td>
             <td>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</td>
             <td>
-              <a href="{% url 'orders-details' order.group_order_ref %}">
+              <a href="#">
                 <i class="fas fa-trash"></i>
               </a>
             </td>
