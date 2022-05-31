@@ -80,13 +80,17 @@ def update_orders(request, group_order_ref):
 
     else:
         sub_destination_name = "undefined"
-        option = 'none'
+        option = 'UNCONFIRMED'
         account = 'none'
 
-    context = {
-        'sub_destination_name': sub_destination_name,
-        'option': option,
-        'account': account,
-    }
-    return render(request, "dexunt-sell/debug.html", context)
+    group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
+    group_order.group_order_state = option
+    group_order.shipping_sub_destination = sub_destination_name
+
+    if account == 'on':
+        group_order.request = True
+    else:
+        group_order.request = False
+    group_order.save()
+    return redirect('orders-list')
 
