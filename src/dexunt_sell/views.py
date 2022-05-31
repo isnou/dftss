@@ -14,7 +14,7 @@ def manager_home(request):
 
 
 def orders_list(request):
-    orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST')
+    orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
     page = request.GET.get('page', 1)
 
     paginator = Paginator(orders, 10)
