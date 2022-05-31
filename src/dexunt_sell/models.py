@@ -73,7 +73,7 @@ class GroupOrder(models.Model):
         return "\n".join([p.order_ref for p in self.order.all()])
 
     def get_orders_count(self):
-        return "\n".join([self.order.all().count()])
+        return self.order.all().count()
 
     def __str__(self):
         return self.group_order_ref
