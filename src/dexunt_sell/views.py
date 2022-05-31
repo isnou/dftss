@@ -59,5 +59,5 @@ def orders_details(request, group_order_ref):
 def delete_order(request, group_order_ref, order_ref):
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     group_order.order.get(order_ref=order_ref).delete()
-    return redirect('orders-details', group_order_ref='group_order_ref')
+    return redirect('orders-details', group_order_ref=group_order_ref)
 
