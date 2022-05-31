@@ -446,7 +446,7 @@
         </h4>
       </div>
       <div class="card-body">
-        <form action="{% url 'check-out' group_order_ref %}"  id="update_orders_form" method="post">
+        <form action="{% url 'update-orders' group_order_ref %}"  id="update_orders_form" method="post">
           {% csrf_token %}
           <div class="form-group row">
             <label for="destination-name" class="col-sm-3 col-form-label">Destination Name</label>
