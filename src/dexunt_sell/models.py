@@ -43,9 +43,10 @@ class GroupOrder(models.Model):
         ('CONFIRMED', 'CONFIRMED'),
         ('CANCELLED', 'CANCELLED'),
         ('DELIVERY', 'DELIVERY'),
+        ('REJECTED', 'REJECTED'),
         ('UNPAID', 'UNPAID'),
         ('PAYED', 'PAYED'),
-        ('REJECTED', 'REJECTED'),
+        ('PEND', 'PEND'),
     )
 
     group_order_ref = models.CharField(max_length=200, unique=True)
