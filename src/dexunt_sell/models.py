@@ -38,12 +38,12 @@ class Order(models.Model):
 
 class GroupOrder(models.Model):
     STATE = (
-        ('REQUEST', 'REQUEST'),
         ('UNCONFIRMED', 'UNCONFIRMED'),
         ('CONFIRMED', 'CONFIRMED'),
         ('CANCELLED', 'CANCELLED'),
         ('DELIVERY', 'DELIVERY'),
         ('REJECTED', 'REJECTED'),
+        ('REQUEST', 'REQUEST'),
         ('UNPAID', 'UNPAID'),
         ('PAYED', 'PAYED'),
         ('PEND', 'PEND'),
@@ -64,6 +64,7 @@ class GroupOrder(models.Model):
     total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     shipping_destination = models.CharField(max_length=200, default='UNDEFINED')
+    shipping_sub_destination = models.CharField(max_length=200, default='UNDEFINED')
     shipping_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     payment_method = models.CharField(max_length=50, default='CASH-ON-DELIVERY')

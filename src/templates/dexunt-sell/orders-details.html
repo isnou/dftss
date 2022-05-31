@@ -422,8 +422,8 @@
       <div class="table-responsive">
 
         <table class="table align-items-center table-flush">
-          <thead class="thead-light">
 
+          <thead class="thead-light">
           <tr>
             <th>Name</th>
             <th>Color</th>
@@ -434,11 +434,9 @@
             <th>Quantity</th>
             <th>Sub Total</th>
           </tr>
-
           </thead>
 
           <tbody>
-
           {% for order in orders %}
           <tr>
             <td><a href="#">{{order.product_name}}</a></td>
@@ -449,16 +447,11 @@
             <td>{{order.product_price|floatformat:"2g"}} DA</td>
             <td><a class="ml-2">{{order.quantity}}</a></td>
             <td>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</td>
-
           </tr>
           {% endfor %}
-
-
           </tbody>
 
-
-
-          <tr class="tbody-light">
+          <tr>
             <td></td>
             <td></td>
             <td></td>
@@ -473,7 +466,6 @@
                   {{ group_order.total_price|floatformat:"2g" }} DA
                 </a>
             </td>
-
           </tr>
 
         </table>
