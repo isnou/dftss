@@ -450,24 +450,6 @@
           </tr>
           {% endfor %}
           </tbody>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <a class="text-s font-weight-bold text-gray-800">Total Price :</a>
-            </td>
-            <td>
-                <a class="h5 mb-0 font-weight-bold text-gray-800">
-                  {{ group_order.total_price|floatformat:"2g" }} DA
-                </a>
-            </td>
-          </tr>
-
         </table>
       </div>
       <div class="card-footer">
@@ -496,6 +478,11 @@
             {% endif %}
           </nav>
         </div>
+        
+              <a class="text-s font-weight-bold text-gray-800">Total Price :</a>
+                <a class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ group_order.total_price|floatformat:"2g" }} DA
+                </a>
 
 
       </div>
