@@ -39,6 +39,16 @@ def orders_details(request, group_order_ref):
     except group_order.DoesNotExist:
         raise Http404("No orders")
 
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(orders, 10)
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+
     context = {
         'group_order': group_order,
         'orders': orders,
