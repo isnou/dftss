@@ -414,15 +414,20 @@
     <div class="card mb-4">
       <div class="card-body">
 
-        <a class="text-xs font-weight-bold mb-1">Cart Total Price</a>
-        <a class="h5 mb-0 font-weight-bold text-gray-800">
+        <div class="text-xs font-weight-bold mb-1">Cart Total Price</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">
               {{ group_order.total_price }} DA
-        </a>
+        </div>
 
-        <a class="text-xs font-weight-bold mb-1">Shipping Price</a>
-        <a class="h5 mb-0 font-weight-bold text-gray-800">
+        <div class="text-xs font-weight-bold mb-1">Shipping Price</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">
               {{ group_order.shipping_price }} DA
-        </a>
+        </div>
+
+        <div class="text-xs font-weight-bold mb-1">Coupon Value</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ group_order.coupon_value }} DA
+        </div>
 
       </div>
     </div>
