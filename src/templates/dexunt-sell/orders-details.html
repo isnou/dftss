@@ -416,18 +416,13 @@
         <h6 class="m-0 font-weight-bold text-primary">Basic Buttons</h6>
       </div>
       <div class="card-body">
-        <p>Bootstrap includes several predefined button styles, each serving its own
-          semantic purpose, with a
-          few extras thrown in for more control.</p>
-        <button type="button" class="btn btn-primary mb-1">Primary</button>
-        <button type="button" class="btn btn-secondary mb-1">Secondary</button>
-        <button type="button" class="btn btn-success mb-1">Success</button>
-        <button type="button" class="btn btn-danger mb-1">Danger</button>
-        <button type="button" class="btn btn-warning mb-1">Warning</button>
-        <button type="button" class="btn btn-info mb-1">Info</button>
-        <button type="button" class="btn btn-light mb-1">Light</button>
-        <button type="button" class="btn btn-dark mb-1">Dark</button>
-        <button type="button" class="btn btn-link">Link</button>
+        <p>
+        <div class="text-xs font-weight-bold mb-1">Cart Total Price</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ group_order.total_price }}
+        </div>
+
+        </p>
       </div>
     </div>
   </div>
