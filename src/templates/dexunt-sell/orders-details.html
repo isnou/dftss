@@ -447,7 +447,7 @@
             <td>{{order.product_shoe_size}}</td>
             <td>{{order.product_clothing_size}}</td>
             <td>{{order.product_price|floatformat:"2g"}} DA</td>
-            <td>{{order.quantity}}</td>
+            <td><a class="ml-1">{{order.quantity}}</a></td>
             <td>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</td>
 
           </tr>
@@ -461,12 +461,12 @@
             <td></td>
             <td></td>
             <td>
-              <div class="text-s font-weight-bold text-gray-800">Total Price</div>
+              <a class="text-s font-weight-bold text-gray-800">Total Price</a>
             </td>
             <td>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                <a class="h5 mb-0 font-weight-bold text-gray-800">
                   {{ group_order.total_price|floatformat:"2g" }} DA
-                </div>
+                </a>
             </td>
 
           </tr>
