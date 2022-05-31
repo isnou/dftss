@@ -70,3 +70,23 @@ def delete_orders(request, group_order_ref):
     group_order.group_order_state = 'REMOVED'
     group_order.save()
     return redirect('orders-list')
+
+
+def update_orders(request, group_order_ref):
+    if request.method == 'POST':
+        sub_destination_name = request.POST.get('destination-name', False)
+        option = request.POST.get('choose-option', False)
+        account = request.POST.get('create-account', False)
+
+    else:
+        sub_destination_name = "undefined"
+        option = 'none'
+        account = 'none'
+
+    context = {
+        'sub_destination_name': sub_destination_name,
+        'option': option,
+        'account': account,
+    }
+    return render(request, "dexunt-sell/debug.html", context)
+

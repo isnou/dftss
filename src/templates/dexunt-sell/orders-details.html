@@ -446,7 +446,8 @@
         </h4>
       </div>
       <div class="card-body">
-        <form>
+        <form action="{% url 'check-out' group_order_ref %}"  id="update_orders_form" method="post">
+          {% csrf_token %}
           <div class="form-group row">
             <label for="destination-name" class="col-sm-3 col-form-label">Destination Name</label>
             <div class="col-sm-9">
@@ -458,15 +459,15 @@
               <label class="col-form-label col-sm-3 pt-0">Choose an option</label>
               <div class="col-sm-9">
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="order-confirmed" name="choose-option" class="custom-control-input">
+                  <input type="radio" id="order-confirmed" name="choose-option" class="custom-control-input" value="CONFIRMED">
                   <label class="custom-control-label" for="order-confirmed">Order Confirmed </label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="no-answer" name="choose-option" class="custom-control-input">
+                  <input type="radio" id="no-answer" name="choose-option" class="custom-control-input" value="PEND">
                   <label class="custom-control-label" for="no-answer">No Answer</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input type="radio" name="choose-option" id="order-cancelled" class="custom-control-input">
+                  <input type="radio" name="choose-option" id="order-cancelled" class="custom-control-input" value="CANCELLED">
                   <label class="custom-control-label" for="order-cancelled">Order Cancelled</label>
                 </div>
               </div>
@@ -477,7 +478,7 @@
             <div class="col-sm-9">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="create-account">
-                <label class="custom-control-label" for="create-account">Check this to order for an account</label>
+                <label class="custom-control-label" for="create-account">Check to create an account</label>
               </div>
             </div>
           </div>
