@@ -107,7 +107,7 @@ def products_list(request):
     return render(request, "dexunt-sell/products-list.html", context)
 
 
-def product_details(request, sku):
+def edit_product(request, sku):
     product = Product.objects.get(sku=sku)
     context = {
         'product': product,
