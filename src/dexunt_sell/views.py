@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, redirect
 from .models import GroupOrder, Destination, Coupon
@@ -16,6 +17,33 @@ def manager_home(request):
 def orders_list(request, state):
     if state == 'ALL':
         orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
+    elif state == 'UNCONFIRMED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'CONFIRMED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'PEND':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'CANCELLED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'DELIVERY':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'UNPAID':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'PAYED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'REJECTED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+    elif state == 'REMOVED':
+        orders = GroupOrder.objects.all().filter(
+            Q(group_order_state=state).exclude(group_order_state='REQUEST'))
     else:
         orders = 'EMPTY'
 
