@@ -105,3 +105,24 @@ def products_list(request):
         'products': products,
     }
     return render(request, "dexunt-sell/products-list.html", context)
+
+
+def product_details(request, sku):
+    group_order = Product.objects.get(sku=sku)
+    try:
+        orders = group_order.order.all()
+    except group_order.DoesNotExist:
+        raise Http404("No orders")
+    page = request.GET.get('page', 1)
+    paginator = Paginator(orders, 10)
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+    context = {
+        'group_order': group_order,
+        'orders': orders,
+    }
+    return render(request, "dexunt-sell/orders-details.html", context)

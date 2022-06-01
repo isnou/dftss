@@ -233,7 +233,41 @@
     <div class="card">
 
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Products List</h6>
+
+
+
+
+        <table class="table align-items-center table-flush">
+          <thead class="thead">
+          <tr>
+            <th>
+              <h6 class="m-0 font-weight-bold text-primary">Products List</h6>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'REJECTED' %}">
+                <i class="fas fa-user-alt-slash "></i>Rejected
+              </a><!-- rejected -->
+            </th>
+            <th>
+              <a type="button" class="btn btn-outline-primary "  href="{% url 'orders-list' 'REMOVED' %}">
+                <i class="fas fa-trash-alt "></i>Trash
+              </a><!-- deleted -->
+            </th>
+          </tr>
+
+          </thead>
+        </table>
+
+
+
+
+
       </div>
       <div class="table-responsive">
 
