@@ -91,7 +91,7 @@ def delete_orders(request, group_order_ref):
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     group_order.group_order_state = 'REMOVED'
     group_order.save()
-    return redirect('orders-list')
+    return redirect('orders-list', state='ALL')
 
 
 def update_orders(request, group_order_ref):
@@ -114,5 +114,5 @@ def update_orders(request, group_order_ref):
     else:
         group_order.request = False
     group_order.save()
-    return redirect('orders-list')
+    return redirect('orders-list', state='ALL')
 
