@@ -10,5 +10,5 @@ urlpatterns = [
     path('<str:group_order_ref>/<str:order_ref>/delete-order/', views.delete_order, name="delete-order"),
     path('<str:group_order_ref>/update-orders/', views.update_orders, name="update-orders"),
     path('products-list/', views.products_list, name="products-list"),
-    path('<str:sku>/product-details/', views.product_details, name="product-details"),
+    path('<str:sku>/edit-product/', views.edit_product, name="edit-product"),
 ]
