@@ -13,10 +13,13 @@ def manager_home(request):
     return render(request, "dexunt-sell/manager-dashboard.html", context)
 
 
-def orders_list(request):
-    orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
-    page = request.GET.get('page', 1)
+def orders_list(request, state):
+    if state == 'ALL':
+        orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
+    else:
+        orders = 'EMPTY'
 
+    page = request.GET.get('page', 1)
     paginator = Paginator(orders, 10)
     try:
         orders = paginator.page(page)
