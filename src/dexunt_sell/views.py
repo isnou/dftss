@@ -18,32 +18,23 @@ def orders_list(request, state):
     if state == 'ALL':
         orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
     elif state == 'UNCONFIRMED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'CONFIRMED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'PEND':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'CANCELLED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'DELIVERY':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'UNPAID':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'PAYED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'REJECTED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     elif state == 'REMOVED':
-        orders = GroupOrder.objects.all().filter(
-            Q(group_order_state=state).exclude(group_order_state='REQUEST'))
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     else:
         orders = 'EMPTY'
 
