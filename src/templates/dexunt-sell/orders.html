@@ -303,7 +303,7 @@
             <th>Name</th>
             <th>Phone Number</th>
             <th>Order Date</th>
-            <th>Shipping Destination</th>
+            <th>Destination</th>
             <th>Status</th>
             <th>Orders</th>
             <th></th>
@@ -313,7 +313,6 @@
           </thead>
 
           <tbody>
-
           {% for order in orders %}
           <tr>
             <td>{{order.client_name}}</td>
@@ -321,33 +320,15 @@
             <td>{{order.group_order_date}}</td>
             <td>{{order.shipping_destination}}</td>
             <td>
-              {% if order.group_order_state == 'UNCONFIRMED' %}
-              <i class="fas fa-bell "></i>
-              {% endif %}
-              {% if order.group_order_state == 'CONFIRMED' %}
-              <i class="fas fa-check "></i>
-              {% endif %}
-              {% if order.group_order_state == 'CANCELLED' %}
-              <i class="fas fa-times "></i>
-              {% endif %}
-              {% if order.group_order_state == 'PEND' %}
-              <i class="fas fa-clock "></i>
-              {% endif %}
-              {% if order.group_order_state == 'DELIVERY' %}
-              <i class="fas fa-shipping-fast "></i>
-              {% endif %}
-              {% if order.group_order_state == 'UNPAID' %}
-              <i class="fas fa-truck-loading "></i>
-              {% endif %}
-              {% if order.group_order_state == 'PAYED' %}
-              <i class="fas fa-money-bill-wave "></i>
-              {% endif %}
-              {% if order.group_order_state == 'REJECTED' %}
-              <i class="fas fa-user-alt-slash "></i>
-              {% endif %}
-              {% if order.group_order_state == 'REMOVED' %}
-              <i class="fas fa-trash-alt "></i>
-              {% endif %}
+              {% if order.group_order_state == 'UNCONFIRMED' %}<i class="fas fa-bell "></i>{% endif %}
+              {% if order.group_order_state == 'CONFIRMED' %}<i class="fas fa-check "></i>{% endif %}
+              {% if order.group_order_state == 'CANCELLED' %}<i class="fas fa-times "></i>{% endif %}
+              {% if order.group_order_state == 'PEND' %}<i class="fas fa-clock "></i>{% endif %}
+              {% if order.group_order_state == 'DELIVERY' %}<i class="fas fa-shipping-fast "></i>{% endif %}
+              {% if order.group_order_state == 'UNPAID' %}<i class="fas fa-truck-loading "></i>{% endif %}
+              {% if order.group_order_state == 'PAYED' %}<i class="fas fa-money-bill-wave "></i>{% endif %}
+              {% if order.group_order_state == 'REJECTED' %}<i class="fas fa-user-alt-slash "></i>{% endif %}
+              {% if order.group_order_state == 'REMOVED' %}<i class="fas fa-trash-alt "></i>{% endif %}
             </td>
             <td>{{order.get_orders_count}}</td>
             <td>
@@ -364,8 +345,6 @@
             </td>
           </tr>
           {% endfor %}
-
-
           </tbody>
         </table>
       </div>
