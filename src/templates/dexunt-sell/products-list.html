@@ -1,6 +1,6 @@
 {% extends "dexunt-sell/base.html" %}
 {% load static %}
-{% block title %} Orders | Dexunt manager {% endblock %}
+{% block title %} Products | Dexunt manager {% endblock %}
 
 
     <!-- Sidebar -->
@@ -25,7 +25,7 @@
         management & setting
       </div>
 
-      <li class="nav-item  active">
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'orders-list' 'ALL' %}">
           <i class="far fa-fw fa-flag"></i>
           <span>All Orders</span></a>
@@ -41,7 +41,7 @@
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Store manager</h6>
-            <a class="collapse-item" href="form_basics.html">Products</a>
+            <a class="collapse-item  active" href="form_basics.html">Products</a>
             <a class="collapse-item" href="form_advanceds.html">Destinations</a>
             <a class="collapse-item" href="form_advanceds.html">Coupons</a>
           </div>
@@ -231,65 +231,6 @@
   <div class="col-lg-12 mb-4">
     <!-- Simple Tables -->
     <div class="card">
-      <div class="table-responsive">
-        <table class="table align-items-center table-flush">
-          <thead class="thead">
-          <tr>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1" href="{% url 'orders-list' 'UNCONFIRMED' %}">
-                <i class="fas fa-bell "></i>New
-              </a><!-- unconfirmed -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1" href="{% url 'orders-list' 'CONFIRMED' %}">
-                <i class="fas fa-check "></i>Confirmed
-              </a><!-- confirmed -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1 " href="{% url 'orders-list' 'CANCELLED' %}">
-                <i class="fas fa-times "></i>Cancelled
-              </a><!-- cancelled -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'PEND' %}">
-                <i class="fas fa-clock "></i>Pend
-              </a><!-- pend -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'DELIVERY' %}">
-                <i class="fas fa-shipping-fast "></i>Sent
-              </a><!-- delivery -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'UNPAID' %}">
-                <i class="fas fa-truck-loading "></i>Unpaid
-              </a><!-- unpaid -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'PAYED' %}">
-                <i class="fas fa-money-bill-wave "></i>Payed
-              </a><!-- payed -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary mb-1 mr-1"  href="{% url 'orders-list' 'REJECTED' %}">
-                <i class="fas fa-user-alt-slash "></i>Rejected
-              </a><!-- rejected -->
-            </th>
-            <th>
-              <a type="button" class="btn btn-outline-primary "  href="{% url 'orders-list' 'REMOVED' %}">
-                <i class="fas fa-trash-alt "></i>Trash
-              </a><!-- deleted -->
-            </th>
-          </tr>
-
-          </thead>
-        </table>
-      </div>
-
-
-
-
-
 
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">All Orders</h6>
@@ -300,11 +241,12 @@
           <thead class="thead-light">
 
           <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Order Date</th>
-            <th>Destination</th>
-            <th>Status</th>
+            <th>Product Name</th>
+            <th>SKU</th>
+            <th>Sell Price</th>
+            <th>Buy Price</th>
+            <th>Collection</th>
+            <th>Rate</th>
             <th>Orders</th>
             <th></th>
             <th></th>
@@ -313,35 +255,24 @@
           </thead>
 
           <tbody>
-          {% for order in orders %}
+          {% for product in products %}
           <tr>
-            <td>{{order.client_name}}</td>
-            <td><a href="tel:{{order.client_phone}}">{{order.client_phone}}</a></td>
-            <td>{{order.group_order_date}}</td>
-            <td>{{order.shipping_destination}}</td>
-            <td>
-              {% if order.group_order_state == 'UNCONFIRMED' %}<i class="fas fa-bell "></i>{% endif %}
-              {% if order.group_order_state == 'CONFIRMED' %}<i class="fas fa-check "></i>{% endif %}
-              {% if order.group_order_state == 'CANCELLED' %}<i class="fas fa-times "></i>{% endif %}
-              {% if order.group_order_state == 'PEND' %}<i class="fas fa-clock "></i>{% endif %}
-              {% if order.group_order_state == 'DELIVERY' %}<i class="fas fa-shipping-fast "></i>{% endif %}
-              {% if order.group_order_state == 'UNPAID' %}<i class="fas fa-truck-loading "></i>{% endif %}
-              {% if order.group_order_state == 'PAYED' %}<i class="fas fa-money-bill-wave "></i>{% endif %}
-              {% if order.group_order_state == 'REJECTED' %}<i class="fas fa-user-alt-slash "></i>{% endif %}
-              {% if order.group_order_state == 'REMOVED' %}<i class="fas fa-trash-alt "></i>{% endif %}
-            </td>
-            <td>{{order.get_orders_count}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.sku}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.buy_price}}</td>
+            <td>{{product.collection}}</td>
+            <td>{{product.rate}}</td>
+            <td>{{product.sell_rate}}</td>
             <td>
               <a href="{% url 'orders-details' order.group_order_ref %}">
                 <i class="fas fa-eye"></i>
               </a>
             </td>
             <td>
-              {% if order.group_order_state != 'REMOVED' %}
               <a href="{% url 'delete-orders' order.group_order_ref %}">
                 <i class="fas fa-trash"></i>
               </a>
-              {% endif %}
             </td>
           </tr>
           {% endfor %}

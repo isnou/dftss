@@ -8,7 +8,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def manager_home(request):
     orders_quantity = 0
-
     context = {
         'orders_quantity': orders_quantity,
     }
@@ -20,7 +19,6 @@ def orders_list(request, state):
         orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
     else:
         orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-
     page = request.GET.get('page', 1)
     paginator = Paginator(orders, 10)
     try:
@@ -29,7 +27,6 @@ def orders_list(request, state):
         orders = paginator.page(1)
     except EmptyPage:
         orders = paginator.page(paginator.num_pages)
-
     context = {
         'orders': orders,
     }
@@ -43,9 +40,7 @@ def orders_details(request, group_order_ref):
         orders = group_order.order.all()
     except group_order.DoesNotExist:
         raise Http404("No orders")
-
     page = request.GET.get('page', 1)
-
     paginator = Paginator(orders, 10)
     try:
         orders = paginator.page(page)
@@ -53,7 +48,6 @@ def orders_details(request, group_order_ref):
         orders = paginator.page(1)
     except EmptyPage:
         orders = paginator.page(paginator.num_pages)
-
     context = {
         'group_order': group_order,
         'orders': orders,
@@ -82,16 +76,13 @@ def update_orders(request, group_order_ref):
         sub_destination_name = request.POST.get('destination-name', False)
         option = request.POST.get('choose-option', False)
         account = request.POST.get('create-account', False)
-
     else:
         sub_destination_name = "undefined"
         option = 'UNCONFIRMED'
         account = 'none'
-
     group_order = GroupOrder.objects.get(group_order_ref=group_order_ref)
     group_order.group_order_state = option
     group_order.shipping_sub_destination = sub_destination_name
-
     if account == 'on':
         group_order.request = True
     else:
@@ -100,41 +91,17 @@ def update_orders(request, group_order_ref):
     return redirect('orders-list', state='ALL')
 
 
-def products_list(request, state):
-    if state == 'ALL':
-        orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
-    elif state == 'UNCONFIRMED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'CONFIRMED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'PEND':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'CANCELLED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'DELIVERY':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'UNPAID':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'PAYED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'REJECTED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'REMOVED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    else:
-        orders = 'EMPTY'
-
+def products_list(request):
+    products = Product.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(orders, 10)
+    paginator = Paginator(products, 10)
     try:
-        orders = paginator.page(page)
+        products = paginator.page(page)
     except PageNotAnInteger:
-        orders = paginator.page(1)
+        products = paginator.page(1)
     except EmptyPage:
-        orders = paginator.page(paginator.num_pages)
-
+        products = paginator.page(paginator.num_pages)
     context = {
-        'orders': orders,
+        'products': products,
     }
-
-    return render(request, "dexunt-sell/orders.html", context)
+    return render(request, "dexunt-sell/products-list.html", context)
