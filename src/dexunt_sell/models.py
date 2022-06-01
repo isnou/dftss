@@ -46,7 +46,7 @@ class GroupOrder(models.Model):
         ('REMOVED', 'REMOVED'),
         ('REQUEST', 'REQUEST'),
         ('UNPAID', 'UNPAID'),
-        ('PAID', 'PAID'),
+        ('PAYED', 'PAYED'),
         ('PEND', 'PEND'),
     )
 
