@@ -38,16 +38,16 @@ class Order(models.Model):
 
 class GroupOrder(models.Model):
     STATE = (
+        ('REQUEST', 'REQUEST'),
         ('UNCONFIRMED', 'UNCONFIRMED'),
         ('CONFIRMED', 'CONFIRMED'),
+        ('PEND', 'PEND'),
         ('CANCELLED', 'CANCELLED'),
-        ('DELIVERY', 'DELIVERY'),
-        ('REJECTED', 'REJECTED'),
         ('REMOVED', 'REMOVED'),
-        ('REQUEST', 'REQUEST'),
+        ('DELIVERY', 'DELIVERY'),
         ('UNPAID', 'UNPAID'),
         ('PAYED', 'PAYED'),
-        ('PEND', 'PEND'),
+        ('REJECTED', 'REJECTED'),
     )
 
     group_order_ref = models.CharField(max_length=200, unique=True)
