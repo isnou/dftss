@@ -236,9 +236,9 @@
           <thead class="thead">
           <tr>
             <th>
-              <button type="button" class="btn btn-outline-primary mb-1 mr-1">
-                <i class="fas fa-bell " href="{% url 'manager-home' %}"></i>New
-              </button><!-- unconfirmed -->
+              <a type="button" class="btn btn-outline-primary mb-1 mr-1" href="{% url 'orders-list' 'UNCONFIRMED' %}">
+                <i class="fas fa-bell "></i>New
+              </a><!-- unconfirmed -->
             </th>
             <th>
               <button type="button" class="btn btn-outline-primary mb-1 mr-1">
