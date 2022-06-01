@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, redirect
 from .models import GroupOrder, Destination, Coupon
+from dexunt_store.models import Content, ShowCase, Product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -17,26 +18,8 @@ def manager_home(request):
 def orders_list(request, state):
     if state == 'ALL':
         orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
-    elif state == 'UNCONFIRMED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'CONFIRMED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'PEND':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'CANCELLED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'DELIVERY':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'UNPAID':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'PAYED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'REJECTED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
-    elif state == 'REMOVED':
-        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
     else:
-        orders = 'EMPTY'
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
 
     page = request.GET.get('page', 1)
     paginator = Paginator(orders, 10)
@@ -116,3 +99,42 @@ def update_orders(request, group_order_ref):
     group_order.save()
     return redirect('orders-list', state='ALL')
 
+
+def products_list(request, state):
+    if state == 'ALL':
+        orders = GroupOrder.objects.all().exclude(group_order_state='REQUEST').exclude(group_order_state='REMOVED')
+    elif state == 'UNCONFIRMED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'CONFIRMED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'PEND':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'CANCELLED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'DELIVERY':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'UNPAID':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'PAYED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'REJECTED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    elif state == 'REMOVED':
+        orders = GroupOrder.objects.all().filter(Q(group_order_state=state))
+    else:
+        orders = 'EMPTY'
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(orders, 10)
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+
+    context = {
+        'orders': orders,
+    }
+
+    return render(request, "dexunt-sell/orders.html", context)
