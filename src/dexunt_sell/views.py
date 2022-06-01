@@ -125,4 +125,4 @@ def product_details(request, sku):
         'group_order': group_order,
         'orders': orders,
     }
-    return render(request, "dexunt-sell/orders-details.html", context)
+    return render(request, "dexunt-sell/debug.html", context)
