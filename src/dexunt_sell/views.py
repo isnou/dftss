@@ -48,6 +48,7 @@ def orders_list(request, state):
         orders = paginator.page(paginator.num_pages)
 
     context = {
+        'state': state,
         'orders': orders,
     }
 
