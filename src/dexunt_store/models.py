@@ -106,6 +106,7 @@ class Product(models.Model):
     specification = models.TextField(max_length=800)
     catch_line = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     publish_rate = models.DateTimeField(auto_now=True, null=True)
     sell_rate = models.IntegerField(default=0)
