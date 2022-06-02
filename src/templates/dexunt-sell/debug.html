@@ -238,6 +238,7 @@
         </div>
         <div class="card-body">
             <form>
+
                 <div class="form-group">
                     <label for="product_name">Product Name</label>
                     <input type="text" class="form-control" id="product_name" aria-describedby="productNameHelp" placeholder="{{product.name}}">
@@ -249,6 +250,12 @@
                     <input type="text" class="form-control" id="product_price" aria-describedby="productPriceHelp" placeholder="{{product.price}}">
                     <small id="productPriceHelp" class="form-text text-muted">If you don't want to change let it as it is
                     </small>
+                </div>
+                <div class="form-group">
+
+                    <img src="http://94.176.238.2/media/{{ product.image }}" alt="{{ product.image }}" width="400" height="600">
+                    <input type="file" class="custom-file-input" id="product_img">
+                    <label class="custom-file-label" for="product_img">Put new file</label>
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
@@ -268,7 +275,6 @@
         {% endblock %}
 
 
-<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
 
 
             {{product.name}}
