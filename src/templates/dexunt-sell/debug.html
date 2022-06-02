@@ -261,11 +261,10 @@
 
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="product_img" name="product_img">
-                    <label class="custom-file-label" for="product_img">Upload New Image</label>
+                    <label class="custom-file-label" for="product_img">Upload new image</label>
                 </div>
-
                 <div class="custom-file mt-2 mb-2">
-                    <a href="http://94.176.238.2/media/{{ order.product_image }}">Click To See The Uploaded Image</a>
+                    <a href="{{ order.product_image.url }}">Click To See The Uploaded Image</a>
                 </div>
 
                 <div class="custom-file">
@@ -285,6 +284,9 @@
         {% endblock %}
 
 
+<div class="custom-file mt-2 mb-2">
+                    <a href="{{ order.product_image.url }}">Click To See The Uploaded Image</a>
+                </div>
 
 
             {{product.name}}
