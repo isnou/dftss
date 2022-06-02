@@ -259,21 +259,17 @@
                     </div>
                 </div>
 
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="product_img">
-                    <label class="custom-file-label" for="product_img">Put new file</label>
+                <div class="custom-file mb-4 mt-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <img src="http://94.176.238.2/media/{{ product.image }}" alt="{{ product.image }}" width="250" height="300">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="custom-file">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card h-100 mb-1 mt-1 ml-1 mr-1">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <img src="http://94.176.238.2/media/{{ product.image }}" alt="{{ product.image }}" width="250" height="300">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <input type="file" class="custom-file-input" id="product_img">
+                    <label class="custom-file-label" for="product_img">Put new file</label>
                 </div>
 
 
