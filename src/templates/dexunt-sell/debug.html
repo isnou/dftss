@@ -252,7 +252,8 @@
                     </small>
                 </div>
 
-                <div class="form-group">
+                <div class="custom-file">
+                    <img src="http://94.176.238.2/media/{{ product.image }}" alt="{{ product.image }}" width="400" height="600">
                     <input type="file" class="custom-file-input" id="product_img">
                     <label class="custom-file-label" for="product_img">Put new file</label>
                 </div>
@@ -274,7 +275,10 @@
 </div>
         {% endblock %}
 
-
+<div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
 
 
             {{product.name}}
