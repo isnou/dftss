@@ -16,11 +16,11 @@ class SizeAdmin(admin.ModelAdmin):
 
 
 class ColorAdmin(admin.ModelAdmin):
-    list_display = 'name'
+    list_display = ['name']
 
 
 class PackAdmin(admin.ModelAdmin):
-    list_display = 'name'
+    list_display = ['name']
 
 
 class BrandAdmin(admin.ModelAdmin):
