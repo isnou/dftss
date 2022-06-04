@@ -28,7 +28,7 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'sku', 'image', 'album', 'pack', 'description', 'customizable')
+    list_display = ('name', 'sku', 'image', 'get_album', 'get_pack', 'description', 'customizable')
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -45,7 +45,7 @@ class BoxAdmin(admin.ModelAdmin):
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'product', 'box')
+    list_display = ('name', 'category', 'get_product', 'get_box')
 
 
 class ShowCaseAdmin(admin.ModelAdmin):

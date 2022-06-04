@@ -70,6 +70,12 @@ class Package(models.Model):
     description = models.TextField(max_length=800, blank=True)
     customizable = models.BooleanField(default=False)
 
+    def get_album(self):
+        return "\n".join([p.file_name for p in self.album.all()])
+
+    def get_pack(self):
+        return "\n".join([p.name for p in self.pack.all()])
+
     def __str__(self):
         return self.name
 
@@ -151,10 +157,10 @@ class Collection(models.Model):
     product = models.ManyToManyField(Product, blank=True)
     box = models.ManyToManyField(Box, blank=True)
 
-    def get_products(self):
+    def get_product(self):
         return "\n".join([p.name for p in self.product.all()])
 
-    def get_boxes(self):
+    def get_box(self):
         return "\n".join([p.name for p in self.box.all()])
 
     def __str__(self):
@@ -170,12 +176,6 @@ class ShowCase(models.Model):
     type = models.CharField(max_length=50, choices=TYPES)
     location = models.IntegerField(default=1)
     collection = models.ForeignKey('Collection', on_delete=models.CASCADE, blank=True)
-
-    def get_color(self):
-        return "\n".join([p.name for p in self.color.all()])
-
-    def get_brand(self):
-        return "\n".join([p.name for p in self.brand.all()])
 
     def __str__(self):
         return self.name
