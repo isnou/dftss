@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from dexunt_sell.models import Order, Destination, GroupOrder, Coupon
+# from sell.models import
 from django.http import Http404
 from django.db.models import Q
 import random
