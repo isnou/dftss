@@ -28,3 +28,13 @@ def products_list(request):
         'order_ref': order_ref,
     }
     return render(request, "sell/products-list.html", context)
+
+
+def add_product(request):
+    order_ref = 0
+
+    context = {
+        'order_ref': order_ref,
+    }
+    return render(request, "sell/add-product.html", context)
+
