@@ -21,7 +21,7 @@ def home(request):
     return render(request, "sell/dashboard.html", context)
 
 
-def products_list(request):
+def products_list(request, product_sku):
     order_ref = 0
 
     context = {
@@ -31,10 +31,9 @@ def products_list(request):
 
 
 def add_product(request):
-    order_ref = 0
-
+    product_sku = serial_number_generator(8)
     context = {
-        'order_ref': order_ref,
+        'product_sku': product_sku,
     }
     return render(request, "sell/add-product.html", context)
 
