@@ -33,7 +33,7 @@ class Album(models.Model):
 
 class Size(models.Model):
     type = models.CharField(max_length=200, blank=True)
-    value = models.CharField(max_length=200, black=True)
+    value = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.value
