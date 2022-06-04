@@ -33,9 +33,8 @@ class PackageAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'sku', 'image', 'album', 'size', 'color', 'pack', 'customizable', 'brand', 'description',
-        'specification',
-        'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
+        'name', 'sku', 'image', 'get_album', 'get_size', 'get_color', 'get_pack', 'customizable', 'brand', 'description',
+        'specification', 'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
 
 
 class BoxAdmin(admin.ModelAdmin):
