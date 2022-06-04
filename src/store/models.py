@@ -100,6 +100,18 @@ class Product(models.Model):
         ]
     )
 
+    def get_album(self):
+        return "\n".join([p.file_name for p in self.album.all()])
+
+    def get_size(self):
+        return "\n".join([p.value for p in self.size.all()])
+
+    def get_color(self):
+        return "\n".join([p.name for p in self.color.all()])
+
+    def get_pack(self):
+        return "\n".join([p.name for p in self.pack.all()])
+
     def __str__(self):
         return self.name
 
