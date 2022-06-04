@@ -70,10 +70,10 @@ class Package(models.Model):
     description = models.TextField(max_length=800, blank=True)
     customizable = models.BooleanField(default=False)
 
-    def get_album(self):
+    def get_albums(self):
         return "\n".join([p.file_name for p in self.album.all()])
 
-    def get_pack(self):
+    def get_packs(self):
         return "\n".join([p.name for p in self.pack.all()])
 
     def __str__(self):
@@ -106,16 +106,16 @@ class Product(models.Model):
         ]
     )
 
-    def get_album(self):
+    def get_albums(self):
         return "\n".join([p.file_name for p in self.album.all()])
 
-    def get_size(self):
+    def get_sizes(self):
         return "\n".join([p.value for p in self.size.all()])
 
-    def get_color(self):
+    def get_colors(self):
         return "\n".join([p.name for p in self.color.all()])
 
-    def get_pack(self):
+    def get_packs(self):
         return "\n".join([p.name for p in self.pack.all()])
 
     def __str__(self):
@@ -144,6 +144,12 @@ class Box(models.Model):
         ]
     )
 
+    def get_products(self):
+        return "\n".join([p.name for p in self.product.all()])
+
+    def get_packages(self):
+        return "\n".join([p.name for p in self.package.all()])
+
     class Meta:
         verbose_name_plural = "Boxes"
 
@@ -157,10 +163,10 @@ class Collection(models.Model):
     product = models.ManyToManyField(Product, blank=True)
     box = models.ManyToManyField(Box, blank=True)
 
-    def get_product(self):
+    def get_products(self):
         return "\n".join([p.name for p in self.product.all()])
 
-    def get_box(self):
+    def get_boxes(self):
         return "\n".join([p.name for p in self.box.all()])
 
     def __str__(self):

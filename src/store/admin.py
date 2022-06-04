@@ -28,24 +28,23 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'sku', 'image', 'get_album', 'get_pack', 'description', 'customizable')
+    list_display = ('name', 'sku', 'image', 'get_albums', 'get_packs', 'description', 'customizable')
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'sku', 'image', 'get_album', 'get_size', 'get_color', 'get_pack', 'customizable', 'brand', 'description',
+        'name', 'sku', 'image', 'get_albums', 'get_sizes', 'get_colors', 'get_packs', 'customizable', 'brand', 'description',
         'specification', 'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
 
 
 class BoxAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'product', 'package', 'customizable', 'brand', 'description', 'specification', 'catch_line',
-        'sell_price',
-        'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
+        'name', 'get_products', 'get_packages', 'customizable', 'brand', 'description', 'specification', 'catch_line',
+        'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'get_product', 'get_box')
+    list_display = ('name', 'category', 'get_products', 'get_boxes')
 
 
 class ShowCaseAdmin(admin.ModelAdmin):
