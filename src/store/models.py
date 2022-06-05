@@ -61,25 +61,6 @@ class Brand(models.Model):
         return self.name
 
 
-class Package(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    sku = models.CharField(max_length=200, unique=True)
-    image = models.ImageField(upload_to='store/packages')
-    album = models.ManyToManyField(Album, blank=True)
-    pack = models.ManyToManyField(Pack, blank=True)
-    description = models.TextField(max_length=800, blank=True)
-    customizable = models.BooleanField(default=False)
-
-    def get_albums(self):
-        return "\n".join([p.file_name for p in self.album.all()])
-
-    def get_packs(self):
-        return "\n".join([p.name for p in self.pack.all()])
-
-    def __str__(self):
-        return self.name
-
-
 class Product(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=200, unique=True)
@@ -125,7 +106,6 @@ class Product(models.Model):
 class Box(models.Model):
     name = models.CharField(max_length=200)
     product = models.ManyToManyField(Product, blank=True)
-    package = models.ManyToManyField(Package, blank=True)
     customizable = models.BooleanField(default=False)
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True)
     description = models.TextField(max_length=800, blank=True)
@@ -146,9 +126,6 @@ class Box(models.Model):
 
     def get_products(self):
         return "\n".join([p.name for p in self.product.all()])
-
-    def get_packages(self):
-        return "\n".join([p.name for p in self.package.all()])
 
     class Meta:
         verbose_name_plural = "Boxes"
