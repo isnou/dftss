@@ -35,19 +35,19 @@ def products_list(request, product_sku):
 
 def add_product(request):
     try:
-        colors = Color.order.all()
+        colors = Color.objects.all()
     except Color.DoesNotExist:
         raise Http404("No colors")
     try:
-        sizes = Size.order.all()
+        sizes = Size.objects.all()
     except Size.DoesNotExist:
         raise Http404("No sizes")
     try:
-        packs = Pack.order.all()
+        packs = Pack.objects.all()
     except Pack.DoesNotExist:
         raise Http404("No packs")
     try:
-        brands = Brand.order.all()
+        brands = Brand.objects.all()
     except Brand.DoesNotExist:
         raise Http404("No brands")
     product_sku = serial_number_generator(8)
