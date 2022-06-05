@@ -9,6 +9,6 @@ urlpatterns = [
     path('<str:group_order_ref>/delete-orders/', views.delete_orders, name="delete-orders"),
     path('<str:group_order_ref>/<str:order_ref>/delete-order/', views.delete_order, name="delete-order"),
     path('<str:group_order_ref>/update-orders/', views.update_orders, name="update-orders"),
-    path('products-list/', views.products_list, name="products-list"),
+    path('products-list/', views.products_list, name="product-list"),
     path('<str:sku>/edit-product/', views.edit_product, name="edit-product"),
 ]

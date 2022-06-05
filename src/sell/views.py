@@ -22,6 +22,9 @@ def home(request):
 
 
 def products_list(request, product_sku):
+    if product_sku != 'show':
+        if request.method == 'POST':
+            product_name = request.POST.get('product_name', False)
     order_ref = 0
 
     context = {
@@ -31,8 +34,29 @@ def products_list(request, product_sku):
 
 
 def add_product(request):
+    try:
+        colors = Color.order.all()
+    except Color.DoesNotExist:
+        raise Http404("No colors")
+    try:
+        sizes = Size.order.all()
+    except Size.DoesNotExist:
+        raise Http404("No sizes")
+    try:
+        packs = Pack.order.all()
+    except Pack.DoesNotExist:
+        raise Http404("No packs")
+    try:
+        brands = Brand.order.all()
+    except Brand.DoesNotExist:
+        raise Http404("No brands")
     product_sku = serial_number_generator(8)
+
     context = {
+        'colors': colors,
+        'sizes': sizes,
+        'packs': packs,
+        'brands': brands,
         'product_sku': product_sku,
     }
     return render(request, "sell/add-product.html", context)
