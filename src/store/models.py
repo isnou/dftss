@@ -63,6 +63,14 @@ class Filter(models.Model):
 
 
 class Product(models.Model):
+    COLLECTION = (
+        ('FLASH', 'FLASH'),
+        ('SEASON', 'SEASON'),
+        ('BOX', 'BOX'),
+        ('LATEST', 'LATEST'),
+        ('SELL', 'SELL'),
+        ('RATE', 'RATE'),
+    )
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     image = models.ImageField(upload_to='store/products')
@@ -71,6 +79,7 @@ class Product(models.Model):
     category = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_category', blank=True, null=True)
     type = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_type', blank=True, null=True)
     tag = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_tag', blank=True, null=True)
+    collection = models.CharField(max_length=50, choices=COLLECTION, blank=True, null=True)
     customizable = models.BooleanField(default=False)
     catch_line = models.CharField(max_length=200, blank=True)
     description = models.TextField(max_length=800, blank=True)
