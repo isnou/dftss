@@ -64,7 +64,7 @@ class Filter(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    sku = models.CharField(max_length=200, unique=True)
+    sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     image = models.ImageField(upload_to='store/products')
     album = models.ManyToManyField(Album, blank=True)
     option = models.ManyToManyField(Option, blank=True)
