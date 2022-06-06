@@ -82,7 +82,7 @@ class Product(models.Model):
     description = models.TextField(max_length=800, blank=True)
     specification = models.TextField(max_length=800, blank=True)
     sell_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
+    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     publish = models.BooleanField(default=True)
     sell_ranking = models.IntegerField(default=0)
