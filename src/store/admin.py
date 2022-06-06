@@ -25,9 +25,8 @@ class FilterAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'sku', 'image', 'get_albums', 'get_options', 'category', 'type', 'tag', 'customizable',
-        'description', 'specification', 'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking',
-        'client_ranking')
+        'name', 'sku', 'image', 'get_albums', 'get_options', 'category', 'type', 'tag', 'customizable', 'sell_price',
+        'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
 
 
 class ShowCaseAdmin(admin.ModelAdmin):
