@@ -28,7 +28,7 @@ def home(request):
         raise Http404("No products")
 
     try:
-        flash_collection = products.objects.get(collection='FLASH')
+        flash_collection = products.all().filter(collection='FLASH')
     except ShowCase.DoesNotExist:
         raise Http404("flash collection is empty")
 
