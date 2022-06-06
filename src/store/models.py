@@ -86,13 +86,9 @@ class Collection(models.Model):
     name = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=200)
     product = models.ManyToManyField(Product, blank=True)
-    box = models.ManyToManyField(Box, blank=True)
 
     def get_products(self):
         return "\n".join([p.name for p in self.product.all()])
-
-    def get_boxes(self):
-        return "\n".join([p.name for p in self.box.all()])
 
     def __str__(self):
         return self.name

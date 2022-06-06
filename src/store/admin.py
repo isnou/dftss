@@ -26,7 +26,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'get_products', 'get_boxes')
+    list_display = ('name', 'category', 'get_products')
 
 
 class ShowCaseAdmin(admin.ModelAdmin):
