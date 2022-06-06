@@ -28,35 +28,35 @@ def home(request):
         raise Http404("No products")
 
     try:
-        flash_collection = products.all().filter(collection='FLASH').order_by('?')[:2]
+        flash_collection = products.all().filter(collection='FLASH').order_by('?')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("flash collection is empty")
 
     try:
-        season_collection = products.all().filter(collection='SEASON').order_by('?')[:2]
+        season_collection = products.all().filter(collection='SEASON').order_by('?')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("season collection is empty")
 
     try:
-        boxes_collection = products.all().filter(collection='BOX').order_by('?')[:2]
+        boxes_collection = products.all().filter(collection='BOX').order_by('?')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("boxes collection is empty")
 
     try:
         latest_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:2]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
     try:
         sell_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:2]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
     try:
         rated_collection = products.all().order_by('-client_ranking').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:2]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
