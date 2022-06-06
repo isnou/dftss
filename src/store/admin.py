@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Album, Size, Color, Pack, Brand, Product, Box, Collection, ShowCase
+from .models import Content, Album, Parameter, Option, Product, Collection, ShowCase
 
 
 class ContentAdmin(admin.ModelAdmin):
@@ -11,32 +11,18 @@ class AlbumAdmin(admin.ModelAdmin):
     list_display = ('file_name', 'image')
 
 
-class SizeAdmin(admin.ModelAdmin):
-    list_display = ('type', 'value')
+class ParameterAdmin(admin.ModelAdmin):
+    list_display = ['value']
 
 
-class ColorAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-
-class PackAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-
-class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'logo')
+class OptionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'get_parameters')
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'sku', 'image', 'get_albums', 'get_sizes', 'get_colors', 'get_packs', 'customizable', 'brand', 'description',
-        'specification', 'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
-
-
-class BoxAdmin(admin.ModelAdmin):
-    list_display = (
-        'name', 'get_products', 'customizable', 'brand', 'description', 'specification', 'catch_line',
-        'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
+        'name', 'sku', 'image', 'get_albums', 'get_options', 'customizable', 'description', 'specification',
+        'catch_line', 'sell_price', 'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
 
 
 class CollectionAdmin(admin.ModelAdmin):
@@ -49,11 +35,8 @@ class ShowCaseAdmin(admin.ModelAdmin):
 
 admin.site.register(Content, ContentAdmin)
 admin.site.register(Album, AlbumAdmin)
-admin.site.register(Size, SizeAdmin)
-admin.site.register(Color, ColorAdmin)
-admin.site.register(Pack, PackAdmin)
-admin.site.register(Brand, BrandAdmin)
+admin.site.register(Parameter, ParameterAdmin)
+admin.site.register(Option, OptionAdmin)
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Box, BoxAdmin)
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(ShowCase, ShowCaseAdmin)
