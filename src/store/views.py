@@ -28,17 +28,17 @@ def home(request):
         raise Http404("No products")
 
     try:
-        flash_collection = products.all().filter(collection='FLASH')
+        flash_collection = products.all().filter(collection='FLASH').order_by('?')
     except ShowCase.DoesNotExist:
         raise Http404("flash collection is empty")
 
     try:
-        season_collection = products.all().filter(collection='SEASON')
+        season_collection = products.all().filter(collection='SEASON').order_by('?')
     except ShowCase.DoesNotExist:
         raise Http404("season collection is empty")
 
     try:
-        boxes_collection = products.all().filter(collection='BOX')
+        boxes_collection = products.all().filter(collection='BOX').order_by('?')
     except ShowCase.DoesNotExist:
         raise Http404("boxes collection is empty")
 
