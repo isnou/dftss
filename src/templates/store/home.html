@@ -372,15 +372,16 @@
 </div>
 {% endblock %}
 
-<!-- flash-sales -->
-{% block flash-sales %}
-{% if flash_collection_store.choice == 'SLIDE' %}
+<!-- showcases -->
+{% block showcases %}
+{% for showcase in showcases %}
+{% if showcase.type == 'SLIDE' %}
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<h2 class="#">{{ flash_collection_store.name }}</h2>
+					<h2 class="#">{{ showcase.name }}</h2>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -439,13 +440,13 @@
 			</div>
 		</div>
 	</section>
-{% elif flash_collection_store.choice == 'BANNER' %}
+{% elif showcase.type == 'BANNER' %}
     <section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 
 			<div class="p-b-45">
 				<h2 class="ltext-106 cl5 txt-center">
-					{{ flash_collection_store.name }}
+					{{ showcase.name }}
 				</h2>
 			</div>
 
@@ -488,6 +489,7 @@
 		</div>
 	</section>
 {% endif %}
+{% endfor %}
 {% endblock %}
 
 <!-- best-selling-products -->
