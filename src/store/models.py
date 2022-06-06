@@ -31,34 +31,22 @@ class Album(models.Model):
         return self.file_name
 
 
-class Size(models.Model):
-    type = models.CharField(max_length=200, blank=True)
+class Parameter(models.Model):
     value = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.value
 
 
-class Color(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+class Option(models.Model):
+    title = models.CharField(max_length=200, blank=True)
+    parameter = models.ManyToManyField(Parameter, blank=True)
+
+    def get_parameters(self):
+        return "\n".join([p.value for p in self.parameter.all()])
 
     def __str__(self):
-        return self.name
-
-
-class Pack(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Brand(models.Model):
-    name = models.CharField(max_length=200, blank=True, null=True)
-    logo = models.ImageField(upload_to='store/brands/', blank=True, null=True)
-
-    def __str__(self):
-        return self.name
+        return self.title
 
 
 class Product(models.Model):
@@ -66,11 +54,8 @@ class Product(models.Model):
     sku = models.CharField(max_length=200, unique=True)
     image = models.ImageField(upload_to='store/products')
     album = models.ManyToManyField(Album, blank=True)
-    size = models.ManyToManyField(Size, blank=True)
-    color = models.ManyToManyField(Color, blank=True)
-    pack = models.ManyToManyField(Pack, blank=True)
+    option = models.ManyToManyField(Option, blank=True)
     customizable = models.BooleanField(default=False)
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True)
     description = models.TextField(max_length=800, blank=True)
     specification = models.TextField(max_length=800, blank=True)
     catch_line = models.CharField(max_length=200, blank=True)
@@ -90,45 +75,8 @@ class Product(models.Model):
     def get_albums(self):
         return "\n".join([p.file_name for p in self.album.all()])
 
-    def get_sizes(self):
-        return "\n".join([p.value for p in self.size.all()])
-
-    def get_colors(self):
-        return "\n".join([p.name for p in self.color.all()])
-
-    def get_packs(self):
-        return "\n".join([p.name for p in self.pack.all()])
-
-    def __str__(self):
-        return self.name
-
-
-class Box(models.Model):
-    name = models.CharField(max_length=200)
-    product = models.ManyToManyField(Product, blank=True)
-    customizable = models.BooleanField(default=False)
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True)
-    description = models.TextField(max_length=800, blank=True)
-    specification = models.TextField(max_length=800, blank=True)
-    catch_line = models.CharField(max_length=200, blank=True)
-    sell_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    publish = models.BooleanField(default=True)
-    sell_ranking = models.IntegerField(default=0)
-    client_ranking = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(5),
-            MinValueValidator(0)
-        ]
-    )
-
-    def get_products(self):
-        return "\n".join([p.name for p in self.product.all()])
-
-    class Meta:
-        verbose_name_plural = "Boxes"
+    def get_options(self):
+        return "\n".join([p.title for p in self.option.all()])
 
     def __str__(self):
         return self.name
