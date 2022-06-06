@@ -33,12 +33,12 @@ def home(request):
         raise Http404("flash collection is empty")
 
     try:
-        season_collection = products.get(collection='SEASON')
+        season_collection = products.all().filter(collection='SEASON')
     except ShowCase.DoesNotExist:
         raise Http404("season collection is empty")
 
     try:
-        boxes_collection = products.get(collection='BOX')
+        boxes_collection = products.all().filter(collection='BOX')
     except ShowCase.DoesNotExist:
         raise Http404("boxes collection is empty")
 
