@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from store.models import Content, Album, Option, Parameter, Product, Collection, ShowCase
+from store.models import Content, Album, Parameter, Option, Product, Filter, ShowCase
 from django.http import Http404
 from django.db.models import Q
 import random
