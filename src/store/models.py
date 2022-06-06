@@ -14,7 +14,7 @@ class Content(models.Model):
     big_text = models.CharField(max_length=50, blank=True)
     button = models.CharField(max_length=50, blank=True)
     link = models.URLField(blank=True)
-    type = models.CharField(max_length=50, choices=TYPES, unique=True)
+    type = models.CharField(max_length=50, choices=TYPES)
 
     class Meta:
         verbose_name_plural = "Content"
@@ -49,16 +49,32 @@ class Option(models.Model):
         return self.title
 
 
+class Filter(models.Model):
+    TYPES = (
+        ('CATEGORY', 'CATEGORY'),
+        ('TYPE', 'TYPE'),
+        ('TAG', 'TAG'),
+    )
+    tag = models.CharField(max_length=200, blank=True, unique=True)
+    type = models.CharField(max_length=50, choices=TYPES)
+
+    def __str__(self):
+        return self.tag
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=200, unique=True)
     image = models.ImageField(upload_to='store/products')
     album = models.ManyToManyField(Album, blank=True)
     option = models.ManyToManyField(Option, blank=True)
+    get_category = models.ForeignKey('Filter', on_delete=models.CASCADE, null=True)
+    get_type = models.ForeignKey('Filter', on_delete=models.CASCADE, null=True)
+    get_tag = models.ForeignKey('Filter', on_delete=models.CASCADE, null=True)
     customizable = models.BooleanField(default=False)
+    catch_line = models.CharField(max_length=200, blank=True)
     description = models.TextField(max_length=800, blank=True)
     specification = models.TextField(max_length=800, blank=True)
-    catch_line = models.CharField(max_length=200, blank=True)
     sell_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
@@ -82,27 +98,23 @@ class Product(models.Model):
         return self.name
 
 
-class Collection(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    category = models.CharField(max_length=200)
-    product = models.ManyToManyField(Product, blank=True)
-
-    def get_products(self):
-        return "\n".join([p.name for p in self.product.all()])
-
-    def __str__(self):
-        return self.name
-
-
 class ShowCase(models.Model):
     TYPES = (
         ('SLIDE', 'SLIDE'),
         ('BANNER', 'BANNER'),
     )
-    name = models.CharField(max_length=200, unique=True)
+    COLLECTION = (
+        ('FLASH', 'FLASH'),
+        ('SEASON', 'SEASON'),
+        ('BOX', 'BOX'),
+        ('LATEST', 'LATEST'),
+        ('SELL', 'SELL'),
+        ('RATE', 'RATE'),
+    )
+    title = models.CharField(max_length=200, unique=True)
     type = models.CharField(max_length=50, choices=TYPES)
-    location = models.IntegerField(default=1)
-    collection = models.ForeignKey('Collection', on_delete=models.CASCADE, blank=True)
+    collection = models.CharField(max_length=50, choices=COLLECTION, unique=True)
+    position = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.name
+        return self.title
