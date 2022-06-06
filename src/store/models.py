@@ -67,9 +67,6 @@ class Product(models.Model):
         ('FLASH', 'FLASH'),
         ('SEASON', 'SEASON'),
         ('BOX', 'BOX'),
-        ('LATEST', 'LATEST'),
-        ('SELL', 'SELL'),
-        ('RATE', 'RATE'),
     )
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
