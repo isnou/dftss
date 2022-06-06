@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 # from sell.models import
+from .models import Content
 from django.http import Http404
 from django.db.models import Q
 import random
@@ -13,9 +14,12 @@ def serial_number_generator(length):
 
 
 def home(request):
-    order_ref = 0
+    try:
+        contents = Content.objects.all()
+    except Content.DoesNotExist:
+        raise Http404("No content")
 
     context = {
-        'order_ref': order_ref,
+        'contents': contents,
     }
     return render(request, "store/home.html", context)
