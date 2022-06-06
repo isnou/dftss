@@ -48,7 +48,21 @@ def home(request):
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
+    try:
+        sell_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
+    except ShowCase.DoesNotExist:
+        raise Http404("latest collection is empty")
+
+    try:
+        rated_collection = products.all().order_by('-client_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
+    except ShowCase.DoesNotExist:
+        raise Http404("latest collection is empty")
+
     context = {
+        'rated_collection': rated_collection,
+        'sell_collection': sell_collection,
         'latest_collection': latest_collection,
         'boxes_collection': boxes_collection,
         'season_collection': season_collection,
