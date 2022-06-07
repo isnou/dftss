@@ -74,7 +74,25 @@ def home(request):
 
 
 def store(request, collection):
+    try:
+        products = Product.objects.all()
+    except Content.DoesNotExist:
+        raise Http404("No products")
+
+    if collection == 'LATEST':
+        product_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+    elif collection == 'SELL':
+        product_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+    elif collection == 'RATE':
+        product_collection = products.all().order_by('-client_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+    else:
+        product_collection = products.all().filter(collection=collection)
+        product_collection = product_collection.order_by('?').all()[:8]
+        
     context = {
-        'product_collection': collection,
+        'product_collection': product_collection,
     }
     return render(request, "store/store-detail.html", context)
