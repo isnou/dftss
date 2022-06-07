@@ -13,7 +13,7 @@ def serial_number_generator(length):
     return result_str
 
 
-def home(request, product_sku):
+def home(request):
     try:
         contents = Content.objects.all()
     except Content.DoesNotExist:
@@ -60,11 +60,6 @@ def home(request, product_sku):
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
-    if product_sku != 'home':
-        show_product = products.get(sku=product_sku)
-    else:
-        show_product = 'none'
-
     context = {
         'rated_collection': rated_collection,
         'sell_collection': sell_collection,
@@ -74,7 +69,6 @@ def home(request, product_sku):
         'flash_collection': flash_collection,
         'showcases': showcases,
         'contents': contents,
-        'show_product': show_product,
     }
     return render(request, "store/home.html", context)
 
