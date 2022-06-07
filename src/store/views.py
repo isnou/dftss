@@ -71,3 +71,17 @@ def home(request):
         'contents': contents,
     }
     return render(request, "store/home.html", context)
+
+
+def store_detail(request, showcase_collection):
+    context = {
+        'rated_collection': rated_collection,
+        'sell_collection': sell_collection,
+        'latest_collection': latest_collection,
+        'boxes_collection': boxes_collection,
+        'season_collection': season_collection,
+        'flash_collection': flash_collection,
+        'showcases': showcases,
+        'contents': contents,
+    }
+    return render(request, "store/home.html", context)
