@@ -60,7 +60,10 @@ def home(request, product_sku):
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
-    product_sku = product_sku
+    if product_sku != 'home':
+        show_product = products.get(sku=product_sku)
+    else:
+        show_product = 'none'
 
     context = {
         'rated_collection': rated_collection,
@@ -71,7 +74,7 @@ def home(request, product_sku):
         'flash_collection': flash_collection,
         'showcases': showcases,
         'contents': contents,
-        'product_sku': product_sku,
+        'show_product': show_product,
     }
     return render(request, "store/home.html", context)
 
