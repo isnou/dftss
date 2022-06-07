@@ -13,7 +13,7 @@ def serial_number_generator(length):
     return result_str
 
 
-def home(request):
+def home(request, product_sku):
     try:
         contents = Content.objects.all()
     except Content.DoesNotExist:
@@ -69,6 +69,7 @@ def home(request):
         'flash_collection': flash_collection,
         'showcases': showcases,
         'contents': contents,
+        'product_sku': product_sku,
     }
     return render(request, "store/home.html", context)
 
