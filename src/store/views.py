@@ -60,6 +60,8 @@ def home(request, product_sku):
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
 
+    product_sku = product_sku
+
     context = {
         'rated_collection': rated_collection,
         'sell_collection': sell_collection,
