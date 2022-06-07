@@ -91,7 +91,7 @@ def store(request, collection):
     else:
         product_collection = products.all().filter(collection=collection)
         product_collection = product_collection.order_by('?').all()[:8]
-        
+
     context = {
         'product_collection': product_collection,
     }
