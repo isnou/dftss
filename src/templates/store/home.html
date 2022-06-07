@@ -345,11 +345,43 @@
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
+					{% if showcase.collection == 'FLASH' %}
 					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
-						<a href="#"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+						<a href="{% url 'store' flash_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
 							<i class="fa fa-long-arrow-right m-l-9"></i>
 						</a>
 					</button>
+					{% elif showcase.collection == 'SEASON' %}
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' season_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+							<i class="fa fa-long-arrow-right m-l-9"></i>
+						</a>
+					</button>
+					{% elif showcase.collection == 'BOX' %}
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' boxes_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+							<i class="fa fa-long-arrow-right m-l-9"></i>
+						</a>
+					</button>
+					{% elif showcase.collection == 'LATEST' %}
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' latest_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+							<i class="fa fa-long-arrow-right m-l-9"></i>
+						</a>
+					</button>
+					{% elif showcase.collection == 'SELL' %}
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' sell_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+							<i class="fa fa-long-arrow-right m-l-9"></i>
+						</a>
+					</button>
+					{% elif showcase.collection == 'RATE' %}
+					<button class="stext-106 cl6 hov1 trans-04 m-r-32 m-tb-5">
+						<a href="{% url 'store' rated_collection %}"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">see more
+							<i class="fa fa-long-arrow-right m-l-9"></i>
+						</a>
+					</button>
+					{% endif %}
 				</div>
 			</div>
 
