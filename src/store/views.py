@@ -23,7 +23,7 @@ def home(request):
     except Content.DoesNotExist:
         raise Http404("No showcases")
     try:
-        products = Product.objects.all()
+        products = Product.objects.all().exclude(publish='False')
     except Content.DoesNotExist:
         raise Http404("No products")
 
@@ -75,7 +75,7 @@ def home(request):
 
 def store(request, collection):
     try:
-        products = Product.objects.all()
+        products = Product.objects.all().exclude(publish='False')
     except Content.DoesNotExist:
         raise Http404("No products")
 
@@ -96,3 +96,35 @@ def store(request, collection):
         'product_collection': product_collection,
     }
     return render(request, "store/store-detail.html", context)
+
+
+def product(request, product_id):
+    try:
+        selected_product = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    try:
+        album = selected_product.album.all()
+    except selected_product.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        options = selected_product.option.all()
+    except selected_product.DoesNotExist:
+        raise Http404("No options")
+
+    selected_product_category = selected_product.category
+    selected_product_type = selected_product.type
+    selected_product_tag = selected_product.tag
+
+    related_products = Product.objects.all().filter(Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
+        exclude(id=product_id).exclude(publish='False')
+
+    context = {
+        'selected_product': selected_product,
+        'album': album,
+        'options': options,
+        'related_products': related_products,
+    }
+    return render(request, "store/product-detail.html", context)
