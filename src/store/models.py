@@ -44,7 +44,7 @@ class Option(models.Model):
         ('PACK', 'PACK'),
         ('SIZE', 'SIZE'),
     )
-    type = models.CharField(max_length=50, choices=TYPES, unique=True, default='PACK')
+    type = models.CharField(max_length=50, choices=TYPES, default='PACK')
     title = models.CharField(max_length=200, blank=True)
     parameter = models.ManyToManyField(Parameter, blank=True)
 
