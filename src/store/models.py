@@ -39,6 +39,12 @@ class Parameter(models.Model):
 
 
 class Option(models.Model):
+    TYPES = (
+        ('COLOR', 'COLOR'),
+        ('PACK', 'PACK'),
+        ('SIZE', 'SIZE'),
+    )
+    type = models.CharField(max_length=50, choices=TYPES, unique=True)
     title = models.CharField(max_length=200, blank=True)
     parameter = models.ManyToManyField(Parameter, blank=True)
 

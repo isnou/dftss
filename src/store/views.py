@@ -114,17 +114,33 @@ def product(request, product_id):
     except selected_product.DoesNotExist:
         raise Http404("No options")
 
+    colors = None
+    packs = None
+    sizes = None
+
+    for option in options:
+        if option.type == 'COLOR':
+            colors = option.parameter.all()
+        elif option.type == 'PACK':
+            packs = option.parameter.all()
+        elif option.type == 'SIZE':
+            sizes = option.parameter.all()
+
     selected_product_category = selected_product.category
     selected_product_type = selected_product.type
     selected_product_tag = selected_product.tag
 
-    related_products = Product.objects.all().filter(Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
+    related_products = Product.objects.all().filter(
+        Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
         exclude(id=product_id).exclude(publish='False')
 
     context = {
         'selected_product': selected_product,
         'album': album,
         'options': options,
+        'colors': colors,
+        'packs': packs,
+        'sizes': sizes,
         'related_products': related_products,
     }
     return render(request, "store/product-detail.html", context)

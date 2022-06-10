@@ -346,10 +346,25 @@
 									<div class="rs1-select2 bor8 bg0">
 
 										<select class="js-select2" name="option" id="option" required>
-											<option value="">Choose an option</option>
-											{% for parameter in option.get_parameters %}
-											<option> {{ parameter.value }} </option>
+											{% if option.type ==  'COLOR' %}
+											<option value="">Choose a color</option>
+											{% for color in colors %}
+											<option> {{ color.value }} </option>
 											{% endfor %}
+
+											{% elif option.type ==  'PACK' %}
+											<option value="">Choose an option</option>
+											{% for pack in packs %}
+											<option> {{ pack.value }} </option>
+											{% endfor %}
+
+											{% elif option.type ==  'SIZE' %}
+											<option value="">What is your size</option>
+											{% for size in sizes %}
+											<option> {{ size.value }} </option>
+											{% endfor %}
+											
+											{% endif %}
 										</select>
 										<div class="dropDownSelect2"></div>
 
@@ -357,6 +372,10 @@
 								</div>
 							</div>
 							{% endfor %}
+
+
+
+
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
