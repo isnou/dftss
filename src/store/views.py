@@ -43,7 +43,7 @@ def home(request):
         raise Http404("boxes collection is empty")
 
     try:
-        latest_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
+        latest_collection = products.all().order_by('publish_date').exclude(publish='False').exclude(
             collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
