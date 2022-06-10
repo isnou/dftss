@@ -43,7 +43,7 @@ def home(request):
         raise Http404("boxes collection is empty")
 
     try:
-        latest_collection = products.all().order_by('publish_date').exclude(publish='False').exclude(
+        latest_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
             collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     except ShowCase.DoesNotExist:
         raise Http404("latest collection is empty")
@@ -80,7 +80,7 @@ def store(request, collection):
         raise Http404("No products")
 
     if collection == 'LATEST':
-        product_collection = products.all().order_by('publish_date').exclude(publish='False').exclude(
+        product_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
             collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
     elif collection == 'SELL':
         product_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
