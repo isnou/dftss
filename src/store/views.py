@@ -141,7 +141,7 @@ def product(request, product_id):
     if selected_product_tag == '':
         selected_product_tag = 'not selected'
 
-    related_products = all_products.objects.filter(
+    related_products = all_products.filter(
         Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
         exclude(id=product_id).exclude(publish='False')
 
