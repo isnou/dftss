@@ -104,7 +104,7 @@ def product(request, product_id):
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
 
-    selected_product = all_products.objects.get(id=product_id)
+    selected_product = all_products.get(id=product_id)
 
     try:
         album = selected_product.album.all()
