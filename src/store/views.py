@@ -100,9 +100,11 @@ def store(request, collection):
 
 def product(request, product_id):
     try:
-        selected_product = Product.objects.get(id=product_id)
+        all_products = Product.objects.all()
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
+
+    selected_product = all_products.objects.get(id=product_id)
 
     try:
         album = selected_product.album.all()
@@ -139,7 +141,7 @@ def product(request, product_id):
     if selected_product_tag == '':
         selected_product_tag = 'not selected'
 
-    related_products = Product.objects.all().filter(
+    related_products = all_products.objects.filter(
         Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
         exclude(id=product_id).exclude(publish='False')
 
