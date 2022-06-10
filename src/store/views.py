@@ -132,7 +132,7 @@ def product(request, product_id):
 
     related_products = Product.objects.all().filter(
         Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
-        exclude(id=product_id).exclude(publish='False').exclude(category='').exclude(type='').exclude(tag='')
+        exclude(id=product_id).exclude(publish='False')
 
     context = {
         'selected_product': selected_product,
