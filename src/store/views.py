@@ -129,7 +129,7 @@ def product(request, product_id):
             sizes = option.parameter.all()
 
     related_products = all_products.filter(
-        Q(category=selected_product.type) | Q(type=selected_product.tag) | Q(tag=selected_product.type))
+        Q(category=selected_product.category) | Q(type=selected_product.category) | Q(tag=selected_product.category))
 
     related_products = related_products.exclude(id=product_id).exclude(publish='False')
     related_products = related_products.order_by('?')[:8]
