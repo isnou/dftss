@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -91,6 +92,7 @@ class Product(models.Model):
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     publish = models.BooleanField(default=True)
+    publish_date = models.DateTimeField(default=timezone.now)
     sell_ranking = models.IntegerField(default=0)
     client_ranking = models.IntegerField(
         default=5,
