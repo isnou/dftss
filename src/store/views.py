@@ -130,9 +130,18 @@ def product(request, product_id):
     selected_product_type = selected_product.type
     selected_product_tag = selected_product.tag
 
+    if selected_product_category == '':
+        selected_product_category = 'not selected'
+
+    if selected_product_type == '':
+        selected_product_type = 'not selected'
+
+    if selected_product_tag == '':
+        selected_product_tag = 'not selected'
+
     related_products = Product.objects.all().filter(
         Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
-        exclude(id=product_id).exclude(publish='False')
+        exclude(id=product_id).exclude(publish='False').exclude(category='').exclude(type='').exclude(tag='')
 
     context = {
         'selected_product': selected_product,
