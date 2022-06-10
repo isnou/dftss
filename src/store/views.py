@@ -128,13 +128,10 @@ def product(request, product_id):
         elif option.type == 'SIZE':
             sizes = option.parameter.all()
 
-    selected_product_category = selected_product.category
-    selected_product_type = selected_product.type
-    selected_product_tag = selected_product.tag
+    relation = selected_product.category + selected_product.type + selected_product.tag
 
     related_products = all_products.filter(
-        Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
-        exclude(id=product_id).exclude(publish='False')
+        Q(category=relation) | Q(type=relation) | Q(tag=relation)).exclude(id=product_id).exclude(publish='False')
 
     context = {
         'selected_product': selected_product,
