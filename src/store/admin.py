@@ -20,10 +20,11 @@ class OptionAdmin(admin.ModelAdmin):
 
 
 class FilterAdmin(admin.ModelAdmin):
-    list_display = ('tag', 'type')
+    list_display = ['by']
 
 
 class ProductAdmin(admin.ModelAdmin):
+    list_filter = ('category', 'type', 'tag', 'collection', 'customizable', 'publish')
     list_display = (
         'name', 'sku', 'image', 'options', 'category', 'type', 'tag', 'collection', 'customizable', 'sell_price',
         'old_price', 'buy_price', 'publish', 'sell_ranking', 'client_ranking')
