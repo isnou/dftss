@@ -129,15 +129,10 @@ def product(request, product_id):
             sizes = option.parameter.all()
 
     related_products = all_products.filter(
-        Q(category=selected_product.category) | Q(type=selected_product.category) | Q(tag=selected_product.category))
-
-    related_products.add(related_products.filter(
-        Q(category=selected_product.type) | Q(type=selected_product.type) | Q(tag=selected_product.type)))
-
-    related_products.add(related_products.filter(
-        Q(category=selected_product.tag) | Q(type=selected_product.tag) | Q(tag=selected_product.tag)))
+        Q(category=selected_product.type) | Q(type=selected_product.tag) | Q(tag=selected_product.type))
 
     related_products = related_products.exclude(id=product_id).exclude(publish='False')
+    related_products = related_products.order_by('?')[:8]
 
     context = {
         'selected_product': selected_product,
