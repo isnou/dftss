@@ -132,15 +132,6 @@ def product(request, product_id):
     selected_product_type = selected_product.type
     selected_product_tag = selected_product.tag
 
-    if selected_product_category == '':
-        selected_product_category = None
-
-    if selected_product_type == '':
-        selected_product_type = None
-
-    if selected_product_tag == '':
-        selected_product_tag = None
-
     related_products = all_products.filter(
         Q(category=selected_product_category) | Q(type=selected_product_type) | Q(tag=selected_product_tag)). \
         exclude(id=product_id).exclude(publish='False')
