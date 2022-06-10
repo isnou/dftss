@@ -453,12 +453,11 @@
 											<span class="stext-102 cl3 size-205">
 												Colors
 											</span>
-
-											{% for color in colors %}
 											<span class="stext-102 cl6 size-206 p-r-5">
-												{{ color.value }}
+												{% for color in colors %}
+												{{ color.value }} ,
+												{% endfor %}
 											</span>
-											{% endfor %}
 										</li>
 										{% endif %}
 
@@ -468,12 +467,11 @@
 											<span class="stext-102 cl3 size-205">
 												Sizes
 											</span>
-
-											{% for size in sizes %}
 											<span class="stext-102 cl6 size-206 p-r-5">
-												{{ size.value }}
+												{% for size in sizes %}
+												{{ size.value }} ,
+												{% endfor %}
 											</span>
-											{% endfor %}
 										</li>
 										{% endif %}
 
