@@ -94,10 +94,10 @@ class Product(models.Model):
         ]
     )
 
-    def get_albums(self):
+    def albums(self):
         return "\n".join([p.file_name for p in self.album.all()])
 
-    def get_options(self):
+    def options(self):
         return "\n".join([p.title for p in self.option.all()])
 
     def __str__(self):
