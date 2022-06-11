@@ -108,6 +108,7 @@ def store(request, collection):
 
     context = {
         'product_collection': product_collection,
+        'collection': collection,
         'paginate': paginate,
     }
     return render(request, "store/store-detail.html", context)
