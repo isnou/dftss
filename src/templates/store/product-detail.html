@@ -337,45 +337,61 @@
 							</div>
 
 							{% for option in options %}
+
+							{% if option.type ==  'COLOR' %}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									{{ option.title|capfirst }}
 								</div>
-
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-
-										<select class="js-select2" name="option" id="option" required>
-											{% if option.type ==  'COLOR' %}
+										<select class="js-select2" name="color" id="color" required>
 											<option value="">Choose a color</option>
 											{% for color in colors %}
 											<option> {{ color.value }} </option>
 											{% endfor %}
-
-											{% elif option.type ==  'PACK' %}
-											<option value="">Choose an option</option>
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
+							</div>
+							{% elif option.type ==  'PACK' %}
+							<div class="flex-w flex-r-m p-b-10">
+								<div class="size-203 flex-c-m respon6">
+									{{ option.title|capfirst }}
+								</div>
+								<div class="size-204 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select class="js-select2" name="pack" id="pack" required>
+											<option value="">Choose a pack</option>
 											{% for pack in packs %}
 											<option> {{ pack.value }} </option>
 											{% endfor %}
-
-											{% elif option.type ==  'SIZE' %}
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
+							</div>
+							{% elif option.type ==  'SIZE' %}
+							<div class="flex-w flex-r-m p-b-10">
+								<div class="size-203 flex-c-m respon6">
+									{{ option.title|capfirst }}
+								</div>
+								<div class="size-204 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select class="js-select2" name="size" id="size" required>
 											<option value="">Choose a size</option>
 											{% for size in sizes %}
 											<option> {{ size.value }} </option>
 											{% endfor %}
-
-											{% endif %}
 										</select>
 										<div class="dropDownSelect2"></div>
-
 									</div>
 								</div>
 							</div>
+							{% endif %}
+
 							{% endfor %}
-
-
-
-
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
