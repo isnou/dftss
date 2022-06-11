@@ -535,23 +535,14 @@
 				</a>
 
 				<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
-							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-								1
-							</a>
-
-							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-								2
-							</a>
-
-
-
 					{% if product_collection.has_other_pages %}
-            <ul class="pagination">
-              {% if product_collection.has_previous %}
-              <li class="page-item"><a class="page-link" href="?page={{ product_collection.previous_page_number }}">&laquo;</a></li>
-              {% else %}
-              <li class="page-item"><span class="page-link">&laquo;</span></li>
+					<ul class="pagination">
+						{% if product_collection.has_previous %}
+						<li class="page-item">
+				  <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">&laquo;</a>
+			  </li>
               {% endif %}
+
               {% for i in product_collection.paginator.page_range %}
               {% if product_collection.number == i %}
 				<li class="page-item">
@@ -563,11 +554,12 @@
 				</li>
               {% endif %}
               {% endfor %}
+
               {% if product_collection.has_next %}
-              <li class="page-item"><a class="page-link" href="?page={{ product_collection.next_page_number }}">&raquo;</a></li>
+				<li class="page-item">
+					<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.next_page_number }}">&raquo;</a>
+				</li>
               {% else %}
-              <li class="page-item"><span class="page-link">&raquo;</span></li>
-              {% endif %}
             </ul>
             {% endif %}
 
