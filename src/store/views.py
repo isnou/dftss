@@ -81,16 +81,16 @@ def store(request, collection):
 
     if collection == 'LATEST':
         product_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
     elif collection == 'SELL':
         product_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
     elif collection == 'RATE':
         product_collection = products.all().order_by('-client_ranking').exclude(publish='False').exclude(
-            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')[:8]
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
     else:
         product_collection = products.all().filter(collection=collection)
-        product_collection = product_collection.order_by('?').all()[:8]
+        product_collection = product_collection.order_by('?').all()
 
     context = {
         'product_collection': product_collection,
