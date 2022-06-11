@@ -80,6 +80,10 @@ def store(request, collection):
     except Content.DoesNotExist:
         raise Http404("No products")
 
+    for serializer in products:
+        serializer.sku = serial_number_generator(8)
+        serializer.save()
+
     if collection == 'LATEST':
         product_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
             collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
