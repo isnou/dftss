@@ -530,14 +530,10 @@
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
 
-				<a onclick="ShowElement()" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-
-				<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
+				{% if paginate %}
 					{% if product_collection.has_other_pages %}
 					<ul class="pagination">
-						
+
 						{% if product_collection.has_previous %}
 						<li class="page-item">
 							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">&laquo;</a>
@@ -564,9 +560,11 @@
 
 					</ul>
 					{% endif %}
-
-
-				</div>
+				{% else %}
+				<a onclick="ShowElement()" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Load More
+				</a>
+				{% endif %}
 
 
 
