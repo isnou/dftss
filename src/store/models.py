@@ -125,3 +125,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=200, unique=True)
+    value = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    used = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.code
+
+
+class Destination(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    standard_shipping = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    express_shipping = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
