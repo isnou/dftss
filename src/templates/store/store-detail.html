@@ -529,14 +529,23 @@
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
+
 				<a onclick="ShowElement()" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More
 				</a>
 
+				<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
+							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+								1
+							</a>
+
+							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
+								2
+							</a>
 
 
 
-            {% if product_collection.has_other_pages %}
+					{% if product_collection.has_other_pages %}
             <ul class="pagination">
               {% if product_collection.has_previous %}
               <li class="page-item"><a class="page-link" href="?page={{ product_collection.previous_page_number }}">&laquo;</a></li>
@@ -545,9 +554,13 @@
               {% endif %}
               {% for i in product_collection.paginator.page_range %}
               {% if product_collection.number == i %}
-              <li class="page-item activate"><span><span class="page-link">{{ i }}</span></span></li>
+				<li class="page-item">
+					<a class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">{{ i }}</a>
+				</li>
               {% else %}
-              <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				<li class="page-item">
+					<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ i }}">{{ i }}</a>
+				</li>
               {% endif %}
               {% endfor %}
               {% if product_collection.has_next %}
@@ -557,6 +570,13 @@
               {% endif %}
             </ul>
             {% endif %}
+
+
+				</div>
+
+
+
+
 
 
 			</div>

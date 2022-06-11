@@ -101,11 +101,14 @@ def store(request, collection):
             product_collection = paginator.page(1)
         except EmptyPage:
             product_collection = paginator.page(paginator.num_pages)
+        paginate = True
     else:
         product_collection = product_collection.order_by('?').all()[:4]
+        paginate = False
 
     context = {
         'product_collection': product_collection,
+        'paginate': paginate,
     }
     return render(request, "store/store-detail.html", context)
 
