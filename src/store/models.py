@@ -97,8 +97,7 @@ class Product(models.Model):
     album = models.ManyToManyField(Album, blank=True)
     option = models.ManyToManyField(Option, blank=True)
     filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
-    filter_flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_flip', blank=True,
-                                    null=True)
+    flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='flip', blank=True, null=True)
     collection = models.CharField(max_length=50, choices=COLLECTION, blank=True, null=True)
     customizable = models.BooleanField(default=False)
     catch_line = models.CharField(max_length=200, blank=True)
