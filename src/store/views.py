@@ -92,7 +92,7 @@ def store(request, collection):
     else:
         product_collection = products.all().filter(collection=collection)
 
-    if collection == 'LATEST' and collection == 'SELL' and collection == 'RATE':
+    if collection == 'LATEST' or collection == 'SELL' or collection == 'RATE':
         page = request.GET.get('page', 1)
         paginator = Paginator(product_collection, 4)
         try:
