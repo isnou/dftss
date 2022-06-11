@@ -317,7 +317,7 @@
 
 						<!--  -->
 						<div class="p-t-33">
-						<form action="#" name="pre_order_form" id="pre_order_form" method="post">
+						<form action="{% url 'order' selected_product.id %}" name="pre_order_form" id="pre_order_form" method="post">
 							{% csrf_token %}
 
 							<div class="flex-w flex-r-m p-b-10">

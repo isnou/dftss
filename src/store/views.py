@@ -163,11 +163,11 @@ def product(request, product_id):
     return render(request, "store/product-detail.html", context)
 
 
-def order(request, product_sku):
+def order(request, product_id):
     shipping = ('standard', 'express')
 
     try:
-        product_to_add = Product.objects.get(sku=product_sku)
+        product_to_add = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
 
