@@ -536,7 +536,9 @@
 
 						{% if product_collection.has_previous %}
 						<li class="page-item">
-							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">&laquo;</a>
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">
+								<i class="fa fa-angle-left"></i>
+							</a>
 						</li>
 						{% endif %}
 
@@ -554,7 +556,9 @@
 
 						{% if product_collection.has_next %}
 						<li class="page-item">
-							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.next_page_number }}">&raquo;</a>
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.next_page_number }}">
+								<i class="fa fa-angle-right"></i>
+							</a>
 						</li>
 						{% endif %}
 
