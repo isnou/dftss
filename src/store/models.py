@@ -24,6 +24,28 @@ class Content(models.Model):
         return self.title
 
 
+class ShowCase(models.Model):
+    TYPES = (
+        ('SLIDE', 'SLIDE'),
+        ('BANNER', 'BANNER'),
+    )
+    COLLECTION = (
+        ('FLASH', 'FLASH'),
+        ('SEASON', 'SEASON'),
+        ('BOX', 'BOX'),
+        ('LATEST', 'LATEST'),
+        ('SELL', 'SELL'),
+        ('RATE', 'RATE'),
+    )
+    title = models.CharField(max_length=200, unique=True)
+    type = models.CharField(max_length=50, choices=TYPES)
+    collection = models.CharField(max_length=50, choices=COLLECTION, unique=True)
+    position = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.title
+
+
 class Album(models.Model):
     file_name = models.CharField(max_length=200, blank=True, default='product-image')
     image = models.ImageField(upload_to='store/images/')
@@ -74,9 +96,10 @@ class Product(models.Model):
     image = models.ImageField(upload_to='store/products')
     album = models.ManyToManyField(Album, blank=True)
     option = models.ManyToManyField(Option, blank=True)
-    filter_in = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_category', blank=True, null=True)
-    filter_out = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_type', blank=True, null=True)
-    filter_flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_tag', blank=True, null=True)
+    filter_in = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_in', blank=True, null=True)
+    filter_out = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_out', blank=True, null=True)
+    filter_flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_flip', blank=True,
+                                    null=True)
     collection = models.CharField(max_length=50, choices=COLLECTION, blank=True, null=True)
     customizable = models.BooleanField(default=False)
     catch_line = models.CharField(max_length=200, blank=True)
@@ -104,25 +127,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class ShowCase(models.Model):
-    TYPES = (
-        ('SLIDE', 'SLIDE'),
-        ('BANNER', 'BANNER'),
-    )
-    COLLECTION = (
-        ('FLASH', 'FLASH'),
-        ('SEASON', 'SEASON'),
-        ('BOX', 'BOX'),
-        ('LATEST', 'LATEST'),
-        ('SELL', 'SELL'),
-        ('RATE', 'RATE'),
-    )
-    title = models.CharField(max_length=200, unique=True)
-    type = models.CharField(max_length=50, choices=TYPES)
-    collection = models.CharField(max_length=50, choices=COLLECTION, unique=True)
-    position = models.IntegerField(default=1)
-
-    def __str__(self):
-        return self.title
