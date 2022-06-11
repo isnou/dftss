@@ -532,6 +532,33 @@
 				<a onclick="ShowElement()" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More
 				</a>
+
+
+
+
+            {% if product_collection.has_other_pages %}
+            <ul class="pagination">
+              {% if product_collection.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{ product_collection.previous_page_number }}">&laquo;</a></li>
+              {% else %}
+              <li class="page-item"><span class="page-link">&laquo;</span></li>
+              {% endif %}
+              {% for i in product_collection.paginator.page_range %}
+              {% if product_collection.number == i %}
+              <li class="page-item activate"><span><span class="page-link">{{ i }}</span></span></li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+              {% endfor %}
+              {% if product_collection.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ product_collection.next_page_number }}">&raquo;</a></li>
+              {% else %}
+              <li class="page-item"><span class="page-link">&raquo;</span></li>
+              {% endif %}
+            </ul>
+            {% endif %}
+
+
 			</div>
 		</div>
 	</div>
