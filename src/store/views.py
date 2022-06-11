@@ -103,7 +103,7 @@ def store(request, collection):
             product_collection = paginator.page(paginator.num_pages)
         paginate = True
     else:
-        product_collection = product_collection.order_by('?').all()[:8]
+        product_collection = product_collection.order_by('?').all()[:4]
         paginate = False
 
     context = {
