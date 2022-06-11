@@ -1,7 +1,8 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 # from sell.models import
-from .models import Content, ShowCase, Product
+from .models import Content, ShowCase, Product, Destination
+from sell.models import Order, Cart
 from django.http import Http404
 from django.db.models import Q
 import random
@@ -160,3 +161,51 @@ def product(request, product_id):
         'related_products': related_products,
     }
     return render(request, "store/product-detail.html", context)
+
+
+def order(request, product_sku):
+    shipping = ('standard', 'express')
+
+    try:
+        product_to_add = Product.objects.get(sku=product_sku)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    try:
+        destinations = Destination.objects.all()
+    except Destination.DoesNotExist:
+        raise Http404("No destinations")
+
+    if request.method == 'POST':
+        color = request.POST.get('color', False)
+        option = request.POST.get('option', False)
+        quantity = request.POST.get('num-product2', False)
+        size = request.POST.get('size', False)
+    else:
+        color = "UNDEFINED"
+        option = "UNDEFINED"
+        quantity = "UNDEFINED"
+        size = "UNDEFINED"
+
+    order_ref = serial_number_generator(8).upper()
+
+    new_order = Order(order_ref=order_ref,
+                      product_sku=product_to_add.sku,
+                      product_name=product_to_add.name,
+                      product_price=product_to_add.price,
+                      product_image=product_to_add.image,
+                      product_color=color,
+                      product_option=option,
+                      quantity=quantity,
+                      product_size=size,
+                      )
+    new_order.save()
+
+    context = {
+        'order': order,
+        'product': product,
+        'order_ref': order_ref,
+        'destinations': destinations,
+        'shipping': shipping,
+    }
+    return render(request, "dexunt-store/shopping-cart.html", context)
