@@ -94,7 +94,7 @@ def store(request, collection):
 
     if collection == 'LATEST' or collection == 'SELL' or collection == 'RATE':
         page = request.GET.get('page', 1)
-        paginator = Paginator(product_collection, 4)
+        paginator = Paginator(product_collection, 2)
         try:
             product_collection = paginator.page(page)
         except PageNotAnInteger:
