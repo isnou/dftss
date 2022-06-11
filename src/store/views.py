@@ -28,6 +28,10 @@ def home(request):
     except Content.DoesNotExist:
         raise Http404("No products")
 
+    for serializer in products:
+        serializer.sku = serial_number_generator(8).upper()
+        serializer.save()
+
     try:
         flash_collection = products.all().filter(collection='FLASH').order_by('?')[:8]
     except ShowCase.DoesNotExist:
@@ -79,10 +83,6 @@ def store(request, collection):
         products = Product.objects.all().exclude(publish='False')
     except Content.DoesNotExist:
         raise Http404("No products")
-
-    for serializer in products:
-        serializer.sku = serial_number_generator(8)
-        serializer.save()
 
     if collection == 'LATEST':
         product_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
