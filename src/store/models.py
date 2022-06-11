@@ -96,8 +96,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='store/products')
     album = models.ManyToManyField(Album, blank=True)
     option = models.ManyToManyField(Option, blank=True)
-    filter_in = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_in', blank=True, null=True)
-    filter_out = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_out', blank=True, null=True)
+    filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
     filter_flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter_flip', blank=True,
                                     null=True)
     collection = models.CharField(max_length=50, choices=COLLECTION, blank=True, null=True)
