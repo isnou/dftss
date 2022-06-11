@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 # from sell.models import
 from .models import Content, ShowCase, Product
@@ -90,7 +91,18 @@ def store(request, collection):
             collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
     else:
         product_collection = products.all().filter(collection=collection)
-        product_collection = product_collection.order_by('?').all()
+
+    if collection == 'LATEST' and collection == 'SELL' and collection == 'RATE':
+        page = request.GET.get('page', 1)
+        paginator = Paginator(product_collection, 2)
+        try:
+            product_collection = paginator.page(page)
+        except PageNotAnInteger:
+            product_collection = paginator.page(1)
+        except EmptyPage:
+            product_collection = paginator.page(paginator.num_pages)
+    else:
+        product_collection = product_collection.order_by('?').all()[:4]
 
     context = {
         'product_collection': product_collection,
