@@ -537,31 +537,33 @@
 				<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
 					{% if product_collection.has_other_pages %}
 					<ul class="pagination">
+						
 						{% if product_collection.has_previous %}
 						<li class="page-item">
-				  <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">&laquo;</a>
-			  </li>
-              {% endif %}
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.previous_page_number }}">&laquo;</a>
+						</li>
+						{% endif %}
 
-              {% for i in product_collection.paginator.page_range %}
-              {% if product_collection.number == i %}
-				<li class="page-item">
-					<a class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">{{ i }}</a>
-				</li>
-              {% else %}
-				<li class="page-item">
-					<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ i }}">{{ i }}</a>
-				</li>
-              {% endif %}
-              {% endfor %}
+						{% for i in product_collection.paginator.page_range %}
+						{% if product_collection.number == i %}
+						<li class="page-item">
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">{{ i }}</a>
+						</li>
+						{% else %}
+						<li class="page-item">
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ i }}">{{ i }}</a>
+						</li>
+						{% endif %}
+						{% endfor %}
 
-              {% if product_collection.has_next %}
-				<li class="page-item">
-					<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.next_page_number }}">&raquo;</a>
-				</li>
-              {% else %}
-            </ul>
-            {% endif %}
+						{% if product_collection.has_next %}
+						<li class="page-item">
+							<a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ product_collection.next_page_number }}">&raquo;</a>
+						</li>
+						{% endif %}
+
+					</ul>
+					{% endif %}
 
 
 				</div>
