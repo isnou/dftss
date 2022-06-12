@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 # from sell.models import
 from .models import Content, ShowCase, Product, Destination
-from sell.models import Order, Cart
+from sell.models import Order, Item
 from django.http import Http404
 from django.db.models import Q
 import random
@@ -187,25 +187,34 @@ def order(request, product_id):
         quantity = 1
         size = "UNDEFINED"
 
-    order_ref = serial_number_generator(8).upper()
+    new_item = Item(sku=product_to_add.sku,
+                    name=product_to_add.name,
+                    image=product_to_add.image,
+                    color=color,
+                    option=option,
+                    size=size,
+                    quantity=quantity,
+                    price=product_to_add.sell_price,
+                    )
+    new_item.save()
 
-    new_order = Order(order_ref=order_ref,
-                      product_sku=product_to_add.sku,
-                      product_name=product_to_add.name,
-                      product_price=product_to_add.sell_price,
-                      product_image=product_to_add.image,
-                      product_color=color,
-                      product_option=option,
-                      quantity=quantity,
-                      product_size=size,
-                      )
-    new_order.save()
-    order = new_order
+    if request.session.get('session_id', None):
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+    else:
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+
+    cart.add(new_item)
 
     context = {
-        'order': order,
-        'product': product,
-        'order_ref': order_ref,
+        'cart': cart,
+        'product': new_item,
         'destinations': destinations,
         'shipping': shipping,
     }

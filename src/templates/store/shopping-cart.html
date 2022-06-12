@@ -371,20 +371,20 @@
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="http://94.176.238.2/media/{{ order.product_image }}" alt="IMG">
+											<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2" id="product-name">
-										{{ order.product_name }}
+										{{ product.name }}
 									</td>
 									<td class="column-3" >
-										{{ order.product_price|floatformat:"2g" }} DA
+										{{ product.price|floatformat:"2g" }} DA
 									</td>
 									<td class="column-4 p-r-50">
-										{{ order.quantity }}
+										{{ product.quantity }}
 									</td>
 									<td class="column-5">
-										<p>{{ order.product_price|mul:order.quantity|floatformat:"2g" }} DA</p>
+										<p>{{ product.price|mul:order.quantity|floatformat:"2g" }} DA</p>
 									</td>
 								</tr>
 

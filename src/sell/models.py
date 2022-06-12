@@ -2,22 +2,21 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class Order(models.Model):
-    order_ref = models.CharField(max_length=200, unique=True)
-    product_sku = models.CharField(max_length=200)
-    product_name = models.CharField(max_length=200, default='UNDEFINED')
-    product_image = models.ImageField(upload_to='dexunt-sotre/products', blank=True)
-    product_color = models.CharField(max_length=200, default='UNDEFINED')
-    product_option = models.CharField(max_length=200, default='UNDEFINED')
-    product_size = models.CharField(max_length=200, default='UNDEFINED')
-    product_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+class Item(models.Model):
+    sku = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default='UNDEFINED')
+    image = models.ImageField(upload_to='dexunt-sotre/products', blank=True)
+    color = models.CharField(max_length=200, default='UNDEFINED')
+    option = models.CharField(max_length=200, default='UNDEFINED')
+    size = models.CharField(max_length=200, default='UNDEFINED')
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
 
     def __str__(self):
-        return self.product_name
+        return self.sku
 
 
-class Cart(models.Model):
+class Order(models.Model):
     STATE = (
         ('REQUEST', 'REQUEST'),
         ('UNCONFIRMED', 'UNCONFIRMED'),
@@ -30,10 +29,12 @@ class Cart(models.Model):
         ('PAYED', 'PAYED'),
         ('REJECTED', 'REJECTED'),
     )
-    cart_ref = models.CharField(max_length=200, unique=True)
-    cart_date = models.DateTimeField(auto_now_add=True)
-    cart_state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
-    order = models.ManyToManyField(Order, blank=True)
+    ref = models.CharField(max_length=200, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
+    item = models.ManyToManyField(Item, blank=True)
+    session_id = models.CharField(max_length=200, unique=True)
     client_name = models.CharField(max_length=200, default='UNDEFINED')
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
@@ -44,11 +45,11 @@ class Cart(models.Model):
     shipping_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
-    def orders(self):
-        return "\n".join([p.product_name for p in self.order.all()])
+    def items(self):
+        return "\n".join([p.name for p in self.item.all()])
 
-    def orders_count(self):
-        return self.order.all().count()
+    def items_count(self):
+        return self.item.all().count()
 
     def __str__(self):
         return self.cart_ref

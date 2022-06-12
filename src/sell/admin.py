@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Order, Cart
+from .models import Order, Item
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_ref', 'product_sku', 'product_name', 'product_color', 'product_option', 'product_size',
-                    'product_price', 'quantity')
+    list_display = ('ref', 'state', 'item', 'session_id', 'client_name', 'client_phone', 'registered_client',
+                    'coupon_value', 'coupon_code', 'shipping_destination', 'shipping_price', 'total_price')
 
 
 admin.site.register(Order, OrderAdmin)
-
