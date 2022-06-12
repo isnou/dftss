@@ -34,7 +34,7 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     state = models.CharField(max_length=50, choices=STATE, default='REQUEST')
     item = models.ManyToManyField(Item, blank=True)
-    session_id = models.CharField(max_length=200, unique=True)
+    session_id = models.CharField(max_length=200, unique=True, null=True)
     client_name = models.CharField(max_length=200, default='UNDEFINED')
     client_phone = PhoneNumberField(blank=True)
     registered_client = models.BooleanField(default=False)
