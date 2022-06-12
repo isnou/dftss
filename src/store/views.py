@@ -192,7 +192,7 @@ def order(request, product_id):
     new_order = Order(order_ref=order_ref,
                       product_sku=product_to_add.sku,
                       product_name=product_to_add.name,
-                      product_price=product_to_add.price,
+                      product_price=product_to_add.sell_price,
                       product_image=product_to_add.image,
                       product_color=color,
                       product_option=option,
