@@ -184,7 +184,7 @@ def order(request, product_id):
     else:
         color = "UNDEFINED"
         option = "UNDEFINED"
-        quantity = "UNDEFINED"
+        quantity = 1
         size = "UNDEFINED"
 
     order_ref = serial_number_generator(8).upper()
