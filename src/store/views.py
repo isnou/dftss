@@ -200,6 +200,7 @@ def order(request, product_id):
                       product_size=size,
                       )
     new_order.save()
+    order = new_order
 
     context = {
         'order': order,
