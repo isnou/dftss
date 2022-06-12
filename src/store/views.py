@@ -197,6 +197,7 @@ def order(request, product_id):
                     price=product_to_add.sell_price,
                     )
     new_item.save()
+
     if request.session.get('session_id', None):
         session_id = request.session.get('session_id')
         cart = Order.objects.get(session_id=session_id)
