@@ -199,9 +199,6 @@ def order(request, product_id):
     new_item.save()
 
     if request.session.get('session_id', None):
-        session_id = request.session.get('session_id')
-        cart = Order.objects.get(session_id=session_id)
-    else:
         gen_ref = serial_number_generator(8).upper()
         gen_session_id = serial_number_generator(8).upper()
         request.session['session_id'] = gen_session_id
@@ -209,6 +206,9 @@ def order(request, product_id):
                      session_id=gen_session_id,
                      )
         cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
 
     cart.item.add(new_item)
 
