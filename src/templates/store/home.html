@@ -225,13 +225,10 @@
 								{{product.name}}
 							</a>
 							<span class="header-cart-item-info">
-								{{ product.price|floatformat:"2g" }} DA
+								Quantity :{{ product.quantity }}
 							</span>
 							<span class="header-cart-item-info">
-								{{ product.quantity }}
-							</span>
-							<span class="header-cart-item-info">
-								<p>{{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
+								<p>Sub-Total : {{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
 							</span>
 						</div>
 					</li>
