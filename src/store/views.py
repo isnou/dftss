@@ -212,8 +212,8 @@ def order(request, product_id):
 
     if cart.item.filter(sku=new_item.sku).exists():
         existing_item = cart.item.get(sku=new_item.sku)
-        cart.item.get(sku=new_item.sku).quantity = 10
-        cart.item.get(sku=new_item.sku).save()
+        new_quantity = existing_item.quantity + int(quantity)
+        cart.item.get(sku=new_item.sku).update(quantity=new_quantity)
     else:
         cart.item.add(new_item)
 
