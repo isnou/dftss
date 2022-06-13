@@ -213,9 +213,10 @@ def order(request, product_id):
     if not cart.item.get(sku=new_item.sku):
         cart.item.add(new_item)
     else:
-        item = cart.item.get(sku=new_item.sku)
-        item.quantity = item.quantity + new_item.quantity
-        item.save()
+        old_quantity = cart.item.get(sku=new_item.sku).quantity
+        new_quantity = new_item.quantity
+        new_item.quantity = old_quantity + new_quantity
+        new_item.save()
 
     products = cart.item.all()
 
