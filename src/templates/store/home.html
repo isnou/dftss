@@ -225,7 +225,7 @@
 								{{product.name}}
 							</a>
 							<span class="header-cart-item-info">
-								Quantity :{{ product.quantity }}
+								Quantity :{{ product.quantity|floatformat:"2g" }}
 							</span>
 							<span class="header-cart-item-info">
 								<p>Sub-Total : {{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
