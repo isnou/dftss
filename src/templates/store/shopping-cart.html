@@ -379,7 +379,7 @@
 									</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w">
-											{% if product.quantity > 0 %}
+											{% if product.quantity > 1 %}
 											<a href="{% url 'remove-quantity' product.sku %}" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</a>
