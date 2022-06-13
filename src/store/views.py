@@ -222,3 +222,10 @@ def order(request, product_id):
         'shipping': shipping,
     }
     return render(request, "store/shopping-cart.html", context)
+
+
+def delete_product(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    cart.item.remove(sku=sku)
+    return redirect('store-home')
