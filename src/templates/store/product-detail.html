@@ -334,13 +334,13 @@
 									<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 										<i class="fs-16 zmdi zmdi-minus"></i>
 									</div>
-									<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
+									<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="{{ quantity_value }}">
 									<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 										<i class="fs-16 zmdi zmdi-plus"></i>
 									</div>
 								</div>
 							</div>
-							{% if products_quantity > 0 %}
+							{% if product_exists %}
 
 							{% for option in options %}
 

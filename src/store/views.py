@@ -200,6 +200,13 @@ def product(request, product_id):
     products = cart.item.all()
     products_quantity = cart.item.all().count()
 
+    if products.filter(sku=selected_product.sku).exists():
+        quantity_value = cart.item.get(sku=selected_product.sku).quantity
+        product_exists = True
+    else:
+        quantity_value = 1
+        product_exists = False
+
     context = {
         'selected_product': selected_product,
         'album': album,
@@ -210,6 +217,8 @@ def product(request, product_id):
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
+        'quantity_value': quantity_value,
+        'product_exists': product_exists,
     }
     return render(request, "store/product-detail.html", context)
 
