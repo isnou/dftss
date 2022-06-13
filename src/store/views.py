@@ -62,6 +62,21 @@ def home(request):
     except ShowCase.DoesNotExist:
         raise Http404("sell collection is empty")
 
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
     context = {
         'rated_collection': rated_collection,
         'sell_collection': sell_collection,
@@ -71,6 +86,8 @@ def home(request):
         'flash_collection': flash_collection,
         'showcases': showcases,
         'contents': contents,
+        'products': products,
+        'products_quantity': products_quantity,
     }
     return render(request, "store/home.html", context)
 
@@ -222,7 +239,7 @@ def order(request, product_id):
 
     context = {
         'products': products,
-        'orders_quantity': products_quantity,
+        'products_quantity': products_quantity,
         'destinations': destinations,
         'shipping': shipping,
     }
