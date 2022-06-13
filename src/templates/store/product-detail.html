@@ -334,13 +334,14 @@
 									<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 										<i class="fs-16 zmdi zmdi-minus"></i>
 									</div>
-									<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="{{ quantity_value }}">
+									<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
 									<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 										<i class="fs-16 zmdi zmdi-plus"></i>
 									</div>
 								</div>
 							</div>
 							{% if product_exists %}
+							{{ quantity_value|floatformat:'g' }}
 							{% else %}
 							{% for option in options %}
 
