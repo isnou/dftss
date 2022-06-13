@@ -214,7 +214,7 @@
 					{% for product in products %}
 					<li class="header-cart-item flex-w flex-t m-b-12">
 
-						<a href="{% url 'store-home' %}">
+						<a href="{% url 'delete-product-to-home' product.sku %}">
 							<div class="header-cart-item-img">
 								<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
 							</div>

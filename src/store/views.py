@@ -318,3 +318,11 @@ def delete_product(request, sku):
     to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
     return redirect('show-cart')
+
+
+def delete_product_to_home(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    to_delete = cart.item.get(sku=sku)
+    cart.item.remove(to_delete)
+    return redirect('show-cart')
