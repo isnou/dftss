@@ -341,7 +341,7 @@
 								</div>
 							</div>
 							{% if product_exists %}
-
+							{% else %}
 							{% for option in options %}
 
 							{% if option.type ==  'COLOR' %}
@@ -398,7 +398,6 @@
 							{% endif %}
 
 							{% endfor %}
-
 							{% endif %}
 
 							<div class="flex-w flex-r-m p-b-10">
