@@ -326,7 +326,7 @@
 							{% csrf_token %}
 
 							<div class="flex-w flex-r-m p-b-10">
-								
+
 								<div class="size-203 flex-c-m respon6">
 									Quantity
 								</div>
@@ -341,6 +341,22 @@
 									</div>
 								</div>
 
+							</div>
+							<div class="flex-w flex-r-m p-b-10">
+								<div class="size-203 flex-c-m respon6">
+									{{ option.title|capfirst }}
+								</div>
+								<div class="size-204 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select class="js-select2" name="color" id="color" required>
+											<option value="">Choose a color</option>
+											{% for color in colors %}
+											<option> {{ color.value }} </option>
+											{% endfor %}
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
 							</div>
 							{% if product_exists %}
 <!--
