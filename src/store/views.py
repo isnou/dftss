@@ -210,13 +210,7 @@ def order(request, product_id):
         session_id = request.session.get('session_id')
         cart = Order.objects.get(session_id=session_id)
 
-    if not cart.item.get(sku=new_item.sku):
-        cart.item.add(new_item)
-    else:
-        old_quantity = cart.item.get(sku=new_item.sku).quantity
-        new_quantity = new_item.quantity
-        new_item.quantity = old_quantity + new_quantity
-        new_item.save()
+    cart.item.add(new_item)
 
     products = cart.item.all()
 
