@@ -384,7 +384,7 @@
 										{{ product.quantity }}
 									</td>
 									<td class="column-5">
-										<p>{{ product.price|mul:order.quantity|floatformat:"2g" }} DA</p>
+										<p>{{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
 									</td>
 								</tr>
 
