@@ -210,7 +210,7 @@ def order(request, product_id):
                      )
         cart.save()
 
-    cart.add(new_item)
+    cart.item.add(new_item)
 
     context = {
         'cart': cart,

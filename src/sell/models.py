@@ -52,4 +52,4 @@ class Order(models.Model):
         return self.item.all().count()
 
     def __str__(self):
-        return self.cart_ref
+        return self.ref
