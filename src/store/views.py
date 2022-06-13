@@ -227,6 +227,6 @@ def order(request, product_id):
 def delete_product(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    to_delete = cart.objects.get(sku=sku)
+    to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
     return redirect('store-home')
