@@ -124,10 +124,27 @@ def store(request, collection):
         product_collection = product_collection.order_by('?').all()
         paginate = False
 
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
     context = {
         'product_collection': product_collection,
         'collection': collection,
         'paginate': paginate,
+        'products': products,
+        'products_quantity': products_quantity,
     }
     return render(request, "store/store-detail.html", context)
 
@@ -168,6 +185,21 @@ def product(request, product_id):
     related_products = related_products.exclude(id=product_id).exclude(publish='False')
     related_products = related_products.order_by('?')[:8]
 
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
     context = {
         'selected_product': selected_product,
         'album': album,
@@ -176,6 +208,8 @@ def product(request, product_id):
         'packs': packs,
         'sizes': sizes,
         'related_products': related_products,
+        'products': products,
+        'products_quantity': products_quantity,
     }
     return render(request, "store/product-detail.html", context)
 
