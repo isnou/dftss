@@ -246,9 +246,41 @@ def order(request, product_id):
     return render(request, "store/shopping-cart.html", context)
 
 
+def shopping_cart(request):
+    shipping = ('standard', 'express')
+
+    try:
+        destinations = Destination.objects.all()
+    except Destination.DoesNotExist:
+        raise Http404("No destinations")
+
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
+    context = {
+        'products': products,
+        'products_quantity': products_quantity,
+        'destinations': destinations,
+        'shipping': shipping,
+    }
+    return render(request, "store/shopping-cart.html", context)
+
+
 def delete_product(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
     to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
-    return redirect('store-home')
+    return redirect('shopping-cart')
