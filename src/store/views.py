@@ -215,7 +215,6 @@ def order(request, product_id):
     products = cart.item.all()
 
     context = {
-        'cart': cart,
         'products': products,
         'destinations': destinations,
         'shipping': shipping,
