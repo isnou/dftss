@@ -325,4 +325,4 @@ def delete_product_to_home(request, sku):
     cart = Order.objects.get(session_id=session_id)
     to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
-    return redirect('show-cart')
+    return redirect('store-home')
