@@ -72,7 +72,14 @@ def home(request):
         cart.save()
     else:
         session_id = request.session.get('session_id')
-        cart = Order.objects.get(session_id=session_id)
+        if Order.objects.all().filter(session_id=session_id).exists():
+            cart = Order.objects.get(session_id=session_id)
+        else:
+            gen_ref = serial_number_generator(8).upper()
+            cart = Order(ref=gen_ref,
+                         session_id=session_id,
+                         )
+            cart.save()
 
     products = cart.item.all()
     products_quantity = cart.item.all().count()
