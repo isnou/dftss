@@ -326,7 +326,16 @@ def add_quantity(request, sku):
     item = cart.item.get(sku=sku)
     item.quantity += 1
     item.save()
+    return redirect('show-cart')
 
+
+def remove_quantity(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    item = cart.item.get(sku=sku)
+    if item.quantity > 0:
+        item.quantity += -1
+        item.save()
     return redirect('show-cart')
 
 
