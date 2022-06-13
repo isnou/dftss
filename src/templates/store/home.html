@@ -212,20 +212,25 @@
 					{% if products_quantity %}
 					{% for product in products %}
 					<li class="header-cart-item flex-w flex-t m-b-12">
-						
+
 						<a href="{% url 'delete-product' product.sku %}">
 							<div class="header-cart-item-img">
 								<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
 							</div>
 						</a>
 
-						<div class="header-cart-item-txt p-t-8">
+						<div class="header-cart-item-txt p-t-8 m-b-20">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
 								{{product.name}}
 							</a>
-
 							<span class="header-cart-item-info">
 								{{ product.price|floatformat:"2g" }} DA
+							</span>
+							<span class="header-cart-item-info">
+								{{ product.quantity }}
+							</span>
+							<span class="header-cart-item-info">
+								<p>{{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
 							</span>
 						</div>
 					</li>
