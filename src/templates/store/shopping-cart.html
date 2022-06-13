@@ -370,9 +370,9 @@
 								{% for product in products %}
 								<tr class="table_row">
 									<td class="column-1">
-										<div href="{% url 'delete-product' product.sku %}" class="how-itemcart1">
+										<a href="{% url 'delete-product' product.sku %}" class="how-itemcart1">
 											<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG">
-										</div>
+										</a>
 									</td>
 									<td class="column-2" id="product-name">
 										{{ product.name }}
