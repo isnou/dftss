@@ -357,6 +357,8 @@
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 
+
+							{% if products_quantity > 0 %}
 							<table class="table-shopping-cart">
 
 								<tr class="table_head">
@@ -366,7 +368,6 @@
 									<th class="column-4 p-r-30">Quantity</th>
 									<th class="column-5">Total</th>
 								</tr>
-
 								{% for product in products %}
 								<tr class="table_row">
 									<td class="column-1">
@@ -390,9 +391,12 @@
 									</td>
 								</tr>
 								{% endfor %}
-
-
 							</table>
+							{% else %}
+							<div class="how-itemcart1">
+								your cart is empty
+							</div>
+							{% endif %}
 						</div>
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">

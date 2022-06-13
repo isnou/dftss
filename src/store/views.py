@@ -246,7 +246,7 @@ def order(request, product_id):
     return render(request, "store/shopping-cart.html", context)
 
 
-def shopping_cart(request):
+def show_cart(request):
     shipping = ('standard', 'express')
 
     try:
@@ -283,4 +283,4 @@ def delete_product(request, sku):
     cart = Order.objects.get(session_id=session_id)
     to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
-    return redirect('shopping-cart')
+    return redirect('show-cart')
