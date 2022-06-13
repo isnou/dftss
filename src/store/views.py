@@ -198,7 +198,7 @@ def order(request, product_id):
                     )
     new_item.save()
 
-    if request.session.get('session_id', None):
+    if not request.session.get('session_id', None):
         gen_ref = serial_number_generator(8).upper()
         gen_session_id = serial_number_generator(8).upper()
         request.session['session_id'] = gen_session_id
