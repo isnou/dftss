@@ -360,6 +360,7 @@
 									<th class="column-3 p-l-20">Price</th>
 									<th class="column-4 p-r-90">Quantity</th>
 									<th class="column-5">Total</th>
+									<th class="column-6">-</th>
 								</tr>
 								{% for product in products %}
 								<tr class="table_row">
@@ -389,6 +390,11 @@
 									</td>
 									<td class="column-5">
 										<p>{{ product.price|mul:product.quantity|floatformat:"2g" }} DA</p>
+									</td>
+									<td class="column-5">
+										<a href="{% url 'delete-product' product.sku %}">
+											<i class="fa fa-trash-o" style="font-size:24px"></i>
+										</a>
 									</td>
 								</tr>
 								{% endfor %}
