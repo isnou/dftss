@@ -210,7 +210,7 @@ def order(request, product_id):
         session_id = request.session.get('session_id')
         cart = Order.objects.get(session_id=session_id)
 
-    if cart.item.get(sku=new_item.sku).exists():
+    if cart.item.filter(sku=new_item.sku).exists():
         existing_item = cart.item.get(sku=new_item.sku)
         existing_item.quantity = existing_item.quantity + new_item.quantity
     else:
