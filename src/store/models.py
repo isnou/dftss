@@ -56,6 +56,7 @@ class Album(models.Model):
 
 class Parameter(models.Model):
     value = models.CharField(max_length=200, blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
         return self.value
@@ -70,7 +71,6 @@ class Option(models.Model):
     type = models.CharField(max_length=50, choices=TYPES, default='PACK')
     title = models.CharField(max_length=200, blank=True)
     parameter = models.ManyToManyField(Parameter, blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_parameters(self):
         return "\n".join([p.value for p in self.parameter.all()])
