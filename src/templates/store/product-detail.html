@@ -376,7 +376,7 @@
 										<select class="js-select2" name="pack" id="pack" required>
 											<option value="{{ pack.price }}">Choose a pack</option>
 											{% for pack in packs %}
-											<option> {{ pack.value }} {{ pack.price }}</option>
+											<option> {{ pack.value }} + {{ pack.price|floatformat:"2g" }} DA</option>
 											{% endfor %}
 										</select>
 										<div class="dropDownSelect2"></div>
