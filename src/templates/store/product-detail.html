@@ -374,12 +374,13 @@
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="pack" id="pack" required>
-											<option value="{{ pack.price }}">Choose a pack</option>
+											<option value="">Choose a pack</option>
 											{% for pack in packs %}
-											<option> {{ pack.value }}
+											<option>
 												{% if pack.price %}
-												+ {{ pack.price|floatformat:"2g" }} DA
+												+ {{ pack.price|floatformat:"2g" }} DA for
 												{% endif %}
+												{{ pack.value }}
 											</option>
 											{% endfor %}
 										</select>
