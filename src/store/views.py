@@ -186,7 +186,7 @@ def product(request, product_id):
             packs = option.parameter.all()
         elif option.type == 'SIZE':
             sizes = option.parameter.all()
-        elif not option.free:
+        if not option.free:
             choices = option.parameter.all()
 
     related_products = all_products.filter(
