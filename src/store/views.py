@@ -177,6 +177,7 @@ def product(request, product_id):
     colors = None
     packs = None
     sizes = None
+    choices = None
 
     for option in options:
         if option.type == 'COLOR':
@@ -185,6 +186,8 @@ def product(request, product_id):
             packs = option.parameter.all()
         elif option.type == 'SIZE':
             sizes = option.parameter.all()
+        elif not option.free:
+            choices = option.parameter.all()
 
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
@@ -221,6 +224,7 @@ def product(request, product_id):
         'colors': colors,
         'packs': packs,
         'sizes': sizes,
+        'choices': choices,
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
