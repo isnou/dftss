@@ -72,7 +72,6 @@ class Option(models.Model):
     type = models.CharField(max_length=50, choices=TYPES, default='PACK')
     title = models.CharField(max_length=200, blank=True)
     parameter = models.ManyToManyField(Parameter, blank=True)
-    free = models.BooleanField(default=True)
 
     def parameters(self):
         return "\n".join([p.value for p in self.parameter.all()])
