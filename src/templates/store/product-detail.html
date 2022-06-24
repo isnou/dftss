@@ -348,6 +348,7 @@
 -->
 							{% else %}
 							{% for option in options %}
+							{% if option.free %}
 
 							{% if option.type ==  'COLOR' %}
 							<div class="flex-w flex-r-m p-b-10">
@@ -377,9 +378,6 @@
 											<option value="">Choose a pack</option>
 											{% for pack in packs %}
 											<option>
-												{% if pack.price %}
-												+ {{ pack.price|floatformat:"2g" }} DA for
-												{% endif %}
 												{{ pack.value }}
 											</option>
 											{% endfor %}
@@ -407,6 +405,7 @@
 							</div>
 							{% endif %}
 
+							{% endif %}
 							{% endfor %}
 							{% endif %}
 
