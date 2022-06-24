@@ -16,7 +16,7 @@ class ParameterAdmin(admin.ModelAdmin):
 
 
 class OptionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'parameters', 'free')
+    list_display = ('title', 'parameters')
 
 
 class FilterAdmin(admin.ModelAdmin):
