@@ -349,7 +349,7 @@
 							{% else %}
 							{% for option in options %}
 
-							{% if option.type ==  'COLOR' %}
+							{% if option.type ==  'COLOR' and option.free%}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									{{ option.title|capfirst }}
@@ -366,7 +366,7 @@
 									</div>
 								</div>
 							</div>
-							{% elif option.type ==  'PACK' %}
+							{% elif option.type ==  'PACK' and option.free%}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									{{ option.title|capfirst }}
@@ -385,7 +385,7 @@
 									</div>
 								</div>
 							</div>
-							{% elif option.type ==  'SIZE' %}
+							{% elif option.type ==  'SIZE' and option.free%}
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									{{ option.title|capfirst }}
@@ -404,7 +404,7 @@
 							</div>
 
 
-							{% elif not option.free %}
+							{% else %}
 							<div class="p-t-50">
 							<h4 class="mtext-112 cl2 p-b-27">
 								Tags
