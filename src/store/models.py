@@ -56,6 +56,7 @@ class Album(models.Model):
 
 class Parameter(models.Model):
     value = models.CharField(max_length=200, blank=True)
+    link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.value
@@ -66,6 +67,7 @@ class Option(models.Model):
         ('COLOR', 'COLOR'),
         ('PACK', 'PACK'),
         ('SIZE', 'SIZE'),
+        ('OTHER', 'OTHER'),
     )
     type = models.CharField(max_length=50, choices=TYPES, default='PACK')
     name = models.CharField(max_length=200, blank=True, null=True)
