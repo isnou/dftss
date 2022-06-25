@@ -4,7 +4,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Item(models.Model):
     sku = models.CharField(max_length=200)
-    ref = models.CharField(max_length=200, unique=True, null=True)
     name = models.CharField(max_length=200, default='UNDEFINED')
     image = models.ImageField(upload_to='dexunt-sotre/products', blank=True)
     color = models.CharField(max_length=200, default='UNDEFINED')
