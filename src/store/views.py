@@ -209,10 +209,8 @@ def product(request, product_id):
     products_quantity = cart.item.all().count()
 
     if products.filter(sku=selected_product.sku).exists():
-        quantity_value = cart.item.get(sku=selected_product.sku).quantity
         product_exists = True
     else:
-        quantity_value = 1
         product_exists = False
 
     context = {
@@ -226,7 +224,6 @@ def product(request, product_id):
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
-        'quantity_value': quantity_value,
         'product_exists': product_exists,
     }
     return render(request, "store/product-detail.html", context)
@@ -285,7 +282,16 @@ def order(request, product_id):
             if existing_item.color == new_item.color:
                 existing_item.quantity += int(quantity)
                 existing_item.save()
+            elif existing_item.size == new_item.size:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
+            elif existing_item.option == new_item.option:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
             elif existing_item.color == new_item.color and existing_item.size == new_item.size:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
+            elif existing_item.option == new_item.option and existing_item.size == new_item.size:
                 existing_item.quantity += int(quantity)
                 existing_item.save()
             elif existing_item.color == new_item.color and existing_item.size == new_item.size and existing_item.option\
