@@ -65,9 +65,9 @@ class Parameter(models.Model):
 class Option(models.Model):
     TYPES = (
         ('COLOR', 'COLOR'),
+        ('OTHER', 'OTHER'),
         ('PACK', 'PACK'),
         ('SIZE', 'SIZE'),
-        ('OTHER', 'OTHER'),
     )
     type = models.CharField(max_length=50, choices=TYPES, default='PACK')
     name = models.CharField(max_length=200, blank=True, null=True)
