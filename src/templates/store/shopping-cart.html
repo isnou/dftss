@@ -372,13 +372,13 @@
 									</td>
 									<td class="column-2" id="product-name">
 										{{ product.name }}
-										{% if product.color != 'UNDEFINED' %}
+										{% if product.color %}
 										color :{{ product.color }}
 										{% endif %}
-										{% if product.size != 'UNDEFINED' %}
+										{% if product.size %}
 										size :{{ product.size }}
 										{% endif %}
-										{% if product.option != 'UNDEFINED' %}
+										{% if product.option %}
 										option :{{ product.option }}
 										{% endif %}
 									</td>
