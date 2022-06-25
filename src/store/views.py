@@ -209,8 +209,10 @@ def product(request, product_id):
     products_quantity = cart.item.all().count()
 
     if products.filter(sku=selected_product.sku).exists():
+        quantity_value = cart.item.get(sku=selected_product.sku).quantity
         product_exists = True
     else:
+        quantity_value = 1
         product_exists = False
 
     context = {
@@ -224,6 +226,7 @@ def product(request, product_id):
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
+        'quantity_value': quantity_value,
         'product_exists': product_exists,
     }
     return render(request, "store/product-detail.html", context)
@@ -254,7 +257,6 @@ def order(request, product_id):
         size = "UNDEFINED"
 
     new_item = Item(sku=product_to_add.sku,
-                    ref=serial_number_generator(8).upper(),
                     name=product_to_add.name,
                     image=product_to_add.image,
                     color=color,
@@ -278,32 +280,9 @@ def order(request, product_id):
         cart = Order.objects.get(session_id=session_id)
 
     if cart.item.all().filter(sku=new_item.sku).exists():
-        existing_items = cart.item.all().filter(sku=new_item.sku)
-        for existing_item in existing_items:
-            if existing_item.color == new_item.color:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.size == new_item.size:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.option == new_item.option:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.color == new_item.color and existing_item.size == new_item.size:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.color == new_item.color and existing_item.option == new_item.option:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.option == new_item.option and existing_item.size == new_item.size:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            elif existing_item.color == new_item.color and existing_item.size == new_item.size and existing_item.option\
-                    == new_item.option:
-                existing_item.quantity += int(quantity)
-                existing_item.save()
-            else:
-                cart.item.add(new_item)
+        existing_item = cart.item.get(sku=new_item.sku)
+        existing_item.quantity += int(quantity)
+        existing_item.save()
     else:
         cart.item.add(new_item)
 
@@ -354,7 +333,7 @@ def show_cart(request):
 def delete_product(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    to_delete = cart.item.get(ref=sku)
+    to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
     return redirect('show-cart')
 
@@ -362,7 +341,7 @@ def delete_product(request, sku):
 def add_quantity(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    item = cart.item.get(ref=sku)
+    item = cart.item.get(sku=sku)
     item.quantity += 1
     item.save()
     return redirect('show-cart')
@@ -371,7 +350,7 @@ def add_quantity(request, sku):
 def remove_quantity(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    item = cart.item.get(ref=sku)
+    item = cart.item.get(sku=sku)
     if item.quantity > 0:
         item.quantity -= 1
         item.save()
@@ -381,6 +360,6 @@ def remove_quantity(request, sku):
 def delete_product_to_home(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    to_delete = cart.item.get(ref=sku)
+    to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
     return redirect('store-home')
