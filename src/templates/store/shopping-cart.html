@@ -371,16 +371,28 @@
 										</a>
 									</td>
 									<td class="column-2" id="product-name">
-										{{ product.name }}
-										{% if product.color %}
-										color :{{ product.color }}
-										{% endif %}
-										{% if product.size %}
-										size :{{ product.size }}
-										{% endif %}
+										<pre>
+											{{ product.name }}
+										</pre>
+
+										<pre>
+											{% if product.color %}
+											color :{{ product.color }}
+											{% endif %}
+										</pre>
+
+										<pre>
+											{% if product.size %}
+											size :{{ product.size }}
+											{% endif %}
+										</pre>
+
+										<pre>
 										{% if product.option %}
 										option :{{ product.option }}
 										{% endif %}
+										</pre>
+
 									</td>
 									<td class="column-3" >
 										{{ product.price|floatformat:"2g" }} DA
