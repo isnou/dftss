@@ -372,6 +372,15 @@
 									</td>
 									<td class="column-2" id="product-name">
 										{{ product.name }}
+										{% if product.color != 'UNDEFINED' %}
+										color :{{ product.color }}
+										{% endif %}
+										{% if product.size != 'UNDEFINED' %}
+										size :{{ product.size }}
+										{% endif %}
+										{% if product.option != 'UNDEFINED' %}
+										option :{{ product.option }}
+										{% endif %}
 									</td>
 									<td class="column-3" >
 										{{ product.price|floatformat:"2g" }} DA
