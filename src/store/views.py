@@ -280,9 +280,20 @@ def order(request, product_id):
         cart = Order.objects.get(session_id=session_id)
 
     if cart.item.all().filter(sku=new_item.sku).exists():
-        existing_item = cart.item.get(sku=new_item.sku)
-        existing_item.quantity += int(quantity)
-        existing_item.save()
+        existing_items = cart.item.all().filter(sku=new_item.sku)
+        for existing_item in existing_items:
+            if existing_item.color == new_item.color and existing_item.size != new_item.size and existing_item.option \
+                    != new_item.option:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
+            elif existing_item.color != new_item.color and existing_item.size == new_item.size and existing_item.option \
+                    != new_item.option:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
+            elif existing_item.color != new_item.color and existing_item.size != new_item.size and existing_item.option \
+                    == new_item.option:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
     else:
         cart.item.add(new_item)
 
