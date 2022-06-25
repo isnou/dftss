@@ -78,7 +78,7 @@ class Option(models.Model):
         return "\n".join([p.value for p in self.parameter.all()])
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Filter(models.Model):
