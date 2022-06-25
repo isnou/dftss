@@ -354,7 +354,7 @@ def show_cart(request):
 def delete_product(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    to_delete = cart.item.get(sku=sku)
+    to_delete = cart.item.get(ref=sku)
     cart.item.remove(to_delete)
     return redirect('show-cart')
 
@@ -362,7 +362,7 @@ def delete_product(request, sku):
 def add_quantity(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    item = cart.item.get(sku=sku)
+    item = cart.item.get(ref=sku)
     item.quantity += 1
     item.save()
     return redirect('show-cart')
@@ -371,7 +371,7 @@ def add_quantity(request, sku):
 def remove_quantity(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    item = cart.item.get(sku=sku)
+    item = cart.item.get(ref=sku)
     if item.quantity > 0:
         item.quantity -= 1
         item.save()
@@ -381,6 +381,6 @@ def remove_quantity(request, sku):
 def delete_product_to_home(request, sku):
     session_id = request.session.get('session_id')
     cart = Order.objects.get(session_id=session_id)
-    to_delete = cart.item.get(sku=sku)
+    to_delete = cart.item.get(ref=sku)
     cart.item.remove(to_delete)
     return redirect('store-home')

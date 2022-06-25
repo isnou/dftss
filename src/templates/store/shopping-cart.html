@@ -400,18 +400,18 @@
 									<td class="column-4">
 										<div class="wrap-num-product flex-w">
 											{% if product.quantity > 1 %}
-											<a href="{% url 'remove-quantity' product.sku %}" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<a href="{% url 'remove-quantity' product.ref %}" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</a>
 											{% else %}
-											<a href="{% url 'delete-product' product.sku %}" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<a href="{% url 'delete-product' product.ref %}" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fa fa-trash-o" style="font-size:24px"></i>
 											</a>
 											{% endif%}
 
 											<input class="mtext-104 cl3 txt-center num-product" type="number" value="{{ product.quantity|floatformat:'g' }}">
 
-											<a href="{% url 'add-quantity' product.sku %}" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<a href="{% url 'add-quantity' product.ref %}" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</a>
 										</div>
