@@ -254,6 +254,7 @@ def order(request, product_id):
         size = "UNDEFINED"
 
     new_item = Item(sku=product_to_add.sku,
+                    ref=serial_number_generator(8).upper(),
                     name=product_to_add.name,
                     image=product_to_add.image,
                     color=color,
@@ -289,6 +290,9 @@ def order(request, product_id):
                 existing_item.quantity += int(quantity)
                 existing_item.save()
             elif existing_item.color == new_item.color and existing_item.size == new_item.size:
+                existing_item.quantity += int(quantity)
+                existing_item.save()
+            elif existing_item.color == new_item.color and existing_item.option == new_item.option:
                 existing_item.quantity += int(quantity)
                 existing_item.save()
             elif existing_item.option == new_item.option and existing_item.size == new_item.size:
