@@ -186,8 +186,6 @@ def product(request, product_id):
             packs = option.parameter.all()
         elif option.type == 'SIZE':
             sizes = option.parameter.all()
-        elif option.type == 'ADDS':
-            choices = option.parameter.all()
 
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
