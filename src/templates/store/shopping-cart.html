@@ -388,9 +388,9 @@
 										</p>
 
 										<p>
-										{% if product.option != UNDEFINED %}
-										option :{{ product.option }}
-										{% endif %}
+											{% if product.option != 'False' %}
+											option :{{ product.option }}
+											{% endif %}
 										</p>
 
 									</td>
