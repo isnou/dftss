@@ -285,7 +285,7 @@ def order(request, product_id):
             if existing_item.color == new_item.color:
                 existing_item.quantity += int(quantity)
                 existing_item.save()
-            elif existing_item.color == new_item.color and existing_item.size == new_item.size and existing_item.option:
+            elif existing_item.color == new_item.color and existing_item.size == new_item.size:
                 existing_item.quantity += int(quantity)
                 existing_item.save()
             elif existing_item.color == new_item.color and existing_item.size == new_item.size and existing_item.option\
