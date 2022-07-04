@@ -160,5 +160,5 @@ def product(request, product_id):
         'quantity_value': quantity_value,
         'product_exists': product_exists,
     }
-    return render(request, "store/product-detail.html", context)
+    return render(request, "store-manager/product-detail.html", context)
 
