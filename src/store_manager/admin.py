@@ -8,7 +8,7 @@ class ContentAdmin(admin.ModelAdmin):
 
 
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('file_name', 'image', 'thumb')
+    list_display = ('file_name', 'image')
 
 
 class FilterAdmin(admin.ModelAdmin):
@@ -18,7 +18,7 @@ class FilterAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ('filter', 'flip', 'collection', 'publish')
     list_display = (
-        'name', 'name_id', 'sku', 'filter', 'flip', 'collection', 'type', 'publish_date', 'sell_price', 'old_price',
+        'name', 'thumb', 'sku', 'filter', 'flip', 'collection', 'type', 'publish_date', 'sell_price', 'old_price',
         'buy_price', 'quantity', 'publish', 'sell_ranking', 'client_ranking')
 
 

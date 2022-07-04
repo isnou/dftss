@@ -48,8 +48,10 @@ class ShowCase(models.Model):
 
 class Album(models.Model):
     file_name = models.CharField(max_length=500, blank=True, default='product-image')
-    thumb = models.BooleanField(default=False)
     image = models.ImageField(upload_to='store/images/')
+
+    class Meta:
+        verbose_name_plural = "Album"
 
     def __str__(self):
         return self.file_name
@@ -75,8 +77,10 @@ class Product(models.Model):
         ('OPTION', 'OPTION'),
     )
     name = models.CharField(max_length=200)
-    name_id = models.CharField(max_length=200, blank=True, null=True)
+    parameter_name = models.CharField(max_length=200, blank=True, null=True)
+    parameter_title = models.CharField(max_length=200, blank=True, null=True)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
+    thumb = models.ImageField(upload_to='store/images/')
     image = models.ManyToManyField(Album, blank=True)
     filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
     flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='flip', blank=True, null=True)
@@ -88,7 +92,7 @@ class Product(models.Model):
     sell_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     buy_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    quantity = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    quantity = models.IntegerField(default=0)
     publish = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=timezone.now)
     sell_ranking = models.IntegerField(default=0)
