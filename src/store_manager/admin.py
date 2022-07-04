@@ -18,7 +18,7 @@ class FilterAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ('filter', 'flip', 'collection', 'customizable', 'publish')
     list_display = (
-        'name', 'sku', 'filter', 'flip', 'collection', 'type', 'customizable', 'sell_price', 'old_price',
+        'name', 'sku', 'filter', 'flip', 'collection', 'type', 'publish_date', 'sell_price', 'old_price',
         'buy_price', 'quantity', 'publish', 'sell_ranking', 'client_ranking')
 
 
