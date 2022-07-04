@@ -80,7 +80,7 @@ class Product(models.Model):
     parameter_name = models.CharField(max_length=200, blank=True, null=True)
     parameter_title = models.CharField(max_length=200, blank=True, null=True)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
-    thumb = models.ImageField(upload_to='store/images/')
+    thumb = models.ImageField(upload_to='store/images/', null=True)
     image = models.ManyToManyField(Album, blank=True)
     filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
     flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='flip', blank=True, null=True)
