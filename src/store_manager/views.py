@@ -108,27 +108,9 @@ def product(request, product_id):
     selected_product = all_products.get(id=product_id)
 
     try:
-        album = selected_product.album.all()
+        album = selected_product.image.all()
     except selected_product.DoesNotExist:
         raise Http404("Empty album")
-
-    try:
-        options = selected_product.option.all()
-    except selected_product.DoesNotExist:
-        raise Http404("No options")
-
-    colors = None
-    packs = None
-    sizes = None
-    choices = None
-
-    for option in options:
-        if option.type == 'COLOR':
-            colors = option.parameter.all()
-        elif option.type == 'PACK':
-            packs = option.parameter.all()
-        elif option.type == 'SIZE':
-            sizes = option.parameter.all()
 
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
