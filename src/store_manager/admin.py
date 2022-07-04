@@ -8,7 +8,7 @@ class ContentAdmin(admin.ModelAdmin):
 
 
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('file_name', 'image')
+    list_display = ('file_name', 'image', 'thumb')
 
 
 class FilterAdmin(admin.ModelAdmin):

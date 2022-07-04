@@ -47,7 +47,8 @@ class ShowCase(models.Model):
 
 
 class Album(models.Model):
-    file_name = models.CharField(max_length=200, blank=True, default='product-image')
+    file_name = models.CharField(max_length=500, blank=True, default='product-image')
+    thumb = models.BooleanField(default=False)
     image = models.ImageField(upload_to='store/images/')
 
     def __str__(self):
