@@ -97,3 +97,80 @@ def home(request):
         'products_quantity': products_quantity,
     }
     return render(request, "store-manager/home.html", context)
+
+
+def product(request, product_id):
+    try:
+        all_products = Product.objects.all()
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    selected_product = all_products.get(id=product_id)
+
+    try:
+        album = selected_product.album.all()
+    except selected_product.DoesNotExist:
+        raise Http404("Empty album")
+
+    try:
+        options = selected_product.option.all()
+    except selected_product.DoesNotExist:
+        raise Http404("No options")
+
+    colors = None
+    packs = None
+    sizes = None
+    choices = None
+
+    for option in options:
+        if option.type == 'COLOR':
+            colors = option.parameter.all()
+        elif option.type == 'PACK':
+            packs = option.parameter.all()
+        elif option.type == 'SIZE':
+            sizes = option.parameter.all()
+
+    related_products = all_products.filter(
+        Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
+
+    related_products = related_products.exclude(id=product_id).exclude(publish='False')
+    related_products = related_products.order_by('?')[:8]
+
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
+    if products.filter(sku=selected_product.sku).exists():
+        quantity_value = cart.item.get(sku=selected_product.sku).quantity
+        product_exists = True
+    else:
+        quantity_value = 1
+        product_exists = False
+
+    context = {
+        'selected_product': selected_product,
+        'album': album,
+        'options': options,
+        'colors': colors,
+        'packs': packs,
+        'sizes': sizes,
+        'choices': choices,
+        'related_products': related_products,
+        'products': products,
+        'products_quantity': products_quantity,
+        'quantity_value': quantity_value,
+        'product_exists': product_exists,
+    }
+    return render(request, "store/product-detail.html", context)
+
