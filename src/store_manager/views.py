@@ -134,6 +134,10 @@ def product(request, product_id):
     products_quantity = cart.item.all().count()
 
     options = 0
+    colors = 0
+    packs = 0
+    sizes = 0
+    choices = 0
 
     if products.filter(sku=selected_product.sku).exists():
         quantity_value = cart.item.get(sku=selected_product.sku).quantity
