@@ -74,7 +74,7 @@ class Product(models.Model):
         ('OPTION', 'OPTION'),
     )
     name = models.CharField(max_length=200)
-    name_id = models.CharField(max_length=200)
+    name_id = models.CharField(max_length=200, blank=True, null=True)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     image = models.ManyToManyField(Album, blank=True)
     filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
