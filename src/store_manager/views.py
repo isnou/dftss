@@ -2,6 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 # from sell.models import
 from .models import Content, ShowCase, Product, Destination
+from sell_manager.models import Order, Item
 from django.http import Http404
 from django.db.models import Q
 import random
