@@ -133,6 +133,8 @@ def product(request, product_id):
     products = cart.item.all()
     products_quantity = cart.item.all().count()
 
+    options = 0
+
     if products.filter(sku=selected_product.sku).exists():
         quantity_value = cart.item.get(sku=selected_product.sku).quantity
         product_exists = True
