@@ -365,6 +365,7 @@
 								-->
 
 								<div class="flex-w m-r--5">
+									<select>
 									{% for product in options %}
 									{% if selected_product.id == product.id %}
 									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" style="border: 4px solid #000;">
@@ -378,6 +379,7 @@
 									</a>
 									{% endif %}
 									{% endfor %}
+									</select>
 								</div>
 							</div>
 
