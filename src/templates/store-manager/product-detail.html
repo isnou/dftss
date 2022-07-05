@@ -370,19 +370,25 @@
 								<div class="flex-w m-r--5">
 									{% for product in variants %}
 									{% if selected_product.id == product.id %}
+									<div class="item-slick3" data-thumb="http://94.176.238.2/media/{{ product.image }}">
+									<div class="wrap-pic-w pos-relative">
+										<img src="http://94.176.238.2/media/{{ product.image }}" alt="IMG-PRODUCT">
+
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="http://94.176.238.2/media/{{ product.image }}">
+											<i class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+									{% else %}
 									<a href="{% url 'product' product.id %}" class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04 m-r-5 m-b-5">
 										{{ product.option_title }}
-										<img src="http://94.176.238.2/media/{{ product.thumb }}" alt="IMG-PRODUCT">
-									</a>
-									{% else %}
-									<a href="{% url 'product' product.id %}" class="flex-c-m size-108 how-pos1 bor7 fs-16 cl10 bg0 hov-btn3 trans-04 m-r-5 m-b-5">
-										{{ product.option_title }}
-										<img src="http://94.176.238.2/media/{{ product.thumb }}" alt="IMG-PRODUCT">
 									</a>
 									{% endif %}
 									{% endfor %}
 								</div>
 							</div>
+
+
 
 							{% endif %}
 
