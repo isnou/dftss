@@ -70,22 +70,15 @@ class Product(models.Model):
         ('SEASON', 'SEASON'),
         ('BOX', 'BOX'),
     )
-    TYPES = (
-        ('INTRO', 'INTRO'),
-        ('COLOR', 'COLOR'),
-        ('SIZE', 'SIZE'),
-        ('OPTION', 'OPTION'),
-    )
     name = models.CharField(max_length=200)
-    parameter_name = models.CharField(max_length=200, blank=True, null=True)
-    parameter_title = models.CharField(max_length=200, blank=True, null=True)
+    option = models.BooleanField(default=False)
+    option_title = models.CharField(max_length=200, blank=True, null=True)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     thumb = models.ImageField(upload_to='store/images/', null=True)
     image = models.ManyToManyField(Album, blank=True)
     filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
     flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='flip', blank=True, null=True)
     collection = models.CharField(max_length=50, choices=COLLECTIONS, blank=True, null=True)
-    type = models.CharField(max_length=50, choices=TYPES, blank=True, null=True)
     catch_line = models.CharField(max_length=200, blank=True)
     description = models.TextField(max_length=800, blank=True)
     specification = models.TextField(max_length=800, blank=True)
