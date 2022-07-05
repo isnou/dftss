@@ -2708,6 +2708,11 @@ input.num-product::-webkit-inner-spin-button {
   border-radius: 15px;
 }
 
+.bor7act {
+  border: 8px solid #ccc;
+  border-radius: 15px;
+}
+
 .bor8 {
   border: 1px solid #e6e6e6;
   border-radius: 2px;
