@@ -112,10 +112,7 @@ def product(request, product_id):
     except selected_product.DoesNotExist:
         raise Http404("Empty album")
 
-    if selected_product.option:
-        variants = all_products.filter(name=selected_product.name).exclude(publish='True')
-    else:
-        variants = None
+    variants = all_products.filter(name=selected_product.name).exclude(publish='True')
 
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
