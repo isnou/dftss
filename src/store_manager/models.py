@@ -71,7 +71,6 @@ class Product(models.Model):
         ('BOX', 'BOX'),
     )
     name = models.CharField(max_length=200)
-    option = models.BooleanField(default=False)
     option_title = models.CharField(max_length=200, blank=True, null=True)
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     thumb = models.ImageField(upload_to='store/images/', null=True)
