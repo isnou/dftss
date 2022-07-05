@@ -112,6 +112,12 @@ def product(request, product_id):
     except selected_product.DoesNotExist:
         raise Http404("Empty album")
 
+    if selected_product.option:
+        options = all_products.filter(
+            Q(name=selected_product.name))
+    else:
+        options = None
+
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
 
@@ -133,12 +139,6 @@ def product(request, product_id):
     products = cart.item.all()
     products_quantity = cart.item.all().count()
 
-    options = 0
-    colors = 0
-    packs = 0
-    sizes = 0
-    choices = 0
-
     if products.filter(sku=selected_product.sku).exists():
         quantity_value = cart.item.get(sku=selected_product.sku).quantity
         product_exists = True
@@ -150,10 +150,6 @@ def product(request, product_id):
         'selected_product': selected_product,
         'album': album,
         'options': options,
-        'colors': colors,
-        'packs': packs,
-        'sizes': sizes,
-        'choices': choices,
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
