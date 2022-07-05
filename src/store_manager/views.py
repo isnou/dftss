@@ -114,7 +114,7 @@ def product(request, product_id):
 
     if selected_product.option:
         variants = all_products.filter(
-            Q(name=selected_product.name)).exclude(publish='True')
+            Q(name=selected_product.name))
     else:
         variants = None
 
