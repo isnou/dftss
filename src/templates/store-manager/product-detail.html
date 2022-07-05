@@ -346,7 +346,7 @@
 <!--
 							{{ quantity_value|floatformat:'g' }}
 -->
-							{% if options %}
+							{% if variants %}
 
 							<div class="p-t-50">
 								<h4 class="mtext-105 cl2 js-name-detail p-b-14">
@@ -354,9 +354,9 @@
 								</h4>
 
 								<div class="flex-w m-r--5">
-									{% for option in options %}
-									<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										{{ option.option_title }}
+									{% for product in variants %}
+									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+										{{ product.option_title }}
 									</a>
 									{% endfor %}
 								</div>

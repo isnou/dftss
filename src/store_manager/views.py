@@ -113,10 +113,10 @@ def product(request, product_id):
         raise Http404("Empty album")
 
     if selected_product.option:
-        options = all_products.filter(
+        variants = all_products.filter(
             Q(name=selected_product.name)).exclude(publish='True')
     else:
-        options = None
+        variants = None
 
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
@@ -149,7 +149,7 @@ def product(request, product_id):
     context = {
         'selected_product': selected_product,
         'album': album,
-        'options': options,
+        'variants': variants,
         'related_products': related_products,
         'products': products,
         'products_quantity': products_quantity,
