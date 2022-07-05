@@ -361,14 +361,16 @@
 							{% if variants %}
 
 							<div class="p-t-50">
+								<!--
 								<h2 class="mtext-105 cl2 js-name-detail p-b-14">
 									{{ selected_product.option_title|capfirst }}
 								</h2>
+								-->
 
 								<div class="flex-w m-r--5">
 									{% for product in variants %}
 									{% if selected_product.id == product.id %}
-									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5 active">
+									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 trans-04 m-r-5 m-b-5 active">
 										{{ product.option_title }}
 									</a>
 									{% else %}
