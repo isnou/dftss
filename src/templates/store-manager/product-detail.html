@@ -285,19 +285,6 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								{% if selected_product.publish %}
-								{% for instance in album %}
-								<div class="item-slick3" data-thumb="http://94.176.238.2/media/{{ instance.image }}">
-									<div class="wrap-pic-w pos-relative">
-										<img src="http://94.176.238.2/media/{{ instance.image }}" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="http://94.176.238.2/media/{{ instance.image }}">
-											<i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
-								{% endfor %}
-								{% else %}
 								<div class="item-slick3" data-thumb="http://94.176.238.2/media/{{ selected_product.thumb }}">
 									<div class="wrap-pic-w pos-relative">
 										<img src="http://94.176.238.2/media/{{ selected_product.thumb }}" alt="IMG-PRODUCT">
@@ -318,7 +305,6 @@
 									</div>
 								</div>
 								{% endfor %}
-								{% endif %}
 
 							</div>
 						</div>
