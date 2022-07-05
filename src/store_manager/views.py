@@ -113,8 +113,7 @@ def product(request, product_id):
         raise Http404("Empty album")
 
     if selected_product.option:
-        variants = all_products.filter(
-            Q(name=selected_product.name)).exclude(publish='True')
+        variants = all_products.filter(name=selected_product.name).exclude(publish='True').exists()
     else:
         variants = None
 
@@ -157,4 +156,3 @@ def product(request, product_id):
         'product_exists': product_exists,
     }
     return render(request, "store-manager/product-detail.html", context)
-
