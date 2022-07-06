@@ -114,6 +114,9 @@ def product(request, product_id):
 
     options = all_products.filter(name=selected_product.name)
 
+    if not options.exclude(publish='True').exists():
+        options = None
+
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
 
