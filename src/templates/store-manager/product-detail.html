@@ -375,6 +375,25 @@
 									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 bor8 p-lr-4 hov-tag1 trans-04 m-r-5 m-b-5">
 										<img src="http://94.176.238.2/media/{{ product.thumb }}" alt="IMG-PRODUCT" style="width:70px;height:60px;">
 									</a>
+<!--
+									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 bor8 p-lr-4 hov-tag1 trans-04 m-r-5 m-b-5" style="border: 4px solid #000;">
+										<div style="position: relative;text-align: center;color: black;">
+											<img src="http://94.176.238.2/media/{{ product.thumb }}" alt="IMG-PRODUCT" style="width:70px;height:60px;">
+											<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+												{{ product.option_title|capfirst }}
+											</div>
+										</div>
+									</a>
+
+									<a href="{% url 'product' product.id %}" class="flex-c-m stext-107 bor8 p-lr-4 hov-tag1 trans-04 m-r-5 m-b-5">
+										<div style="position: relative;text-align: center;color: black;">
+											<img src="http://94.176.238.2/media/{{ product.thumb }}" alt="IMG-PRODUCT" style="width:70px;height:60px;">
+											<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+												{{ product.option_title|capfirst }}
+											</div>
+										</div>
+									</a>
+-->
 									{% endif %}
 									{% endfor %}
 
