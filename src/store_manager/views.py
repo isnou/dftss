@@ -120,7 +120,7 @@ def product(request, product_id):
     related_products = all_products.filter(
         Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
 
-    related_products = related_products.exclude(id=product_id).exclude(publish='False')
+    related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
     related_products = related_products.order_by('?')[:8]
 
     if not request.session.get('session_id', None):
