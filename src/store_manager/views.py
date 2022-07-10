@@ -117,7 +117,9 @@ def product(request, product_id):
     if not options.exclude(publish='True').exists():
         options = None
 
-    related_products = selected_product.tag.split()
+    tags = selected_product.tag.split()
+    for tag in tags:
+        related_products = all_products.filter(tag__contains=tag)
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
