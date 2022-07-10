@@ -118,9 +118,10 @@ def product(request, product_id):
         options = None
 
     tags = selected_product.tag.split()
-    related_products = Product.objects.none().create()
+    related_products = Product.objects.none()
     for tag in tags:
-        related_products.add(all_products.filter(tag__contains=tag))
+        new_add = all_products.filter(tag__contains=tag)
+        related_products.add(new_add)
 
     for related_product in related_products:
         if related_products.filter(name=related_product.name).count() > 1:
