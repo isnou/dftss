@@ -57,13 +57,6 @@ class Album(models.Model):
         return self.file_name
 
 
-class Filter(models.Model):
-    by = models.CharField(max_length=200, blank=True, unique=True)
-
-    def __str__(self):
-        return self.by
-
-
 class Product(models.Model):
     COLLECTIONS = (
         ('FLASH', 'FLASH'),
@@ -75,8 +68,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=200, unique=True, blank=True, null=True)
     thumb = models.ImageField(upload_to='store/images/', null=True)
     image = models.ManyToManyField(Album, blank=True)
-    filter = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='filter', blank=True, null=True)
-    flip = models.ForeignKey('Filter', on_delete=models.CASCADE, related_name='flip', blank=True, null=True)
+    tag = models.CharField(max_length=500, blank=True, default='tag')
     collection = models.CharField(max_length=50, choices=COLLECTIONS, blank=True, null=True)
     catch_line = models.CharField(max_length=200, blank=True)
     description = models.TextField(max_length=800, blank=True)

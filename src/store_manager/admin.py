@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Album, Product, Filter, ShowCase
+from .models import Content, Album, Product, ShowCase
 
 
 class ContentAdmin(admin.ModelAdmin):
@@ -11,14 +11,10 @@ class AlbumAdmin(admin.ModelAdmin):
     list_display = ('file_name', 'image')
 
 
-class FilterAdmin(admin.ModelAdmin):
-    list_display = ['by']
-
-
 class ProductAdmin(admin.ModelAdmin):
-    list_filter = ('filter', 'flip', 'collection', 'publish')
+    list_filter = ('tag', 'flip', 'collection', 'publish')
     list_display = (
-        'name', 'thumb', 'sku', 'filter', 'flip', 'collection', 'publish_date', 'sell_price', 'old_price',
+        'name', 'thumb', 'sku', 'tag', 'collection', 'publish_date', 'sell_price', 'old_price',
         'buy_price', 'quantity', 'publish', 'sell_ranking', 'client_ranking')
 
 
@@ -28,6 +24,5 @@ class ShowCaseAdmin(admin.ModelAdmin):
 
 admin.site.register(Content, ContentAdmin)
 admin.site.register(Album, AlbumAdmin)
-admin.site.register(Filter, FilterAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ShowCase, ShowCaseAdmin)
