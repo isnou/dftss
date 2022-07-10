@@ -118,7 +118,7 @@ def product(request, product_id):
         options = None
 
     tags = selected_product.tag.split()
-    related_products = Product.objects.create()
+    related_products = Product.create()
     for tag in tags:
         related_products += all_products.filter(tag__contains=tag)
 
