@@ -121,7 +121,7 @@ def product(request, product_id):
     related_products = Product.objects.none()
     for tag in tags:
         new_add = all_products.filter(tag__contains=tag)
-        related_products.add(new_add)
+        related_products.objects.add(new_add)
 
     for related_product in related_products:
         if related_products.filter(name=related_product.name).count() > 1:
