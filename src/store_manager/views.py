@@ -118,13 +118,9 @@ def product(request, product_id):
         options = None
 
     tags = selected_product.tag.split()
-    related_products = Product.objects.create().none()
+    related_products = []
     for tag in tags:
         related_products += all_products.filter(tag__contains=tag)
-
-    for related_product in related_products:
-        if related_products.filter(name=related_product.name).count() > 1:
-            related_product.delete()
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
