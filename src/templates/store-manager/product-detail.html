@@ -623,11 +623,13 @@
 			</div>
 
 			<div class="row isotope-grid">
+				{% for related_product in related_products %}
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
 					<!-- Block2
 					-->
-					related_products
+					{{related_product}}
 				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
