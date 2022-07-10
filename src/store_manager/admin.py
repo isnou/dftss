@@ -12,7 +12,7 @@ class AlbumAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_filter = ('tag', 'flip', 'collection', 'publish')
+    list_filter = ('tag', 'collection', 'publish')
     list_display = (
         'name', 'thumb', 'sku', 'tag', 'collection', 'publish_date', 'sell_price', 'old_price',
         'buy_price', 'quantity', 'publish', 'sell_ranking', 'client_ranking')
