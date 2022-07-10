@@ -118,6 +118,7 @@ def product(request, product_id):
         options = None
 
     related_products = selected_product.tag.split()
+    related_products = related_products[2]
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
