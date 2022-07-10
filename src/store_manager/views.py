@@ -119,12 +119,10 @@ def product(request, product_id):
 
     tags = selected_product.tag.split()
     related_products = []
-    related_products_ids = []
     for tag in tags:
         related_product = all_products.filter(tag__contains=tag)
-        if related_product.id not in related_products_ids:
+        if related_product not in related_products:
             related_products += related_product
-            related_products_ids += related_product.id
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
