@@ -120,7 +120,7 @@ def product(request, product_id):
     tags = selected_product.tag.split()
     related_products = Product.objects.none()
     for tag in tags:
-        related_products += all_products.filter(tag__contains=tag)
+        related_products.add(all_products.filter(tag__contains=tag))
 
     for related_product in related_products:
         if related_products.filter(name=related_product.name).count() > 1:
