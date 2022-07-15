@@ -122,16 +122,11 @@ def product(request, product_id):
     if not options.exclude(publish='True').exists():
         options = None
 
-    if not relations.filter(name=selected_product.name).exists():
-        new = Relation(name=selected_product.name)
-        new.save()
-        tags = selected_product.tag.split()
-        for tag in tags:
-            for product_to_add in all_products.filter(tag__contains=tag).exclude(name=selected_product.name)\
-                    .exclude(publish='False'):
-                new.product.add(product_to_add)
+    if relations.filter(name=selected_product.name).exists():
+        related_products = relations.get(name=selected_product.name).product.all()
+    else:
+        related_products = None
 
-    related_products = relations.get(name=selected_product.name).product.all()
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
     # related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
