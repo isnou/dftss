@@ -127,7 +127,8 @@ def product(request, product_id):
         new.save()
         tags = selected_product.tag.split()
         for tag in tags:
-            for product_to_add in all_products.filter(tag__contains=tag):
+            for product_to_add in all_products.filter(tag__contains=tag).exclude(name=selected_product.name)\
+                    .exclude(publish='False'):
                 new.product.add(product_to_add)
 
     related_products = relations.get(name=selected_product.name).product.all()
