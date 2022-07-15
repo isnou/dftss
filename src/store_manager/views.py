@@ -122,16 +122,11 @@ def product(request, product_id):
     if not options.exclude(publish='True').exists():
         options = None
 
-    if not relations.filter(name=selected_product.name).exists():
-        new = Relation(name=selected_product.name)
-        new.save()
-        tags = selected_product.tag.split()
-        for tag in tags:
-            for product_to_add in all_products.filter(tag__contains=tag).exclude(name=selected_product.name)\
-                    .exclude(publish='False'):
-                new.product.add(product_to_add)
+    try:
+        related_products = relations.get(name=selected_product.name).product.all()
+    except relations.get(name=selected_product.name).DoesNotExist:
+        raise Http404("No relations for that product")
 
-    related_products = relations.get(name=selected_product.name).product.all()
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
     # related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
@@ -173,4 +168,18 @@ def product(request, product_id):
 
 
 def create_relations(request):
+    try:
+        all_products = Product.objects.all()
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    for selected_product in all_products:
+        new = Relation(name=selected_product.name)
+        new.save()
+        tags = selected_product.tag.split()
+        for tag in tags:
+            for product_to_add in all_products.filter(tag__contains=tag).exclude(name=selected_product.name) \
+                    .exclude(publish='False'):
+                new.product.add(product_to_add)
+
     return redirect('store')
