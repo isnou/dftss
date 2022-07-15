@@ -123,7 +123,8 @@ def product(request, product_id):
         options = None
 
     if not relations.filter(name=selected_product.name).exists():
-        new = Relation(name=selected_product.name).save()
+        new = Relation(name=selected_product.name)
+        new.save()
         tags = selected_product.tag.split()
         for tag in tags:
             new.add(all_products.filter(tag__contains=tag))
