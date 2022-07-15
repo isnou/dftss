@@ -168,6 +168,7 @@ def product(request, product_id):
 
 
 def create_relations(request):
+    Relation.objects.all().delete()
     try:
         all_products = Product.objects.all()
     except Product.DoesNotExist:
