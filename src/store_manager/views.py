@@ -112,15 +112,23 @@ def product(request, product_id):
     except selected_product.DoesNotExist:
         raise Http404("Empty album")
 
+    try:
+        relations = Relation.objects.all()
+    except Relation.DoesNotExist:
+        raise Http404("No relations")
+
     options = all_products.filter(name=selected_product.name)
 
     if not options.exclude(publish='True').exists():
         options = None
 
-    tags = selected_product.tag.split()
-    for tag in tags:
-        related_products = all_products.filter(tag__contains=tag)
+    if not relations.filter(name=selected_product.name).exists():
+        new = Relation(name=selected_product.name).save()
+        tags = selected_product.tag.split()
+        for tag in tags:
+            new.add(all_products.filter(tag__contains=tag))
 
+    related_products = relations.filter(name=selected_product.name).produtc.all()
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
     # related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
