@@ -95,6 +95,17 @@ class Product(models.Model):
         return self.name
 
 
+class Relation(models.Model):
+    name = models.CharField(max_length=200)
+    product = models.ManyToManyField(Product, blank=True)
+
+    def products(self):
+        return "\n".join([p.name for p in self.product.all()])
+
+    def __str__(self):
+        return self.name
+
+
 class Coupon(models.Model):
     code = models.CharField(max_length=200, unique=True)
     value = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)

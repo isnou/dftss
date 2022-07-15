@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Album, Product, ShowCase
+from .models import Content, Album, Product, ShowCase, Relation
 
 
 class ContentAdmin(admin.ModelAdmin):
@@ -22,7 +22,12 @@ class ShowCaseAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'collection', 'position')
 
 
+class RelationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'products')
+
+
 admin.site.register(Content, ContentAdmin)
 admin.site.register(Album, AlbumAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ShowCase, ShowCaseAdmin)
+admin.site.register(Relation, RelationAdmin)
