@@ -240,3 +240,136 @@ def create_relations(request):
             relation.delete()
 
     return redirect('home')
+
+
+def order(request, product_id):
+    shipping = ('standard', 'express')
+
+    try:
+        product_to_add = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    try:
+        destinations = Destination.objects.all()
+    except Destination.DoesNotExist:
+        raise Http404("No destinations")
+
+    if request.method == 'POST':
+        color = request.POST.get('color', False)
+        option = request.POST.get('option', False)
+        quantity = request.POST.get('num-product2', False)
+        size = request.POST.get('size', False)
+    else:
+        color = "UNDEFINED"
+        option = "UNDEFINED"
+        quantity = 1
+        size = "UNDEFINED"
+
+    new_item = Item(sku=product_to_add.sku,
+                    name=product_to_add.name,
+                    image=product_to_add.image,
+                    color=color,
+                    option=option,
+                    size=size,
+                    quantity=quantity,
+                    price=product_to_add.sell_price,
+                    )
+    new_item.save()
+
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    if cart.item.all().filter(sku=new_item.sku).exists():
+        existing_item = cart.item.get(sku=new_item.sku)
+        existing_item.quantity += int(quantity)
+        existing_item.save()
+    else:
+        cart.item.add(new_item)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
+    context = {
+        'products': products,
+        'products_quantity': products_quantity,
+        'destinations': destinations,
+        'shipping': shipping,
+    }
+    return render(request, "store/shopping-cart.html", context)
+
+
+def show_cart(request):
+    shipping = ('standard', 'express')
+
+    try:
+        destinations = Destination.objects.all()
+    except Destination.DoesNotExist:
+        raise Http404("No destinations")
+
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
+    context = {
+        'products': products,
+        'products_quantity': products_quantity,
+        'destinations': destinations,
+        'shipping': shipping,
+    }
+    return render(request, "store/shopping-cart.html", context)
+
+
+def delete_product(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    to_delete = cart.item.get(sku=sku)
+    cart.item.remove(to_delete)
+    return redirect('show-cart')
+
+
+def add_quantity(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    item = cart.item.get(sku=sku)
+    item.quantity += 1
+    item.save()
+    return redirect('show-cart')
+
+
+def remove_quantity(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    item = cart.item.get(sku=sku)
+    if item.quantity > 0:
+        item.quantity -= 1
+        item.save()
+    return redirect('show-cart')
+
+
+def delete_product_to_home(request, sku):
+    session_id = request.session.get('session_id')
+    cart = Order.objects.get(session_id=session_id)
+    to_delete = cart.item.get(sku=sku)
+    cart.item.remove(to_delete)
+    return redirect('store-home')
