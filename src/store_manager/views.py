@@ -99,6 +99,63 @@ def home(request):
     return render(request, "store-manager/home.html", context)
 
 
+def store(request, collection):
+    try:
+        products = Product.objects.all().exclude(publish='False')
+    except Content.DoesNotExist:
+        raise Http404("No products")
+
+    if collection == 'LATEST':
+        product_collection = products.all().order_by('-publish_date').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
+    elif collection == 'SELL':
+        product_collection = products.all().order_by('-sell_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
+    elif collection == 'RATE':
+        product_collection = products.all().order_by('-client_ranking').exclude(publish='False').exclude(
+            collection='SEASON').exclude(collection='FLASH').exclude(collection='BOX')
+    else:
+        product_collection = products.all().filter(collection=collection)
+
+    if collection == 'LATEST' or collection == 'SELL' or collection == 'RATE':
+        page = request.GET.get('page', 1)
+        paginator = Paginator(product_collection, 4)
+        try:
+            product_collection = paginator.page(page)
+        except PageNotAnInteger:
+            product_collection = paginator.page(1)
+        except EmptyPage:
+            product_collection = paginator.page(paginator.num_pages)
+        paginate = True
+    else:
+        product_collection = product_collection.order_by('?').all()[:8]
+        paginate = False
+
+    if not request.session.get('session_id', None):
+        gen_ref = serial_number_generator(8).upper()
+        gen_session_id = serial_number_generator(8).upper()
+        request.session['session_id'] = gen_session_id
+        cart = Order(ref=gen_ref,
+                     session_id=gen_session_id,
+                     )
+        cart.save()
+    else:
+        session_id = request.session.get('session_id')
+        cart = Order.objects.get(session_id=session_id)
+
+    products = cart.item.all()
+    products_quantity = cart.item.all().count()
+
+    context = {
+        'product_collection': product_collection,
+        'collection': collection,
+        'paginate': paginate,
+        'products': products,
+        'products_quantity': products_quantity,
+    }
+    return render(request, "store-manager/store-detail.html", context)
+
+
 def product(request, product_id):
     try:
         all_products = Product.objects.all()
