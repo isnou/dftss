@@ -118,13 +118,8 @@ def product(request, product_id):
         options = None
 
     tags = selected_product.tag.split()
-    related_products = []
-    product_list_id = 0
     for tag in tags:
-        related_product = all_products.filter(tag__contains=tag)
-        if related_product not in related_products:
-            related_products[product_list_id] = related_product
-            product_list_id += 1
+        related_products = all_products.filter(tag__contains=tag)
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
