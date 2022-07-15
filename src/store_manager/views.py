@@ -123,7 +123,7 @@ def product(request, product_id):
         options = None
 
     if relations.filter(name=selected_product.name).exists():
-        related_products = relations.get(name=selected_product.name).product.all()
+        related_products = relations.get(name=selected_product.name).product.all().order_by('?')[:8]
     else:
         related_products = None
 
@@ -175,8 +175,7 @@ def create_relations(request):
         raise Http404("Product does not exist")
 
     for selected_product in all_products:
-        new = Relation(name=selected_product.name)
-        new.save()
+        new = Relation(name=selected_product.name).save()
         tags = selected_product.tag.split()
         for tag in tags:
             for product_to_add in all_products.filter(tag__contains=tag).exclude(name=selected_product.name) \
