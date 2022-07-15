@@ -122,10 +122,7 @@ def product(request, product_id):
     if not options.exclude(publish='True').exists():
         options = None
 
-    try:
-        related_products = relations.get(name=selected_product.name).product.all()
-    except relations.get(name=selected_product.name).DoesNotExist:
-        raise Http404("No relations for that product")
+    related_products = relations.get(name=selected_product.name).product.all()
 
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
