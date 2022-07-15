@@ -130,7 +130,7 @@ def product(request, product_id):
             for product_to_add in all_products.filter(tag__contains=tag):
                 new.product.add(product_to_add)
 
-    related_products = relations.filter(name=selected_product.name).product.all()
+    related_products = relations.get(name=selected_product.name).product.all()
     # related_products = all_products.filter(
     #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
     # related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
