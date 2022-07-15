@@ -183,4 +183,8 @@ def create_relations(request):
                     .exclude(publish='False'):
                 new.product.add(product_to_add)
 
+    for relation in Relation.objects.all():
+        if relation.product.objects.all().count() == 0:
+            relation.delete()
+
     return redirect('home')
