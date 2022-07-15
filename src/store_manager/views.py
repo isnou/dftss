@@ -170,3 +170,7 @@ def product(request, product_id):
         'product_exists': product_exists,
     }
     return render(request, "store-manager/product-detail.html", context)
+
+
+def create_relations(request):
+    return redirect('store')
