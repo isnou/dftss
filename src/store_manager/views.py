@@ -127,11 +127,6 @@ def product(request, product_id):
     else:
         related_products = None
 
-    # related_products = all_products.filter(
-    #    Q(filter=selected_product.filter) | Q(flip=selected_product.filter))
-    # related_products = related_products.exclude(name=selected_product.name).exclude(publish='False')
-    # related_products = related_products.order_by('?')[:8]
-
     if not request.session.get('session_id', None):
         gen_ref = serial_number_generator(8).upper()
         gen_session_id = serial_number_generator(8).upper()
