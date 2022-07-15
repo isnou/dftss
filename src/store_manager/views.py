@@ -182,4 +182,4 @@ def create_relations(request):
                     .exclude(publish='False'):
                 new.product.add(product_to_add)
 
-    return redirect('store')
+    return redirect('home')
