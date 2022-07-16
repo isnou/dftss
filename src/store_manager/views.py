@@ -228,6 +228,7 @@ def create_relations(request):
 
     for selected_product in all_products:
         selected_product.sku = serial_number_generator(8).upper()
+        selected_product.save()
         new = Relation(name=selected_product.name)
         new.save()
         tags = selected_product.tag.split()
