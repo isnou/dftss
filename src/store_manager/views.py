@@ -156,13 +156,13 @@ def store(request, collection):
     return render(request, "store-manager/store-detail.html", context)
 
 
-def product(request, product_id):
+def product(request, sku):
     try:
         all_products = Product.objects.all()
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
 
-    selected_product = all_products.get(id=product_id)
+    selected_product = all_products.get(sku=sku)
 
     try:
         album = selected_product.image.all()

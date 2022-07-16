@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('<str:collection>/collection/', views.store, name="store"),
-    path('<int:product_id>/product/', views.product, name="product"),
+    path('<str:sku>/product/', views.product, name="product"),
     path('create_relations/', views.create_relations, name="create-relations"),
     path('generate_sku/', views.sku_generator, name="sku-generator"),
     path('<int:product_id>/order/', views.order, name="order"),
