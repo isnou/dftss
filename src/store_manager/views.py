@@ -296,7 +296,7 @@ def order(request, product_id):
         'destinations': destinations,
         'shipping': shipping,
     }
-    return render(request, "store/shopping-cart.html", context)
+    return render(request, "store-manager/shopping-cart.html", context)
 
 
 def show_cart(request):
