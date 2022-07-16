@@ -328,7 +328,7 @@ def show_cart(request):
         'destinations': destinations,
         'shipping': shipping,
     }
-    return render(request, "store/shopping-cart.html", context)
+    return render(request, "store-manager/shopping-cart.html", context)
 
 
 def delete_product(request, sku):
@@ -363,4 +363,4 @@ def delete_product_to_home(request, sku):
     cart = Order.objects.get(session_id=session_id)
     to_delete = cart.item.get(sku=sku)
     cart.item.remove(to_delete)
-    return redirect('store-home')
+    return redirect('home')
