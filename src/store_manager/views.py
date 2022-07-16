@@ -255,11 +255,11 @@ def sku_generator(request):
     return redirect('home')
 
 
-def order(request, product_id):
+def order(request, sku):
     shipping = ('standard', 'express')
 
     try:
-        product_to_add = Product.objects.get(id=product_id)
+        product_to_add = Product.objects.get(sku=sku)
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
 
