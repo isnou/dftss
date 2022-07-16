@@ -262,7 +262,7 @@ def order(request, product_id):
 
     new_item = Item(sku=product_to_add.sku,
                     name=product_to_add.name,
-                    image=product_to_add.image,
+                    image=product_to_add.thumb,
                     quantity=quantity,
                     price=product_to_add.sell_price,
                     )
