@@ -7,6 +7,7 @@ urlpatterns = [
     path('<str:collection>/collection/', views.store, name="store"),
     path('<int:product_id>/product/', views.product, name="product"),
     path('create_relations/', views.create_relations, name="create-relations"),
+    path('generate_sku/', views.sku_generator, name="sku-generator"),
     path('<int:product_id>/order/', views.order, name="order"),
     path('<str:sku>/delete-product/', views.delete_product, name="delete-product"),
     path('<str:sku>/add-quantity/', views.add_quantity, name="add-quantity"),

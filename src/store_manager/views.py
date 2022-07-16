@@ -227,8 +227,6 @@ def create_relations(request):
         raise Http404("Product does not exist")
 
     for selected_product in all_products:
-        selected_product.sku = serial_number_generator(8).upper()
-        selected_product.save()
         new = Relation(name=selected_product.name)
         new.save()
         tags = selected_product.tag.split()
@@ -240,6 +238,19 @@ def create_relations(request):
     for relation in Relation.objects.all():
         if relation.product.all().count() == 0:
             relation.delete()
+
+    return redirect('home')
+
+
+def sku_generator(request):
+    try:
+        all_products = Product.objects.all()
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    for selected_product in all_products:
+        selected_product.sku = serial_number_generator(8).upper()
+        selected_product.save()
 
     return redirect('home')
 
