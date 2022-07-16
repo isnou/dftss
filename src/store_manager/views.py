@@ -256,22 +256,13 @@ def order(request, product_id):
         raise Http404("No destinations")
 
     if request.method == 'POST':
-        color = request.POST.get('color', False)
-        option = request.POST.get('option', False)
         quantity = request.POST.get('num-product2', False)
-        size = request.POST.get('size', False)
     else:
-        color = "UNDEFINED"
-        option = "UNDEFINED"
         quantity = 1
-        size = "UNDEFINED"
 
     new_item = Item(sku=product_to_add.sku,
                     name=product_to_add.name,
                     image=product_to_add.image,
-                    color=color,
-                    option=option,
-                    size=size,
                     quantity=quantity,
                     price=product_to_add.sell_price,
                     )

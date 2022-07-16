@@ -6,9 +6,6 @@ class Item(models.Model):
     sku = models.CharField(max_length=200)
     name = models.CharField(max_length=200, default='UNDEFINED')
     image = models.ImageField(upload_to='store-manager/products', blank=True)
-    color = models.CharField(max_length=200, default='UNDEFINED')
-    option = models.CharField(max_length=200, default='UNDEFINED')
-    size = models.CharField(max_length=200, default='UNDEFINED')
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     quantity = models.DecimalField(max_digits=8, decimal_places=2, default=1)
 
