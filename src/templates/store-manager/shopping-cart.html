@@ -371,7 +371,9 @@
 										</a>
 									</td>
 									<td class="column-2" id="product-name">
-										{{ product.name }}
+										<a href="{% url 'product' product.sku %}">
+											{{ product.name }}
+										</a>
 									</td>
 									<td class="column-3" >
 										{{ product.price|floatformat:"2g" }} DA
